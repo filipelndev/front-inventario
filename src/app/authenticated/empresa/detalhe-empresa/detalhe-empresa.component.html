@@ -1,0 +1,22 @@
+<div class="container">
+  <div class="detalhes-empresa">
+    <div class="info-empresa">
+      <h2>{{ nomeEmpresa }}</h2>
+      <p>CNPJ: {{ cnpjEmpresa }}</p>
+    </div>
+    <div class="acoes">
+      <button mat-raised-button color="primary">Cadastrar Equipamento</button>
+    </div>
+  </div>
+  <div class="equipamentos-lista">
+    <h3>Equipamentos</h3>
+    <ul>
+      <li *ngFor="let equipamento of equipamentos">
+        <span>Tag: {{ equipamento.tagPatrimonio }}</span>
+        <span>Tipo: {{ equipamento.tipoEquipamento }}</span>
+        <span>Situação: {{ equipamento.situacao }}</span>
+      </li>
+    </ul>
+  </div>
+
+</div>

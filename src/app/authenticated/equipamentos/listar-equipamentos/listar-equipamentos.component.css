@@ -1,0 +1,40 @@
+.container {
+  max-width: 1500px;
+  margin: 30px 200px auto;
+  padding: 30px;
+  border: 3px solid #007bff;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  background-color: #d2d2d2;
+  color: #333;
+  text-align: center;
+}
+
+h2 {
+  color: #007bff;
+  font-size: 25px;
+  margin-bottom: 20px;
+}
+
+.mat-equip-table {
+  width: 100%;
+  margin-top: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+th.mat-header-cell,
+td.mat-cell {
+  padding: 10px;
+  text-align: left;
+}
+
+mat-paginator {
+  margin-top: 20px;
+}
+
+.mat-slide-toggle {
+  margin: 0; /* Ajusta a margem conforme necessário */
+}

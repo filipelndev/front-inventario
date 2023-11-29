@@ -1,0 +1,88 @@
+.menu-button {
+  background-color: #97999a;
+  color: #1c00f1;
+  border: none;
+  padding: 10px;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.menu-button:hover {
+  background-color: #7b7b7b;
+  color: #00adf1
+}
+
+.sidenav-container {
+  display: flex;
+  height: 100vh;
+}
+
+.sidenav {
+  width: 200px;
+  background-color: #a7a6a6;
+  color: #1c00f1;
+  padding: 0.5px;
+  padding-right: 30px;
+  box-sizing: border-box;
+}
+
+.menu-item {
+  margin-bottom: 15px;
+}
+
+.menu-header {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.sub-menu a {
+  text-decoration:solid;
+  font-size: 15px;
+  color: #1c00f1;
+  display: block;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.sub-menu a:hover {
+  background-color: #7b7b7b;
+}
+
+.logoimg {
+  padding-left: 10px;
+  font-size: 10px;
+}
+
+.header-content {
+  display: flex;
+  align-items: end;
+  justify-content:first baseline;
+  padding: 10px;
+}
+
+.header-left {
+  display: flex;
+  align-items: safe;
+}
+
+.menu-button {
+  margin-right: 10px; /* Ajuste conforme necessário */
+}
+
+.app-name {
+  font-size: 18px; /* Ajuste conforme necessário */
+}
+
+.user-button {
+  position: fixed;
+  top: 10px; /* Ajuste conforme necessário */
+  right: 10px; /* Ajuste conforme necessário */
+  z-index: 1000; /* Certifique-se de que o botão esteja acima de outros elementos, se necessário */
+}
+
+.permission-label {
+  color: #757575; /* Cor cinza para simular um botão desativado */
+  cursor: not-allowed; /* Cursor de não permitido para indicar desativado */
+}
+

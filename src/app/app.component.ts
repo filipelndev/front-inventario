@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
+import { MatSidenav } from '@angular/material/sidenav';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +9,10 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'front-inventario';
+
+  @ViewChild('sidenav', { static: false }) sidenav!: MatSidenav;
+
+  toggleSidenav(): void {
+    this.sidenav.toggle();
+  }
 }

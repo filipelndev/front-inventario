@@ -1,0 +1,42 @@
+.container {
+  max-width: 800px;
+  margin: 80px 350px auto;
+  border: 3px solid #007bff;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  background-color: #d2d2d2;
+  color: #333;
+  padding: 80px;
+}
+
+.detalhes-empresa {
+  display: flex;
+}
+
+.info-empresa {
+  flex: 1;
+}
+
+.acoes {
+  margin-left: 20px;
+}
+
+.equipamentos-lista {
+  margin-top: 20px;
+}
+
+.equipamentos-lista h3 {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.equipamentos-lista ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.equipamentos-lista li {
+  border: 1px solid #007bff;
+  padding: 10px;
+  margin-bottom: 10px;
+}
