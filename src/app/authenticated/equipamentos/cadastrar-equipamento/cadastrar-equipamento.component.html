@@ -4,21 +4,14 @@
   <form (ngSubmit)="onSubmit()">
     <div class="form-group">
       <label for="tagPatrimonio">Tag Patrimônio:</label>
-      <input type="text" id="tagPatrimonio" name="tagPatrimonio" [(ngModel)]="equipment.tagPatrimonio" required>
+      <input type="text" id="tagPatrimonio" name="tagPatrimonio" [(ngModel)]="equipment.tag_patrimonio" required>
     </div>
 
     <div class="form-group">
       <label for="tipoEquipamento">Tipo de Equipamento:</label>
-      <select id="tipoEquipamento" name="tipoEquipamento" [(ngModel)]="equipment.tipoEquipamento" required>
-        <option value="" disabled selected hidden>Selecione o Tipo</option>
-        <option value="Cadeira">Cadeira</option>
-        <option value="Caixa de Som">Caixa de Som</option>
-        <option value="Computador">Computador</option>
-        <option value="Fone de Ouvido">Fone de Ouvido</option>
-        <option value="Impressora">Impressora</option>
-        <option value="Notebook">Notebook</option>
-        <option value="Roteador">Roteador</option>
-        <!-- Adicione mais opções conforme necessário -->
+      <select id="tipoEquipamento" name="tipoEquipamento" [(ngModel)]="equipment.tipo_equipamento" required>
+        <option [ngValue]="equipment.tipo_equipamento" disabled selected hidden>Selecione o Tipo</option>
+        <option *ngFor="let tipoEquipamentoItem of tipoEquipamento" [value]="tipoEquipamentoItem.id">{{ tipoEquipamentoItem.tipo }}</option>
       </select>
     </div>
 
@@ -26,38 +19,38 @@
       <label for="situacao">Situação:</label>
       <select id="situacao" name="situacao" [(ngModel)]="equipment.situacao" required>
         <option value="" disabled selected hidden>Selecione a Situação</option>
-        <option value="Novo">Novo</option>
-        <option value="Em Operação">Em Operação</option>
-        <option value="Em Manutenção">Em Manutenção</option>
-        <option value="Disponível">Disponível</option>
-        <option value="Indisponível">Indisponível</option>
+        <option value=1>Novo</option>
+        <option value=2>Em Operação</option>
+        <option value=3>Em Manutenção</option>
+        <option value=4>Disponível</option>
+        <option value=5>Indisponível</option>
         <!-- Adicione mais opções conforme necessário -->
       </select>
     </div>
 
     <div class="form-group">
       <label for="pedidoNFE">Pedido / NFE:</label>
-      <input type="text" id="pedidoNFE" name="pedidoNFE" [(ngModel)]="equipment.pedidoNFE" required>
+      <input type="text" id="pedidoNFE" name="pedidoNFE" [(ngModel)]="equipment.pedido" required>
     </div>
 
     <div class="form-group">
       <label for="dataCompra">Data da Compra:</label>
-      <input type="date" id="dataCompra" name="dataCompra" [(ngModel)]="equipment.dataCompra" required>
+      <input type="date" id="dataCompra" name="dataCompra" [(ngModel)]="equipment.data_compra" required>
     </div>
 
     <div class="form-group">
       <label for="empresa">Empresa:</label>
       <select id="empresa" name="empresa" [(ngModel)]="equipment.empresa" required>
-        <option value="" disabled selected hidden>Selecione a Empresa</option>
-        <option *ngFor="let empresa of empresas" [value]="empresa">{{ empresa }}</option>
+        <option [ngValue]="equipment.empresa" disabled selected hidden>Selecione a Empresa</option>
+        <option *ngFor="let empresa of empresas" [ngValue]="empresa">{{ empresa.nome }}</option>
       </select>
     </div>
 
     <div class="form-group">
       <label for="colaborador">Colaborador:</label>
       <select id="colaborador" name="colaborador" [(ngModel)]="equipment.colaborador" required>
-        <option value="" disabled selected hidden>Selecione o Colaborador</option>
-        <option *ngFor="let colaborador of colaboradores" [value]="colaborador">{{ colaborador }}</option>
+        <option [ngValue]="equipment.colaborador" disabled selected hidden>Selecione o Colaborador</option>
+        <option *ngFor="let colaborador of colaboradores" [ngValue]="colaborador">{{ colaborador.nome }}</option>
       </select>
     </div>
 
@@ -77,18 +70,23 @@
     </div>
 
     <div class="form-group">
-      <label for="acessoRemoto">Acesso Remoto:</label>
-      <input type="checkbox" id="acessoRemoto" name="acessoRemoto" [(ngModel)]="equipment.acessoRemoto">
+      <label for="acessoRemoto">Possui Acesso Remoto?</label>
+      <input type="checkbox" id="acessoRemoto" name="acessoRemoto" [(ngModel)]="equipment.acesso_remoto">
     </div>
 
-    <div class="form-group" *ngIf="equipment.acessoRemoto">
+    <div class="form-group" *ngIf="equipment.acesso_remoto">
+      <label for="idAcessoRemoto">Acesso Remoto:</label>
+      <input type="text" id="idAcessoRemoto" name="idAcessoRemoto" [(ngModel)]="equipment.acesso_remoto">
+    </div>
+
+    <div class="form-group" *ngIf="equipment.acesso_remoto">
       <label for="idAcessoRemoto">ID Acesso Remoto:</label>
-      <input type="text" id="idAcessoRemoto" name="idAcessoRemoto" [(ngModel)]="equipment.idAcessoRemoto">
+      <input type="text" id="idAcessoRemoto" name="idAcessoRemoto" [(ngModel)]="equipment.acesso_id">
     </div>
 
-    <div class="form-group" *ngIf="equipment.acessoRemoto">
+    <div class="form-group" *ngIf="equipment.acesso_remoto">
       <label for="senhaAcesso">Senha Acesso:</label>
-      <input type="password" id="senhaAcesso" name="senhaAcesso" [(ngModel)]="equipment.senhaAcesso">
+      <input type="password" id="senhaAcesso" name="senhaAcesso" [(ngModel)]="equipment.acesso_senha">
     </div>
 
     <div class="form-group">

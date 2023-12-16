@@ -8,6 +8,9 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { EditarColaboradorComponent } from '../../colaborador/editar-colaborador/editar-colaborador.component';
 import { Empresa } from 'src/app/Models/Empresa';
+import { EquipamentoService } from '../../equipamento.service';
+import { TipoEquipamentoService } from '../../tipo-equipamento.service';
+import { TipoEquipamento } from 'src/app/Models/TipoEquipamento';
 
 @Component({
   selector: 'app-cadastrar-equipamento',
@@ -17,40 +20,53 @@ import { Empresa } from 'src/app/Models/Empresa';
 export class CadastrarEquipamentoComponent implements OnInit{
   empresas: Empresa[] = [];
   colaboradores: Colaborador[] = [];
+  tipoEquipamento: TipoEquipamento[] = [];
 
-  constructor(private empresaService: EmpresaService, private colaboradorService: ColaboradorService) {}
+  constructor(
+    private empresaService: EmpresaService,
+    private colaboradorService: ColaboradorService,
+    private equipamentoService: EquipamentoService,
+    private tipoEquipamentoService: TipoEquipamentoService
+  ) {}
 
   ngOnInit(): void {
     this.carregarEmpresas();
     this.carregarColaboradores();
+    this.carregarTipoEquipamento();
   }
 
   carregarEmpresas(): void {
-    this.empresaService.getEmpresas().subscribe((empresas) => {
-      this.empresas = empresas;
+    this.empresaService.getEmpresas().subscribe((empresas: any) => {
+      this.empresas = empresas.results;
     });
   }
 
   carregarColaboradores(): void {
-    this.colaboradorService.getColaboradores().subscribe((colaboradores) => {
-      this.colaboradores = colaboradores;
+    this.colaboradorService.getColaboradores().subscribe((colaboradores: any) => {
+      this.colaboradores = colaboradores.results;
+    });
+  }
+
+  carregarTipoEquipamento(): void {
+    this.tipoEquipamentoService.getTipoEquipamento().subscribe((tipoEquipamento: any) => {
+      this.tipoEquipamento = tipoEquipamento.results;
     });
   }
 
   equipment: Equipamento = {
-    tagPatrimonio: '',
-    tipoEquipamento: '',
+    tag_patrimonio: '',
+    tipo_equipamento: {tipo: 'Escolha um tipo de equipamento abaixo:', status: true},
     situacao: '',
-    pedidoNFE: '',
-    dataCompra: new Date(),
-    empresa: '',
-    colaborador: '',
+    pedido: '',
+    data_compra: new Date(),
+    empresa: { nome: 'Escolha uma empresa abaixo:', cnpj: '', status: true },
+    colaborador: {nome: 'Escolha um colaborador abaixo:', cpf: '', status: true},
     marca: '',
     modelo: '',
     especificacoes: '',
-    acessoRemoto: false,
-    idAcessoRemoto: '',
-    senhaAcesso: '',
+    acesso_remoto: '',
+    acesso_id: '',
+    acesso_senha: '',
     observacoes: '',
     status: true
   };

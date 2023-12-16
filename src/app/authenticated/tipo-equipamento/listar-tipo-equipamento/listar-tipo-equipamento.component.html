@@ -14,7 +14,10 @@
       <th mat-header-cell *matHeaderCellDef> Status </th>
       <td mat-cell *matCellDef="let tipoEquipamento">
         <button mat-icon-button (click)="alterarStatusTipoEquipamento(tipoEquipamento)">
-        <mat-icon>{{ tipoEquipamento.status ? 'check_circle' : 'cancel' }}</mat-icon>
+          <mat-icon [ngStyle]="{'color': tipoEquipamento.status ? 'green' : 'red'}">
+            {{ tipoEquipamento.status ? 'check_circle' : 'cancel' }}
+          </mat-icon>
+
       </button>
       </td>
     </ng-container>

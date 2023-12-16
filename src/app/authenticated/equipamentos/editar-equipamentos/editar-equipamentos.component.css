@@ -2,10 +2,10 @@
   max-width: 600px;
   margin: 30px auto;
   padding: 30px;
-  border: 3px solid #007bff;
+  border: 3px solid #005c99;
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  background-color: #d2d2d2;
+  background-color: #F2F2F2;
   color: #333;
   text-align: center;
   overflow-y: auto; /* Adiciona barra de rolagem vertical quando necessário */
@@ -13,7 +13,7 @@
 }
 
 h2 {
-  color: #007bff;
+  color: #01274e;
   font-size: 25px;
   margin-bottom: 20px;
 }

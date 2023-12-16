@@ -1,0 +1,20 @@
+<div class="login-container">
+  <div class="logo-container">
+    <!-- Adicione o caminho para o seu logotipo -->
+  </div>
+
+  <div class="form-container">
+    <img src="./assets/img/Logo.png" alt="Logo do App" style="max-width: 100%;">
+    <h2>Login</h2>
+
+    <!-- Campos de entrada para nome de usuário e senha -->
+    <label for="username">Nome de Usuário:</label>
+    <input type="text" id="username" [(ngModel)]="username" />
+
+    <label for="password">Senha:</label>
+    <input type="password" id="password" [(ngModel)]="password" />
+
+    <!-- Botão para enviar o formulário de login -->
+    <button (click)="login()">Entrar</button>
+  </div>
+</div>

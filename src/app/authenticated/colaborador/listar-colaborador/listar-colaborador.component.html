@@ -1,41 +1,42 @@
 <div class="container">
   <h2>Listar Colaboradores</h2>
 
-  <div class="mat-elevation-z8">
-    <table mat-table [dataSource]="dataSource" >
+    <table mat-table [dataSource]="dataSource" class="mat-equip-table">
 
       <!-- id da Coluna -->
     <ng-container matColumnDef="id">
-      <th mat-header-cell *matHeaderCellDef> ID </th>
-      <td mat-cell *matCellDef="let colaborador"> {{colaborador.id}} </td>
+      <th mat-header-cell *matHeaderCellDef class="custom-width"> ID </th>
+      <td mat-cell *matCellDef="let colaborador" class="custom-width"> {{colaborador.id}} </td>
     </ng-container>
 
     <!-- Nome da Coluna -->
     <ng-container matColumnDef="nome">
-      <th mat-header-cell *matHeaderCellDef> Nome </th>
-      <td mat-cell *matCellDef="let colaborador"> {{colaborador.nome}} </td>
+      <th mat-header-cell *matHeaderCellDef class="custom-width"> Nome </th>
+      <td mat-cell *matCellDef="let colaborador" class="custom-width"> {{colaborador.nome}} </td>
     </ng-container>
 
     <!-- CPF da Coluna -->
     <ng-container matColumnDef="cpf">
-      <th mat-header-cell *matHeaderCellDef> CPF </th>
-      <td mat-cell *matCellDef="let colaborador"> {{colaborador.cpf}} </td>
+      <th mat-header-cell *matHeaderCellDef class="custom-width"> CPF </th>
+      <td mat-cell *matCellDef="let colaborador" class="custom-width"> {{colaborador.cpf}} </td>
     </ng-container>
 
     <!-- Status da Coluna -->
     <ng-container matColumnDef="status">
-      <th mat-header-cell *matHeaderCellDef> Status </th>
-      <td mat-cell *matCellDef="let colaborador">
+      <th mat-header-cell *matHeaderCellDef class="custom-width"> Status </th>
+      <td mat-cell *matCellDef="let colaborador" class="custom-width">
         <button mat-icon-button (click)="alterarStatusColaborador(colaborador)">
-          <mat-icon>{{ colaborador.status ? 'check_circle' : 'cancel' }}</mat-icon>
+          <mat-icon [ngStyle]="{'color': colaborador.status ? 'green' : 'red'}">
+            {{ colaborador.status ? 'check_circle' : 'cancel' }}
+          </mat-icon>
         </button>
       </td>
     </ng-container>
 
     <!-- Edição da Coluna -->
     <ng-container matColumnDef="editar">
-      <th mat-header-cell *matHeaderCellDef>Editar</th>
-      <td mat-cell *matCellDef="let colaborador">
+      <th mat-header-cell *matHeaderCellDef class="custom-width">Editar</th>
+      <td mat-cell *matCellDef="let colaborador" class="custom-width">
         <button mat-icon-button (click)="editarColaborador(colaborador)">
           <mat-icon>edit</mat-icon>
         </button>
@@ -46,8 +47,5 @@
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
   </table>
 
-  <mat-paginator [pageSize]="10" [pageSizeOptions]="[5, 10, 25]" showFirstLastButtons></mat-paginator>
-  <ng-template #noData>
-    <p>Nenhum colaborador encontrado.</p>
-  </ng-template>
+  <mat-paginator [pageSizeOptions]="[5, 10, 25, 50]" showFirstLastButtons class="paginator"></mat-paginator>
 </div>

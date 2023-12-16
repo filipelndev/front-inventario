@@ -10,9 +10,11 @@ import { DetalheEmpresaComponent } from './authenticated/empresa/detalhe-empresa
 import { CadastrarTipoEquipamentoComponent } from './authenticated/tipo-equipamento/cadastrar-tipo-equipamento/cadastrar-tipo-equipamento.component';
 import { ListarTipoEquipamentoComponent } from './authenticated/tipo-equipamento/listar-tipo-equipamento/listar-tipo-equipamento.component';
 import { ListarColaboradorComponent } from './authenticated/colaborador/listar-colaborador/listar-colaborador.component';
+import { AuthGuard } from './authenticate/auth.guard';
+import { LoginComponent } from './authenticate/login/login.component';
 
 const routes: Routes = [
-  { path: '', component: HomeComponent },
+  { path: '', component: HomeComponent, canActivate: [AuthGuard] },
   { path: 'dashboard', component: HomeComponent },
   { path: 'cadastrar-colaborador', component: CadastrarColaboradorComponent },
   { path: 'listar-colaborador', component: ListarColaboradorComponent },
@@ -23,6 +25,7 @@ const routes: Routes = [
   { path: 'detalhes-empresa/:id', component: DetalheEmpresaComponent },
   { path: 'cadastrar-tipo-equipamento', component: CadastrarTipoEquipamentoComponent },
   { path: 'listar-tipo-equipamento', component: ListarTipoEquipamentoComponent },
+  { path: 'login', component: LoginComponent },
 
 
 ];

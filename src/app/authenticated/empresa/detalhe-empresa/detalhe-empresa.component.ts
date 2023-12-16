@@ -48,8 +48,8 @@ export class DetalheEmpresaComponent implements OnInit {
   // Método fictício para obter equipamentos por empresa (substitua com sua lógica real)
   obterEquipamentosPorEmpresa(id: number): any[] {
     return [
-      { tagPatrimonio: 'TAG001', tipoEquipamento: 'Computador', situacao: 'Em Operação' },
-      { tagPatrimonio: 'TAG002', tipoEquipamento: 'Impressora', situacao: 'Novo' },
+      { tag_patrimonio: 'TAG001', tipoEquipamento: 'Computador', situacao: 'Em Operação' },
+      { tag_patrimonio: 'TAG002', tipoEquipamento: 'Impressora', situacao: 'Novo' },
       // Adicione mais equipamentos conforme necessário
     ];
   }

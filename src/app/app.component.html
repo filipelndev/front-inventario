@@ -1,3 +1,4 @@
+<div *ngIf="authService.isAuthenticated()">
 <div class="header-content">
   <div class="header-left">
     <button class="menu-button" (click)="toggleSidenav()">
@@ -8,17 +9,15 @@
     </span>
   </div>
   <button mat-icon-button [matMenuTriggerFor]="menu" class="user-button">
-    <mat-icon>person</mat-icon>
+    <mat-icon class="whiteicon">person</mat-icon>
   </button>
 
-  <!-- Seu menu -->
   <mat-menu #menu="matMenu">
-    <!-- Conteúdo do menu -->
     <label class="permission-label" >
        Permissão: Sem permissões
     </label>
     <button mat-menu-item>Alterar Senha</button>
-    <button mat-menu-item>Sair</button>
+    <button mat-menu-item (click)="logoff()">Sair</button>
   </mat-menu>
 </div>
 
@@ -35,10 +34,10 @@
       <li class="menu-item">
         <div class="menu-header">Colaboradores</div>
         <div class="sub-menu">
-          <a routerLink="/cadastrar-colaborador">Cadastrar</a>
-          <a routerLink="/listar-colaborador">Listar</a>
+            <a routerLink="/cadastrar-colaborador">Cadastrar</a>
+            <a routerLink="/listar-colaborador">Listar</a>
         </div>
-      </li>
+    </li>
       <li class="menu-item">
         <div class="menu-header">Empresas</div>
         <div class="sub-menu">
@@ -69,3 +68,5 @@
     <router-outlet></router-outlet>
   </div>
 </mat-sidenav-container>
+</div>
+<app-login *ngIf="!authService.isAuthenticated()"></app-login>

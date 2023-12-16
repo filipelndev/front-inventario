@@ -1,18 +1,28 @@
+import { Colaborador } from "./Colaborador";
+import { Empresa } from "./Empresa";
+import { TipoEquipamento } from "./TipoEquipamento";
+
 export interface Equipamento {
   id?: number;
-  tagPatrimonio: string;
-  tipoEquipamento: string;
+  tag_patrimonio: string;
+  tipo_equipamento: TipoEquipamento;
   situacao: string;
-  pedidoNFE: string;
-  dataCompra: Date;
-  empresa: string;
-  colaborador: string;
+  pedido: string;
+  data_compra: Date;
+  data_cadastro?: Date;
+  ultima_alteracao?: Date;
+  empresa: Empresa;
+  colaborador: Colaborador;
   marca: string;
   modelo: string;
   especificacoes: string;
-  acessoRemoto: boolean;
-  idAcessoRemoto?: string;
-  senhaAcesso?: string;
+  acesso_remoto?: string;
+  acesso_id?: string;
+  acesso_senha?: string;
   observacoes: string;
   status: boolean;
+
+  empresa_nome?: string;
+  colaborador_nome?: string;
+  tipo_equipamento_nome?: string;
 }

@@ -24,8 +24,6 @@ export class ListarColaboradorComponent implements OnInit {
     this.colaboradorService.getColaboradores().subscribe(
       (colaboradores: any) => {
         this.dataSource.data = colaboradores.results;
-        console.log('colaboradores', colaboradores);
-        console.log('data', this.dataSource.data);
       },
       error => {
         console.error('Erro ao obter colaboradores:', error);

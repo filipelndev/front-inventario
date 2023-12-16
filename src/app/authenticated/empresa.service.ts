@@ -21,6 +21,11 @@ export class EmpresaService {
     return this.http.get<Empresa>(url);
   }
 
+  getEmpresaPorId(id: number): Observable<Empresa> {
+    const url = `${this.apiUrl}/empresa/${id}/`;
+    return this.http.get<any>(url);
+  }
+
   cadastrarEmpresa(empresa: Empresa): Observable<any> {
     const url = `${this.apiUrl}/empresa/`;
     return this.http.post(url, empresa);

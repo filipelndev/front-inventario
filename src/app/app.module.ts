@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './authenticated/home/home.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
@@ -35,6 +36,7 @@ import { CadastrarTipoEquipamentoComponent } from './authenticated/tipo-equipame
 import { ListarTipoEquipamentoComponent } from './authenticated/tipo-equipamento/listar-tipo-equipamento/listar-tipo-equipamento.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ColaboradorService } from './authenticated/colaborador.service';
+import { LoginComponent } from './authenticate/login/login.component';
 
 
 @NgModule({
@@ -53,6 +55,7 @@ import { ColaboradorService } from './authenticated/colaborador.service';
     DetalheEmpresaComponent,
     CadastrarTipoEquipamentoComponent,
     ListarTipoEquipamentoComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
@@ -73,6 +76,7 @@ import { ColaboradorService } from './authenticated/colaborador.service';
     MatDialogModule,
     MatMenuModule,
     HttpClientModule,
+    ReactiveFormsModule,
   ],
   providers: [
     ColaboradorService,

@@ -1,6 +1,8 @@
 .dashboard-container {
   text-align: center;
-  margin-top: 20px;
+  margin-top: 5%;
+  background-color: #F2F2F2;
+  margin: 1.5%;
 }
 
 .dashboard-title {
@@ -11,11 +13,12 @@
   display: flex;
   justify-content: space-around;
   margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 .chart-item {
-  width: 400px; /* Ajuste conforme necessário */
-  height: 400px; /* Ajuste conforme necessário */
+  width: 430px;
+  height: 430px;
   padding-left: 20px;
 }
 

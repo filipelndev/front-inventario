@@ -1,10 +1,10 @@
 .container {
   max-width: 800px;
   margin: 80px 350px auto;
-  border: 3px solid #007bff;
+  border: 3px solid #005c99;
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  background-color: #d2d2d2;
+  background-color: #F2F2F2;
   color: #333;
   padding: 80px;
 }

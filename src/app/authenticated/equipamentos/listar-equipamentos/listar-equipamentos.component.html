@@ -6,13 +6,13 @@
     <!-- Coluna Tag Patrimonio -->
     <ng-container matColumnDef="tagPatrimonio">
       <th mat-header-cell *matHeaderCellDef> Tag Patrimonio </th>
-      <td mat-cell *matCellDef="let equipamento"> {{ equipamento.tagPatrimonio }} </td>
+      <td mat-cell *matCellDef="let equipamento"> {{ equipamento.tag_patrimonio }} </td>
     </ng-container>
-
+ 
     <!-- Coluna Tipo Equipamento -->
     <ng-container matColumnDef="tipoEquipamento">
       <th mat-header-cell *matHeaderCellDef> Tipo Equipamento </th>
-      <td mat-cell *matCellDef="let equipamento"> {{ equipamento.tipoEquipamento }} </td>
+      <td mat-cell *matCellDef="let equipamento"> {{ equipamento.tipo_equipamento_nome }} </td>
     </ng-container>
 
     <!-- Coluna Marca -->
@@ -30,7 +30,7 @@
     <!-- Coluna Situação -->
     <ng-container matColumnDef="situacao">
       <th mat-header-cell *matHeaderCellDef> Situação </th>
-      <td mat-cell *matCellDef="let equipamento"> {{ equipamento.situacao }} </td>
+      <td mat-cell *matCellDef="let equipamento"> {{ getDescricaoSituacao(equipamento.situacao) }} </td>
     </ng-container>
 
     <!-- Coluna Pedido / NFE -->
@@ -48,20 +48,25 @@
     <!-- Coluna empresa -->
     <ng-container matColumnDef="empresa">
       <th mat-header-cell *matHeaderCellDef> Empresa </th>
-      <td mat-cell *matCellDef="let equipamento"> {{ equipamento.empresa | date:'dd/MM/yyyy' }} </td>
+      <td mat-cell *matCellDef="let equipamento"> {{ equipamento.empresa_nome }} </td>
     </ng-container>
 
     <!-- Coluna colaborador -->
     <ng-container matColumnDef="colaborador">
       <th mat-header-cell *matHeaderCellDef> Colaborador </th>
-      <td mat-cell *matCellDef="let equipamento"> {{ equipamento.colaborador | date:'dd/MM/yyyy' }} </td>
+      <td mat-cell *matCellDef="let equipamento"> {{ equipamento.colaborador_nome }} </td>
     </ng-container>
 
     <!-- Coluna Status -->
     <ng-container matColumnDef="status">
       <th mat-header-cell *matHeaderCellDef>Status</th>
       <td mat-cell *matCellDef="let equipamento">
-        <mat-icon>{{ equipamento.status ? 'check_circle' : 'cancel' }}</mat-icon>
+        <button mat-icon-button (click)="alterarStatusEquipamento(equipamento)">
+        <mat-icon [ngStyle]="{'color': equipamento.status ? 'green' : 'red'}">
+          {{ equipamento.status ? 'check_circle' : 'cancel' }}
+        </mat-icon>
+      </button>
+
       </td>
     </ng-container>
 

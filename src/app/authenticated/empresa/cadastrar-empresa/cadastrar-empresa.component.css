@@ -1,18 +1,19 @@
 .container {
-  max-width: 600px;
-  margin: 30px 350px auto;
-  padding: 180px;
-  border: 3px solid #007bff;
+  max-width: 6000px;
+  margin: 3% 3% auto;
+  padding: 5% 560px;
+  border: 3px solid #005c99;
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  background-color: #d2d2d2;
+  background-color: #F2F2F2;
   color: #333;
   text-align: center;
 }
 
 h2 {
-  color: #007bff;
+  color: #01274e;
   font-size: 25px;
+  margin-bottom: 20px;
 }
 
 form {
@@ -23,18 +24,18 @@ form {
 
 .form-group {
   width: 100%;
-  margin-bottom: 30px;
 }
 
 label {
-  font-size: 25px;
+  font-size: 18px;
   color: #333;
   margin-bottom: 8px;
 }
 
-input {
-  width: 100%;
-  padding: 12px;
+input,
+select {
+  width: 80%;
+  padding: 20px;
   margin-bottom: 15px;
   border: none;
   border-radius: 5px;
@@ -44,7 +45,7 @@ input {
 button {
   width: 100%;
   padding: 15px;
-  background-color: #007bff;
+  background-color: #01274e;
   color: #fff;
   border: none;
   border-radius: 5px;
@@ -52,14 +53,24 @@ button {
   font-size: 18px;
 }
 
-button:hover {
-  background-color: #0056b3;
+mat-slide-toggle{
+  margin-top: 5px;
+  margin-bottom: 20px;
 }
 
-/* Adicionamos uma regra de mídia para ajustar a largura máxima do container */
-@media (max-width: 600px) {
+button:hover {
+  background-color: #005c99;
+}
+
+.fixed-textarea {
+  width: 100%;
+  height: 100px;
+  resize: both;
+}
+
+@media (max-width: 900px) {
   .container {
-    margin: 20px 20px auto;
-    padding: 20px;
+    margin: 20px auto;
+    padding: 15px;
   }
 }

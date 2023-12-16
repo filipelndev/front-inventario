@@ -19,6 +19,11 @@ export class ColaboradorService {
       return this.http.get<any>(url);
     }
 
+    getColaboradorPorId(id: number): Observable<Colaborador> {
+      const url = `${this.apiUrl}/colaborador/${id}/`;
+      return this.http.get<any>(url);
+    }
+
   cadastrarColaborador(colaborador: Colaborador): Observable<any> {
     const url = `${this.apiUrl}/colaborador/`;
     return this.http.post(url, colaborador);
