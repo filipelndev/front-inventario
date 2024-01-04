@@ -15,7 +15,7 @@ export class AppComponent implements OnInit  {
 
   @ViewChild('sidenav', { static: false }) sidenav!: MatSidenav;
 
-  constructor(public authService: AuthService, private router: Router) {}
+  constructor(public authService: AuthService, private router: Router,) {}
 
   toggleSidenav(): void {
     this.sidenav.toggle();
@@ -32,17 +32,15 @@ export class AppComponent implements OnInit  {
 }
 
 ngOnInit(): void {
-    // Lógica adicional que você pode precisar durante a inicialização
-    // ...
-
-    // Aqui você pode verificar se o usuário está autenticado e
-    // executar ações com base nisso, se necessário.
-    const isAuthenticated = this.authService.isAuthenticated();
-    // ...
+    // Restaurar a autenticação ao inicializar o aplicativo, verificando a validade do token
+    if (this.authService.isAuthenticated()) {
+      this.authService.setAuthenticated(true);
+      this.router.navigate(['/dashboard']);
+    }
   }
 
   logoff(): void {
-    this.authService.setAuthenticated(false);
+    this.authService.logout();
     this.router.navigate(['login']);
   }
 }

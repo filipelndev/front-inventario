@@ -34,9 +34,12 @@ import { EditarEmpresaComponent } from './authenticated/empresa/editar-empresa/e
 import { DetalheEmpresaComponent } from './authenticated/empresa/detalhe-empresa/detalhe-empresa.component';
 import { CadastrarTipoEquipamentoComponent } from './authenticated/tipo-equipamento/cadastrar-tipo-equipamento/cadastrar-tipo-equipamento.component';
 import { ListarTipoEquipamentoComponent } from './authenticated/tipo-equipamento/listar-tipo-equipamento/listar-tipo-equipamento.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { ColaboradorService } from './authenticated/colaborador.service';
 import { LoginComponent } from './authenticate/login/login.component';
+import { NotificationComponent } from './util/notification/notification.component';
+import { AuthInterceptor } from './authenticate/login/auth.interceptor';
+import { JwtModule } from '@auth0/angular-jwt';
 
 
 @NgModule({
@@ -56,6 +59,7 @@ import { LoginComponent } from './authenticate/login/login.component';
     CadastrarTipoEquipamentoComponent,
     ListarTipoEquipamentoComponent,
     LoginComponent,
+    NotificationComponent,
   ],
   imports: [
     BrowserModule,
@@ -77,9 +81,19 @@ import { LoginComponent } from './authenticate/login/login.component';
     MatMenuModule,
     HttpClientModule,
     ReactiveFormsModule,
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: () => localStorage.getItem('access_token'), // Função para obter o token do armazenamento local
+      },
+    }),
   ],
   providers: [
     ColaboradorService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true, // Permite que existam vários interceptors
+    },
   ],
   bootstrap: [AppComponent]
 })

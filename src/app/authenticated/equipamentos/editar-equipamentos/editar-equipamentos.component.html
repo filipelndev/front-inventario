@@ -4,7 +4,7 @@
   <form (ngSubmit)="onSubmit()">
     <div class="form-group">
       <label for="tagPatrimonio">Tag Patrimônio:</label>
-      <input type="text" id="tagPatrimonio" name="tagPatrimonio" [(ngModel)]="data.equipamento.tag_patrimonio" required>
+      <input type="text" id="tagPatrimonio" name="tagPatrimonio" disabled [(ngModel)]="data.equipamento.tag_patrimonio" required>
     </div>
 
     <div class="form-group">
@@ -40,7 +40,7 @@
 
     <div class="form-group">
       <label for="empresa">Empresa:</label>
-      <select [(ngModel)]="data.equipamento.empresa" name="empresa">
+      <select [(ngModel)]="data.equipamento.empresa" name="empresa" id="empresa">
         <option ngValue="" selected >Selecione o nome da Empresa</option>
         <option *ngFor="let empresa of empresas" [ngValue]="empresa.id">{{ empresa.nome }}</option>
       </select>
@@ -91,7 +91,7 @@
 
     <div class="form-group">
       <label>Status</label>
-      <mat-slide-toggle [(ngModel)]="data.equipamento.status" color="primary">Ativo</mat-slide-toggle>
+      <mat-slide-toggle id="status" name="status" [(ngModel)]="data.equipamento.status" color="primary">Ativo</mat-slide-toggle>
     </div>
 
     <button type="submit">Salvar</button>

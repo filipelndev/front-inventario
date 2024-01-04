@@ -1,37 +1,43 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../auth.service';
 import { Router } from '@angular/router';
+import { NotificationService } from 'src/app/util/notification.service';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent {
-  username: string = '';
-  password: string = '';
+export class LoginComponent implements OnInit{
+  username = '';
+  password = '';
 
   constructor(private authService: AuthService, private router: Router) {}
 
-  login(): void {
-    // Substitua esta lógica com a chamada real ao seu serviço de autenticação
-    const isAuthenticated = this.fakeBackendAuthentication();
+  ngOnInit(): void {
+    // Simule o retorno do backend com token e refreshToken
+    const Token = this.authService.getToken();
+    const RefreshToken = this.authService.getRefresh();
 
-    if (isAuthenticated) {
-      // Se a autenticação for bem-sucedida, atualize o estado de autenticação
-      this.authService.setAuthenticated(true);
-      this.router.navigate(['/dashboard']);
-      // Redirecione para a rota desejada
-    } else {
-      // Se a autenticação falhar, você pode exibir uma mensagem de erro
-      console.error('Falha na autenticação. Verifique suas credenciais.');
+    // Faça o login no AuthService
+    if(Token != null && RefreshToken != null)
+    {
+      if(this.authService.isAuthenticated()) {
+        this.authService.setAuthenticated(true);
+        this.router.navigate(['/dashboard']);
+      }
     }
   }
 
-  // Método de exemplo para simular a autenticação no backend
-  private fakeBackendAuthentication(): boolean {
-    // Aqui estamos apenas verificando se as credenciais são preenchidas
-    return !!this.username && !!this.password;
+  login(): void {
+    this.authService.login(this.username, this.password).subscribe(
+      () => {
+        this.router.navigate(['/dashboard']);
+      },
+      (error) => {
+        // Tratar erros de login aqui, se necessário
+        console.error('Erro de login:', error);
+      }
+    );
   }
 }
-
