@@ -1,0 +1,109 @@
+.container {
+  max-width: 4000px;
+  margin: 2% 2%;
+  padding: 2% 350px;
+  padding-bottom: 10%;
+  border: 3px solid #01274e;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  background-color: #F2F2F2;
+  color: #333;
+  text-align:center;
+}
+
+h2 {
+  color: #01274e;
+  font-size: 25px;
+  margin-bottom: 20px;
+}
+
+.section {
+  display: flex;
+  flex-direction: column; /* Alteração para empilhar os elementos verticalmente */
+  align-items: flex;
+  margin-bottom: 5px;
+}
+
+.input-wrapper {
+  width: 100%;
+}
+
+input,
+select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.checkbox-group {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 15px;
+}
+
+.checkbox-group label {
+  font-weight: bold;
+}
+
+button {
+  margin-top: 10px;
+  padding: 20px;
+  background-color: #01274e;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #005c99;
+}
+
+.titulo {
+  font-weight: bold;
+}
+
+.mat-table {
+  width: 100%;
+  margin-top: 20px;
+}
+
+.mat-header-cell,
+.mat-cell {
+  padding: 15px;
+  box-sizing: border-box;
+  text-align: left;
+}
+
+.mat-header-cell {
+  background-color: #01274e;
+  color: white;
+  font-weight: bold;
+}
+
+.mat-row:nth-child(odd) {
+  background-color: #f9f9f9;
+}
+
+.mat-row:hover {
+  background-color: #e0e0e0;
+  cursor: pointer;
+}
+
+.custom-width {
+  width: 200px;
+}
+
+.mat-row.grupo-row.selecionado {
+  background-color: #01274e; /* Cor de fundo quando selecionado */
+}
+
+.space {
+  margin-top: 15px;
+}
+
+span {
+  margin-left: 12px;
+  margin-top: 4px;
+}

@@ -1,0 +1,63 @@
+<mat-toolbar>
+  <button mat-icon-button (click)="voltarParaUsuarios()">
+    <mat-icon>arrow_back</mat-icon>
+  </button>
+  <span>Voltar</span>
+</mat-toolbar>
+
+<div class="container">
+  <h2>Cadastrar Usuário</h2>
+
+  <!-- Inputs para o usuário -->
+  <div class="section">
+    <label>Username: </label>
+    <div class="input-wrapper">
+      <input [(ngModel)]="usuario.username" class="custom-width" disabled/>
+    </div>
+  </div>
+
+  <div class="section">
+    <label>Password: </label>
+    <div class="input-wrapper">
+      <input [(ngModel)]="usuario.password" type="password" class="custom-width" disabled />
+    </div>
+  </div>
+
+  <div class="section">
+    <label>E-mail: </label>
+    <div class="input-wrapper">
+      <input [(ngModel)]="usuario.email" type="email" class="custom-width" disabled />
+    </div>
+  </div>
+
+  <!-- Grupos disponíveis -->
+  <h2>Lista de Grupos</h2>
+  <mat-table [dataSource]="gruposDisponiveis" class="mat-elevation-z8">
+
+    <ng-container matColumnDef="id">
+      <mat-header-cell *matHeaderCellDef class="custom-width">ID</mat-header-cell>
+      <mat-cell *matCellDef="let grupo" class="custom-width">{{ grupo.id }}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="nome">
+      <mat-header-cell *matHeaderCellDef class="custom-width">Nome</mat-header-cell>
+      <mat-cell *matCellDef="let grupo" class="custom-width">{{ grupo.nome }}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="selecionar">
+      <mat-header-cell *matHeaderCellDef class="custom-width">
+        <mat-checkbox (change)="selecionarTodos($event.checked)">Selecionar Todos</mat-checkbox>
+      </mat-header-cell>
+      <mat-cell *matCellDef="let grupo" class="custom-width">
+        <mat-checkbox (change)="toggleSelecaoCheckbox(grupo)" [checked]="estaSelecionado(grupo)"></mat-checkbox>
+      </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="['id', 'nome', 'selecionar']"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: ['id', 'nome', 'selecionar'];" class="grupo-row" [ngClass]="{'selecionado': estaSelecionado(row)}"></mat-row>
+  </mat-table>
+
+  <div class="space">
+  <button (click)="salvarEdicao()">Cadastrar Usuário</button>
+  </div>
+</div>

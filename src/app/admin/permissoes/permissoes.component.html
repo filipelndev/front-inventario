@@ -1,0 +1,14 @@
+<div class="container custom-width">
+  <h2>Permissões para {{ nomeUsuario }}</h2>
+
+  <ul>
+    <li *ngFor="let grupo of gruposDisponiveis">
+      <label>
+        <input type="checkbox" [checked]="estaSelecionado(grupo)" (change)="toggleSelecao(grupo)">
+        {{ grupo.nome }}
+      </label>
+    </li>
+  </ul>
+
+  <button (click)="salvarPermissoes()">Salvar Permissões</button>
+</div>

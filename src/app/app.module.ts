@@ -21,6 +21,8 @@ import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatMenuModule } from '@angular/material/menu';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatToolbarModule } from '@angular/material/toolbar';
 
 import { CadastrarColaboradorComponent } from './authenticated/colaborador/cadastrar-colaborador/cadastrar-colaborador.component';
 import { ListarColaboradorComponent } from './authenticated/colaborador/listar-colaborador/listar-colaborador.component';
@@ -40,6 +42,12 @@ import { LoginComponent } from './authenticate/login/login.component';
 import { NotificationComponent } from './util/notification/notification.component';
 import { AuthInterceptor } from './authenticate/login/auth.interceptor';
 import { JwtModule } from '@auth0/angular-jwt';
+import { PermissoesComponent } from './admin/permissoes/permissoes.component';
+import { CadastrarUsuarioComponent } from './admin/cadastrar-usuario/cadastrar-usuario.component';
+import { EditarUsuarioComponent } from './admin/editar-usuario/editar-usuario.component';
+import { UsuarioPermissoesComponent } from './admin/usuario-permissoes/usuario-permissoes.component';
+import { PermissaodetalhesComponent } from './admin/permissaodetalhes/permissaodetalhes.component';
+import { CriarGrupoPermissaoComponent } from './admin/criar-grupo-permissao/criar-grupo-permissao.component';
 
 
 @NgModule({
@@ -60,6 +68,12 @@ import { JwtModule } from '@auth0/angular-jwt';
     ListarTipoEquipamentoComponent,
     LoginComponent,
     NotificationComponent,
+    PermissoesComponent,
+    CadastrarUsuarioComponent,
+    EditarUsuarioComponent,
+    UsuarioPermissoesComponent,
+    PermissaodetalhesComponent,
+    CriarGrupoPermissaoComponent,
   ],
   imports: [
     BrowserModule,
@@ -86,6 +100,8 @@ import { JwtModule } from '@auth0/angular-jwt';
         tokenGetter: () => localStorage.getItem('access_token'), // Função para obter o token do armazenamento local
       },
     }),
+    MatCheckboxModule,
+    MatToolbarModule,
   ],
   providers: [
     ColaboradorService,

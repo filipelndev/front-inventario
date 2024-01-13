@@ -1,0 +1,64 @@
+.container {
+  max-width: 4000px;
+  margin: 3% 3%;
+  padding: 3% 350px;
+  padding-bottom: 10%;
+  border: 3px solid #01274e;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  background-color: #F2F2F2;
+  color: #333;
+  text-align: center;
+}
+
+h2 {
+  color: #01274e;
+  font-size: 25px;
+  margin-bottom: 20px;
+}
+
+span {
+  margin-left: 12px;
+  margin-top: 4px;
+}
+
+.section {
+  margin-bottom: 20px;
+}
+
+input,
+select {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.checkbox-group {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 15px;
+}
+
+.checkbox-group label {
+  font-weight: bold;
+}
+
+button {
+  padding: 15px;
+  background-color: #01274e;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+
+
+button:hover {
+  background-color: #005c99;
+}
+
+.titulo {
+  font-weight: bold;
+}

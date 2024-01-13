@@ -1,0 +1,33 @@
+.group-details {
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.titulo {
+  text-align: center;
+  border: 1px solid #005c99;
+}
+
+.group-details h2 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+.group-details p{
+  font-weight: bold;
+  font-size: 1rem;
+}
+
+.checkbox-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px;
+}
+
+.checkbox-group label {
+  font-weight: bold;
+}
+
+.mat-checkbox {
+  margin-top: 5px;
+}

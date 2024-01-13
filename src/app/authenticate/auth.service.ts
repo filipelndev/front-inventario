@@ -57,6 +57,22 @@ export class AuthService {
     );
   }
 
+  refreshToken(): Observable<any> {
+    return this.http.post<any>('http://localhost:8000/usuario/token/refresh/', {}).pipe(
+      tap((tokens) => {
+        localStorage.setItem('access_token', tokens.access);
+        localStorage.setItem('refresh_token', tokens.refresh);
+        this.setAuthenticated(true);
+      }),
+      catchError((error) => {
+        // Lidar com erros do refresh token
+        console.error('Erro ao realizar refresh token:', error);
+        this.setAuthenticated(false);
+        return error;
+      })
+    );
+  }
+
   // Método para realizar o logout
   logout(): void {
     this.removeToken();

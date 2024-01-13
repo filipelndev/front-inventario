@@ -1,0 +1,31 @@
+.container {
+  max-width: 4000px;
+  margin: 3% 3%;
+  padding: 4% 4%;
+  padding-bottom: 30%;
+  border: 3px solid #01274e;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  background-color: #F2F2F2;
+  color: #333;
+  text-align: center;
+}
+
+h2 {
+  color: #01274e;
+  font-size: 25px;
+  margin-bottom: 20px;
+}
+
+.custom-width {
+  width: 350px;
+}
+
+.custom-width-label:hover {
+  background-color: #e0e0e0;
+}
+
+.custom-width-label:hover label {
+  color: #01274e;
+  cursor: pointer;
+}

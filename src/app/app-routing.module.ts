@@ -12,21 +12,30 @@ import { ListarTipoEquipamentoComponent } from './authenticated/tipo-equipamento
 import { ListarColaboradorComponent } from './authenticated/colaborador/listar-colaborador/listar-colaborador.component';
 import { AuthGuard } from './authenticate/auth.guard';
 import { LoginComponent } from './authenticate/login/login.component';
+import { PermissoesComponent } from './admin/permissoes/permissoes.component';
+import { UsuarioPermissoesComponent } from './admin/usuario-permissoes/usuario-permissoes.component';
+import { CriarGrupoPermissaoComponent } from './admin/criar-grupo-permissao/criar-grupo-permissao.component';
+import { CadastrarUsuarioComponent } from './admin/cadastrar-usuario/cadastrar-usuario.component';
+import { EditarUsuarioComponent } from './admin/editar-usuario/editar-usuario.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent, canActivate: [AuthGuard] },
-  { path: 'dashboard', component: HomeComponent },
-  { path: 'cadastrar-colaborador', component: CadastrarColaboradorComponent },
-  { path: 'listar-colaborador', component: ListarColaboradorComponent },
-  { path: 'cadastrar-empresa', component: CadastrarEmpresaComponent },
-  { path: 'listar-empresa', component: ListarEmpresaComponent },
-  { path: 'cadastrar-equipamento', component: CadastrarEquipamentoComponent },
-  { path: 'listar-equipamento', component: ListarEquipamentosComponent },
-  { path: 'detalhes-empresa/:id', component: DetalheEmpresaComponent },
-  { path: 'cadastrar-tipo-equipamento', component: CadastrarTipoEquipamentoComponent },
-  { path: 'listar-tipo-equipamento', component: ListarTipoEquipamentoComponent },
+  { path: 'dashboard', component: HomeComponent, canActivate: [AuthGuard] },
+  { path: 'cadastrar-colaborador', component: CadastrarColaboradorComponent, canActivate: [AuthGuard] },
+  { path: 'listar-colaborador', component: ListarColaboradorComponent, canActivate: [AuthGuard] },
+  { path: 'cadastrar-empresa', component: CadastrarEmpresaComponent, canActivate: [AuthGuard] },
+  { path: 'listar-empresa', component: ListarEmpresaComponent, canActivate: [AuthGuard] },
+  { path: 'cadastrar-equipamento', component: CadastrarEquipamentoComponent, canActivate: [AuthGuard] },
+  { path: 'listar-equipamento', component: ListarEquipamentosComponent, canActivate: [AuthGuard] },
+  { path: 'detalhes-empresa/:id', component: DetalheEmpresaComponent, canActivate: [AuthGuard] },
+  { path: 'cadastrar-tipo-equipamento', component: CadastrarTipoEquipamentoComponent, canActivate: [AuthGuard] },
+  { path: 'listar-tipo-equipamento', component: ListarTipoEquipamentoComponent, canActivate: [AuthGuard] },
   { path: 'login', component: LoginComponent },
-
+  { path: 'usuarioPermissoes', component: UsuarioPermissoesComponent, canActivate: [AuthGuard] },
+  { path: 'permissoes/:id', component: PermissoesComponent, canActivate: [AuthGuard] },
+  { path: 'criar-grupo-permissao', component: CriarGrupoPermissaoComponent, canActivate: [AuthGuard] },
+  { path: 'cadastrar-usuario', component: CadastrarUsuarioComponent, canActivate: [AuthGuard] },
+  { path: 'editar-usuario/:id', component: EditarUsuarioComponent},
 
 ];
 

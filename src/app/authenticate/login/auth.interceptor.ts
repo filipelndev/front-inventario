@@ -13,6 +13,7 @@ export class AuthInterceptor implements HttpInterceptor {
 
     if (token) {
       if(this.authService.isAuthenticated()) {
+
       // Clone da solicitação com o token adicionado aos cabeçalhos
       const authRequest = request.clone({
         setHeaders: {

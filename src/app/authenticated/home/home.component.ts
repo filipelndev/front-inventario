@@ -42,7 +42,6 @@ export class HomeComponent implements OnInit {
 
   private contarStatusAtivosInativos(itens: any[]): number[] {
 
-    console.log(itens);
     const ativos = itens.filter((item) => item.status === true);
     const inativos = itens.filter((item) => item.status === false);
 
@@ -54,7 +53,6 @@ export class HomeComponent implements OnInit {
       if (Array.isArray(empresas.results)) {
         this.empresas = empresas.results;
         [this.empresasAtivas, this.empresasInativas] = this.contarStatusAtivosInativos(empresas.results);
-        console.log('Dados Empresas:', this.empresas);
         this.createEmpresasChart();
       } else {
         console.error('Dados inválidos para Empresas:', empresas);
@@ -67,7 +65,6 @@ export class HomeComponent implements OnInit {
       if (Array.isArray(colaboradores.results)) {
         this.colaboradores = colaboradores.results;
         [this.colaboradoresAtivos, this.colaboradoresInativos] = this.contarStatusAtivosInativos(colaboradores.results);
-        console.log('Dados Colaboradores:', this.colaboradores);
         this.createColaboradoresChart();
       } else {
         console.error('Dados inválidos para Colaboradores:', colaboradores);
@@ -81,7 +78,6 @@ export class HomeComponent implements OnInit {
       if (Array.isArray(equipamentos.results)) {
         this.equipamentos = equipamentos.results;
         [this.equipamentosAtivos, this.equipamentosInativos] = this.contarStatusAtivosInativos(equipamentos.results);
-        console.log('Dados Equipamentos:', this.equipamentos);
         this.createEquipamentosChart();
       } else {
         console.error('Dados inválidos para Equipamentos:', equipamentos);
