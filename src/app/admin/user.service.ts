@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 export class UserService {
   private users: any[] = [];
 
-  private apiUrl = 'http://localhost:8000/usuario/';
+  private apiUrl = 'http://www.duplexsoft.com.br/teste/usuario/';
 
   constructor(private http: HttpClient) {}
 
@@ -30,5 +30,22 @@ export class UserService {
 
   cadastrarUsuario(usuario: any): Observable<any> {
     return this.http.post(`${this.apiUrl}cadastrar/`, usuario);
+  }
+
+  getUserIdFromToken(): number | null {
+    const token = localStorage.getItem('access_token');
+    if (token) {
+      const payload = JSON.parse(atob(token.split('.')[1]));
+
+      return payload.user_id;
+    }
+
+    return null;
+  }
+
+  solicitarRedefinicaoSenha(email: string): Observable<any> {
+    const url = `${this.apiUrl}password/reset/request/`;
+
+    return this.http.post(url, { email });
   }
 }

@@ -9,7 +9,7 @@ import { AuthService } from './authenticate/auth.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit  {
-  title = 'front-inventario';
+  title = 'App-inventario by DuplexSoft';
 
   subMenusVisibility: { [key: string]: boolean } = {};
 
@@ -40,7 +40,8 @@ ngOnInit(): void {
   }
 
   logoff(): void {
-    this.authService.logout();
+    localStorage.removeItem('acess_token');
+    localStorage.removeItem('refresh_token');
     this.router.navigate(['login']);
   }
 }

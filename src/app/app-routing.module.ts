@@ -17,6 +17,8 @@ import { UsuarioPermissoesComponent } from './admin/usuario-permissoes/usuario-p
 import { CriarGrupoPermissaoComponent } from './admin/criar-grupo-permissao/criar-grupo-permissao.component';
 import { CadastrarUsuarioComponent } from './admin/cadastrar-usuario/cadastrar-usuario.component';
 import { EditarUsuarioComponent } from './admin/editar-usuario/editar-usuario.component';
+import { ConfirmaEmailComponent } from './admin/confirma-email/confirma-email.component';
+import { AlterarSenhaComponent } from './admin/alterar-senha/alterar-senha.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent, canActivate: [AuthGuard] },
@@ -30,12 +32,14 @@ const routes: Routes = [
   { path: 'detalhes-empresa/:id', component: DetalheEmpresaComponent, canActivate: [AuthGuard] },
   { path: 'cadastrar-tipo-equipamento', component: CadastrarTipoEquipamentoComponent, canActivate: [AuthGuard] },
   { path: 'listar-tipo-equipamento', component: ListarTipoEquipamentoComponent, canActivate: [AuthGuard] },
-  { path: 'login', component: LoginComponent },
-  { path: 'usuarioPermissoes', component: UsuarioPermissoesComponent, canActivate: [AuthGuard] },
-  { path: 'permissoes/:id', component: PermissoesComponent, canActivate: [AuthGuard] },
+  { path: 'fazer-login', component: LoginComponent },
+  { path: 'usuario-permissoes', component: UsuarioPermissoesComponent, canActivate: [AuthGuard] },
+  { path: 'ver-permissoes/:id', component: PermissoesComponent, canActivate: [AuthGuard] },
   { path: 'criar-grupo-permissao', component: CriarGrupoPermissaoComponent, canActivate: [AuthGuard] },
   { path: 'cadastrar-usuario', component: CadastrarUsuarioComponent, canActivate: [AuthGuard] },
-  { path: 'editar-usuario/:id', component: EditarUsuarioComponent},
+  { path: 'editar-usuario/:id', component: EditarUsuarioComponent, canActivate:[AuthGuard] },
+  { path: 'confirmar-email', component: ConfirmaEmailComponent, canActivate: [AuthGuard] },
+  { path: 'alterar-senha', component: AlterarSenhaComponent }
 
 ];
 

@@ -104,7 +104,7 @@ export class EditarUsuarioComponent implements OnInit {
         resposta => {
           console.log('Edição salva com sucesso:', resposta);
           // Adicione a navegação de volta para a lista de usuários ou página desejada
-          this.router.navigate(['/usuarioPermissoes']);
+          this.router.navigate(['/usuario-permissoes']);
         },
         erro => {
           console.error('Erro ao salvar edição:', erro);

@@ -3,6 +3,8 @@ import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { tap, catchError } from 'rxjs/operators';
 import { JwtHelperService } from '@auth0/angular-jwt';
+import { throwError } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root',
@@ -15,17 +17,13 @@ export class AuthService {
   // Expor um Observable que outros componentes podem assinar
   isAuthenticated$: Observable<boolean> = this.isAuthenticatedSubject.asObservable();
 
-  constructor(private http: HttpClient, private jwtHelper: JwtHelperService) {}
+  constructor(private http: HttpClient, private jwtHelper: JwtHelperService, private router: Router) {}
 
   // Método para verificar o status de autenticação
   isAuthenticated(): boolean {
     const token = localStorage.getItem('access_token');
 
-    if(token != null && !this.jwtHelper.isTokenExpired(token))
-    {
-      return true ;
-    }
-      return false;
+    return token != null && !this.jwtHelper.isTokenExpired(token);
   }
 
   // Atualizar o status de autenticação
@@ -38,7 +36,7 @@ export class AuthService {
   login(username: string, password: string): Observable<any> {
     const loginData = { username, password };
 
-    return this.http.post<any>('http://localhost:8000/usuario/token/', loginData).pipe(
+    return this.http.post<any>('http://www.duplexsoft.com.br/teste/usuario/token/', loginData).pipe(
       tap((response) => {
         if (response.access) {
           this.setToken(response.access);
@@ -58,17 +56,19 @@ export class AuthService {
   }
 
   refreshToken(): Observable<any> {
-    return this.http.post<any>('http://localhost:8000/usuario/token/refresh/', {}).pipe(
-      tap((tokens) => {
-        localStorage.setItem('access_token', tokens.access);
-        localStorage.setItem('refresh_token', tokens.refresh);
+    const refreshToken = this.getRefresh(); // Obtenha o token de atualização atual
+    return this.http.post<any>('http://www.duplexsoft.com.br/teste/usuario/token/refresh/', refreshToken).pipe(
+      tap((token) => {
+        console.log("Chamando o refresh token. Token recebido:", token);
+        localStorage.setItem('access_token', token);
         this.setAuthenticated(true);
       }),
       catchError((error) => {
-        // Lidar com erros do refresh token
         console.error('Erro ao realizar refresh token:', error);
         this.setAuthenticated(false);
-        return error;
+        this.logout();
+        this.router.navigate(['/fazer-login']);
+        return throwError(error);
       })
     );
   }
@@ -80,11 +80,11 @@ export class AuthService {
   }
 
   // Método privado para definir o token
-  private setToken(token: string): void {
+  public setToken(token: string): void {
     localStorage.setItem('access_token', token);
   }
 
-  private setRefresh(refresh: string): void {
+  public setRefresh(refresh: string): void {
     localStorage.setItem('refresh_token', refresh)
   }
 
@@ -99,8 +99,8 @@ export class AuthService {
 
   // Método privado para remover o token
   public removeToken(): void {
-    localStorage.removeItem('acess_token');
-    localStorage.removeItem('refresh_token')
+    localStorage.removeItem('access_token');
+    localStorage.removeItem('refresh_token');
   }
 
 }

@@ -17,6 +17,7 @@ export class HomeComponent implements OnInit {
   @ViewChild('colaboradoresChart') colaboradoresChart!: ElementRef;
   @ViewChild('empresasChart') empresasChart!: ElementRef;
   @ViewChild('equipamentosChart') equipamentosChart!: ElementRef;
+  @ViewChild('statusPorEmpresaChart') statusPorEmpresaChart!: ElementRef;
 
   empresas: Empresa[] = [];
   colaboradores: Colaborador[] = [];
@@ -28,6 +29,9 @@ export class HomeComponent implements OnInit {
   equipamentosAtivos = 0;
   equipamentosInativos = 0;
 
+  statusPorEmpresaData: any[] = [];
+  statusPorEmpresaLabels: string[] = [];
+
   constructor(
     private empresaService: EmpresaService,
     private colaboradorService: ColaboradorService,
@@ -38,6 +42,11 @@ export class HomeComponent implements OnInit {
     this.getDadosEmpresas();
     this.getDadosColaboradores();
     this.getDadosEquipamentos();
+
+  }
+
+  ngAfterViewInit(): void {
+    this.processarDadosParaGrafico();
   }
 
   private contarStatusAtivosInativos(itens: any[]): number[] {
@@ -139,5 +148,91 @@ export class HomeComponent implements OnInit {
         cutout: 80,
       },
     });
+  }
+
+  private processarDadosParaGrafico(): void {
+  this.empresaService.getEmpresas().subscribe((empresas: any) => {
+    if (Array.isArray(empresas.results)) {
+      this.empresas = empresas.results;
+      const detalhesPromises: Promise<void>[] = [];
+
+      this.empresas.forEach((empresa) => {
+        // Verifique se empresa.id não é undefined usando o operador !.
+        if (empresa.id !== undefined) {
+          const detalhesPromise = new Promise<void>((resolve, reject) => {
+            this.empresaService.getEmpresaPorId(empresa.id!).subscribe(
+              (empresaDetalhada: Empresa) => {
+                if (empresaDetalhada.equipamentos) {
+                  const ativos = empresaDetalhada.equipamentos.filter((equipamento) => equipamento.status === true).length;
+                  const inativos = empresaDetalhada.equipamentos.filter((equipamento) => equipamento.status === false).length;
+
+                  this.statusPorEmpresaData.push([ativos, inativos]);
+                  this.statusPorEmpresaLabels.push(empresaDetalhada.nome);
+                  resolve();
+                }
+              },
+              (error) => {
+                console.error('Erro ao obter detalhes da empresa:', error);
+                reject(error);
+              }
+            );
+          });
+
+          detalhesPromises.push(detalhesPromise);
+        } else {
+          console.error('ID da empresa é undefined:', empresa);
+        }
+      });
+
+      Promise.all(detalhesPromises).then(() => {
+        this.createStatusPorEmpresaChart(this.statusPorEmpresaChart.nativeElement.getContext('2d'), this.statusPorEmpresaLabels, this.statusPorEmpresaData);
+      });
+    } else {
+      console.error('Dados inválidos para Empresas:', empresas);
+    }
+  });
+}
+
+
+
+  createStatusPorEmpresaChart(ctx: CanvasRenderingContext2D, labels: string[], data: any[]): void {
+    if (this.statusPorEmpresaChart) {
+      if (ctx) {
+        console.log('Contexto do gráfico:', ctx);
+
+        const barChart = new Chart(ctx, {
+          type: 'bar',
+          data: {
+            labels: labels,
+            datasets: [
+              {
+                label: 'Ativos',
+                data: data.map((data) => data[0]),
+                backgroundColor: '#36a2eb',
+              },
+              {
+                label: 'Inativos',
+                data: this.statusPorEmpresaData.map((data) => data[1]),
+                backgroundColor: '#ff6384',
+              },
+            ],
+          },
+          options: {
+            scales: {
+              x: {
+                stacked: true,
+              },
+              y: {
+                stacked: true,
+              },
+            },
+          },
+        });
+      } else {
+        console.error('Contexto do gráfico é nulo');
+      }
+    } else {
+      console.error('Elemento do gráfico não encontrado');
+    }
   }
 }

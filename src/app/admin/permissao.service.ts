@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class PermissaoService {
-  private baseUrl = 'http://localhost:8000/usuario/grupos';
+  private baseUrl = 'http://www.duplexsoft.com.br/teste/usuario/grupos';
 
   constructor(private http: HttpClient) {}
 

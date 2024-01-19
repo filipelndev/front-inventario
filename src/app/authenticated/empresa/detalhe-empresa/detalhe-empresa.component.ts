@@ -11,7 +11,7 @@ import { EmpresaService } from '../../empresa.service';
 })
 export class DetalheEmpresaComponent implements OnInit {
   empresaId: number | undefined;
-  empresa: Empresa | undefined;
+  empresa: Empresa | undefined = { nome: '', cnpj: '', status: false, equipamentos: [] }; // Inicialize equipamentos como um array vazio
   equipamentos: Equipamento[] = [];
 
   constructor(private route: ActivatedRoute, private empresaService: EmpresaService) {}
@@ -25,7 +25,7 @@ export class DetalheEmpresaComponent implements OnInit {
       // Carrega os detalhes da empresa com base no ID
       if (this.empresaId) {
         this.carregarDetalhesEmpresa();
-        this.equipamentos = this.obterEquipamentosPorEmpresa(this.empresaId);
+        this.obterEquipamentosPorEmpresa(this.empresaId);
       }
     });
   }
@@ -45,20 +45,23 @@ export class DetalheEmpresaComponent implements OnInit {
     }
   }
 
-  // Método fictício para obter equipamentos por empresa (substitua com sua lógica real)
-  obterEquipamentosPorEmpresa(id: number): any[] {
-    return [
-      { tag_patrimonio: 'TAG001', tipoEquipamento: 'Computador', situacao: 'Em Operação' },
-      { tag_patrimonio: 'TAG002', tipoEquipamento: 'Impressora', situacao: 'Novo' },
-      // Adicione mais equipamentos conforme necessário
-    ];
+  obterEquipamentosPorEmpresa(id: number): void {
+    this.empresaService.getDetalhesEmpresa(id).subscribe(
+      (empresa) => {
+        this.equipamentos = empresa.equipamentos || [];
+        console.log('Equipamentos:', this.equipamentos);
+      },
+      (error) => {
+        console.error('Erro ao obter equipamentos:', error);
+        // Adicione aqui a lógica para lidar com o erro, se necessário
+      }
+    );
   }
 
   get nomeEmpresa(): string | undefined {
     return this.empresa?.nome;
   }
 
-  // Adiciona um getter para o CNPJ da empresa
   get cnpjEmpresa(): string | undefined {
     return this.empresa?.cnpj;
   }

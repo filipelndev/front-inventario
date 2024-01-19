@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class EquipamentoService {
-  private apiUrl = 'http://127.0.0.1:8000'; // Adapte para a URL real da sua API
+  private apiUrl = 'http://www.duplexsoft.com.br/teste/'; // Adapte para a URL real da sua API
 
   constructor(private http: HttpClient) {}
 

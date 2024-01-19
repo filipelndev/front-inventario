@@ -48,6 +48,8 @@ import { EditarUsuarioComponent } from './admin/editar-usuario/editar-usuario.co
 import { UsuarioPermissoesComponent } from './admin/usuario-permissoes/usuario-permissoes.component';
 import { PermissaodetalhesComponent } from './admin/permissaodetalhes/permissaodetalhes.component';
 import { CriarGrupoPermissaoComponent } from './admin/criar-grupo-permissao/criar-grupo-permissao.component';
+import { ConfirmaEmailComponent } from './admin/confirma-email/confirma-email.component';
+import { AdicionarEquipamentoComponent } from './authenticated/empresa/adicionar-equipamento/adicionar-equipamento.component';
 
 
 @NgModule({
@@ -74,6 +76,8 @@ import { CriarGrupoPermissaoComponent } from './admin/criar-grupo-permissao/cria
     UsuarioPermissoesComponent,
     PermissaodetalhesComponent,
     CriarGrupoPermissaoComponent,
+    ConfirmaEmailComponent,
+    AdicionarEquipamentoComponent,
   ],
   imports: [
     BrowserModule,

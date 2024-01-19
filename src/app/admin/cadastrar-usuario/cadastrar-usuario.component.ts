@@ -63,10 +63,8 @@ export class CadastrarUsuarioComponent implements OnInit {
 
     if (index === -1) {
       this.gruposSelecionados.push(grupo);
-      console.log(`Grupo ${grupo.nome} selecionado.`);
     } else {
       this.gruposSelecionados.splice(index, 1);
-      console.log(`Grupo ${grupo.nome} desselecionado.`);
     }
   }
 
@@ -84,7 +82,6 @@ export class CadastrarUsuarioComponent implements OnInit {
   cadastrarUsuario() {
     this.userService.cadastrarUsuario(this.usuario).subscribe(
       resposta => {
-        console.log('Usuário cadastrado com sucesso:', resposta);
         // Após cadastrar, você pode redirecionar para outra página ou fazer algo mais aqui
 
         // Agora, após cadastrar o usuário, você pode associar os grupos a ele
@@ -107,7 +104,7 @@ export class CadastrarUsuarioComponent implements OnInit {
   }
 
     voltarParaUsuarios() {
-    this.router.navigate(['/usuarioPermissoes']);
+    this.router.navigate(['/usuario-permissoes']);
   }
 
   }

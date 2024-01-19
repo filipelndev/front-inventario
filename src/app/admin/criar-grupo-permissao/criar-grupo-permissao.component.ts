@@ -54,7 +54,7 @@ export class CriarGrupoPermissaoComponent {
     this.permissaoService.createGroup(novoGrupo).subscribe(
       (response) => {
         // Redirecione para a página de detalhes do grupo ou outra página
-        this.router.navigate(['/usuarioPermissoes']);
+        this.router.navigate(['/usuario-permissoes']);
       },
       (error) => {
         console.error('Erro ao criar o grupo de permissões:', error);
@@ -64,6 +64,6 @@ export class CriarGrupoPermissaoComponent {
   }
 
   voltarParaUsuarios() {
-    this.router.navigate(['/usuarioPermissoes']);
+    this.router.navigate(['/usuario-permissoes']);
   }
 }

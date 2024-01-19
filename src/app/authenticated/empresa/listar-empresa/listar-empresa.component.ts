@@ -23,8 +23,6 @@ export class ListarEmpresaComponent implements OnInit {
     this.empresaService.getEmpresas().subscribe(
       (empresas: any) => {
         this.dataSource.data = empresas.results;
-        console.log('colaboradores', empresas);
-        console.log('data', this.dataSource.data);
       },
       error => {
         console.error('Erro ao obter colaboradores:', error);

@@ -7,7 +7,7 @@ import { Empresa } from '../Models/Empresa';
   providedIn: 'root'
 })
 export class EmpresaService {
-  private apiUrl = 'http://127.0.0.1:8000/empresa/'; // Adapte para a URL real da sua API
+  private apiUrl = 'http://www.duplexsoft.com.br/teste/empresa/'; // Adapte para a URL real da sua API
 
   constructor(private http: HttpClient) {}
 
@@ -37,7 +37,7 @@ export class EmpresaService {
   }
 
   alterarStatusEmpresa(id: number, novoStatus: boolean): Observable<Empresa> {
-    const url = `${this.apiUrl}${id}/status/`;
+    const url = `${this.apiUrl}${id}status/`;
     return this.http.patch<Empresa>(url, { status: novoStatus });
   }
 }

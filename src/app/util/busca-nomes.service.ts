@@ -17,12 +17,12 @@ export class BuscaNomesService {
   ) {}
 
   obterNomeEmpresaPorId(id: number): Observable<Empresa> {
-    const url = `http://127.0.0.1:8000/empresa/${id}/`;
+    const url = `http://www.duplexsoft.com.br/teste/empresa/${id}/`;
     return this.http.get<Empresa>(url);
   }
 
   obterNomeColaboradorPorId(id: number): Observable<string> {
-    const url = `http://127.0.0.1:8000/colaborador/${id}/`;
+    const url = `http://www.duplexsoft.com.br/teste/colaborador/${id}/`;
 
     return this.http.get<Colaborador>(url).pipe(
       map(colaborador => colaborador.nome)
