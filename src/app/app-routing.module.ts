@@ -18,7 +18,7 @@ import { CriarGrupoPermissaoComponent } from './admin/criar-grupo-permissao/cria
 import { CadastrarUsuarioComponent } from './admin/cadastrar-usuario/cadastrar-usuario.component';
 import { EditarUsuarioComponent } from './admin/editar-usuario/editar-usuario.component';
 import { ConfirmaEmailComponent } from './admin/confirma-email/confirma-email.component';
-import { AlterarSenhaComponent } from './admin/alterar-senha/alterar-senha.component';
+
 
 const routes: Routes = [
   { path: '', component: HomeComponent, canActivate: [AuthGuard] },
@@ -39,7 +39,6 @@ const routes: Routes = [
   { path: 'cadastrar-usuario', component: CadastrarUsuarioComponent, canActivate: [AuthGuard] },
   { path: 'editar-usuario/:id', component: EditarUsuarioComponent, canActivate:[AuthGuard] },
   { path: 'confirmar-email', component: ConfirmaEmailComponent, canActivate: [AuthGuard] },
-  { path: 'alterar-senha', component: AlterarSenhaComponent }
 
 ];
 
