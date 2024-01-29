@@ -2,20 +2,19 @@
     <h2>Cadastrar Empresa</h2>
 
     <form (ngSubmit)="onSubmit()" #empresaForm="ngForm">
-      <div class="form-group">
+
+      <mat-form-field class="example-full-width">
         <label for="nome">Nome:</label>
-        <input type="text" id="nome" name="nome" [(ngModel)]="empresa.nome" required>
-      </div>
+        <input matInput placeholder="Insira o nome da empresa" type="text" id="nome" name="nome" [(ngModel)]="empresa.nome" required>
+      </mat-form-field>
 
-      <div class="form-group">
+      <mat-form-field class="example-full-width">
         <label for="cpf">CNPJ:</label>
-        <input type="text" id="cnpj" name="cnpj" [(ngModel)]="empresa.cnpj" required>
-      </div>
+        <input matInput placeholder="Insira o cnpj da empresa" type="text" id="cnpj" name="cnpj" [(ngModel)]="empresa.cnpj" required>
+      </mat-form-field>
 
-      <div class="form-group">
         <mat-slide-toggle id="status" name="status" [(ngModel)]="empresa.status" color="primary"></mat-slide-toggle>
         <span>{{ empresa.status ? 'Ativo' : 'Inativo' }}</span>
-      </div>
 
       <button type="submit">Salvar</button>
       <div class="mensagem-cadastro" *ngIf="mensagemCadastro">{{ mensagemCadastro }}</div>

@@ -1,7 +1,7 @@
 .login-container {
-    width: 350px;
+    width: 30%;
     margin: 1% 1%;
-    padding: 13% 38%;
+    padding: 8% 35%;
     background-color: #F2F2F2;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -29,10 +29,14 @@
   label {
     font-weight: bold;
     color: #01274e;
+    font-size: 100%;
+  }
+  .example-full-width {
+    width: 100%;
   }
 
   input {
-    width: 90%;
+    width: 100%;
     padding: 5%;
     margin-top: 5px;
     border: 1px solid #01274e;
@@ -42,10 +46,10 @@
   button {
     background-color: #01274e;
     color: #ffffff;
-    font-size: large;
+    font-size:xx-large;
     padding: 5%;
     width: 100%;
-    margin-top: 20%;
+    margin-top: 10%;
     border: none;
     border-radius: 4px;
     cursor: pointer;

@@ -27,7 +27,6 @@ export class ListarEquipamentosComponent implements OnInit {
     this.equipamentoService.getEquipamentos().subscribe(
       (equipamentos: any) => {
         this.dataSource.data = equipamentos.results;
-        console.log(equipamentos.results);
         this.dataSource.paginator = this.paginator; // Configura o paginador
       });
   }

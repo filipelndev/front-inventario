@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { UrlService } from '../util/url.service';
 
 @Injectable({
   providedIn: 'root'
@@ -8,9 +9,9 @@ import { Observable } from 'rxjs';
 export class UserService {
   private users: any[] = [];
 
-  private apiUrl = 'http://www.duplexsoft.com.br/teste/usuario/';
+  private apiUrl = `${this.urlService}usuario/`;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private urlService: UrlService) {}
 
   getUsers(): Observable<any[]> {
     return this.http.get<any>(`${this.apiUrl}listar/`);

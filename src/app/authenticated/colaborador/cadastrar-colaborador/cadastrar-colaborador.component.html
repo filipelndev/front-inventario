@@ -1,23 +1,22 @@
-<div class="container">
-  <h2>Cadastrar Colaborador</h2>
+    <div class="container">
+      <h2>Cadastrar Colaborador</h2>
+      <form (ngSubmit)="onSubmit()" #colaboradorForm="ngForm">
 
-  <form (ngSubmit)="onSubmit()" #colaboradorForm="ngForm">
-    <div class="form-group">
-      <label for="nome">Nome:</label>
-      <input type="text" id="nome" name="nome" [(ngModel)]="colaborador.nome" required>
-    </div>
+        <mat-form-field class="example-full-width">
+          <label for="nome">Nome:</label>
+          <input matInput placeholder="Insira o nome do Colaborador" type="text" id="nome" name="nome" [(ngModel)]="colaborador.nome" required>
+        </mat-form-field>
 
-    <div class="form-group">
-      <label for="cpf">CPF:</label>
-      <input type="text" id="cpf" name="cpf" [(ngModel)]="colaborador.cpf" required>
-    </div>
+        <mat-form-field class="example-full-width">
+          <label>CPF:</label>
+          <input matInput placeholder="Insira o CPF do colaborador" type="number" id="cpf" name="cpf" [(ngModel)]="colaborador.cpf" required>
+        </mat-form-field>
 
-    <div class="form-group">
-      <mat-slide-toggle id="status" name="status" [(ngModel)]="colaborador.status" color="primary"></mat-slide-toggle>
-      <span>{{ colaborador.status ? 'Ativo' : 'Inativo' }}</span>
-    </div>
+          <mat-slide-toggle id="status" name="status" [(ngModel)]="colaborador.status" color="primary"></mat-slide-toggle>
+          <span>{{ colaborador.status ? 'Ativo' : 'Inativo' }}</span>
 
-    <button type="submit">Salvar</button>
-    <div class="mensagem-cadastro" *ngIf="mensagemCadastro">{{ mensagemCadastro }}</div>
-  </form>
-</div>
+          <div class="buttonContainer">
+            <button type="submit">Salvar</button>
+          </div>
+      </form>
+  </div>

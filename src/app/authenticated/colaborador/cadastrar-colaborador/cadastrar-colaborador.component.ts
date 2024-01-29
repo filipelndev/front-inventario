@@ -37,4 +37,8 @@ export class CadastrarColaboradorComponent {
       );
   }
 
+  toggle() {
+    this.colaborador.status = !this.colaborador.status;
+  }
+
 }

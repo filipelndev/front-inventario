@@ -2,14 +2,15 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Empresa } from '../Models/Empresa';
+import { UrlService } from '../util/url.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class EmpresaService {
-  private apiUrl = 'http://www.duplexsoft.com.br/teste/empresa/'; // Adapte para a URL real da sua API
+  private apiUrl = `${this.urlService.apiUrl}empresa/`;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private urlService: UrlService) {}
 
   getEmpresas(): Observable<Empresa[]> {
     const url = `${this.apiUrl}`;

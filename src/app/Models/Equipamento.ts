@@ -25,4 +25,6 @@ export interface Equipamento {
   empresa_nome?: string;
   colaborador_nome?: string;
   tipo_equipamento_nome?: string;
+  empresa_id?: number;
+  colaborador_id?: number;
 }

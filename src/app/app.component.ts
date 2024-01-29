@@ -9,7 +9,7 @@ import { AuthService } from './authenticate/auth.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit  {
-  title = 'App-inventario by DuplexSoft';
+  title = 'App-Inventario';
 
   subMenusVisibility: { [key: string]: boolean } = {};
 

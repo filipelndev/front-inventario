@@ -23,6 +23,9 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatInputModule } from '@angular/material/input';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
 
 import { CadastrarColaboradorComponent } from './authenticated/colaborador/cadastrar-colaborador/cadastrar-colaborador.component';
 import { ListarColaboradorComponent } from './authenticated/colaborador/listar-colaborador/listar-colaborador.component';
@@ -50,6 +53,7 @@ import { PermissaodetalhesComponent } from './admin/permissaodetalhes/permissaod
 import { CriarGrupoPermissaoComponent } from './admin/criar-grupo-permissao/criar-grupo-permissao.component';
 import { ConfirmaEmailComponent } from './admin/confirma-email/confirma-email.component';
 import { AdicionarEquipamentoComponent } from './authenticated/empresa/adicionar-equipamento/adicionar-equipamento.component';
+import { UrlService } from './util/url.service';
 
 
 @NgModule({
@@ -106,6 +110,9 @@ import { AdicionarEquipamentoComponent } from './authenticated/empresa/adicionar
     }),
     MatCheckboxModule,
     MatToolbarModule,
+    MatInputModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
   ],
   providers: [
     ColaboradorService,
@@ -114,6 +121,7 @@ import { AdicionarEquipamentoComponent } from './authenticated/empresa/adicionar
       useClass: AuthInterceptor,
       multi: true, // Permite que existam vários interceptors
     },
+    UrlService,
   ],
   bootstrap: [AppComponent]
 })

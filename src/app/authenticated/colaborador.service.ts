@@ -4,38 +4,40 @@ import { Observable, of } from 'rxjs';
 import { Colaborador } from '../Models/Colaborador';
 import { map } from 'rxjs/operators';
 import { delay, first, tap } from 'rxjs';
+import { UrlService } from '../util/url.service';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class ColaboradorService {
 
-  private apiUrl = 'http://www.duplexsoft.com.br/teste/'; // Adapte para a URL real da sua API
+  private apiUrl = `${this.urlService.apiUrl}colaborador/`; // Adapte para a URL real da sua API
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, public urlService: UrlService) {}
 
     getColaboradores(): Observable<Colaborador[]> {
-      const url = `${this.apiUrl}colaborador/`;
+      const url = `${this.apiUrl}`;
       return this.http.get<any>(url);
     }
 
     getColaboradorPorId(id: number): Observable<Colaborador> {
-      const url = `${this.apiUrl}colaborador/${id}/`;
+      const url = `${this.apiUrl}${id}/`;
       return this.http.get<any>(url);
     }
 
   cadastrarColaborador(colaborador: Colaborador): Observable<any> {
-    const url = `${this.apiUrl}colaborador/`;
+    const url = `${this.apiUrl}`;
     return this.http.post(url, colaborador);
   }
 
   editarColaborador(id: number, colaborador: Colaborador): Observable<any> {
-    const url = `${this.apiUrl}colaborador/${id}/`;
+    const url = `${this.apiUrl}${id}/`;
     return this.http.put(url, colaborador);
   }
 
   alterarStatusColaborador(id: number, novoStatus: boolean): Observable<Colaborador> {
-    const url = `${this.apiUrl}colaborador/${id}/status/`;
+    const url = `${this.apiUrl}${id}/status/`;
     return this.http.patch<Colaborador>(url, { status: novoStatus });
   }
 }

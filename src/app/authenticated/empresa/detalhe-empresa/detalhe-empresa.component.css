@@ -1,12 +1,13 @@
 .container {
-  max-width: 800px;
-  margin: 80px 350px auto;
+  max-width: 6000px;
+  margin: 3% 3% auto;
+  padding: 2%;
   border: 3px solid #005c99;
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   background-color: #F2F2F2;
   color: #333;
-  padding: 80px;
+  text-align: center;
 }
 
 .detalhes-empresa {
@@ -22,12 +23,12 @@
 }
 
 .equipamentos-lista {
-  margin-top: 20px;
+  margin-top: 3%;
 }
 
 .equipamentos-lista h3 {
   font-size: 18px;
-  margin-bottom: 10px;
+  margin-bottom: 3%;
 }
 
 .equipamentos-lista ul {
@@ -37,11 +38,13 @@
 
 .equipamentos-lista li {
   border: 1px solid #007bff;
-  padding: 10px;
-  margin-bottom: 10px;
+  padding: 2%;
+  margin-bottom: 2%;
 }
 span{
-  padding-right:11%;
+  margin-right:5%;
+  margin-left: 5%;
+
   font-weight: bold;
   font-size: 20px;
 }

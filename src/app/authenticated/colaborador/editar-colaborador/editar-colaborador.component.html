@@ -2,22 +2,25 @@
   <h2>Cadastrar Colaborador</h2>
 
   <form (ngSubmit)="onSubmit()" #colaboradorForm="ngForm">
-    <div class="form-group">
+      <mat-form-field class="example-full-width">
       <label for="nome">Nome:</label>
-      <input type="text" id="nome" name="nome" [(ngModel)]="data.colaborador.nome" required>
-    </div>
+      <input matInput type="text" id="nome" name="nome" [(ngModel)]="data.colaborador.nome" required>
+    </mat-form-field>
 
-    <div class="form-group">
+    <mat-form-field class="example-full-width">
       <label for="cpf">CPF:</label>
-      <input type="text" id="cpf" name="cpf" [(ngModel)]="data.colaborador.cpf" required>
-    </div>
+      <input matInput type="text" id="cpf" name="cpf" [(ngModel)]="data.colaborador.cpf" required>
+    </mat-form-field>
+    <mat-slide-toggle id="status" name="status" [(ngModel)]="data.colaborador.status" color="primary"
+    [ngClass]="{'mat-slide-toggle-color-active': data.colaborador.status, 'mat-slide-toggle-color-inactive': !data.colaborador.status}">
+  </mat-slide-toggle>
+  <span [ngClass]="{'mat-slide-toggle-color-active': data.colaborador.status, 'mat-slide-toggle-color-inactive': !data.colaborador.status}">
+    {{ data.colaborador.status ? 'Ativo' : 'Inativo' }}
+  </span>
 
-    <div class="form-group">
-      <mat-slide-toggle id="status" name="status" [(ngModel)]="data.colaborador.status" color="primary"></mat-slide-toggle>
-      <span>{{ data.colaborador.status ? 'Ativo' : 'Inativo' }}</span>
-    </div>
-
-    <button type="submit">Salvar</button>
-    <button class="cancelbutton" (click)="onCancelarClick()">cancelar</button>
   </form>
+  <div class="buttonContainer">
+  <button type="submit">Salvar</button>
+  <button class="cancelbutton" (click)="onCancelarClick()">Cancelar</button>
+</div>
 </div>

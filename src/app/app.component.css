@@ -98,3 +98,18 @@
   color:#FFFFFF;
 }
 
+.mat-sidenav-container,
+.mat-sidenav-content {
+  height: 100%;
+  width: 100%;
+  display:flow-root;
+}
+
+._ngcontent-vnb-c64{
+  height: 100%;
+  width: 100%;
+}
+
+._ngcontent-avs-c64{
+ width: 100%;
+}

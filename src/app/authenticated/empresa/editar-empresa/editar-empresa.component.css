@@ -1,15 +1,14 @@
 .container {
-  max-width: 600px;
-  margin: 30px auto;
-  padding: 30px;
+  max-width: 6000px;
+  margin: 2% 2% auto;
+  padding: 2%;
   border: 3px solid #005c99;
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   background-color: #F2F2F2;
   color: #333;
-  text-align: center;
   overflow-y: auto; /* Adiciona barra de rolagem vertical quando necessário */
-  max-height: 70vh; /* Define a altura máxima em 70% da altura da tela */
+  max-height: 100vh; /* Define a altura máxima em 100% da altura da tela */
 }
 
 h2 {
@@ -20,12 +19,11 @@ h2 {
 form {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: normal;
 }
 
-.form-group {
+.example-full-width {
   width: 100%;
-  margin-bottom: 30px;
 }
 
 label {
@@ -34,43 +32,79 @@ label {
   margin-bottom: 8px;
 }
 
-input {
-  width: 100%;
-  padding: 12px;
-  margin-bottom: 15px;
-  border: none;
-  border-radius: 5px;
-  font-size: 16px;
-}
-
 button {
-  width: 100%;
+  width: 15%;
   padding: 15px;
-  background-color: #007bff;
+  background-color: #01274e;
   color: #fff;
   border: none;
   border-radius: 5px;
   cursor: pointer;
   font-size: 18px;
-  margin: 5px;
 }
 
 .cancelbutton{
-  background-color: #97999a;
+  width: 15%;
+  background-color: #777777;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 18px;
+  padding: 15px;
+  margin-left: 1%;
 }
 
 .cancelbutton:hover{
-  background-color: #777777;
+  background-color: #97999a;
 }
 
 button:hover {
-  background-color: #0056b3;
+  background-color: #005c99;
 }
 
-/* Adicionamos uma regra de mídia para ajustar a largura máxima do container */
-@media (max-width: 600px) {
-  .container {
-    margin: 20px 20px auto;
-    padding: 20px;
-  }
+span{
+  margin-bottom: 6%;
 }
+
+.buttonContainer{
+  display: flexbox;
+  align-items: flex-start;
+}
+
+.mat-mdc-slide-toggle.mat-primary {
+  --mdc-switch-selected-focus-state-layer-color: #01274e;
+  --mdc-switch-selected-handle-color: #01274e;
+  --mdc-switch-selected-hover-state-layer-color: #01274e;
+  --mdc-switch-selected-pressed-state-layer-color: #01274e;
+  --mdc-switch-selected-focus-handle-color: #022f5c;
+  --mdc-switch-selected-hover-handle-color: #022f5c;
+  --mdc-switch-selected-pressed-handle-color: #022f5c;
+  --mdc-switch-selected-focus-track-color: #033e78;
+  --mdc-switch-selected-hover-track-color: #033e78;
+  --mdc-switch-selected-pressed-track-color: #033e78;
+  --mdc-switch-selected-track-color: #033e78;
+}
+
+.mat-mdc-slide-toggle {
+  --mdc-switch-disabled-selected-handle-color: #777777;
+  --mdc-switch-disabled-unselected-handle-color: #777777;
+  --mdc-switch-disabled-selected-track-color: #777777;
+  --mdc-switch-disabled-unselected-track-color: #777777;
+  --mdc-switch-unselected-focus-state-layer-color: #777777;
+  --mdc-switch-unselected-pressed-state-layer-color: #777777;
+  --mdc-switch-unselected-hover-state-layer-color: #777777;
+  --mdc-switch-unselected-focus-track-color: #e0e0e0;
+  --mdc-switch-unselected-hover-track-color: #e0e0e0;
+  --mdc-switch-unselected-pressed-track-color: #e0e0e0;
+  --mdc-switch-unselected-track-color: #e0e0e0;
+  --mdc-switch-unselected-focus-handle-color: #777777;
+  --mdc-switch-unselected-hover-handle-color: #777777;
+  --mdc-switch-unselected-pressed-handle-color: #777777;
+  --mdc-switch-handle-surface-color: var(--mdc-theme-surface, #fff);
+  --mdc-switch-unselected-handle-color: #616161;
+  --mdc-switch-selected-icon-color: #fff;
+  --mdc-switch-disabled-selected-icon-color: #fff;
+  --mdc-switch-disabled-unselected-icon-color: #fff;
+  --mdc-switch-unselected-icon-color: #fff;
+}
+

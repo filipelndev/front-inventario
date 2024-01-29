@@ -5,6 +5,7 @@ import { forkJoin, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';import { Empresa } from '../Models/Empresa';
 import { HttpClient } from '@angular/common/http';
 import { Colaborador } from '../Models/Colaborador';
+import { UrlService } from './url.service';
 ;
 
 @Injectable({
@@ -12,17 +13,15 @@ import { Colaborador } from '../Models/Colaborador';
 })
 export class BuscaNomesService {
 
-  constructor(
-    private http: HttpClient
-  ) {}
+  constructor(private http: HttpClient, private urlService: UrlService) {}
 
   obterNomeEmpresaPorId(id: number): Observable<Empresa> {
-    const url = `http://www.duplexsoft.com.br/teste/empresa/${id}/`;
+    const url = `${this.urlService.apiUrl}/empresa/${id}/`;
     return this.http.get<Empresa>(url);
   }
 
   obterNomeColaboradorPorId(id: number): Observable<string> {
-    const url = `http://www.duplexsoft.com.br/teste/colaborador/${id}/`;
+    const url = `${this.urlService.apiUrl}/teste/colaborador/${id}/`;
 
     return this.http.get<Colaborador>(url).pipe(
       map(colaborador => colaborador.nome)

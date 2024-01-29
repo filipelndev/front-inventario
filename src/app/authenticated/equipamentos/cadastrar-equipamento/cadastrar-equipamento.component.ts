@@ -21,6 +21,9 @@ export class CadastrarEquipamentoComponent implements OnInit{
   empresas: Empresa[] = [];
   colaboradores: Colaborador[] = [];
   tipoEquipamento: TipoEquipamento[] = [];
+  tem_acesso_remoto: boolean = false;
+
+  mensagemCadastro: string | null = null;
 
   constructor(
     private empresaService: EmpresaService,
@@ -75,5 +78,56 @@ export class CadastrarEquipamentoComponent implements OnInit{
     // Lógica para salvar o equipamento
     console.log('Equipamento cadastrado:', this.equipment);
     // Adicione aqui a lógica para salvar o equipamento no serviço/back-end
+    const equipmentToSend: any = {
+      tag_patrimonio: this.equipment.tag_patrimonio,
+      tipo_equipamento: this.equipment.tipo_equipamento,
+      situacao: this.equipment.situacao,
+      pedido: this.equipment.pedido,
+      data_compra: this.equipment.data_compra,
+      empresa: this.equipment.empresa.id, // Ajuste aqui para enviar apenas o ID da empresa
+      colaborador: this.equipment.colaborador.id, // Ajuste aqui para enviar apenas o ID do colaborador
+      marca: this.equipment.marca,
+      modelo: this.equipment.modelo,
+      especificacoes: this.equipment.especificacoes,
+      acesso_remoto: this.equipment.acesso_remoto,
+      acesso_id: this.equipment.acesso_id,
+      acesso_senha: this.equipment.acesso_senha,
+      observacoes: this.equipment.observacoes,
+      status: this.equipment.status
+    };
+
+    this.equipamentoService.cadastrarEquipamento(equipmentToSend).subscribe(
+      response => {
+        console.log('Colaborador cadastrado com sucesso!', response);
+        this.equipment = { tag_patrimonio: '',
+        tipo_equipamento: {tipo: 'Escolha um tipo de equipamento abaixo:', status: true},
+        situacao: '',
+        pedido: '',
+        data_compra: new Date(),
+        empresa: { nome: 'Escolha uma empresa abaixo:', cnpj: '', status: true },
+        colaborador: {nome: 'Escolha um colaborador abaixo:', cpf: '', status: true},
+        marca: '',
+        modelo: '',
+        especificacoes: '',
+        acesso_remoto: '',
+        acesso_id: '',
+        acesso_senha: '',
+        observacoes: '',
+        status: true };
+        this.mensagemCadastro = 'Colaborador cadastrado com sucesso!'
+        setTimeout(() => {
+          this.mensagemCadastro = null;
+        }, 4000);
+
+      },
+      error => {
+        console.error('Erro ao cadastrar colaborador', error);
+        this.mensagemCadastro = 'Erro ao cadastrar colaborador. Por favor, tente novamente.';
+        setTimeout(() => {
+          this.mensagemCadastro = null;
+        }, 4000);
+      }
+    );
   }
+
 }

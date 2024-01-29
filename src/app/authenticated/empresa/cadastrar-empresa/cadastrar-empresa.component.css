@@ -1,7 +1,7 @@
 .container {
   max-width: 6000px;
   margin: 3% 3% auto;
-  padding: 5% 560px;
+  padding: 2%;
   border: 3px solid #005c99;
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -16,14 +16,22 @@ h2 {
   margin-bottom: 20px;
 }
 
+.example-full-width {
+  width: 100%;
+}
+
+input{
+  margin-bottom: 15px;
+  border: groove;
+  border-radius: 5px;
+  font-size: 16px;
+  align-self: center;
+}
+
 form {
   display: flex;
   flex-direction: column;
-  align-items: center;
-}
-
-.form-group {
-  width: 100%;
+  align-items: normal;
 }
 
 label {
@@ -32,19 +40,9 @@ label {
   margin-bottom: 8px;
 }
 
-input,
-select {
-  width: 80%;
-  padding: 20px;
-  margin-bottom: 15px;
-  border: none;
-  border-radius: 5px;
-  font-size: 16px;
-}
-
 button {
-  width: 100%;
-  padding: 15px;
+  width: 30%;
+  padding: 3%;
   background-color: #01274e;
   color: #fff;
   border: none;
@@ -55,22 +53,51 @@ button {
 
 mat-slide-toggle{
   margin-top: 5px;
-  margin-bottom: 20px;
+  align-self: flex-start;
 }
 
 button:hover {
   background-color: #005c99;
 }
 
-.fixed-textarea {
-  width: 100%;
-  height: 100px;
-  resize: both;
+span{
+  align-self: flex-start;
+  margin-bottom: 6%;
 }
 
-@media (max-width: 900px) {
-  .container {
-    margin: 20px auto;
-    padding: 15px;
-  }
+.mat-mdc-slide-toggle.mat-primary {
+  --mdc-switch-selected-focus-state-layer-color: #01274e;
+  --mdc-switch-selected-handle-color: #01274e;
+  --mdc-switch-selected-hover-state-layer-color: #01274e;
+  --mdc-switch-selected-pressed-state-layer-color: #01274e;
+  --mdc-switch-selected-focus-handle-color: #022f5c;
+  --mdc-switch-selected-hover-handle-color: #022f5c;
+  --mdc-switch-selected-pressed-handle-color: #022f5c;
+  --mdc-switch-selected-focus-track-color: #033e78;
+  --mdc-switch-selected-hover-track-color: #033e78;
+  --mdc-switch-selected-pressed-track-color: #033e78;
+  --mdc-switch-selected-track-color: #033e78;
+}
+
+.mat-mdc-slide-toggle {
+  --mdc-switch-disabled-selected-handle-color: #777777;
+  --mdc-switch-disabled-unselected-handle-color: #777777;
+  --mdc-switch-disabled-selected-track-color: #777777;
+  --mdc-switch-disabled-unselected-track-color: #777777;
+  --mdc-switch-unselected-focus-state-layer-color: #777777;
+  --mdc-switch-unselected-pressed-state-layer-color: #777777;
+  --mdc-switch-unselected-hover-state-layer-color: #777777;
+  --mdc-switch-unselected-focus-track-color: #e0e0e0;
+  --mdc-switch-unselected-hover-track-color: #e0e0e0;
+  --mdc-switch-unselected-pressed-track-color: #e0e0e0;
+  --mdc-switch-unselected-track-color: #e0e0e0;
+  --mdc-switch-unselected-focus-handle-color: #777777;
+  --mdc-switch-unselected-hover-handle-color: #777777;
+  --mdc-switch-unselected-pressed-handle-color: #777777;
+  --mdc-switch-handle-surface-color: var(--mdc-theme-surface, #fff);
+  --mdc-switch-unselected-handle-color: #616161;
+  --mdc-switch-selected-icon-color: #fff;
+  --mdc-switch-disabled-selected-icon-color: #fff;
+  --mdc-switch-disabled-unselected-icon-color: #fff;
+  --mdc-switch-unselected-icon-color: #fff;
 }

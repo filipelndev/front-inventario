@@ -21,7 +21,8 @@ import { ConfirmaEmailComponent } from './admin/confirma-email/confirma-email.co
 
 
 const routes: Routes = [
-  { path: '', component: HomeComponent, canActivate: [AuthGuard] },
+  { path: '', redirectTo: 'fazer-login', pathMatch: 'full'  },
+  { path: 'fazer-login', component: LoginComponent },
   { path: 'dashboard', component: HomeComponent, canActivate: [AuthGuard] },
   { path: 'cadastrar-colaborador', component: CadastrarColaboradorComponent, canActivate: [AuthGuard] },
   { path: 'listar-colaborador', component: ListarColaboradorComponent, canActivate: [AuthGuard] },
@@ -32,7 +33,6 @@ const routes: Routes = [
   { path: 'detalhes-empresa/:id', component: DetalheEmpresaComponent, canActivate: [AuthGuard] },
   { path: 'cadastrar-tipo-equipamento', component: CadastrarTipoEquipamentoComponent, canActivate: [AuthGuard] },
   { path: 'listar-tipo-equipamento', component: ListarTipoEquipamentoComponent, canActivate: [AuthGuard] },
-  { path: 'fazer-login', component: LoginComponent },
   { path: 'usuario-permissoes', component: UsuarioPermissoesComponent, canActivate: [AuthGuard] },
   { path: 'ver-permissoes/:id', component: PermissoesComponent, canActivate: [AuthGuard] },
   { path: 'criar-grupo-permissao', component: CriarGrupoPermissaoComponent, canActivate: [AuthGuard] },

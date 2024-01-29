@@ -10,6 +10,8 @@ import { ColaboradorService } from '../../colaborador.service';
 })
 export class EditarColaboradorComponent {
 
+  isChecked = false;
+
   constructor(
     public dialogRef: MatDialogRef<EditarColaboradorComponent>,
     @Inject(MAT_DIALOG_DATA) public data: { colaborador: Colaborador },
@@ -18,6 +20,10 @@ export class EditarColaboradorComponent {
 
   onCancelarClick(): void {
     this.dialogRef.close();
+  }
+
+  toggle() {
+    this.data.colaborador.status = !this.data.colaborador.status;
   }
 
   onSubmit() {

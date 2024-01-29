@@ -1,22 +1,23 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { UrlService } from '../util/url.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PermissaoService {
-  private baseUrl = 'http://www.duplexsoft.com.br/teste/usuario/grupos';
+  private apiUrl = `${this.urlService.apiUrl}usuario/`;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private urlService: UrlService) {}
 
   createGroup(data: any): Observable<any> {
-    const url = `${this.baseUrl}/create/`;
+    const url = `${this.apiUrl}/create/`;
     return this.http.post(url, data);
   }
 
   associateUserWithGroups(userId: number, groupIds: number[]): Observable<any> {
-    const url = `${this.baseUrl}/associar/`;
+    const url = `${this.apiUrl}/associar/`;
     const data = {
       user_id: userId,
       groups: groupIds
@@ -26,11 +27,11 @@ export class PermissaoService {
   }
 
   buscarDetalhesDoGrupo(id: number) {
-    const url = `${this.baseUrl}/${id}/`
+    const url = `${this.apiUrl}/${id}/`
     return this.http.get<any>(url);
   }
 
   getGroups(): Observable<any[]> {
-    return this.http.get<any>(`${this.baseUrl}/`);
+    return this.http.get<any>(`${this.apiUrl}/`);
   }
 }

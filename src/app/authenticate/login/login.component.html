@@ -7,14 +7,19 @@
     <img src="./assets/img/Logo.png" alt="Logo do App" style="max-width: 100%;">
     <h2>Login</h2>
 
+    <mat-form-field class="example-full-width">
     <!-- Campos de entrada para nome de usuário e senha -->
-    <label for="username">Nome de Usuário:</label>
-    <input type="text" id="username" [(ngModel)]="username" />
+    <label for="username">Usuário:</label>
+    <input matInput type="text" placeholder="Digite o nome de usuário:" id="username" [(ngModel)]="username" />
+    </mat-form-field>
 
+    <mat-form-field class="example-full-width">
     <label for="password">Senha:</label>
-    <input type="password" id="password" [(ngModel)]="password" />
-
+    <input matInput type="password" placeholder="Digite a senha:" id="password" [(ngModel)]="password" />
+    </mat-form-field>
     <!-- Botão para enviar o formulário de login -->
     <button (click)="login()">Entrar</button>
   </div>
+
+
 </div>

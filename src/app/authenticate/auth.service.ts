@@ -5,11 +5,13 @@ import { tap, catchError } from 'rxjs/operators';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { throwError } from 'rxjs';
 import { Router } from '@angular/router';
+import { UrlService } from '../util/url.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
+  private apiUrl = `${this.urlService.apiUrl}usuario/`;
   private isAuthenticatedSubject = new BehaviorSubject<boolean>(false);
   private tokenKey = 'auth_token';
   private refreshkey = 'auth_refresh';
@@ -17,7 +19,8 @@ export class AuthService {
   // Expor um Observable que outros componentes podem assinar
   isAuthenticated$: Observable<boolean> = this.isAuthenticatedSubject.asObservable();
 
-  constructor(private http: HttpClient, private jwtHelper: JwtHelperService, private router: Router) {}
+  constructor(private http: HttpClient, private jwtHelper: JwtHelperService, private router: Router,
+    private urlService: UrlService) {}
 
   // Método para verificar o status de autenticação
   isAuthenticated(): boolean {
@@ -36,7 +39,7 @@ export class AuthService {
   login(username: string, password: string): Observable<any> {
     const loginData = { username, password };
 
-    return this.http.post<any>('http://www.duplexsoft.com.br/teste/usuario/token/', loginData).pipe(
+    return this.http.post<any>(`${this.apiUrl}token/`, loginData).pipe(
       tap((response) => {
         if (response.access) {
           this.setToken(response.access);
@@ -57,7 +60,7 @@ export class AuthService {
 
   refreshToken(): Observable<any> {
     const refreshToken = this.getRefresh(); // Obtenha o token de atualização atual
-    return this.http.post<any>('http://www.duplexsoft.com.br/teste/usuario/token/refresh/', refreshToken).pipe(
+    return this.http.post<any>(`${this.apiUrl}token/refresh/`, refreshToken).pipe(
       tap((token) => {
         console.log("Chamando o refresh token. Token recebido:", token);
         localStorage.setItem('access_token', token);
