@@ -15,7 +15,8 @@
 
     <mat-form-field class="example-full-width">
     <label for="password">Senha:</label>
-    <input matInput type="password" placeholder="Digite a senha:" id="password" [(ngModel)]="password" />
+    <input matInput type="password" placeholder="Digite a senha:" id="password" [type]="hidePassword ? 'password' : 'text'" [(ngModel)]="password" />
+    <mat-icon matSuffix (click)="hidePassword = !hidePassword">{{ hidePassword ? 'visibility_off' : 'visibility' }}</mat-icon>
     </mat-form-field>
     <!-- Botão para enviar o formulário de login -->
     <button (click)="login()">Entrar</button>

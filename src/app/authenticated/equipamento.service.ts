@@ -8,7 +8,7 @@ import { UrlService } from '../util/url.service';
   providedIn: 'root'
 })
 export class EquipamentoService {
-  private apiUrl = `${this.urlService.apiUrl}/equipamento/`; // Adapte para a URL real da sua API
+  private apiUrl = `${this.urlService.apiUrl}equipamento/`; // Adapte para a URL real da sua API
 
   constructor(private http: HttpClient, private urlService: UrlService) {}
 

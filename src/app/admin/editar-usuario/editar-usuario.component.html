@@ -6,27 +6,33 @@
 </mat-toolbar>
 
 <div class="container">
-  <h2>Cadastrar Usuário</h2>
+  <h2>Editar Usuário</h2>
 
   <!-- Inputs para o usuário -->
   <div class="section">
     <label>Username: </label>
     <div class="input-wrapper">
-      <input [(ngModel)]="usuario.username" class="custom-width" disabled/>
+      <mat-form-field class="custom-width-input">
+        <input matInput [(ngModel)]="usuario.username" placeholder="Username" [disabled]="true" />
+      </mat-form-field>
     </div>
   </div>
 
   <div class="section">
     <label>Password: </label>
     <div class="input-wrapper">
-      <input [(ngModel)]="usuario.password" type="password" class="custom-width" disabled />
+      <mat-form-field class="custom-width-input">
+        <input matInput [(ngModel)]="usuario.password" placeholder="Password" disabled />
+      </mat-form-field>
     </div>
   </div>
 
   <div class="section">
     <label>E-mail: </label>
     <div class="input-wrapper">
-      <input [(ngModel)]="usuario.email" type="email" class="custom-width" disabled />
+      <mat-form-field class="custom-width-input">
+        <input matInput [(ngModel)]="usuario.email" placeholder="Email" type="email" disabled />
+      </mat-form-field>
     </div>
   </div>
 
@@ -58,6 +64,6 @@
   </mat-table>
 
   <div class="space">
-  <button (click)="salvarEdicao()">Cadastrar Usuário</button>
+  <button (click)="salvarEdicao()">Salvar</button>
   </div>
 </div>

@@ -54,6 +54,7 @@ import { CriarGrupoPermissaoComponent } from './admin/criar-grupo-permissao/cria
 import { ConfirmaEmailComponent } from './admin/confirma-email/confirma-email.component';
 import { AdicionarEquipamentoComponent } from './authenticated/empresa/adicionar-equipamento/adicionar-equipamento.component';
 import { UrlService } from './util/url.service';
+import { NgxMaskModule } from 'ngx-mask-2';
 
 
 @NgModule({
@@ -113,6 +114,7 @@ import { UrlService } from './util/url.service';
     MatInputModule,
     MatDatepickerModule,
     MatNativeDateModule,
+    NgxMaskModule.forRoot(),
   ],
   providers: [
     ColaboradorService,

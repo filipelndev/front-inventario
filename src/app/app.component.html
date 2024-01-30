@@ -25,47 +25,85 @@
 <mat-sidenav-container class="sidenav-container">
   <mat-sidenav #sidenav mode="side" opened="true" class="sidenav">
     <!-- Conteúdo da navbar -->
-    <ul>
-      <li class="menu-item">
-        <div class="menu-header">Dashboard</div>
-        <div class="sub-menu">
-          <a routerLink="/dashboard">Ver Dashboard</a>
+    <mat-divider></mat-divider>
+          <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              <div class="menu-header">Dashboard</div>
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <div class="sub-menu">
+          <a mat-list-item [routerLink]="['/dashboard']">Ver Dashboard</a>
         </div>
-      </li>
-      <li class="menu-item">
-        <div class="menu-header">Colaboradores</div>
-        <div class="sub-menu">
-            <a routerLink="/cadastrar-colaborador">Cadastrar</a>
-            <a routerLink="/listar-colaborador">Listar</a>
-        </div>
-    </li>
-      <li class="menu-item">
-        <div class="menu-header">Empresas</div>
-        <div class="sub-menu">
-          <a routerLink="/cadastrar-empresa" >Cadastrar</a>
-          <a routerLink="/listar-empresa">Listar</a>
-        </div>
-      </li>
-      <li class="menu-item">
-        <div class="menu-header">Equipamento</div>
-        <div class="sub-menu">
-          <a routerLink="/cadastrar-equipamento" >Cadastrar</a>
-          <a routerLink="/listar-equipamento">Listar</a>
-        </div>
-      </li>
-      <li class="menu-item">
-        <div class="menu-header">Tipo de Equipamento</div>
-        <div class="sub-menu">
-          <a routerLink="/cadastrar-tipo-equipamento" >Cadastrar</a>
-          <a routerLink="/listar-tipo-equipamento">Listar</a>
-        </div>
-      </li>
-    </ul>
+        </mat-expansion-panel>
+
+        <mat-divider></mat-divider>
+
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              <div class="menu-header">Colaboradores</div>
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <div class="sub-menu">
+            <a mat-list-item [routerLink]="['/cadastrar-colaborador']">Cadastrar</a>
+            <a mat-list-item [routerLink]="['/listar-colaborador']">Listar</a>
+          </div>
+        </mat-expansion-panel>
+
+        <mat-divider></mat-divider>
+
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              <div class="menu-header">Empresas</div>
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <div class="sub-menu">
+            <a mat-list-item [routerLink]="['/cadastrar-empresa']">Cadastrar</a>
+            <a mat-list-item [routerLink]="['/listar-empresa']">Listar</a>
+          </div>
+        </mat-expansion-panel>
+
+        <mat-divider></mat-divider>
+
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              <div class="menu-header">Equipamento</div>
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <div class="sub-menu">
+            <a mat-list-item [routerLink]="['/cadastrar-equipamento']">Cadastrar</a>
+            <a mat-list-item [routerLink]="['/listar-equipamento']">Listar</a>
+          </div>
+        </mat-expansion-panel>
+
+        <mat-divider></mat-divider>
+
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              <div class="menu-header">Tipo de Equipamento</div>
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <div class="sub-menu">
+            <a mat-list-item [routerLink]="['/cadastrar-tipo-equipamento']">Cadastrar</a>
+            <a mat-list-item [routerLink]="['/listar-tipo-equipamento']">Listar</a>
+          </div>
+        </mat-expansion-panel>
+
+        <mat-divider></mat-divider>
+
   </mat-sidenav>
 
   <div class="main-content">
+    <footer>
+      <p>Criado por DuplexSoft</p>
+    </footer>
     <router-outlet></router-outlet>
   </div>
 </mat-sidenav-container>
 </div>
 <app-login *ngIf="!authService.isAuthenticated()"></app-login>
+

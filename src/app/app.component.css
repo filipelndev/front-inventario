@@ -1,34 +1,31 @@
 .menu-button {
-  background-color: #01274e;
-  color: #FFFFFF;
+  background-color: #FFFFFF;
+  color: #01274e;
   border: none;
   padding: 10px;
   font-size: 20px;
   cursor: pointer;
+  text-decoration: none;
 }
 
 .menu-button:hover {
-  background-color: #005c99;
-  color: #FFFFFF
+  background-color: #FFFFFF;
+  color: #01274e
 }
 
 .sidenav-container {
   display: flex;
   height: 100vh;
   position: fixed;
+  text-decoration: none;
 }
 
 .sidenav {
-  width: 200px;
-  background-color: #01274e;
-  color: #FFFFFF;
-  padding: 0.5px;
-  padding-right: 30px;
+  background-color: #FFFFFF;
+  color: #01274e;
+  padding-right: 5px;
   box-sizing: border-box;
-}
-
-.menu-item {
-  margin-bottom: 15px;
+  text-decoration: none;
 }
 
 .menu-header {
@@ -38,16 +35,17 @@
 }
 
 .sub-menu a {
-  text-decoration:solid;
+  text-decoration: none;
   font-size: 15px;
-  color: #FFFFFF;
+  color: #01274e;
   display: block;
   padding: 10px;
   border-radius: 5px;
 }
 
 .sub-menu a:hover {
-  background-color: #005c99;
+  color:#FFFFFF;
+  background-color: #01274e;
 }
 
 .logoimg {
@@ -60,20 +58,24 @@
   align-items: end;
   justify-content:first baseline;
   padding: 10px;
+  text-decoration: none;
 }
 
 .header-left {
   display: flex;
   align-items: safe;
+  text-decoration: none;
 }
 
 .menu-button {
   margin-right: 10px; /* Ajuste conforme necessário */
+  text-decoration: none;
 }
 
 .app-name {
   font-size: 18px; /* Ajuste conforme necessário */
-  color: #004080;
+  color: #01274e;
+  text-decoration: none;
 }
 
 .user-button {
@@ -81,21 +83,25 @@
   top: 10px;
   right: 10px;
   z-index: 1000;
-  background-color: #004080;
+  background-color: #01274e;
+  text-decoration: none;
 }
 
 .permission-label {
   color: #757575; /* Cor cinza para simular um botão desativado */
   cursor: not-allowed; /* Cursor de não permitido para indicar desativado */
+  text-decoration: none;
 }
 
 .whiteicon {
   color: white;
+  text-decoration: none;
 }
 
 .controllMenu {
-  background-color: #004080;
+  background-color: #01274e;
   color:#FFFFFF;
+  text-decoration: none;
 }
 
 .mat-sidenav-container,
@@ -103,13 +109,28 @@
   height: 100%;
   width: 100%;
   display:flow-root;
+  text-decoration: none;
 }
 
 ._ngcontent-vnb-c64{
   height: 100%;
   width: 100%;
+  text-decoration: none;
 }
 
 ._ngcontent-avs-c64{
  width: 100%;
+ text-decoration: none;
+}
+
+mat-expansion-panel{
+  margin: 5px;
+}
+
+footer {
+  background-color: #f2f2f2;
+  text-align: center;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
 }

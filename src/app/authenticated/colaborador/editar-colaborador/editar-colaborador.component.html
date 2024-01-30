@@ -9,7 +9,7 @@
 
     <mat-form-field class="example-full-width">
       <label for="cpf">CPF:</label>
-      <input matInput type="text" id="cpf" name="cpf" [(ngModel)]="data.colaborador.cpf" required>
+      <input matInput id="cpf" name="cpf" [(ngModel)]="data.colaborador.cpf" mask="000.000.000-00" required>
     </mat-form-field>
     <mat-slide-toggle id="status" name="status" [(ngModel)]="data.colaborador.status" color="primary"
     [ngClass]="{'mat-slide-toggle-color-active': data.colaborador.status, 'mat-slide-toggle-color-inactive': !data.colaborador.status}">

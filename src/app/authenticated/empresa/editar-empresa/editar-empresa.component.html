@@ -9,7 +9,7 @@
 
     <mat-form-field class="example-full-width">
       <label for="cpf">CNPJ:</label>
-      <input matInput type="text" id="cnpj" name="cnpj" [(ngModel)]="data.empresa.cnpj" required>
+      <input matInput id="cnpj" name="cnpj" [(ngModel)]="data.empresa.cnpj" mask="00.000.000/0000-00" required>
     </mat-form-field>
 
     <mat-slide-toggle id="status" name="status" [(ngModel)]="data.empresa.status" color="primary"></mat-slide-toggle>

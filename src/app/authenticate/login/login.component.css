@@ -36,7 +36,7 @@
   }
 
   input {
-    width: 100%;
+    width: 90%;
     padding: 5%;
     margin-top: 5px;
     border: 1px solid #01274e;
@@ -58,3 +58,4 @@
   button:hover {
     background-color: #005c99;
   }
+

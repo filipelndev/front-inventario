@@ -8,12 +8,12 @@
   <table mat-table [dataSource]="users">
     <ng-container matColumnDef="name">
       <th mat-header-cell *matHeaderCellDef class="custom-width">Usuário</th>
-      <td mat-cell *matCellDef="let user">{{ user.username }}</td>
+      <td mat-cell *matCellDef="let user" class="custom-width">{{ user.username }}</td>
     </ng-container>
 
     <ng-container matColumnDef="groups">
       <th mat-header-cell *matHeaderCellDef class="custom-width" >Grupos</th>
-      <td mat-cell *matCellDef="let user">
+      <td mat-cell *matCellDef="let user" class="custom-width">
         <div *ngFor="let grupo of user.grupos" class="custom-width-label" (click)="openPermissionDialog(grupo)">
           <label>{{ grupo.name }}</label>
         </div>
@@ -21,8 +21,8 @@
     </ng-container>
 
     <ng-container matColumnDef="actions">
-      <th mat-header-cell *matHeaderCellDef>Editar</th>
-      <td mat-cell *matCellDef="let user">
+      <th mat-header-cell *matHeaderCellDef class="custom-width-edit">Editar</th>
+      <td mat-cell *matCellDef="let user" class="custom-width-edit">
         <button mat-icon-button (click)="editarUsuario(user.id)">
           <mat-icon>edit</mat-icon>
         </button>

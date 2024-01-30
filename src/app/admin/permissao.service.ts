@@ -7,17 +7,17 @@ import { UrlService } from '../util/url.service';
   providedIn: 'root'
 })
 export class PermissaoService {
-  private apiUrl = `${this.urlService.apiUrl}usuario/`;
+  private apiUrl = `${this.urlService.apiUrl}usuario/grupos/`;
 
   constructor(private http: HttpClient, private urlService: UrlService) {}
 
   createGroup(data: any): Observable<any> {
-    const url = `${this.apiUrl}/create/`;
+    const url = `${this.apiUrl}create/`;
     return this.http.post(url, data);
   }
 
   associateUserWithGroups(userId: number, groupIds: number[]): Observable<any> {
-    const url = `${this.apiUrl}/associar/`;
+    const url = `${this.apiUrl}associar/`;
     const data = {
       user_id: userId,
       groups: groupIds
@@ -27,11 +27,11 @@ export class PermissaoService {
   }
 
   buscarDetalhesDoGrupo(id: number) {
-    const url = `${this.apiUrl}/${id}/`
+    const url = `${this.apiUrl}${id}/`
     return this.http.get<any>(url);
   }
 
   getGroups(): Observable<any[]> {
-    return this.http.get<any>(`${this.apiUrl}/`);
+    return this.http.get<any>(`${this.apiUrl}`);
   }
 }

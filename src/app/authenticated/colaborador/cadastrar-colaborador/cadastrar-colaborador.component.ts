@@ -41,4 +41,5 @@ export class CadastrarColaboradorComponent {
     this.colaborador.status = !this.colaborador.status;
   }
 
+
 }

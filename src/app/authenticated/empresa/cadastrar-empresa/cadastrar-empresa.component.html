@@ -10,7 +10,7 @@
 
       <mat-form-field class="example-full-width">
         <label for="cpf">CNPJ:</label>
-        <input matInput placeholder="Insira o cnpj da empresa" type="text" id="cnpj" name="cnpj" [(ngModel)]="empresa.cnpj" required>
+        <input matInput placeholder="Insira o cnpj da empresa" id="cnpj" name="cnpj" [(ngModel)]="empresa.cnpj" mask="00.000.000/0000-00" required>
       </mat-form-field>
 
         <mat-slide-toggle id="status" name="status" [(ngModel)]="empresa.status" color="primary"></mat-slide-toggle>

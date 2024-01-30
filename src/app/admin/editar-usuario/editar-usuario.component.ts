@@ -24,6 +24,7 @@ export class EditarUsuarioComponent implements OnInit {
   usuario: any = {}; // Inicialize o objeto do usuário com um objeto vazio
   gruposDisponiveis: PermissaoUsuario[] = [];
   gruposSelecionados: PermissaoUsuario[] = [];
+  hidePassword = true;
 
   constructor(private route: ActivatedRoute, private userService: UserService, private permissaoService: PermissaoService, private router: Router) {}
 

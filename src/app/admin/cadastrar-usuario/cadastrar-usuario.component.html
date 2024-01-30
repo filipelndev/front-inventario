@@ -9,26 +9,20 @@
   <h2>Cadastrar Usuário</h2>
 
   <!-- Inputs para o usuário -->
-  <div class="section">
-    <label>Username: </label>
-    <div class="input-wrapper">
-      <input [(ngModel)]="usuario.username" class="custom-width" />
-    </div>
-  </div>
+  <mat-form-field class="custom-width">
+    <label>Username:</label>
+    <input matInput [(ngModel)]="usuario.username" />
+  </mat-form-field>
 
-  <div class="section">
-    <label>Password: </label>
-    <div class="input-wrapper">
-      <input [(ngModel)]="usuario.password" type="password" class="custom-width" />
-    </div>
-  </div>
+  <mat-form-field class="custom-width">
+    <label>Password:</label>
+    <input matInput [(ngModel)]="usuario.password" type="password" />
+  </mat-form-field>
 
-  <div class="section">
-    <label>E-mail: </label>
-    <div class="input-wrapper">
-      <input [(ngModel)]="usuario.email" type="email" class="custom-width" />
-    </div>
-  </div>
+  <mat-form-field class="custom-width">
+    <label>E-mail:</label>
+    <input matInput [(ngModel)]="usuario.email" type="email" />
+  </mat-form-field>
 
   <!-- Grupos disponíveis -->
   <h2>Lista de Grupos</h2>

@@ -6,48 +6,53 @@
 </mat-toolbar>
 
 <div class="container">
-<h2>Criar Grupo de Permissões</h2>
-<form (ngSubmit)="criarGrupoPermissoes()">
-  <label class="titulo" for="nomeGrupo">Nome do Grupo:</label>
-  <input type="text" id="nomeGrupo" name="nomeGrupo" [(ngModel)]="this.nomeGrupo" required>
+  <h2>Criar Grupo de Permissões</h2>
+  <form (ngSubmit)="criarGrupoPermissoes()">
+    <mat-form-field class="custom-width">
+      <mat-label class="titulo">Nome do Grupo:</mat-label>
+      <input matInput type="text" id="nomeGrupo" name="nomeGrupo" [(ngModel)]="this.nomeGrupo" required>
+    </mat-form-field>
+
 
   <div class="section">
-    <label class="titulo">Colaborador</label>
     <div class="checkbox-group">
-    <mat-checkbox name="visualizaColaborador" [(ngModel)]="this.visualizaColaborador">Visualizar</mat-checkbox>
-    <mat-checkbox name="editaColaborador" [(ngModel)]="this.editaColaborador">Editar</mat-checkbox>
-    <mat-checkbox name="detalheColaborador"[(ngModel)]="this.detalheColaborador">Detalhes</mat-checkbox>
+      <label class="titulo-section">Colaborador</label>
+      <mat-checkbox name="visualizaColaborador" [(ngModel)]="this.visualizaColaborador">Visualizar</mat-checkbox>
+      <mat-checkbox name="editaColaborador" [(ngModel)]="this.editaColaborador">Editar</mat-checkbox>
+      <mat-checkbox name="detalheColaborador" [(ngModel)]="this.detalheColaborador">Detalhes</mat-checkbox>
     </div>
   </div>
 
   <div class="section">
-    <label class="titulo">Empresa</label>
     <div class="checkbox-group">
-    <mat-checkbox name="visualizaEmpresa" [(ngModel)]="this.visualizaEmpresa">Visualizar</mat-checkbox>
-    <mat-checkbox name="editaEmpresa" [(ngModel)]="this.editaEmpresa">Editar</mat-checkbox>
-    <mat-checkbox name="detalheEmpresa" [(ngModel)]="this.detalheEmpresa">Detalhes</mat-checkbox>
+      <label class="titulo-section">Empresa</label>
+      <mat-checkbox name="visualizaEmpresa" [(ngModel)]="this.visualizaEmpresa">Visualizar</mat-checkbox>
+      <mat-checkbox name="editaEmpresa" [(ngModel)]="this.editaEmpresa">Editar</mat-checkbox>
+      <mat-checkbox name="detalheEmpresa" [(ngModel)]="this.detalheEmpresa">Detalhes</mat-checkbox>
     </div>
   </div>
 
   <div class="section">
-    <label class="titulo">Equipamento</label>
     <div class="checkbox-group">
-    <mat-checkbox name="visualizaEquipamento" [(ngModel)]="this.visualizaEquipamento">Visualizar</mat-checkbox>
-    <mat-checkbox name="editaEquipamento" [(ngModel)]="this.editaEquipamento">Editar</mat-checkbox>
-    <mat-checkbox name="detalheEquipamento" [(ngModel)]="this.detalheEquipamento">Detalhes</mat-checkbox>
+      <label class="titulo-section">Equipamento</label>
+      <mat-checkbox name="visualizaEquipamento" [(ngModel)]="this.visualizaEquipamento">Visualizar</mat-checkbox>
+      <mat-checkbox name="editaEquipamento" [(ngModel)]="this.editaEquipamento">Editar</mat-checkbox>
+      <mat-checkbox name="detalheEquipamento" [(ngModel)]="this.detalheEquipamento">Detalhes</mat-checkbox>
     </div>
   </div>
 
   <div class="section">
-    <label class="titulo">Tipo de Equipamento</label>
     <div class="checkbox-group">
-    <mat-checkbox name="visualizaTipoEquipamento" [(ngModel)]="this.visualizaTipoEquipamento">Visualizar</mat-checkbox>
-    <mat-checkbox name="editaTipoEquipamento" [(ngModel)]="this.editaTipoEquipamento">Editar</mat-checkbox>
-    <mat-checkbox name="detalheTipoEquipamento" [(ngModel)]="this.detalheTipoEquipamento">Detalhes</mat-checkbox>
+      <label class="titulo-section">Tipo de Equipamento</label>
+      <mat-checkbox name="visualizaTipoEquipamento" [(ngModel)]="this.visualizaTipoEquipamento">Visualizar</mat-checkbox>
+      <mat-checkbox name="editaTipoEquipamento" [(ngModel)]="this.editaTipoEquipamento">Editar</mat-checkbox>
+      <mat-checkbox name="detalheTipoEquipamento" [(ngModel)]="this.detalheTipoEquipamento">Detalhes</mat-checkbox>
     </div>
   </div>
 
+  <div class="button-container">
   <button type="submit">Criar Grupo</button>
+  </div>
 </form>
 
 </div>

@@ -9,9 +9,9 @@ import { UrlService } from '../util/url.service';
 export class UserService {
   private users: any[] = [];
 
-  private apiUrl = `${this.urlService}usuario/`;
-
   constructor(private http: HttpClient, private urlService: UrlService) {}
+
+  private apiUrl = `${this.urlService.apiUrl}usuario/`;
 
   getUsers(): Observable<any[]> {
     return this.http.get<any>(`${this.apiUrl}listar/`);

@@ -9,7 +9,7 @@
 
         <mat-form-field class="example-full-width">
           <label>CPF:</label>
-          <input matInput placeholder="Insira o CPF do colaborador" type="number" id="cpf" name="cpf" [(ngModel)]="colaborador.cpf" required>
+          <input matInput placeholder="Insira o CPF do colaborador" id="cpf" name="cpf" [(ngModel)]="colaborador.cpf" mask="000.000.000-00" required>
         </mat-form-field>
 
           <mat-slide-toggle id="status" name="status" [(ngModel)]="colaborador.status" color="primary"></mat-slide-toggle>

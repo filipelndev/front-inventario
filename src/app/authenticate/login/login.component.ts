@@ -11,6 +11,7 @@ import { NotificationService } from 'src/app/util/notification.service';
 export class LoginComponent implements OnInit{
   username = '';
   password = '';
+  hidePassword = true;
 
   constructor(private authService: AuthService, private router: Router) {}
 

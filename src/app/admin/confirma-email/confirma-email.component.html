@@ -8,10 +8,10 @@
 <div class="container">
   <h2>Confirmação de E-mail</h2>
   <form (ngSubmit)="confirmarEmail()">
-    <div class="form-group">
-      <label for="emailConfirmacao">E-mail de Confirmação:</label>
-      <input type="email" id="emailConfirmacao" name="emailConfirmacao" [(ngModel)]="emailConfirmacao" required>
-    </div>
+      <mat-form-field class="example-full-width">
+        <mat-label>E-mail de Confirmação:</mat-label>
+        <input matInput type="email" id="emailConfirmacao" name="emailConfirmacao" [(ngModel)]="emailConfirmacao" required>
+      </mat-form-field>
 
     <div class="form-group">
       <button type="submit">Confirmar E-mail</button>

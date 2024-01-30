@@ -1,7 +1,7 @@
 .container {
   max-width: 4000px;
   margin: 2% 2%;
-  padding: 2% 350px;
+  padding: 2%;
   padding-bottom: 10%;
   border: 3px solid #01274e;
   border-radius: 8px;
@@ -28,13 +28,8 @@ h2 {
   width: 100%;
 }
 
-input,
-select {
+input{
   width: 100%;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  font-size: 16px;
 }
 
 .checkbox-group {
@@ -49,7 +44,7 @@ select {
 
 button {
   margin-top: 10px;
-  padding: 20px;
+  padding: 2%;
   background-color: #01274e;
   color: #fff;
   border: none;
@@ -92,7 +87,7 @@ button:hover {
 }
 
 .custom-width {
-  width: 200px;
+  width: 100%;
 }
 
 .mat-row.grupo-row.selecionado {
