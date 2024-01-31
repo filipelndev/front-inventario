@@ -11,6 +11,7 @@ import { Empresa } from 'src/app/Models/Empresa';
 import { EquipamentoService } from '../../equipamento.service';
 import { TipoEquipamentoService } from '../../tipo-equipamento.service';
 import { TipoEquipamento } from 'src/app/Models/TipoEquipamento';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-cadastrar-equipamento',
@@ -29,7 +30,8 @@ export class CadastrarEquipamentoComponent implements OnInit{
     private empresaService: EmpresaService,
     private colaboradorService: ColaboradorService,
     private equipamentoService: EquipamentoService,
-    private tipoEquipamentoService: TipoEquipamentoService
+    private tipoEquipamentoService: TipoEquipamentoService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -128,6 +130,10 @@ export class CadastrarEquipamentoComponent implements OnInit{
         }, 4000);
       }
     );
+  }
+
+  onVoltarClick(): void {
+    this.router.navigate(['/dashboard']);
   }
 
 }

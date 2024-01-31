@@ -102,6 +102,9 @@
       <mat-slide-toggle id="status" name="status" [(ngModel)]="equipment.status" color="primary"></mat-slide-toggle>
       <span>{{ equipment.status ? 'Ativo' : 'Inativo' }}</span>
 
-    <button type="submit">Cadastrar</button>
+      <div class="buttonContainer">
+        <button type="submit"><mat-icon>save</mat-icon>Salvar</button>
+        <button class="cancelbutton" (click)="onVoltarClick()"><mat-icon>undo</mat-icon>Voltar</button>
+      </div>
   </form>
 </div>

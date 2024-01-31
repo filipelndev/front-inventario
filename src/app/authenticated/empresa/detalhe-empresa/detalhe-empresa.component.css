@@ -7,7 +7,7 @@
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   background-color: #F2F2F2;
   color: #333;
-  text-align: center;
+  text-align: normal;
 }
 
 .detalhes-empresa {
@@ -47,4 +47,26 @@ span{
 
   font-weight: bold;
   font-size: 20px;
+}
+
+.cancelbutton{
+  width: 30%;
+  background-color: #777777;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  color: #fff;
+  font-size: 18px;
+  padding: 1%;
+  margin-left: 1%;
+  font-size:xx-large;
+}
+
+.cancelbutton:hover{
+  background-color: #97999a;
+}
+
+.buttonContainer{
+  display: flexbox;
+  align-items: flex-start;
 }

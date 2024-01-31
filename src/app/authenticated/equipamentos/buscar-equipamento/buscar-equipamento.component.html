@@ -1,0 +1,20 @@
+<div class="container">
+  <h2>Buscar Equipamento</h2>
+
+  <form (ngSubmit)="buscarEquipamentoPorTag(tagEquipamento)">
+    <mat-form-field class="example-full-width">
+      <label for="tagEquipamento">Tag do Equipamento:</label>
+      <input matInput type="text" id="tagEquipamento" name="tagEquipamento" [(ngModel)]="tagEquipamento" required>
+    </mat-form-field>
+
+    <button mat-raised-button color="primary" type="submit">Buscar</button>
+  </form>
+
+  <!-- Exiba os resultados encontrados -->
+  <div *ngIf="equipamentoEncontrado">
+    <h3>Equipamento Encontrado:</h3>
+    <p>Nome: {{ equipamentoEncontrado.nome }}</p>
+    <p>Modelo: {{ equipamentoEncontrado.modelo }}</p>
+    <!-- Adicione mais informações conforme necessário -->
+  </div>
+</div>

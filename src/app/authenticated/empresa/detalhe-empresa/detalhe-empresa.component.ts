@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Empresa } from 'src/app/Models/Empresa';
 import { Equipamento } from 'src/app/Models/Equipamento';
 import { EmpresaService } from '../../empresa.service';
@@ -14,7 +14,7 @@ export class DetalheEmpresaComponent implements OnInit {
   empresa: Empresa | undefined = { nome: '', cnpj: '', status: false, equipamentos: [] }; // Inicialize equipamentos como um array vazio
   equipamentos: Equipamento[] = [];
 
-  constructor(private route: ActivatedRoute, private empresaService: EmpresaService) {}
+  constructor(private route: ActivatedRoute, private empresaService: EmpresaService, private router: Router) {}
 
   ngOnInit(): void {
     // Subscreve o evento de alteração de parâmetros na rota
@@ -64,5 +64,9 @@ export class DetalheEmpresaComponent implements OnInit {
 
   get cnpjEmpresa(): string | undefined {
     return this.empresa?.cnpj;
+  }
+
+  onCancelarClick(): void {
+    this.router.navigate(['/listar-empresa'])
   }
 }

@@ -54,4 +54,9 @@ export class UsuarioPermissoesComponent implements OnInit {
     // Navegar para a página de edição com o ID do usuário
     this.router.navigate(['/editar-usuario', id]);
   }
+
+  voltarParaUsuarios(): void {
+    // Implemente a navegação de volta para a lista de usuários ou página desejada
+    this.router.navigate(['/dashboard']);
+  }
 }

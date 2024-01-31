@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Empresa } from 'src/app/Models/Empresa';
 import { EmpresaService } from '../../empresa.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-cadastrar-empresa',
@@ -10,7 +11,7 @@ import { EmpresaService } from '../../empresa.service';
 export class CadastrarEmpresaComponent {
   empresa: Empresa = { nome: '', cnpj: '',  status: true };
   mensagemCadastro: string | null = null;
-  constructor(private empresaService: EmpresaService) {}
+  constructor(private empresaService: EmpresaService, private router: Router) {}
 
   onSubmit(): void {
     this.empresaService.cadastrarEmpresa(this.empresa).subscribe(
@@ -30,5 +31,9 @@ export class CadastrarEmpresaComponent {
         }, 4000);
       }
     );
+  }
+
+  onVoltarClick(): void {
+    this.router.navigate(['/dashboard']);
   }
 }

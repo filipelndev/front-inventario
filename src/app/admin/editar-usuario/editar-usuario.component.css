@@ -8,7 +8,7 @@
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   background-color: #F2F2F2;
   color: #333;
-  text-align:center;
+  text-align:normal;
 }
 
 h2 {
@@ -38,16 +38,16 @@ h2 {
   font-weight: bold;
 }
 
-button {
-  margin-top: 10px;
-  padding: 2%;
+.createButton {
+  padding: 1% 2%;
+  margin: 1% 0;
   background-color: #01274e;
   color: #fff;
   border: none;
   cursor: pointer;
 }
 
-button:hover {
+.createButton:hover {
   background-color: #005c99;
 }
 

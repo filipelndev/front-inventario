@@ -12,7 +12,10 @@
       <mat-slide-toggle id="status" name="status" [(ngModel)]="tipoEquipamento.status" color="primary"></mat-slide-toggle>
         <span>{{ tipoEquipamento.status ? 'Ativo' : 'Inativo' }}</span>
 
-    <button type="submit">Cadastrar</button>
+        <div class="buttonContainer">
+          <button type="submit"><mat-icon>save</mat-icon>Salvar</button>
+          <button class="cancelbutton" (click)="onVoltarClick()"><mat-icon>undo</mat-icon>Voltar</button>
+        </div>
     <div class="mensagem-cadastro" *ngIf="mensagemCadastro">{{ mensagemCadastro }}</div>
   </form>
 </div>

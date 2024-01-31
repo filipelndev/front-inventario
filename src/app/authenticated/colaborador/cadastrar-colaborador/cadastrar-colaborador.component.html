@@ -16,7 +16,8 @@
           <span>{{ colaborador.status ? 'Ativo' : 'Inativo' }}</span>
 
           <div class="buttonContainer">
-            <button type="submit">Salvar</button>
+            <button type="submit"><mat-icon>save</mat-icon>Salvar</button>
+            <button class="cancelbutton" (click)="onVoltarClick()"><mat-icon>undo</mat-icon>Voltar</button>
           </div>
       </form>
   </div>

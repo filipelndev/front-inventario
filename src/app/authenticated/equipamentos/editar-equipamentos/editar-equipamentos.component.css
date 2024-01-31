@@ -1,66 +1,76 @@
 .container {
-  max-width: 6000px;
-  margin: 1%;
-  padding: 5%;
+  max-width: 8000px;
+  margin: 2%;
+  padding: 2%;
   border: 3px solid #005c99;
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   background-color: #F2F2F2;
   color: #333;
   overflow-y: auto; /* Adiciona barra de rolagem vertical quando necessário */
-  max-height: 100vh; /* Define a altura máxima em 100% da altura da tela */
+  max-height: 90vh; /* Define a altura máxima em 90% da altura da tela */
+}
+
+h2 {
+  color: #01274e;
+  font-size: 25px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items:normal;
+}
+
+label {
+  font-size: 25px;
+  color: #333;
+  margin-bottom: 8px;
 }
 
 .example-full-width {
   width: 100%;
 }
 
-h2 {
-  color: #01274e;
-  font-size: 25px;
-  margin-bottom: 20px;
-}
-
-form {
-  display: flex;
-  flex-direction: column;
-  align-items: normal;
-}
-
-label {
-  font-size: 18px;
-  color: #333;
-  margin-bottom: 8px;
-}
-
 button {
-  width: 15%;
-  padding: 15px;
+  width: 30%;
+  padding: 1%;
   background-color: #01274e;
   color: #fff;
   border: none;
   border-radius: 5px;
   cursor: pointer;
   font-size: 18px;
+  font-size:xx-large;
+}
+
+.cancelbutton{
+  width: 30%;
+  background-color: #777777;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 18px;
+  padding: 1%;
+  margin-left: 1%;
+  font-size:xx-large;
+}
+
+.cancelbutton:hover{
+  background-color: #97999a;
 }
 
 button:hover {
   background-color: #005c99;
 }
 
-.cancelbutton{
-  width: 15%;
-  background-color: #777777;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 18px;
-  padding: 15px;
-  margin-left: 1%;
+mat-slide-toggle {
+  margin-top: 2%;
+  margin-bottom: 2%;
 }
 
-.cancelbutton:hover{
-  background-color: #97999a;
+span{
+  margin-bottom: 6%;
 }
 
 .buttonContainer{
@@ -105,3 +115,10 @@ button:hover {
   --mdc-switch-unselected-icon-color: #fff;
 }
 
+mat-icon {
+  text-align: center;
+  width: 30px;
+  height: 28px;
+  margin-right: 3%;
+  font-size:xx-large;
+}

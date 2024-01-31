@@ -9,6 +9,7 @@ import { BuscaNomesService } from 'src/app/util/busca-nomes.service';
 import { Colaborador } from 'src/app/Models/Colaborador';
 import { Empresa } from 'src/app/Models/Empresa';
 import { Observable, of } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-listar-equipamentos',
@@ -19,7 +20,8 @@ export class ListarEquipamentosComponent implements OnInit {
   displayedColumns: string[] = ['tagPatrimonio', 'tipoEquipamento','situacao', 'marca', 'modelo', 'empresa', 'colaborador', 'status', 'editar'];
   dataSource = new MatTableDataSource<Equipamento>([]);
 
-  constructor(private dialog: MatDialog, private equipamentoService: EquipamentoService, private buscaNomesService: BuscaNomesService) {}
+  constructor(private dialog: MatDialog, private equipamentoService: EquipamentoService,
+     private buscaNomesService: BuscaNomesService, private router: Router) {}
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
@@ -33,7 +35,7 @@ export class ListarEquipamentosComponent implements OnInit {
 
   abrirMenuPopup(equipamento: Equipamento): void {
     const dialogRef = this.dialog.open(EditarEquipamentosComponent, {
-      width: '1500px', // Ajuste conforme necessário
+      width: '1000px', // Ajuste conforme necessário
       data: { equipamento }
     });
 
@@ -79,6 +81,15 @@ export class ListarEquipamentosComponent implements OnInit {
       default:
         return 'Desconhecido';
     }
+  }
+
+   buscarEquipamento(): void {
+    this.router.navigate(['/buscar-equipamento']);
+  }
+
+  voltarParaUsuarios(): void {
+    // Implemente a navegação de volta para a lista de usuários ou página desejada
+    this.router.navigate(['/dashboard']);
   }
 
 }

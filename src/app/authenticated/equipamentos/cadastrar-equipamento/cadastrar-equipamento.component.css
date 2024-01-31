@@ -1,15 +1,15 @@
 .container {
   max-width: 8000px;
-  margin: 1% 1% ;
-  padding: 5%;
+  margin: 2%;
+  padding: 2%;
+  margin-bottom: 5%;
+  padding-bottom: 5%;
   border: 3px solid #005c99;
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   background-color: #F2F2F2;
   color: #333;
   text-align: center;
-  overflow-y: auto; /* Adiciona barra de rolagem vertical quando necessário */
-  max-height: 100vh; /* Define a altura máxima em 100% da altura da tela */
 }
 
 .example-full-width {
@@ -30,34 +30,54 @@ form {
 label {
   font-size: 18px;
   color: #333;
-  margin-bottom: 8px;
+  margin-bottom: 3px;
 }
 
 input, select {
-  margin-bottom: 15px;
   border: groove;
   border-radius: 5px;
-  font-size: 16px;
+  font-size: xx-large;
   align-self: center;
+  padding: 0;
+  margin: 0;
 }
 
 button {
-  width: 15%;
-  padding: 3%;
+  width: 30%;
+  padding: 1%;
   background-color: #01274e;
   color: #fff;
   border: none;
   border-radius: 5px;
   cursor: pointer;
   font-size: 18px;
+  font-size: xx-large;
+  text-align: center;
 }
 
 button:hover {
   background-color: #005c99;
 }
 
+.cancelbutton{
+  width: 30%;
+  background-color: #777777;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 18px;
+  padding: 1%;
+  margin-left: 1%;
+  font-size: xx-large;
+  text-align: center;
+}
+
+.cancelbutton:hover{
+  background-color: #97999a;
+}
+
 mat-slide-toggle{
-  margin-top: 5px;
+  margin-top: 3px;
   align-self: flex-start;
 }
 
@@ -69,7 +89,9 @@ span{
 .buttonContainer{
   display: flex;
   align-items:start;
+  text-align: center;
 }
+
 .mat-mdc-slide-toggle.mat-primary {
   --mdc-switch-selected-focus-state-layer-color: #01274e;
   --mdc-switch-selected-handle-color: #01274e;

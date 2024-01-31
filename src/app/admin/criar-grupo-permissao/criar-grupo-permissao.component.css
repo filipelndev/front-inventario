@@ -1,8 +1,9 @@
 .container {
   max-width: 4000px;
-  margin: 1%;
-  padding: 1%;
-  padding-bottom: 10%;
+  margin: 3%;
+  padding: 3%;
+  padding-bottom: 6%;
+  margin-bottom: 6%;
   border: 3px solid #01274e;
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -38,15 +39,16 @@ mat-checkbox {
   text-align: left;
 }
 
-button {
-  padding: 2%;
+.createButton {
+  padding: 1% 2%;
+  margin: 1% 0;
   background-color: #01274e;
   color: #fff;
   border: none;
   cursor: pointer;
 }
 
-button:hover {
+.createButton:hover {
   background-color: #005c99;
 }
 

@@ -15,9 +15,9 @@
     <mat-slide-toggle id="status" name="status" [(ngModel)]="data.empresa.status" color="primary"></mat-slide-toggle>
      <span>{{ data.empresa.status ? 'Ativo' : 'Inativo' }}</span>
 
-    <div class="buttonContainer">
-      <button type="submit">Salvar</button>
-      <button class="cancelbutton" (click)="onCancelarClick()">cancelar</button>
+     <div class="buttonContainer">
+      <button type="submit"><mat-icon>save</mat-icon>Salvar</button>
+      <button class="cancelbutton" (click)="onCancelarClick()"><mat-icon>cancel</mat-icon>Cancelar</button>
     </div>
   </form>
 </div>

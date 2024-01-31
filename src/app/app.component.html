@@ -14,7 +14,7 @@
 
   <mat-menu #menu="matMenu">
     <label class="permission-label" >
-       Permissão: Sem permissões
+      Permissão: {{ this.authService.userPermission }}
     </label>
     <button mat-menu-item routerLink="/confirmar-email">Alterar Senha</button>
     <button mat-menu-item routerLink="/usuario-permissoes">Permissões</button>
@@ -25,7 +25,6 @@
 <mat-sidenav-container class="sidenav-container">
   <mat-sidenav #sidenav mode="side" opened="true" class="sidenav">
     <!-- Conteúdo da navbar -->
-    <mat-divider></mat-divider>
           <mat-expansion-panel>
           <mat-expansion-panel-header>
             <mat-panel-title>
@@ -36,8 +35,6 @@
           <a mat-list-item [routerLink]="['/dashboard']">Ver Dashboard</a>
         </div>
         </mat-expansion-panel>
-
-        <mat-divider></mat-divider>
 
         <mat-expansion-panel>
           <mat-expansion-panel-header>
@@ -51,8 +48,6 @@
           </div>
         </mat-expansion-panel>
 
-        <mat-divider></mat-divider>
-
         <mat-expansion-panel>
           <mat-expansion-panel-header>
             <mat-panel-title>
@@ -64,8 +59,6 @@
             <a mat-list-item [routerLink]="['/listar-empresa']">Listar</a>
           </div>
         </mat-expansion-panel>
-
-        <mat-divider></mat-divider>
 
         <mat-expansion-panel>
           <mat-expansion-panel-header>
@@ -79,8 +72,6 @@
           </div>
         </mat-expansion-panel>
 
-        <mat-divider></mat-divider>
-
         <mat-expansion-panel>
           <mat-expansion-panel-header>
             <mat-panel-title>
@@ -92,8 +83,6 @@
             <a mat-list-item [routerLink]="['/listar-tipo-equipamento']">Listar</a>
           </div>
         </mat-expansion-panel>
-
-        <mat-divider></mat-divider>
 
   </mat-sidenav>
 

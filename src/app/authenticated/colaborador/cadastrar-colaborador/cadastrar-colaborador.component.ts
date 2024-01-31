@@ -1,6 +1,7 @@
 import { Component, DebugElement } from '@angular/core';
 import { Colaborador } from 'src/app/Models/Colaborador';
 import { ColaboradorService } from '../../colaborador.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-cadastrar-colaborador',
@@ -9,7 +10,7 @@ import { ColaboradorService } from '../../colaborador.service';
 })
 export class CadastrarColaboradorComponent {
 
-  constructor(private colaboradorService: ColaboradorService) {}
+  constructor(private colaboradorService: ColaboradorService, private router: Router) {}
 
   colaborador: Colaborador = { nome: '', cpf: '', status: true };
   mensagemCadastro: string | null = null;
@@ -41,5 +42,8 @@ export class CadastrarColaboradorComponent {
     this.colaborador.status = !this.colaborador.status;
   }
 
+  onVoltarClick(): void {
+    this.router.navigate(['/dashboard']);
+  }
 
 }

@@ -38,21 +38,41 @@ input{
   border-radius: 5px;
   font-size: 16px;
   align-self: center;
+  font-size: xx-large;
 }
 
 button {
   width: 30%;
-  padding: 3%;
+  padding: 1%;
   background-color: #01274e;
   color: #fff;
   border: none;
   border-radius: 5px;
   cursor: pointer;
   font-size: 18px;
+  font-size: xx-large;
+  text-align: center;
 }
 
 button:hover {
   background-color: #005c99;
+}
+
+.cancelbutton{
+  width: 30%;
+  background-color: #777777;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 18px;
+  padding: 1%;
+  margin-left: 1%;
+  font-size: xx-large;
+  text-align: center;
+}
+
+.cancelbutton:hover{
+  background-color: #97999a;
 }
 
 mat-slide-toggle{
@@ -68,6 +88,7 @@ span{
 .buttonContainer{
   display: flex;
   align-items:start;
+  text-align: center;
 }
 .mat-mdc-slide-toggle.mat-primary {
   --mdc-switch-selected-focus-state-layer-color: #01274e;
@@ -104,4 +125,12 @@ span{
   --mdc-switch-disabled-selected-icon-color: #fff;
   --mdc-switch-disabled-unselected-icon-color: #fff;
   --mdc-switch-unselected-icon-color: #fff;
+}
+
+mat-icon {
+  text-align: center;
+  width: 30px;
+  height: 28px;
+  margin-right: 3%;
+  font-size:xx-large;
 }

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { TipoEquipamento } from 'src/app/Models/TipoEquipamento';
 import { TipoEquipamentoService } from '../../tipo-equipamento.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-cadastrar-tipo-equipamento',
@@ -12,7 +13,8 @@ export class CadastrarTipoEquipamentoComponent {
   tipoEquipamento: TipoEquipamento = { tipo: '', status: true };
   mensagemCadastro: string | null = null;
 
-  constructor(private tipoEquipamentoService: TipoEquipamentoService) {}  // Injete o serviço no construtor
+  constructor(private tipoEquipamentoService: TipoEquipamentoService,
+    private router: Router) {}  // Injete o serviço no construtor
 
   onSubmit(): void {
     // Chama o serviço para cadastrar o tipo de equipamento
@@ -33,5 +35,9 @@ export class CadastrarTipoEquipamentoComponent {
         }, 4000);
       }
     );
+  }
+
+  onVoltarClick(): void {
+    this.router.navigate(['/dashboard']);
   }
 }

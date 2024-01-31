@@ -6,6 +6,7 @@ import { EquipamentoService } from '../equipamento.service';
 import { Empresa } from 'src/app/Models/Empresa';
 import { Colaborador } from 'src/app/Models/Colaborador';
 import { Equipamento } from 'src/app/Models/Equipamento';
+import { UserService } from 'src/app/admin/user.service';
 
 @Component({
   selector: 'app-home',
@@ -35,14 +36,14 @@ export class HomeComponent implements OnInit {
   constructor(
     private empresaService: EmpresaService,
     private colaboradorService: ColaboradorService,
-    private equipamentoService: EquipamentoService
+    private equipamentoService: EquipamentoService,
+    private userService: UserService,
   ) {}
 
   ngOnInit(): void {
     this.getDadosEmpresas();
     this.getDadosColaboradores();
     this.getDadosEquipamentos();
-
   }
 
   ngAfterViewInit(): void {
@@ -198,7 +199,6 @@ export class HomeComponent implements OnInit {
   createStatusPorEmpresaChart(ctx: CanvasRenderingContext2D, labels: string[], data: any[]): void {
     if (this.statusPorEmpresaChart) {
       if (ctx) {
-        console.log('Contexto do gráfico:', ctx);
 
         const barChart = new Chart(ctx, {
           type: 'bar',

@@ -21,22 +21,20 @@ label {
   display: block;
 }
 
-button {
-  margin-top: 2%;
-  padding: 1%;
-  background-color: #01274e;
-  color: #fff;
-  font-size: larger;
-  border: none;
-  cursor: pointer;
-  margin-right: 5px;
-}
-
 .example-full-width{
   width: 100%;
 }
 
-button:hover {
+.createButton {
+  padding: 1% 2%;
+  margin: 1% 0;
+  background-color: #01274e;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+
+.createButton:hover {
   background-color: #005c99;
 }
 

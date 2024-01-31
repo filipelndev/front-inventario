@@ -1,8 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Equipamento } from '../Models/Equipamento';
-import { Observable } from 'rxjs';
 import { UrlService } from '../util/url.service';
+import { Observable, of } from 'rxjs';
+import { catchError, map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -41,4 +42,13 @@ export class EquipamentoService {
     const url = `${this.apiUrl}${id}/`;
     return this.http.get(url);
   }
+
+  buscarEquipamentoPorTag(tag: string): Observable<Equipamento | undefined> {
+    const url = `${this.apiUrl}`; // Endpoint para buscar todos os equipamentos
+    return this.http.get<Equipamento[]>(url).pipe(
+      map((equipamentos: Equipamento[]) => equipamentos.find(equipamento => equipamento.tag_patrimonio === tag)),
+      catchError(() => of(undefined)) // Retorna Observable<undefined> em caso de erro
+    );
+  }
+
 }

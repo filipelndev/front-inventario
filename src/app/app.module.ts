@@ -55,6 +55,7 @@ import { ConfirmaEmailComponent } from './admin/confirma-email/confirma-email.co
 import { AdicionarEquipamentoComponent } from './authenticated/empresa/adicionar-equipamento/adicionar-equipamento.component';
 import { UrlService } from './util/url.service';
 import { NgxMaskModule } from 'ngx-mask-2';
+import { BuscarEquipamentoComponent } from './authenticated/equipamentos/buscar-equipamento/buscar-equipamento.component';
 
 
 @NgModule({
@@ -83,6 +84,7 @@ import { NgxMaskModule } from 'ngx-mask-2';
     CriarGrupoPermissaoComponent,
     ConfirmaEmailComponent,
     AdicionarEquipamentoComponent,
+    BuscarEquipamentoComponent,
   ],
   imports: [
     BrowserModule,

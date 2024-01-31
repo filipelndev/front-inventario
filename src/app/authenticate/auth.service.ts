@@ -6,6 +6,7 @@ import { JwtHelperService } from '@auth0/angular-jwt';
 import { throwError } from 'rxjs';
 import { Router } from '@angular/router';
 import { UrlService } from '../util/url.service';
+import { UserService } from '../admin/user.service';
 
 @Injectable({
   providedIn: 'root',
@@ -16,11 +17,13 @@ export class AuthService {
   private tokenKey = 'auth_token';
   private refreshkey = 'auth_refresh';
 
+  public userPermission: string = 'Sem permissões';
+
   // Expor um Observable que outros componentes podem assinar
   isAuthenticated$: Observable<boolean> = this.isAuthenticatedSubject.asObservable();
 
   constructor(private http: HttpClient, private jwtHelper: JwtHelperService, private router: Router,
-    private urlService: UrlService) {}
+    private urlService: UrlService, private userService: UserService) {}
 
   // Método para verificar o status de autenticação
   isAuthenticated(): boolean {
@@ -44,6 +47,7 @@ export class AuthService {
         if (response.access) {
           this.setToken(response.access);
           this.isAuthenticatedSubject.next(true);
+          this.DefinePermissão();
         }
         if(response.refresh)
         {
@@ -104,6 +108,26 @@ export class AuthService {
   public removeToken(): void {
     localStorage.removeItem('access_token');
     localStorage.removeItem('refresh_token');
+  }
+
+  DefinePermissão() {
+    const token = localStorage.getItem('access_token');
+    if (token != null) {
+      const userId = this.userService.getUserIdFromToken();
+      if(userId != null)
+      {
+        this.userService.getUserById(userId).subscribe(
+          (user) => {
+            // Atualizar a permissão com base nas informações do usuário
+            this.userPermission = user.is_admin ? 'Administrador' : 'Usuário';
+          },
+          (error) => {
+            console.error('Erro ao obter informações do usuário:', error);
+          }
+        );
+      }
+
+    }
   }
 
 }

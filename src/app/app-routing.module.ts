@@ -18,6 +18,7 @@ import { CriarGrupoPermissaoComponent } from './admin/criar-grupo-permissao/cria
 import { CadastrarUsuarioComponent } from './admin/cadastrar-usuario/cadastrar-usuario.component';
 import { EditarUsuarioComponent } from './admin/editar-usuario/editar-usuario.component';
 import { ConfirmaEmailComponent } from './admin/confirma-email/confirma-email.component';
+import { BuscarEquipamentoComponent } from './authenticated/equipamentos/buscar-equipamento/buscar-equipamento.component';
 
 
 const routes: Routes = [
@@ -30,6 +31,7 @@ const routes: Routes = [
   { path: 'listar-empresa', component: ListarEmpresaComponent, canActivate: [AuthGuard] },
   { path: 'cadastrar-equipamento', component: CadastrarEquipamentoComponent, canActivate: [AuthGuard] },
   { path: 'listar-equipamento', component: ListarEquipamentosComponent, canActivate: [AuthGuard] },
+  { path: 'buscar-equipamento', component: BuscarEquipamentoComponent, canActivate: [AuthGuard] },
   { path: 'detalhes-empresa/:id', component: DetalheEmpresaComponent, canActivate: [AuthGuard] },
   { path: 'cadastrar-tipo-equipamento', component: CadastrarTipoEquipamentoComponent, canActivate: [AuthGuard] },
   { path: 'listar-tipo-equipamento', component: ListarTipoEquipamentoComponent, canActivate: [AuthGuard] },

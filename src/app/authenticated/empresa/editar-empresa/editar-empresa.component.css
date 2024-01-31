@@ -1,6 +1,6 @@
 .container {
   max-width: 6000px;
-  margin: 2% 2% auto;
+  margin: 2%;
   padding: 2%;
   border: 3px solid #005c99;
   border-radius: 8px;
@@ -33,25 +33,28 @@ label {
 }
 
 button {
-  width: 15%;
-  padding: 15px;
+  width: 30%;
+  padding: 1%;
   background-color: #01274e;
   color: #fff;
   border: none;
   border-radius: 5px;
   cursor: pointer;
   font-size: 18px;
+  font-size:xx-large;
 }
 
 .cancelbutton{
-  width: 15%;
+  width: 30%;
   background-color: #777777;
   border: none;
   border-radius: 5px;
+  color: #fff;
   cursor: pointer;
   font-size: 18px;
-  padding: 15px;
+  padding: 1%;
   margin-left: 1%;
+  font-size:xx-large;
 }
 
 .cancelbutton:hover{
@@ -106,5 +109,13 @@ span{
   --mdc-switch-disabled-selected-icon-color: #fff;
   --mdc-switch-disabled-unselected-icon-color: #fff;
   --mdc-switch-unselected-icon-color: #fff;
+}
+
+mat-icon {
+  text-align: center;
+  width: 30px;
+  height: 28px;
+  margin-right: 3%;
+  font-size:xx-large;
 }
 

@@ -1,5 +1,5 @@
 <div class="container">
-  <h2>Cadastrar Colaborador</h2>
+  <h2>Editar Colaborador</h2>
 
   <form (ngSubmit)="onSubmit()" #colaboradorForm="ngForm">
       <mat-form-field class="example-full-width">
@@ -20,7 +20,7 @@
 
   </form>
   <div class="buttonContainer">
-  <button type="submit">Salvar</button>
-  <button class="cancelbutton" (click)="onCancelarClick()">Cancelar</button>
+  <button type="submit"><mat-icon>save</mat-icon>Salvar</button>
+  <button class="cancelbutton" (click)="onCancelarClick()"><mat-icon>cancel</mat-icon>Cancelar</button>
 </div>
 </div>

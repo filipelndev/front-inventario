@@ -1,8 +1,8 @@
 .container {
   max-width: 4000px;
-  margin: 3% 3%;
+  margin: 3%;
   padding: 2%;
-  padding-bottom: 30%;
+  padding-bottom: 2%;
   border: 3px solid #01274e;
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
