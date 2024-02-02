@@ -6,6 +6,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { EditarColaboradorComponent } from '../editar-colaborador/editar-colaborador.component';
 import { ColaboradorService } from '../../colaborador.service';
 import { Observable } from 'rxjs/internal/Observable';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-listar-colaborador',
@@ -18,7 +19,9 @@ export class ListarColaboradorComponent implements OnInit {
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
-  constructor(private dialog: MatDialog, private colaboradorService: ColaboradorService) {}
+  constructor(private dialog: MatDialog,
+    private colaboradorService: ColaboradorService,
+    private router: Router) {}
 
   ngOnInit() {
     this.colaboradorService.getColaboradores().subscribe(
@@ -67,5 +70,10 @@ export class ListarColaboradorComponent implements OnInit {
       console.error('ID do colaborador é indefinido. Não é possível alterar o status.');
       // Adicione aqui a lógica para lidar com o caso em que o ID é indefinido
     }
+  }
+
+  voltarParaUsuarios(): void {
+    // Implemente a navegação de volta para a lista de usuários ou página desejada
+    this.router.navigate(['/dashboard']);
   }
 }

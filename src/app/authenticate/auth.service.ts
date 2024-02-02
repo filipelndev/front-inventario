@@ -74,7 +74,7 @@ export class AuthService {
         console.error('Erro ao realizar refresh token:', error);
         this.setAuthenticated(false);
         this.logout();
-        this.router.navigate(['/fazer-login']);
+        this.router.navigate(['']);
         return throwError(error);
       })
     );
@@ -126,8 +126,6 @@ export class AuthService {
           }
         );
       }
-
     }
   }
-
 }

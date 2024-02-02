@@ -134,3 +134,7 @@ mat-icon {
 .cancelbutton:hover{
   background-color: #97999a;
 }
+
+.mensagem-cadastro{
+  text-align: left;
+}

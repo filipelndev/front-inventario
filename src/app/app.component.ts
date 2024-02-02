@@ -45,6 +45,6 @@ ngOnInit(): void {
   logoff(): void {
     localStorage.removeItem('access_token');
     localStorage.removeItem('refresh_token');
-    this.router.navigate(['fazer-login']);
+    this.router.navigate(['']);
   }
 }

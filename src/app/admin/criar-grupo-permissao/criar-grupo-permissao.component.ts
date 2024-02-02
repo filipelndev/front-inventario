@@ -10,6 +10,17 @@ import { PermissaoService } from '../permissao.service';
 export class CriarGrupoPermissaoComponent {
   nomeGrupo: string = '';
 
+  selecionarTodosVisualizar: boolean = false;
+  selecionarTodosEditar: boolean = false;
+  selecionarTodosDetalhes: boolean = false;
+
+  selecionarTodosColaborador: boolean = false;
+  selecionarTodosEmpresa: boolean = false;
+  selecionarTodosEquipamento: boolean = false;
+  selecionarTodosTipoEquipamento: boolean = false;
+
+  selecionarTodos: boolean = false;
+
   visualizaColaborador: boolean = false;
   editaColaborador: boolean = false;
   detalheColaborador: boolean = false;
@@ -65,5 +76,92 @@ export class CriarGrupoPermissaoComponent {
 
   voltarParaUsuarios() {
     this.router.navigate(['/usuario-permissoes']);
+  }
+
+  toggleSelecionarTodosVisualizar(): void {
+    this.visualizaColaborador = this.selecionarTodosVisualizar;
+    this.visualizaEmpresa = this.selecionarTodosVisualizar;
+    this.visualizaEquipamento = this.selecionarTodosVisualizar;
+    this.visualizaTipoEquipamento = this.selecionarTodosVisualizar;
+  }
+
+  toggleSelecionarTodoseditar(): void {
+    this.editaColaborador = this.selecionarTodosEditar;
+    this.editaEmpresa = this.selecionarTodosEditar;
+    this.editaEquipamento = this.selecionarTodosEditar;
+    this.editaTipoEquipamento = this.selecionarTodosEditar;
+  }
+  toggleSelecionarTodosDetalhe(): void {
+    this.detalheColaborador = this.selecionarTodosDetalhes;
+    this.detalheEmpresa = this.selecionarTodosDetalhes;
+    this.detalheEquipamento = this.selecionarTodosDetalhes;
+    this.detalheTipoEquipamento = this.selecionarTodosDetalhes;
+  }
+
+  toogleSelecionarTodosColaborador(): void {
+    this.visualizaColaborador = this.selecionarTodosColaborador;
+    this.editaColaborador = this.selecionarTodosColaborador;
+    this.detalheColaborador = this.selecionarTodosColaborador;
+  }
+
+  toogleSelecionarTodosEmpresa(): void {
+    this.visualizaEmpresa = this.selecionarTodosEmpresa;
+    this.editaEmpresa = this.selecionarTodosEmpresa;
+    this.detalheEmpresa = this.selecionarTodosEmpresa;
+  }
+
+  toogleSelecionarTodosEquipamento(): void {
+    this.visualizaEquipamento = this.selecionarTodosEquipamento;
+    this.editaEquipamento = this.selecionarTodosEquipamento;
+    this.detalheEquipamento = this.selecionarTodosEquipamento;
+  }
+
+  toogleSelecionarTodosTipoEquipamento(): void {
+    this.visualizaTipoEquipamento = this.selecionarTodosTipoEquipamento;
+    this.editaTipoEquipamento = this.selecionarTodosTipoEquipamento;
+    this.detalheTipoEquipamento = this.selecionarTodosTipoEquipamento;
+  }
+
+  toogleSelecionarTodos(): void {
+    this.selecionarTodosVisualizar = this.selecionarTodos;
+    this.selecionarTodosEditar = this.selecionarTodos;
+    this.selecionarTodosDetalhes = this.selecionarTodos;
+    this.selecionarTodosColaborador = this.selecionarTodos;
+    this.selecionarTodosEmpresa = this.selecionarTodos;
+    this.selecionarTodosEquipamento = this.selecionarTodos;
+    this.selecionarTodosTipoEquipamento = this.selecionarTodos;
+    this.toggleSelecionarTodosVisualizar();
+    this.toggleSelecionarTodoseditar();
+    this.toggleSelecionarTodosDetalhe();
+  }
+
+  SelecionarTodosVisualizar(coluna: string): void {
+    switch (coluna) {
+      case 'visualizaColaborador':
+        this.visualizaColaborador = this.selecionarTodosVisualizar;
+        // Adicione lógica semelhante para outras colunas se necessário
+        break;
+      // Adicione outros casos conforme necessário
+    }
+  }
+
+  SelecionarTodosEditar(coluna: string): void {
+    switch (coluna) {
+      case 'visualizaColaborador':
+        this.editaColaborador = this.selecionarTodosEditar;
+        // Adicione lógica semelhante para outras colunas se necessário
+        break;
+      // Adicione outros casos conforme necessário
+    }
+  }
+
+  SelecionarTodosDetalhes(coluna: string): void {
+    switch (coluna) {
+      case 'visualizaColaborador':
+        this.detalheColaborador = this.selecionarTodosDetalhes;
+        // Adicione lógica semelhante para outras colunas se necessário
+        break;
+      // Adicione outros casos conforme necessário
+    }
   }
 }

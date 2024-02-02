@@ -5,6 +5,7 @@ import { Empresa } from 'src/app/Models/Empresa';
 import { MatDialog } from '@angular/material/dialog';
 import { EditarEmpresaComponent } from '../editar-empresa/editar-empresa.component';
 import { EmpresaService } from '../../empresa.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-listar-empresa',
@@ -17,7 +18,9 @@ export class ListarEmpresaComponent implements OnInit {
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
-  constructor(private dialog: MatDialog, private empresaService: EmpresaService) {}
+  constructor(private dialog: MatDialog,
+    private empresaService: EmpresaService,
+    private router: Router) {}
 
   ngOnInit() {
     this.empresaService.getEmpresas().subscribe(
@@ -66,6 +69,11 @@ export class ListarEmpresaComponent implements OnInit {
       console.error('ID do colaborador é indefinido. Não é possível alterar o status.');
       // Adicione aqui a lógica para lidar com o caso em que o ID é indefinido
     }
+  }
+
+  voltarParaUsuarios(): void {
+    // Implemente a navegação de volta para a lista de usuários ou página desejada
+    this.router.navigate(['/dashboard']);
   }
 
 }

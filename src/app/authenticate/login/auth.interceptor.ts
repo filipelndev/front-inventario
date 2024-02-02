@@ -44,7 +44,7 @@ export class AuthInterceptor implements HttpInterceptor {
       // Aqui você pode redirecionar para a página de login, exibir um modal de login, ou realizar outra ação específica para lidar com o erro 401.
       console.log('Erro 401: Não autorizado. Redirecionando para a página de login...');
       // Exemplo: redirecionar para a página de login
-      this.router.navigate(['/fazer-login']);
+      this.router.navigate(['']);
     }
 
     // Propagar o erro para que outros observadores também possam lidar com ele

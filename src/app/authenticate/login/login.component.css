@@ -1,7 +1,7 @@
 .login-container {
     width: 30%;
-    margin: 1% 1%;
-    padding: 8% 35%;
+    height: 72%;
+    padding: 7% 35%;
     background-color: #F2F2F2;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -59,3 +59,6 @@
     background-color: #005c99;
   }
 
+  .mensagem-cadastro{
+    text-align: center;
+  }

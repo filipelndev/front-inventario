@@ -2,7 +2,6 @@
   <button class="backButton" mat-icon-button (click)="voltarParaUsuarios()">
     <mat-icon>arrow_back</mat-icon>
   </button>
-  <span>Voltar</span>
 </mat-toolbar>
 
 <div class="container">
@@ -13,40 +12,59 @@
       <input matInput type="text" id="nomeGrupo" name="nomeGrupo" [(ngModel)]="this.nomeGrupo" required>
     </mat-form-field>
 
+    <div class="section">
+      <div class="checkbox-group">
+        <div class="checkbox-title">
+          <label class="titulo-section"></label>
+        </div>
+        <mat-checkbox name="selecionarTodosVisualizar" [(ngModel)]="selecionarTodosVisualizar" (change)="toggleSelecionarTodosVisualizar()">Selecionar Todos</mat-checkbox>
+        <mat-checkbox name="selecionarTodosEditar" [(ngModel)]="selecionarTodosEditar" (change)="toggleSelecionarTodoseditar()">Selecionar Todos</mat-checkbox>
+        <mat-checkbox name="selecionarTodosDetalhes" [(ngModel)]="selecionarTodosDetalhes" (change)="toggleSelecionarTodosDetalhe()">Selecionar Todos</mat-checkbox>
+        <mat-checkbox name="selecionarTodosDetalhes" [(ngModel)]="selecionarTodos" (change)="toogleSelecionarTodos()">Selecionar Todos</mat-checkbox>
+      </div>
+    </div>
 
   <div class="section">
     <div class="checkbox-group">
-      <label class="titulo-section">Colaborador</label>
+      <div class="checkbox-title">
+      <label class="titulo-section">Colaborador</label></div>
       <mat-checkbox name="visualizaColaborador" [(ngModel)]="this.visualizaColaborador">Visualizar</mat-checkbox>
       <mat-checkbox name="editaColaborador" [(ngModel)]="this.editaColaborador">Editar</mat-checkbox>
       <mat-checkbox name="detalheColaborador" [(ngModel)]="this.detalheColaborador">Detalhes</mat-checkbox>
+      <mat-checkbox name="selecionaTodosColaborador" [(ngModel)]="this.selecionarTodosColaborador" (change)="toogleSelecionarTodosColaborador()">Selecionar todos</mat-checkbox>
     </div>
   </div>
 
   <div class="section">
-    <div class="checkbox-group">
-      <label class="titulo-section">Empresa</label>
+      <div class="checkbox-group">
+        <div class="checkbox-title">
+          <label class="titulo-section">Empresa</label></div>
       <mat-checkbox name="visualizaEmpresa" [(ngModel)]="this.visualizaEmpresa">Visualizar</mat-checkbox>
       <mat-checkbox name="editaEmpresa" [(ngModel)]="this.editaEmpresa">Editar</mat-checkbox>
       <mat-checkbox name="detalheEmpresa" [(ngModel)]="this.detalheEmpresa">Detalhes</mat-checkbox>
+      <mat-checkbox name="selecionaTodosEmpresa" [(ngModel)]="this.selecionarTodosEmpresa" (change)="toogleSelecionarTodosEmpresa()">Selecionar todos</mat-checkbox>
     </div>
   </div>
 
   <div class="section">
-    <div class="checkbox-group">
-      <label class="titulo-section">Equipamento</label>
+      <div class="checkbox-group">
+        <div class="checkbox-title">
+          <label class="titulo-section">Equipamento</label></div>
       <mat-checkbox name="visualizaEquipamento" [(ngModel)]="this.visualizaEquipamento">Visualizar</mat-checkbox>
       <mat-checkbox name="editaEquipamento" [(ngModel)]="this.editaEquipamento">Editar</mat-checkbox>
       <mat-checkbox name="detalheEquipamento" [(ngModel)]="this.detalheEquipamento">Detalhes</mat-checkbox>
+      <mat-checkbox name="selecionaTodosEquipamento" [(ngModel)]="this.selecionarTodosEquipamento" (change)="toogleSelecionarTodosEquipamento()">Selecionar todos</mat-checkbox>
     </div>
   </div>
 
   <div class="section">
-    <div class="checkbox-group">
-      <label class="titulo-section">Tipo de Equipamento</label>
+      <div class="checkbox-group">
+        <div class="checkbox-title">
+          <label class="titulo-section">Tipo de Equipamento</label></div>
       <mat-checkbox name="visualizaTipoEquipamento" [(ngModel)]="this.visualizaTipoEquipamento">Visualizar</mat-checkbox>
       <mat-checkbox name="editaTipoEquipamento" [(ngModel)]="this.editaTipoEquipamento">Editar</mat-checkbox>
       <mat-checkbox name="detalheTipoEquipamento" [(ngModel)]="this.detalheTipoEquipamento">Detalhes</mat-checkbox>
+      <mat-checkbox name="selecionaTodosTipoEquipamento" [(ngModel)]="this.selecionarTodosTipoEquipamento" (change)="toogleSelecionarTodosTipoEquipamento()">Selecionar todos</mat-checkbox>
     </div>
   </div>
 

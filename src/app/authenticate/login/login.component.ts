@@ -13,6 +13,8 @@ export class LoginComponent implements OnInit{
   password = '';
   hidePassword = true;
 
+  mensagemCadastro: string | null = null;
+
   constructor(private authService: AuthService, private router: Router) {}
 
   ngOnInit(): void {
@@ -33,11 +35,19 @@ export class LoginComponent implements OnInit{
   login(): void {
     this.authService.login(this.username, this.password).subscribe(
       () => {
-        this.router.navigate(['/dashboard']);
+        this.mensagemCadastro = 'Login realizado com sucesso!'
+          setTimeout(() => {
+            this.mensagemCadastro = null;
+          }, 4000);
+          this.router.navigate(['/dashboard']);
       },
       (error) => {
         // Tratar erros de login aqui, se necessário
         console.error('Erro de login:', error);
+        this.mensagemCadastro = 'Usuário ou senha inválidos'
+          setTimeout(() => {
+            this.mensagemCadastro = null;
+          }, 4000);
       }
     );
   }

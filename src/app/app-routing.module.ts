@@ -22,8 +22,7 @@ import { BuscarEquipamentoComponent } from './authenticated/equipamentos/buscar-
 
 
 const routes: Routes = [
-  { path: '', redirectTo: 'fazer-login', pathMatch: 'full'  },
-  { path: 'fazer-login', component: LoginComponent },
+  { path: '', component: LoginComponent },
   { path: 'dashboard', component: HomeComponent, canActivate: [AuthGuard] },
   { path: 'cadastrar-colaborador', component: CadastrarColaboradorComponent, canActivate: [AuthGuard] },
   { path: 'listar-colaborador', component: ListarColaboradorComponent, canActivate: [AuthGuard] },

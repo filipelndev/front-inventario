@@ -113,7 +113,7 @@ export class HomeComponent implements OnInit {
 
     // Criar rótulos fixos para cada fatia
     const labelsWithValues = data.map((value, index) => {
-      const percentage = ((value / total) * 100).toFixed(1);
+      const percentage = total === 0 ? 0 : ((value / total) * 100).toFixed(1);
       return `${labels[index]}: ${value} (${percentage}%)`;
     });
 
@@ -193,8 +193,6 @@ export class HomeComponent implements OnInit {
     }
   });
 }
-
-
 
   createStatusPorEmpresaChart(ctx: CanvasRenderingContext2D, labels: string[], data: any[]): void {
     if (this.statusPorEmpresaChart) {

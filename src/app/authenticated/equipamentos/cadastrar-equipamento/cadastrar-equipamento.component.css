@@ -128,3 +128,7 @@ span{
   --mdc-switch-disabled-unselected-icon-color: #fff;
   --mdc-switch-unselected-icon-color: #fff;
 }
+
+.mensagem-cadastro{
+  text-align: left;
+}
