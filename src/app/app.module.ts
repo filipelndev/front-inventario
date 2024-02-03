@@ -25,7 +25,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatInputModule } from '@angular/material/input';
 import { MatDatepickerModule } from '@angular/material/datepicker';
-import { MatNativeDateModule } from '@angular/material/core';
+import { MAT_DATE_LOCALE, MatNativeDateModule } from '@angular/material/core';
 
 import { CadastrarColaboradorComponent } from './authenticated/colaborador/cadastrar-colaborador/cadastrar-colaborador.component';
 import { ListarColaboradorComponent } from './authenticated/colaborador/listar-colaborador/listar-colaborador.component';
@@ -56,7 +56,7 @@ import { AdicionarEquipamentoComponent } from './authenticated/empresa/adicionar
 import { UrlService } from './util/url.service';
 import { NgxMaskModule } from 'ngx-mask-2';
 import { BuscarEquipamentoComponent } from './authenticated/equipamentos/buscar-equipamento/buscar-equipamento.component';
-
+import { DatePipe } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -126,6 +126,8 @@ import { BuscarEquipamentoComponent } from './authenticated/equipamentos/buscar-
       multi: true, // Permite que existam vários interceptors
     },
     UrlService,
+    { provide: MAT_DATE_LOCALE, useValue: 'pt-BR' },
+    DatePipe,
   ],
   bootstrap: [AppComponent]
 })

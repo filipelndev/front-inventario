@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpInterceptor, HttpRequest, HttpHandler, HttpEvent, HttpResponse, HttpErrorResponse } from '@angular/common/http';
+import { HttpInterceptor, HttpRequest, HttpHandler, HttpEvent, HttpResponse, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 import { AuthService } from '../auth.service';
@@ -29,7 +29,6 @@ export class AuthInterceptor implements HttpInterceptor {
         Authorization: `Bearer ${token}`,
       },
     });
-
     return this.handleRequest(authRequest, next);
   }
 

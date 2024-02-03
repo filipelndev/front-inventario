@@ -12,12 +12,14 @@ import { EquipamentoService } from '../../equipamento.service';
 import { TipoEquipamentoService } from '../../tipo-equipamento.service';
 import { TipoEquipamento } from 'src/app/Models/TipoEquipamento';
 import { Router } from '@angular/router';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-cadastrar-equipamento',
   templateUrl: './cadastrar-equipamento.component.html',
-  styleUrls: ['./cadastrar-equipamento.component.css']
+  styleUrls: ['./cadastrar-equipamento.component.css'],
 })
+
 export class CadastrarEquipamentoComponent implements OnInit{
   empresas: Empresa[] = [];
   colaboradores: Colaborador[] = [];
@@ -31,7 +33,8 @@ export class CadastrarEquipamentoComponent implements OnInit{
     private colaboradorService: ColaboradorService,
     private equipamentoService: EquipamentoService,
     private tipoEquipamentoService: TipoEquipamentoService,
-    private router: Router
+    private router: Router,
+    private datePipe: DatePipe
   ) {}
 
   ngOnInit(): void {
@@ -78,14 +81,14 @@ export class CadastrarEquipamentoComponent implements OnInit{
 
   onSubmit() {
     // Lógica para salvar o equipamento
-    console.log('Equipamento cadastrado:', this.equipment);
+    const dataFormatada = this.formatarData(this.equipment.data_compra);
     // Adicione aqui a lógica para salvar o equipamento no serviço/back-end
     const equipmentToSend: any = {
       tag_patrimonio: this.equipment.tag_patrimonio,
       tipo_equipamento: this.equipment.tipo_equipamento,
       situacao: this.equipment.situacao,
       pedido: this.equipment.pedido,
-      data_compra: this.equipment.data_compra,
+      data_compra: dataFormatada,
       empresa: this.equipment.empresa.id, // Ajuste aqui para enviar apenas o ID da empresa
       colaborador: this.equipment.colaborador.id, // Ajuste aqui para enviar apenas o ID do colaborador
       marca: this.equipment.marca,
@@ -97,6 +100,8 @@ export class CadastrarEquipamentoComponent implements OnInit{
       observacoes: this.equipment.observacoes,
       status: this.equipment.status
     };
+
+    console.log(equipmentToSend.data_compra);
 
     this.equipamentoService.cadastrarEquipamento(equipmentToSend).subscribe(
       response => {
@@ -136,4 +141,7 @@ export class CadastrarEquipamentoComponent implements OnInit{
     this.router.navigate(['/dashboard']);
   }
 
+  formatarData(data: Date): string {
+    return this.datePipe.transform(data, 'YYYY-MM-dd') || '';
+  }
 }

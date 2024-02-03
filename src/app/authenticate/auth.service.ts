@@ -62,13 +62,11 @@ export class AuthService {
     );
   }
 
-  refreshToken(): Observable<any> {
-    const refreshToken = this.getRefresh(); // Obtenha o token de atualização atual
-    return this.http.post<any>(`${this.apiUrl}token/refresh/`, refreshToken).pipe(
+  refreshToken(token: string): Observable<any> {
+    return this.http.post<any>(`${this.apiUrl}token/refresh/`, token).pipe(
       tap((token) => {
         console.log("Chamando o refresh token. Token recebido:", token);
         localStorage.setItem('access_token', token);
-        this.setAuthenticated(true);
       }),
       catchError((error) => {
         console.error('Erro ao realizar refresh token:', error);

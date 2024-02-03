@@ -3,7 +3,7 @@
 
   <form (ngSubmit)="onSubmit()">
     <mat-form-field class="example-full-width">
-      <label for="tagPatrimonio">Tag Patrimônio:</label>
+      <mat-label>Tag Patrimônio</mat-label>
       <input matInput type="text" id="tagPatrimonio" name="tagPatrimonio" [(ngModel)]="equipment.tag_patrimonio" required>
     </mat-form-field>
 
@@ -31,30 +31,29 @@
 </mat-form-field>
 
 <mat-form-field class="example-full-width">
-  <label for="pedidoNFE">Pedido / NFE:</label>
+  <mat-label>Pedido/NFE</mat-label>
   <input matInput type="text" id="pedidoNFE" name="pedidoNFE" [(ngModel)]="equipment.pedido" required>
 </mat-form-field>
 
-      <mat-form-field>
-        <mat-label>Choose a date</mat-label>
-        <input matInput [matDatepicker]="picker" id="dataCompra" name="dataCompra" [(ngModel)]="equipment.data_compra">
-        <mat-hint>MM/DD/YYYY</mat-hint>
-        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-        <mat-datepicker #picker></mat-datepicker>
-      </mat-form-field>
+<mat-form-field>
+  <mat-label>Data da compra</mat-label>
+  <input matInput [matDatepicker]="picker" id="dataCompra" name="dataCompra" [(ngModel)]="equipment.data_compra">
+  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+  <mat-datepicker #picker></mat-datepicker>
+</mat-form-field>
 
       <mat-form-field class="example-full-width">
   <mat-label>Empresa:</mat-label>
   <mat-select id="empresa" name="empresa" [(ngModel)]="equipment.empresa" required>
-    <mat-option  disabled selected hidden>Selecione a Empresa</mat-option>
-    <mat-option *ngFor="let empresa of empresas" [value]="equipment.empresa">{{ empresa.nome }}</mat-option>
+    <mat-option  disabled selected>Selecione a Empresa</mat-option>
+    <mat-option *ngFor="let empresa of empresas" [value]="empresa">{{ empresa.nome }}</mat-option>
   </mat-select>
 </mat-form-field>
 
 <mat-form-field class="example-full-width">
-  <label for="colaborador">Colaborador:</label>
+  <mat-label>Colaborador:</mat-label>
   <mat-select id="colaborador" name="colaborador" [(ngModel)]="equipment.colaborador" required>
-    <mat-option  disabled selected hidden>Selecione o colaborador</mat-option>
+    <mat-option  disabled selected>Selecione o colaborador</mat-option>
     <mat-option *ngFor="let colaborador of colaboradores" [value]="colaborador">{{ colaborador.nome }}</mat-option>
   </mat-select>
 </mat-form-field>
@@ -79,23 +78,23 @@
 
       <ng-container *ngIf="this.tem_acesso_remoto">
         <mat-form-field class="example-full-width">
-          <label for="idAcessoRemoto">Acesso Remoto:</label>
-          <input matInput type="text" id="idAcessoRemoto" name="idAcessoRemoto" [(ngModel)]="equipment.acesso_remoto">
+          <mat-label>Acesso Remoto</mat-label>
+          <input matInput type="text" id="AcessoRemoto" name="AcessoRemoto" [(ngModel)]="equipment.acesso_remoto">
         </mat-form-field>
 
         <mat-form-field class="example-full-width">
-          <label for="idAcessoRemoto">ID Acesso Remoto:</label>
+          <mat-label>ID do acesso remoto</mat-label>
           <input matInput type="text" id="idAcessoRemoto" name="idAcessoRemoto" [(ngModel)]="equipment.acesso_id">
         </mat-form-field>
 
         <mat-form-field class="example-full-width">
-          <label for="senhaAcesso">Senha Acesso:</label>
+          <mat-label>Senha do acesso remoto</mat-label>
           <input matInput type="text" id="senhaAcesso" name="senhaAcesso" [(ngModel)]="equipment.acesso_senha">
         </mat-form-field>
       </ng-container>
 
       <mat-form-field class="example-full-width">
-        <label for="observacoes">Observações:</label>
+        <mat-label>Observações</mat-label>
         <textarea matInput id="observacoes" name="observacoes" [(ngModel)]="equipment.observacoes" class="fixed-textarea"></textarea>
       </mat-form-field>
 
