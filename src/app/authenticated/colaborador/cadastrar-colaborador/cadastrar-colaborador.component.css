@@ -138,3 +138,8 @@ mat-icon {
 .mensagem-cadastro{
   text-align: left;
 }
+
+
+.custom-snackbar{
+  background-color: #e80707;
+}

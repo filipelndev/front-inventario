@@ -7,6 +7,7 @@ import { Empresa } from 'src/app/Models/Empresa';
 import { Colaborador } from 'src/app/Models/Colaborador';
 import { Equipamento } from 'src/app/Models/Equipamento';
 import { UserService } from 'src/app/admin/user.service';
+import { AuthService } from 'src/app/authenticate/auth.service';
 
 @Component({
   selector: 'app-home',
@@ -38,12 +39,14 @@ export class HomeComponent implements OnInit {
     private colaboradorService: ColaboradorService,
     private equipamentoService: EquipamentoService,
     private userService: UserService,
+    private authService: AuthService
   ) {}
 
   ngOnInit(): void {
     this.getDadosEmpresas();
     this.getDadosColaboradores();
     this.getDadosEquipamentos();
+    this.authService.DefinePermissão();
   }
 
   ngAfterViewInit(): void {

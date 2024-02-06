@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { PermissaoService } from '../permissao.service';
 import { UserService } from '../user.service';
 import { PermissaoUsuario } from 'src/app/Models/PermissaoUsuario';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-permissoes',
@@ -17,8 +18,8 @@ export class PermissoesComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private permissaoService: PermissaoService, // Alterado de grupoService para permissaoService
-    private userService: UserService // Alterado de usuarioService para userService
+    private permissaoService: PermissaoService,
+    private snackBar: MatSnackBar
   ) {}
 
   ngOnInit() {
@@ -66,10 +67,21 @@ export class PermissoesComponent implements OnInit {
         .subscribe(
           resposta => {
             console.log('Permissões salvas com sucesso:', resposta);
-            // Você pode redirecionar para outra página ou fazer algo mais aqui
+            const errorMessage = "Permissões salvas com sucesso!."
+              this.snackBar.open(errorMessage, '', {
+                duration: 3000,
+                horizontalPosition: 'right',
+                verticalPosition: 'bottom',
+              });
           },
           erro => {
             console.error('Erro ao salvar permissões:', erro);
+            const errorMessage = "Erro ao salvar permissões, verifique se há permissões selecionadas."
+            this.snackBar.open(errorMessage, '', {
+              duration: 3000,
+              horizontalPosition: 'right',
+              verticalPosition: 'bottom',
+            });
           }
         );
     }

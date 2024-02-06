@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { UserService } from '../user.service';
 import { PermissaoService } from '../permissao.service';
 import { PermissaoUsuario } from 'src/app/Models/PermissaoUsuario';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 interface GrupoResponse {
   count: number;
@@ -26,7 +27,7 @@ export class EditarUsuarioComponent implements OnInit {
   gruposSelecionados: PermissaoUsuario[] = [];
   hidePassword = true;
 
-  constructor(private route: ActivatedRoute, private userService: UserService, private permissaoService: PermissaoService, private router: Router) {}
+  constructor(private route: ActivatedRoute, private userService: UserService, private permissaoService: PermissaoService, private router: Router, private snackBar: MatSnackBar) {}
 
   ngOnInit(): void {
     // Obter o ID do usuário da rota
@@ -104,11 +105,22 @@ export class EditarUsuarioComponent implements OnInit {
       .subscribe(
         resposta => {
           console.log('Edição salva com sucesso:', resposta);
-          // Adicione a navegação de volta para a lista de usuários ou página desejada
+          const errorMessage = "Usuário atualizado com sucesso!"
+              this.snackBar.open(errorMessage, '', {
+                duration: 3000,
+                horizontalPosition: 'right',
+                verticalPosition: 'bottom',
+              });
           this.router.navigate(['/usuario-permissoes']);
         },
         erro => {
           console.error('Erro ao salvar edição:', erro);
+          const errorMessage = "Erro ao atualizar usuário. Verifique se todos os campos foram preenchidos e tente novamente."
+              this.snackBar.open(errorMessage, '', {
+                duration: 3000,
+                horizontalPosition: 'right',
+                verticalPosition: 'bottom',
+              });
         }
       );
   }

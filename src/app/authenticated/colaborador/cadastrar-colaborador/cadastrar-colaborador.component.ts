@@ -2,6 +2,7 @@ import { Component, DebugElement } from '@angular/core';
 import { Colaborador } from 'src/app/Models/Colaborador';
 import { ColaboradorService } from '../../colaborador.service';
 import { Router } from '@angular/router';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-cadastrar-colaborador',
@@ -10,30 +11,33 @@ import { Router } from '@angular/router';
 })
 export class CadastrarColaboradorComponent {
 
-  constructor(private colaboradorService: ColaboradorService, private router: Router) {}
+  constructor(private colaboradorService: ColaboradorService, private router: Router,
+    private snackBar: MatSnackBar) {}
 
   colaborador: Colaborador = { nome: '', cpf: '', status: true };
   mensagemCadastro: string | null = null;
+  snackbarBackground: string = '';
 
   onSubmit(): void {
-
     this.colaboradorService.cadastrarColaborador(this.colaborador)
       .subscribe(
         response => {
           console.log('Colaborador cadastrado com sucesso!', response);
           this.colaborador = { nome: '', cpf: '', status: true };
-          this.mensagemCadastro = 'Colaborador cadastrado com sucesso!'
-          setTimeout(() => {
-            this.mensagemCadastro = null;
-          }, 4000);
-
+          this.snackBar.open('Colaborador cadastrado com sucesso!', '', {
+            duration: 3000,
+            horizontalPosition: 'right',
+            verticalPosition: 'bottom',
+          });
         },
         error => {
           console.error('Erro ao cadastrar colaborador', error);
-          this.mensagemCadastro = 'Erro ao cadastrar colaborador. Por favor, tente novamente.';
-          setTimeout(() => {
-            this.mensagemCadastro = null;
-          }, 4000);
+          const errorMessage = "Preencha os campos destacados em vermelho."
+          this.snackBar.open(errorMessage, '', {
+            duration: 3000,
+            horizontalPosition: 'right',
+            verticalPosition: 'bottom',
+          });
         }
       );
   }

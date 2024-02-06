@@ -62,21 +62,26 @@ export class AuthService {
     );
   }
 
-  refreshToken(token: string): Observable<any> {
-    return this.http.post<any>(`${this.apiUrl}token/refresh/`, token).pipe(
-      tap((token) => {
-        console.log("Chamando o refresh token. Token recebido:", token);
-        localStorage.setItem('access_token', token);
-      }),
-      catchError((error) => {
-        console.error('Erro ao realizar refresh token:', error);
-        this.setAuthenticated(false);
-        this.logout();
-        this.router.navigate(['']);
-        return throwError(error);
-      })
-    );
+  refreshToken(): Observable<any> {
+    const refreshToken = this.getRefresh();
+    if (refreshToken != null) {
+      return this.http.post<any>(`${this.apiUrl}token/refresh/`, { refresh: refreshToken }).pipe(
+        tap((tokens) => {
+          console.log("Chamando o refresh token. Token recebido:", tokens);
+          localStorage.setItem('access_token', tokens.token);
+          localStorage.setItem('refresh_token', tokens.refresh)
+        }),
+        catchError((error) => {
+          console.error('Erro ao realizar refresh token:', error);
+          this.router.navigate(['']);
+          return throwError(error);
+        })
+      );
+    } else {
+      return throwError('Token de atualização não disponível.');
+    }
   }
+
 
   // Método para realizar o logout
   logout(): void {

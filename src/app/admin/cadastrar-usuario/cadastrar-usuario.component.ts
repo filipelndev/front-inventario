@@ -5,6 +5,7 @@ import { PermissaoService } from '../permissao.service';
 import { PermissaoUsuario } from 'src/app/Models/PermissaoUsuario';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 // Interface para definir a estrutura esperada do objeto 'grupo'
 interface GrupoResponse {
@@ -34,7 +35,8 @@ export class CadastrarUsuarioComponent implements OnInit {
 
   gruposSelecionados: PermissaoUsuario[] = [];
 
-  constructor(private userService: UserService, private permissaoService: PermissaoService, private router: Router) {}
+  constructor(private userService: UserService, private permissaoService: PermissaoService,
+    private router: Router, private snackBar: MatSnackBar) {}
 
   ngOnInit() {
     this.carregarGruposDisponiveis();
@@ -90,15 +92,32 @@ export class CadastrarUsuarioComponent implements OnInit {
           .subscribe(
             response => {
               console.log('Permissões associadas com sucesso:', response);
-              // Você pode redirecionar para outra página ou fazer algo mais aqui
+              const errorMessage = "Usuário cadastrado com sucesso!"
+              this.snackBar.open(errorMessage, '', {
+                duration: 3000,
+                horizontalPosition: 'right',
+                verticalPosition: 'bottom',
+              });
             },
             error => {
               console.error('Erro ao associar permissões:', error);
+              const errorMessage = "Erro ao cadastrar as permissões. Verifique se há permissões marcadas e tente novamente."
+              this.snackBar.open(errorMessage, '', {
+                duration: 3000,
+                horizontalPosition: 'right',
+                verticalPosition: 'bottom',
+              });
             }
           );
       },
       erro => {
         console.error('Erro ao cadastrar usuário:', erro);
+        const errorMessage = "Erro ao cadastrar o usuário. Verifique todos os campos e tente novamente."
+        this.snackBar.open(errorMessage, '', {
+          duration: 3000,
+          horizontalPosition: 'right',
+          verticalPosition: 'bottom',
+        });
       }
     );
   }

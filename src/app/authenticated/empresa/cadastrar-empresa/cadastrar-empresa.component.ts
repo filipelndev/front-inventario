@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Empresa } from 'src/app/Models/Empresa';
 import { EmpresaService } from '../../empresa.service';
 import { Router } from '@angular/router';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-cadastrar-empresa',
@@ -11,24 +12,28 @@ import { Router } from '@angular/router';
 export class CadastrarEmpresaComponent {
   empresa: Empresa = { nome: '', cnpj: '',  status: true };
   mensagemCadastro: string | null = null;
-  constructor(private empresaService: EmpresaService, private router: Router) {}
+  constructor(private empresaService: EmpresaService, private router: Router, private snackBar: MatSnackBar) {}
 
   onSubmit(): void {
     this.empresaService.cadastrarEmpresa(this.empresa).subscribe(
       (response) => {
         console.log('Empresa cadastrada com sucesso!', response);
         this.empresa = { nome: '', cnpj: '', status: true };
-        this.mensagemCadastro = 'Empresa cadastrada com sucesso!'
-        setTimeout(() => {
-          this.mensagemCadastro = null;
-        }, 4000);
+        const errorMessage = "Empresa cadastrada com sucesso!."
+          this.snackBar.open(errorMessage, '', {
+            duration: 3000,
+            horizontalPosition: 'right',
+            verticalPosition: 'bottom',
+          });
       },
       error => {
         console.error('Erro ao cadastrar colaborador', error);
-        this.mensagemCadastro = 'Erro ao cadastrar colaborador. Por favor, tente novamente.';
-        setTimeout(() => {
-          this.mensagemCadastro = null;
-        }, 4000);
+        const errorMessage = "Preencha os campos destacados em vermelho."
+          this.snackBar.open(errorMessage, '', {
+            duration: 3000,
+            horizontalPosition: 'right',
+            verticalPosition: 'bottom',
+          });
       }
     );
   }

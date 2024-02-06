@@ -53,3 +53,14 @@ mat-paginator {
   background-color: #d5d4d4
 }
 
+.custom-width{
+  width: 2%;
+  text-align: center;
+}
+
+.small-custom-width{
+  width: 1%;
+  text-align: center;
+}
+
+

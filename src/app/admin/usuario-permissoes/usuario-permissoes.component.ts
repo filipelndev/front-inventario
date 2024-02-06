@@ -11,12 +11,16 @@ import { Router } from '@angular/router';
 })
 export class UsuarioPermissoesComponent implements OnInit {
   users: any[] = [];
+  isAdmin: boolean = false;
 
-  constructor(private userService: UserService, private dialog: MatDialog, private router: Router) {}
+  constructor(private userService: UserService, private dialog: MatDialog, private router: Router,) {}
 
   ngOnInit(): void {
     this.userService.getUsers().subscribe((users: any) => {
       this.users = users.results;
+      this.userService.isUserAdmin().subscribe((isAdmin) => {
+        this.isAdmin = isAdmin;
+      });
     });
   }
 

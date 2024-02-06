@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpInterceptor, HttpRequest, HttpHandler, HttpEvent, HttpResponse, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
-import { catchError, map } from 'rxjs/operators';
+import { catchError, switchMap } from 'rxjs/operators';
 import { AuthService } from '../auth.service';
 import { Router } from '@angular/router';
 
@@ -29,12 +29,37 @@ export class AuthInterceptor implements HttpInterceptor {
         Authorization: `Bearer ${token}`,
       },
     });
+
     return this.handleRequest(authRequest, next);
   }
 
   private handleRequest(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     return next.handle(request).pipe(
-      catchError((error) => this.handleError(error))
+      catchError((error) => {
+        if (error instanceof HttpErrorResponse && error.status === 401) {
+          // Se o erro for de token expirado, tente renovar o token
+          return this.authService.refreshToken().pipe(
+            switchMap(() => {
+              // Se o refreshToken for bem-sucedido, faça a nova requisição com o novo token
+              const newRequest = request.clone({
+                setHeaders: {
+                  Authorization: `Bearer ${this.authService.getToken()}`,
+                },
+              });
+              return next.handle(newRequest);
+            }),
+            catchError((refreshError) => {
+              // Se houver um erro ao renovar o token, redirecione para a página de login ou faça algo apropriado
+              console.error('Erro ao renovar token:', refreshError);
+              this.router.navigate(['']);
+              return throwError(refreshError);
+            })
+          );
+        } else {
+          // Se não for um erro de token expirado, repasse o erro
+          return throwError(error);
+        }
+      })
     );
   }
 

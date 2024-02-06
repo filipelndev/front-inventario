@@ -3,6 +3,7 @@
 import { Component } from '@angular/core';
 import { UserService } from '../user.service';
 import { Router } from '@angular/router';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-confirma-email',
@@ -19,7 +20,7 @@ export class ConfirmaEmailComponent {
   mensagemErro: string = '';
   mensagemSucesso: string = '';
 
-  constructor(private userService: UserService, private router: Router) {
+  constructor(private userService: UserService, private router: Router, private snackBar: MatSnackBar) {
     // Obter o ID do usuário do token ao inicializar o componente
     this.usuarioId = this.userService.getUserIdFromToken();
   }
@@ -34,19 +35,31 @@ export class ConfirmaEmailComponent {
                 // Solicitar redefinição de senha após a confirmação bem-sucedida
                 this.userService.solicitarRedefinicaoSenha(user.email).subscribe(
                   () => {
-                    this.mostrarMensagemErroOuSucesso = true;
-                    this.mensagemSucesso = 'E-mail confirmado com sucesso. Um e-mail foi enviado para redefinir a senha.';
+                    const errorMessage = "Um email foi enviado para alteração da senha."
+                    this.snackBar.open(errorMessage, '', {
+                      duration: 3000,
+                      horizontalPosition: 'right',
+                      verticalPosition: 'bottom',
+              });
                   },
                   error => {
                     console.error('Erro ao solicitar redefinição de senha:', error);
-                    this.mostrarMensagemErroOuSucesso = true;
-                    this.mensagemErro = 'Erro ao solicitar redefinição de senha. Por favor, tente novamente.';
+                    const errorMessage = "Erro ao solicitar redefinição de senha. Verifique se o email está correto."
+                    this.snackBar.open(errorMessage, '', {
+                      duration: 3000,
+                      horizontalPosition: 'right',
+                      verticalPosition: 'bottom',
+                    });
                   }
                 );
               }
            else {
-            this.mostrarMensagemErroOuSucesso = true;
-            this.mensagemErro = 'E-mail não confere. Por favor, verifique o e-mail e tente novamente.';
+            const errorMessage = "Erro. Email não confere ou está vazio."
+              this.snackBar.open(errorMessage, '', {
+                duration: 3000,
+                horizontalPosition: 'right',
+                verticalPosition: 'bottom',
+              });
           }
         },
         error => {

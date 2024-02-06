@@ -1,21 +1,31 @@
+<mat-toolbar>
+  <button mat-icon-button class="backButton" (click)="VoltarParaLista()">
+    <mat-icon>arrow_back</mat-icon>
+  </button>
+</mat-toolbar>
 <div class="container">
-  <div class="detalhes-empresa">
-    <div class="info-empresa">
-      <h1>{{ nomeEmpresa }}</h1>
-      <p>CNPJ: {{ cnpjEmpresa }}</p>
-    </div>
+  <div class="info-empresa">
+    <h1>{{ nomeEmpresa }}</h1>
+    <p>CNPJ: {{ cnpjEmpresa }}</p>
   </div>
-  <div class="equipamentos-lista">
-    <h3>Equipamentos</h3>
-    <ul>
-      <li *ngFor="let equipamento of equipamentos">
-        <span>Tag: {{ equipamento.tag_patrimonio }}</span>
-        <span>Tipo: {{ equipamento.tipo_equipamento }}</span>
-        <span>Situação: {{ equipamento.situacao }}</span>
-      </li>
-    </ul>
-  </div>
-  <div class="buttonContainer">
-    <button class="cancelbutton" (click)="onCancelarClick()"><mat-icon>undo</mat-icon>voltar</button>
-  </div>
+  <mat-tab-group>
+    <mat-tab label="Equipamentos">
+      <div class="equipamentos-lista">
+        <h3>Equipamentos</h3>
+        <ul>
+          <li *ngFor="let equipamento of equipamentos">
+            <span>Tag: {{ equipamento.tag_patrimonio }}</span>
+            <span>Tipo: {{ equipamento.tipo_equipamento }}</span>
+            <span>Situação: {{ equipamento.situacao }}</span>
+          </li>
+        </ul>
+      </div>
+    </mat-tab>
+    <mat-tab label="Histórico">
+      <div class="historico-empresa">
+        <p>Este é um espaço reservado para exibir o histórico da empresa.</p>
+        <!-- Adicione o conteúdo do histórico da empresa aqui -->
+      </div>
+    </mat-tab>
+  </mat-tab-group>
 </div>

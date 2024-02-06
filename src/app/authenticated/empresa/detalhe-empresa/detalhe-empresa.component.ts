@@ -66,7 +66,8 @@ export class DetalheEmpresaComponent implements OnInit {
     return this.empresa?.cnpj;
   }
 
-  onCancelarClick(): void {
+  VoltarParaLista(): void {
     this.router.navigate(['/listar-empresa'])
   }
+
 }

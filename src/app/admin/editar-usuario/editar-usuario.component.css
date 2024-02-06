@@ -83,11 +83,14 @@ h2 {
 }
 
 .custom-width {
-  width: 30%;
+  width: 10%;
 }
 
 .custom-width-input {
   width: 100%;
+}
+
+.custom-width-id{
 }
 
 input{
@@ -113,4 +116,18 @@ span {
 }
 .backButton:hover{
   background-color: #d5d4d4
+}
+
+.mat-mdc-checkbox.mat-accent {
+  --mdc-checkbox-selected-checkmark-color: #f4efef;
+  --mdc-checkbox-selected-focus-icon-color: #01274e;
+  --mdc-checkbox-selected-hover-icon-color: #01274e;
+  --mdc-checkbox-selected-icon-color: #01274e;
+  --mdc-checkbox-selected-pressed-icon-color: #01274e;
+  --mdc-checkbox-unselected-focus-icon-color: #212121;
+  --mdc-checkbox-unselected-hover-icon-color: #212121;
+  --mdc-checkbox-disabled-selected-icon-color: rgba(0, 0, 0, 0.38);
+  --mdc-checkbox-disabled-unselected-icon-color: rgba(0, 0, 0, 0.38);
+  --mdc-checkbox-unselected-icon-color: rgba(0, 0, 0, 0.54);
+  --mdc-checkbox-unselected-pressed-icon-color: rgba(0, 0, 0, 0.54);
 }

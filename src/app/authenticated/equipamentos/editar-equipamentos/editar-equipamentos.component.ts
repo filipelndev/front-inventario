@@ -8,6 +8,7 @@ import { Empresa } from 'src/app/Models/Empresa';
 import { EquipamentoService } from '../../equipamento.service';
 import { TipoEquipamentoService } from '../../tipo-equipamento.service';
 import { TipoEquipamento } from 'src/app/Models/TipoEquipamento';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-editar-equipamentos',
@@ -21,7 +22,8 @@ export class EditarEquipamentosComponent implements OnInit{
     private equipamentoService: EquipamentoService,
     private tipoEquipamentoService: TipoEquipamentoService,
     public dialogRef: MatDialogRef<EditarEquipamentosComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: { equipamento: Equipamento }
+    @Inject(MAT_DIALOG_DATA) public data: { equipamento: Equipamento },
+    private snackBar: MatSnackBar
   ) {}
 
   empresas: Empresa[] = [];
@@ -69,16 +71,32 @@ export class EditarEquipamentosComponent implements OnInit{
       this.equipamentoService.editarEquipamento(equipamentoId, this.data.equipamento).subscribe(
         (equipamentoAtualizado) => {
           console.log('Equipamento atualizado:', equipamentoAtualizado);
+          const errorMessage = "Equipamento atualizado com sucesso!."
+          this.snackBar.open(errorMessage, '', {
+            duration: 3000,
+            horizontalPosition: 'right',
+            verticalPosition: 'bottom',
+          });
           this.dialogRef.close();
         },
         (erro) => {
           console.error('Erro ao atualizar o equipamento:', erro);
-          // Adicione aqui a lógica para lidar com o erro, se necessário
+          const errorMessage = "Preencha os campos destacados em vermelho."
+          this.snackBar.open(errorMessage, '', {
+            duration: 3000,
+            horizontalPosition: 'right',
+            verticalPosition: 'bottom',
+          });
         }
       );
     } else {
       console.error('ID do equipamento é indefinido. Não é possível atualizar.');
-      // Adicione aqui a lógica para lidar com o caso em que o ID é indefinido
+      const errorMessage = "Erro ao localizar o equipamento. ID não existe ou é indefinido"
+          this.snackBar.open(errorMessage, '', {
+            duration: 3000,
+            horizontalPosition: 'right',
+            verticalPosition: 'bottom',
+          });
     }
   }
 }

@@ -2,6 +2,7 @@ import { Component, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { Empresa } from 'src/app/Models/Empresa';
 import { EmpresaService } from '../../empresa.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-editar-empresa',
@@ -12,7 +13,8 @@ export class EditarEmpresaComponent {
   constructor(
     public dialogRef: MatDialogRef<EditarEmpresaComponent>,
     private empresaService: EmpresaService,
-    @Inject(MAT_DIALOG_DATA) public data: { empresa: Empresa }
+    @Inject(MAT_DIALOG_DATA) public data: { empresa: Empresa },
+    private snackBar: MatSnackBar
   ) {
   }
 
@@ -30,16 +32,32 @@ export class EditarEmpresaComponent {
       this.empresaService.editarEmpresa(this.data.empresa.id, this.data.empresa).subscribe(
         (empresaAtualizada) => {
           console.log('empresa atualizada:', empresaAtualizada);
+          const errorMessage = "Empresa atualizada com sucesso!."
+          this.snackBar.open(errorMessage, '', {
+            duration: 3000,
+            horizontalPosition: 'right',
+            verticalPosition: 'bottom',
+          });
           this.dialogRef.close();
         },
         (erro) => {
           console.error('Erro ao atualizar a empresa:', erro);
-          // Adicione aqui a lógica para lidar com o erro, se necessário
+          const errorMessage = "Preencha os campos destacados em vermelho."
+          this.snackBar.open(errorMessage, '', {
+            duration: 3000,
+            horizontalPosition: 'right',
+            verticalPosition: 'bottom',
+          });
         }
       );
     } else {
       console.error('ID da empresa é indefinido. Não é possível editar.');
-      // Adicione aqui a lógica para lidar com o caso em que o ID é indefinido
+      const errorMessage = "Erro ao encontrar o empresa. ID não existe ou é indefinido."
+          this.snackBar.open(errorMessage, '', {
+            duration: 3000,
+            horizontalPosition: 'right',
+            verticalPosition: 'bottom',
+          });
     }
   }
 

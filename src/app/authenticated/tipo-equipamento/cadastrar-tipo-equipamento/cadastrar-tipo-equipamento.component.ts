@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { TipoEquipamento } from 'src/app/Models/TipoEquipamento';
 import { TipoEquipamentoService } from '../../tipo-equipamento.service';
 import { Router } from '@angular/router';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-cadastrar-tipo-equipamento',
@@ -14,7 +15,7 @@ export class CadastrarTipoEquipamentoComponent {
   mensagemCadastro: string | null = null;
 
   constructor(private tipoEquipamentoService: TipoEquipamentoService,
-    private router: Router) {}  // Injete o serviço no construtor
+    private router: Router, private snackBar: MatSnackBar,) {}  // Injete o serviço no construtor
 
   onSubmit(): void {
     // Chama o serviço para cadastrar o tipo de equipamento
@@ -22,17 +23,21 @@ export class CadastrarTipoEquipamentoComponent {
       (response) => {
         console.log('Tipo de equipamento cadastrado:', response);
         this.tipoEquipamento = { tipo: '', status: true };
-        this.mensagemCadastro = 'Tipo de equipamento cadastrado com sucesso!'
-        setTimeout(() => {
-          this.mensagemCadastro = null;
-        }, 4000);
+        const errorMessage = "Tipo de equipamento cadastrado com sucesso!."
+          this.snackBar.open(errorMessage, '', {
+            duration: 3000,
+            horizontalPosition: 'right',
+            verticalPosition: 'bottom',
+          });
       },
       (error) => {
         console.error('Erro ao cadastrar tipo de equipamento:', error);
-        this.mensagemCadastro = 'Erro ao cadastrar tipo de equipamento. Por favor, tente novamente.';
-        setTimeout(() => {
-          this.mensagemCadastro = null;
-        }, 4000);
+        const errorMessage = "Preencha todos os campos destacados em vermelho."
+          this.snackBar.open(errorMessage, '', {
+            duration: 3000,
+            horizontalPosition: 'right',
+            verticalPosition: 'bottom',
+          });
       }
     );
   }

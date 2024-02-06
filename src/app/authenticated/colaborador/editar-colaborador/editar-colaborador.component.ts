@@ -2,6 +2,7 @@ import { Component, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { Colaborador } from 'src/app/Models/Colaborador';
 import { ColaboradorService } from '../../colaborador.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-editar-colaborador',
@@ -15,7 +16,8 @@ export class EditarColaboradorComponent {
   constructor(
     public dialogRef: MatDialogRef<EditarColaboradorComponent>,
     @Inject(MAT_DIALOG_DATA) public data: { colaborador: Colaborador },
-    private colaboradorService: ColaboradorService
+    private colaboradorService: ColaboradorService,
+    private snackBar: MatSnackBar
   ) {}
 
   onCancelarClick(): void {
@@ -36,16 +38,31 @@ export class EditarColaboradorComponent {
       this.colaboradorService.editarColaborador(this.data.colaborador.id, this.data.colaborador).subscribe(
         (colaboradorAtualizado) => {
           console.log('Colaborador atualizado:', colaboradorAtualizado);
+          this.snackBar.open('Colaborador atualizado com sucesso!', '', {
+            duration: 3000,
+            horizontalPosition: 'right',
+            verticalPosition: 'bottom',
+          });
           this.dialogRef.close();
         },
         (erro) => {
           console.error('Erro ao atualizar o colaborador:', erro);
-          // Adicione aqui a lógica para lidar com o erro, se necessário
+          const errorMessage = "Preencha os campos destacados em vermelho."
+          this.snackBar.open(errorMessage, '', {
+            duration: 3000,
+            horizontalPosition: 'right',
+            verticalPosition: 'bottom',
+          });
         }
       );
     } else {
       console.error('ID do colaborador é indefinido. Não é possível editar.');
-      // Adicione aqui a lógica para lidar com o caso em que o ID é indefinido
+      const errorMessage = "Erro ao encontrar o colaborador. ID não existe ou é indefinido."
+          this.snackBar.open(errorMessage, '', {
+            duration: 3000,
+            horizontalPosition: 'right',
+            verticalPosition: 'bottom',
+          });
     }
   }
 }

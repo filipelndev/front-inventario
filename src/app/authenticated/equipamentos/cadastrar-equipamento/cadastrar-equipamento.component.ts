@@ -13,6 +13,7 @@ import { TipoEquipamentoService } from '../../tipo-equipamento.service';
 import { TipoEquipamento } from 'src/app/Models/TipoEquipamento';
 import { Router } from '@angular/router';
 import { DatePipe } from '@angular/common';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-cadastrar-equipamento',
@@ -34,7 +35,8 @@ export class CadastrarEquipamentoComponent implements OnInit{
     private equipamentoService: EquipamentoService,
     private tipoEquipamentoService: TipoEquipamentoService,
     private router: Router,
-    private datePipe: DatePipe
+    private datePipe: DatePipe,
+    private snackBar: MatSnackBar,
   ) {}
 
   ngOnInit(): void {
@@ -105,7 +107,7 @@ export class CadastrarEquipamentoComponent implements OnInit{
 
     this.equipamentoService.cadastrarEquipamento(equipmentToSend).subscribe(
       response => {
-        console.log('Colaborador cadastrado com sucesso!', response);
+        console.log('equipamento cadastrado com sucesso!', response);
         this.equipment = { tag_patrimonio: '',
         tipo_equipamento: {tipo: 'Escolha um tipo de equipamento abaixo:', status: true},
         situacao: '',
@@ -121,18 +123,22 @@ export class CadastrarEquipamentoComponent implements OnInit{
         acesso_senha: '',
         observacoes: '',
         status: true };
-        this.mensagemCadastro = 'Colaborador cadastrado com sucesso!'
-        setTimeout(() => {
-          this.mensagemCadastro = null;
-        }, 4000);
+        const errorMessage = "Equipamento cadastrado com sucesso!."
+          this.snackBar.open(errorMessage, '', {
+            duration: 3000,
+            horizontalPosition: 'right',
+            verticalPosition: 'bottom',
+          });
 
       },
       error => {
-        console.error('Erro ao cadastrar colaborador', error);
-        this.mensagemCadastro = 'Erro ao cadastrar colaborador. Por favor, tente novamente.';
-        setTimeout(() => {
-          this.mensagemCadastro = null;
-        }, 4000);
+        console.error('Erro ao cadastrar equipamento', error);
+        const errorMessage = "Preencha os campos destacados em vermelho."
+          this.snackBar.open(errorMessage, '', {
+            duration: 3000,
+            horizontalPosition: 'right',
+            verticalPosition: 'bottom',
+          });
       }
     );
   }

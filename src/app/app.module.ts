@@ -26,6 +26,8 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatInputModule } from '@angular/material/input';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MAT_DATE_LOCALE, MatNativeDateModule } from '@angular/material/core';
+import { MatSnackBarModule, MAT_SNACK_BAR_DEFAULT_OPTIONS } from '@angular/material/snack-bar';
+import { MatTabsModule } from '@angular/material/tabs';
 
 import { CadastrarColaboradorComponent } from './authenticated/colaborador/cadastrar-colaborador/cadastrar-colaborador.component';
 import { ListarColaboradorComponent } from './authenticated/colaborador/listar-colaborador/listar-colaborador.component';
@@ -117,6 +119,8 @@ import { DatePipe } from '@angular/common';
     MatDatepickerModule,
     MatNativeDateModule,
     NgxMaskModule.forRoot(),
+    MatSnackBarModule,
+    MatTabsModule
   ],
   providers: [
     ColaboradorService,
@@ -128,6 +132,10 @@ import { DatePipe } from '@angular/common';
     UrlService,
     { provide: MAT_DATE_LOCALE, useValue: 'pt-BR' },
     DatePipe,
+    {
+      provide: MAT_SNACK_BAR_DEFAULT_OPTIONS,
+      useValue: { panelClass: ['custom-snackbar'] },
+    },
   ],
   bootstrap: [AppComponent]
 })

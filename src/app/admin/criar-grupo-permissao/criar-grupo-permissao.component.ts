@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { PermissaoService } from '../permissao.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-criar-grupo-permissao',
@@ -37,7 +38,7 @@ export class CriarGrupoPermissaoComponent {
   editaTipoEquipamento: boolean = false;
   detalheTipoEquipamento: boolean = false;
 
-  constructor(private router: Router, private permissaoService: PermissaoService) {}
+  constructor(private router: Router, private permissaoService: PermissaoService,  private snackBar: MatSnackBar) {}
 
   criarGrupoPermissoes(): void {
 
@@ -64,12 +65,22 @@ export class CriarGrupoPermissaoComponent {
     // Chame o serviço para criar o grupo
     this.permissaoService.createGroup(novoGrupo).subscribe(
       (response) => {
-        // Redirecione para a página de detalhes do grupo ou outra página
+        const errorMessage = "Grupo de permissões cadastrado com sucesso!"
+              this.snackBar.open(errorMessage, '', {
+                duration: 3000,
+                horizontalPosition: 'right',
+                verticalPosition: 'bottom',
+              });
         this.router.navigate(['/usuario-permissoes']);
       },
       (error) => {
         console.error('Erro ao criar o grupo de permissões:', error);
-        // Lide com o erro, exiba uma mensagem, etc.
+        const errorMessage = "Erro ao criar grupo de permissões, verifique se há permissões selecionadas."
+              this.snackBar.open(errorMessage, '', {
+                duration: 3000,
+                horizontalPosition: 'right',
+                verticalPosition: 'bottom',
+              });
       }
     );
   }
