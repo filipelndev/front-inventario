@@ -9,7 +9,7 @@
 
     <mat-form-field class="example-full-width">
       <mat-label>Tipo de Equipamento:</mat-label>
-      <mat-select id="tipoEquipamento" name="tipoEquipamento" [(ngModel)]="equipment.tipo_equipamento" required>
+      <mat-select id="tipoEquipamento" name="tipoEquipamento" [(ngModel)]="equipment.tipo_equipamento_id" required>
         <mat-option disabled selected hidden>Selecione o Tipo</mat-option>
         <mat-option *ngFor="let tipoEquipamentoItem of tipoEquipamento" [value]="tipoEquipamentoItem.id">
           {{ tipoEquipamentoItem.tipo }}
@@ -44,7 +44,7 @@
 
       <mat-form-field class="example-full-width">
   <mat-label>Empresa:</mat-label>
-  <mat-select id="empresa" name="empresa" [(ngModel)]="equipment.empresa" required>
+  <mat-select id="empresa" name="empresa" [(ngModel)]="equipment.empresa_id" required>
     <mat-option  disabled selected>Selecione a Empresa</mat-option>
     <mat-option *ngFor="let empresa of empresas" [value]="empresa">{{ empresa.nome }}</mat-option>
   </mat-select>
@@ -52,7 +52,7 @@
 
 <mat-form-field class="example-full-width">
   <mat-label>Colaborador:</mat-label>
-  <mat-select id="colaborador" name="colaborador" [(ngModel)]="equipment.colaborador" required>
+  <mat-select id="colaborador" name="colaborador" [(ngModel)]="equipment.colaborador_id" required>
     <mat-option  disabled selected>Selecione o colaborador</mat-option>
     <mat-option *ngFor="let colaborador of colaboradores" [value]="colaborador">{{ colaborador.nome }}</mat-option>
   </mat-select>

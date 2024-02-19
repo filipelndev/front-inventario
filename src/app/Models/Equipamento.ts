@@ -5,14 +5,14 @@ import { TipoEquipamento } from "./TipoEquipamento";
 export interface Equipamento {
   id?: number;
   tag_patrimonio: string;
-  tipo_equipamento: TipoEquipamento;
+  tipo_equipamento_id: TipoEquipamento;
   situacao: string;
   pedido: string;
   data_compra: Date;
   data_cadastro?: Date;
   ultima_alteracao?: Date;
-  empresa: Empresa;
-  colaborador: Colaborador;
+  empresa_id: Empresa;
+  colaborador_id: Colaborador;
   marca: string;
   modelo: string;
   especificacoes: string;
@@ -25,6 +25,6 @@ export interface Equipamento {
   empresa_nome?: string;
   colaborador_nome?: string;
   tipo_equipamento_nome?: string;
-  empresa_id?: number;
-  colaborador_id?: number;
+
+
 }

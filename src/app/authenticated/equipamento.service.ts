@@ -14,7 +14,7 @@ export class EquipamentoService {
   constructor(private http: HttpClient, private urlService: UrlService) {}
 
   getEquipamentos(): Observable<Equipamento[]> {
-    const url = `${this.apiUrl}`;
+    const url = `${this.apiUrl}?page_size=10000`;
     return this.http.get<Equipamento[]>(url);
   }
 
@@ -51,4 +51,26 @@ export class EquipamentoService {
     );
   }
 
+  transferirEquipamentoParaEmpresa(equipamentoId: number, empresaDestinoId: number): Observable<any> {
+    const url = `${this.apiUrl}${equipamentoId}/transferencia_empresa/`;
+    const body = { empresa_destino: empresaDestinoId };
+    return this.http.post(url, body);
+  }
+
+  getHistoricoEquipamento(equipamentoId: number): Observable<any> {
+    const url = `${this.apiUrl}${equipamentoId}/historico/`;
+    return this.http.get<any>(url);
+  }
+
+  transferirEquipamentoParaColaborador(equipamentoId: number, colaboradorDestinoId: number): Observable<any> {
+    const url = `${this.apiUrl}${equipamentoId}/transferencia_colaborador/`;
+    const body = { colaborador_destino: colaboradorDestinoId };
+    return this.http.post(url, body);
+  }
+
+  AlterarSituacao(equipamentoId: number, situacaoId: number): Observable<any> {
+    const url = `${this.apiUrl}${equipamentoId}/atualizar_situacao/`;
+    const body = { situacao_nova: situacaoId };
+    return this.http.put(url, body);
+  }
 }

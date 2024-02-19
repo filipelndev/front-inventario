@@ -19,6 +19,12 @@ import { CadastrarUsuarioComponent } from './admin/cadastrar-usuario/cadastrar-u
 import { EditarUsuarioComponent } from './admin/editar-usuario/editar-usuario.component';
 import { ConfirmaEmailComponent } from './admin/confirma-email/confirma-email.component';
 import { BuscarEquipamentoComponent } from './authenticated/equipamentos/buscar-equipamento/buscar-equipamento.component';
+import { DetalheEquipamentoComponent } from './authenticated/equipamentos/detalhe-equipamento/detalhe-equipamento.component';
+import { TransfereEmpresaComponent } from './authenticated/equipamentos/transfere-empresa/transfere-empresa.component';
+import { DetalheTipoEquipamentoComponent } from './authenticated/tipo-equipamento/detalhe-tipo-equipamento/detalhe-tipo-equipamento.component';
+import { DetalheColaboradorComponent } from './authenticated/colaborador/detalhe-colaborador/detalhe-colaborador.component';
+import { TransfereColaboradorComponent } from './authenticated/equipamentos/transfere-colaborador/transfere-colaborador.component';
+import { TransfereSituacaoComponent } from './authenticated/equipamentos/transfere-situacao/transfere-situacao.component';
 
 
 const routes: Routes = [
@@ -40,7 +46,12 @@ const routes: Routes = [
   { path: 'cadastrar-usuario', component: CadastrarUsuarioComponent, canActivate: [AuthGuard] },
   { path: 'editar-usuario/:id', component: EditarUsuarioComponent, canActivate:[AuthGuard] },
   { path: 'confirmar-email', component: ConfirmaEmailComponent, canActivate: [AuthGuard] },
-
+  { path: 'detalhe-equipamento/:id', component: DetalheEquipamentoComponent, canActivate: [AuthGuard] },
+  { path: 'transfere-empresa', component: TransfereEmpresaComponent, canActivate:[AuthGuard] },
+  { path: 'detalhe-tipo-equipamento/:id', component: DetalheTipoEquipamentoComponent, canActivate:[AuthGuard] },
+  { path: 'detalhe-colaborador/:id', component: DetalheColaboradorComponent, canActivate:[AuthGuard] },
+  { path: 'transfere-colaborador', component: TransfereColaboradorComponent, canActivate:[AuthGuard] },
+  { path: 'altera-situacao', component: TransfereSituacaoComponent, canActivate:[AuthGuard] },
 ];
 
 @NgModule({

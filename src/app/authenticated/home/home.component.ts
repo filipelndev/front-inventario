@@ -8,6 +8,8 @@ import { Colaborador } from 'src/app/Models/Colaborador';
 import { Equipamento } from 'src/app/Models/Equipamento';
 import { UserService } from 'src/app/admin/user.service';
 import { AuthService } from 'src/app/authenticate/auth.service';
+import { Observable } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-home',
@@ -39,7 +41,8 @@ export class HomeComponent implements OnInit {
     private colaboradorService: ColaboradorService,
     private equipamentoService: EquipamentoService,
     private userService: UserService,
-    private authService: AuthService
+    private authService: AuthService,
+    private http: HttpClient
   ) {}
 
   ngOnInit(): void {
@@ -75,16 +78,25 @@ export class HomeComponent implements OnInit {
 
   private getDadosColaboradores(): void {
     this.colaboradorService.getColaboradores().subscribe((colaboradores: any) => {
-      if (Array.isArray(colaboradores.results)) {
-        this.colaboradores = colaboradores.results;
-        [this.colaboradoresAtivos, this.colaboradoresInativos] = this.contarStatusAtivosInativos(colaboradores.results);
-        this.createColaboradoresChart();
-      } else {
-        console.error('Dados inválidos para Colaboradores:', colaboradores);
+        // Verifica se os colaboradores retornados são um array
+        if (Array.isArray(colaboradores.results)) {
+          // Atualiza a lista de colaboradores
+          this.colaboradores = colaboradores.results;
+          // Calcula os colaboradores ativos e inativos
+          [this.colaboradoresAtivos, this.colaboradoresInativos] = this.contarStatusAtivosInativos(colaboradores.results);
+          // Cria o gráfico de colaboradores
+          this.createColaboradoresChart();
+        } else {
+          // Exibe um erro se os dados retornados não forem válidos
+          console.error('Dados inválidos para Colaboradores:', colaboradores);
+        }
+      },
+      error => {
+        // Exibe um erro se houver um erro ao obter os colaboradores
+        console.error('Erro ao obter colaboradores:', error);
       }
-    });
-    }
-
+    );
+  }
 
   private getDadosEquipamentos(): void {
     this.equipamentoService.getEquipamentos().subscribe((equipamentos: any) => {

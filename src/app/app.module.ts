@@ -28,6 +28,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MAT_DATE_LOCALE, MatNativeDateModule } from '@angular/material/core';
 import { MatSnackBarModule, MAT_SNACK_BAR_DEFAULT_OPTIONS } from '@angular/material/snack-bar';
 import { MatTabsModule } from '@angular/material/tabs';
+import { MatCardModule } from '@angular/material/card';
 
 import { CadastrarColaboradorComponent } from './authenticated/colaborador/cadastrar-colaborador/cadastrar-colaborador.component';
 import { ListarColaboradorComponent } from './authenticated/colaborador/listar-colaborador/listar-colaborador.component';
@@ -59,6 +60,13 @@ import { UrlService } from './util/url.service';
 import { NgxMaskModule } from 'ngx-mask-2';
 import { BuscarEquipamentoComponent } from './authenticated/equipamentos/buscar-equipamento/buscar-equipamento.component';
 import { DatePipe } from '@angular/common';
+import { DetalheEquipamentoComponent } from './authenticated/equipamentos/detalhe-equipamento/detalhe-equipamento.component';
+import { TransfereEmpresaComponent } from './authenticated/equipamentos/transfere-empresa/transfere-empresa.component';
+import { DetalheTipoEquipamentoComponent } from './authenticated/tipo-equipamento/detalhe-tipo-equipamento/detalhe-tipo-equipamento.component';
+import { DetalheColaboradorComponent } from './authenticated/colaborador/detalhe-colaborador/detalhe-colaborador.component';
+import { TransfereColaboradorComponent } from './authenticated/equipamentos/transfere-colaborador/transfere-colaborador.component';
+import { TransfereSituacaoComponent } from './authenticated/equipamentos/transfere-situacao/transfere-situacao.component';
+
 
 @NgModule({
   declarations: [
@@ -87,6 +95,12 @@ import { DatePipe } from '@angular/common';
     ConfirmaEmailComponent,
     AdicionarEquipamentoComponent,
     BuscarEquipamentoComponent,
+    DetalheEquipamentoComponent,
+    TransfereEmpresaComponent,
+    DetalheTipoEquipamentoComponent,
+    DetalheColaboradorComponent,
+    TransfereColaboradorComponent,
+    TransfereSituacaoComponent,
   ],
   imports: [
     BrowserModule,
@@ -120,7 +134,8 @@ import { DatePipe } from '@angular/common';
     MatNativeDateModule,
     NgxMaskModule.forRoot(),
     MatSnackBarModule,
-    MatTabsModule
+    MatTabsModule,
+    MatCardModule
   ],
   providers: [
     ColaboradorService,

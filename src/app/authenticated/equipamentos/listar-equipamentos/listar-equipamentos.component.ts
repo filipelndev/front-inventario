@@ -68,15 +68,15 @@ export class ListarEquipamentosComponent implements OnInit {
 
   getDescricaoSituacao(situacao: string): string {
     switch (situacao) {
-      case '1':
+      case '0':
         return 'Novo';
-      case '2':
+      case '1':
         return 'Em operação';
-      case '3':
+      case '2':
         return 'Em manutenção';
-      case '4':
+      case '3':
         return 'Disponível';
-      case '5':
+      case '4':
         return 'Indisponível';
       default:
         return 'Desconhecido';
@@ -92,4 +92,31 @@ export class ListarEquipamentosComponent implements OnInit {
     this.router.navigate(['/dashboard']);
   }
 
+  irParaTransferencia(equipamento: any): void {
+    if(equipamento.id != null)
+    {
+      console.log(equipamento.id);
+    var empresaId = equipamento.empresa;
+    console.log(empresaId);
+      // Navega para a tela de transferência, passando o ID da empresa como parâmetro
+    this.router.navigate(['/transfere-empresa'], { queryParams: { empresaId: empresaId } });
+    }
+  }
+
+  irParaTransferenciaDeSituacao(equipamentoId: number): void {
+    // Navegar para a tela de transferência com parâmetros
+    this.router.navigate(['/altera-situacao'], { queryParams: { equipamentoId: equipamentoId } });
+  }
+
+  navegarDetalhesTipoEquipamento(tipoEquipamentoId: number): void {
+    this.router.navigate(['/detalhe-tipo-equipamento', tipoEquipamentoId]);
+  }
+
+  navegarDetalhesColaborador(colaboradorId: number): void {
+    this.router.navigate(['/detalhe-colaborador', colaboradorId]);
+  }
+
+  navegarDetalhesEmpresa(empresaId: number): void {
+    this.router.navigate(['/detalhes-empresa', empresaId]);
+  }
 }

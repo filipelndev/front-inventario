@@ -1,0 +1,44 @@
+<mat-toolbar>
+  <button mat-icon-button class="backButton" (click)="voltarParaDetalhesEquipamento()">
+    <mat-icon>arrow_back</mat-icon>
+  </button>
+</mat-toolbar>
+
+<div class="container">
+  <div class="details">
+    <h2>Alterar Situação do equipamento</h2>
+    <div class="campo">
+      <mat-form-field class="example-full-width">
+        <mat-label>Tag do Equipamento</mat-label>
+        <input matInput [value]="equipamento?.tag_patrimonio" disabled>
+      </mat-form-field>
+    </div>
+    <div class="campo">
+      <mat-form-field class="example-full-width">
+        <mat-label>Tipo de Equipamento</mat-label>
+        <input matInput [value]="equipamento?.tipo_equipamento_tipo" disabled>
+      </mat-form-field>
+    </div>
+    <div class="campo">
+      <mat-form-field class="example-full-width">
+        <mat-label>Situação Atual</mat-label>
+        <input matInput [value]="getDescricaoSituacao(equipamento?.situacao)" disabled>
+      </mat-form-field>
+    </div>
+    <!-- Adicione outros campos do equipamento conforme necessário -->
+
+    <div class="campo">
+      <mat-form-field class="example-full-width">
+        <mat-label>Nova Situação</mat-label>
+        <mat-select [(ngModel)]="novaSituacao" required>
+          <mat-option  disabled selected>Selecione a Situação</mat-option>
+          <mat-option *ngFor="let situacao of situacoes" [value]="situacao">
+            {{ getDescricaoSituacao(situacao) }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+  </div>
+
+  <button class="applybutton" (click)="transferirEquipamento()">Alterar Situação</button>
+</div>

@@ -6,7 +6,8 @@
     <!-- Tipo de Equipamento Column -->
     <ng-container matColumnDef="tipoEquipamento">
       <th mat-header-cell *matHeaderCellDef> Tipo de Equipamento </th>
-      <td mat-cell *matCellDef="let tipoEquipamento"> {{ tipoEquipamento.tipo }} </td>
+      <td mat-cell *matCellDef="let tipoEquipamento">
+        <a href="javascript:void(0)" (click)="navegarDetalhesTipoEquipamento(tipoEquipamento.id)"> {{ tipoEquipamento.tipo }} </a></td>
     </ng-container>
 
     <!-- Status Column -->
@@ -25,4 +26,6 @@
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
   </table>
+  <mat-paginator [pageSizeOptions]="[5, 10]" showFirstLastButtons></mat-paginator>
 </div>
+

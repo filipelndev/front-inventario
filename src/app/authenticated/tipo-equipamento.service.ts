@@ -18,12 +18,22 @@ export class TipoEquipamentoService {
   }
 
   getTipoEquipamento(): Observable<TipoEquipamento[]> {
-    const url = `${this.apiUrl}`;
+    const url = `${this.apiUrl}?page_size=10000`;
     return this.http.get<any>(url);
   }
 
   alterarStatusTipoEquipamento(id: number, novoStatus: boolean): Observable<TipoEquipamento> {
-    const url = `${this.apiUrl}${id}/status/`;
+    const url = `${this.apiUrl}${id}status/`;
     return this.http.patch<TipoEquipamento>(url, { status: novoStatus });
+  }
+
+  obterDetalhesTipoEquipamento(tipoEquipamentoId: number): Observable<any> {
+    const url = `${this.apiUrl}${tipoEquipamentoId}/`;
+    return this.http.get(url);
+  }
+
+  obterEquipamentosDoTipo(tipoEquipamentoId: number): Observable<any> {
+    const url = `${this.apiUrl}${tipoEquipamentoId}/equipamentos/`;
+    return this.http.get<any>(url);
   }
 }

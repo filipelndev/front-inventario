@@ -16,10 +16,10 @@ export class ColaboradorService {
 
   constructor(private http: HttpClient, public urlService: UrlService) {}
 
-    getColaboradores(): Observable<Colaborador[]> {
-      const url = `${this.apiUrl}`;
-      return this.http.get<any>(url);
-    }
+  getColaboradores(): Observable<Colaborador[]> {
+    const url = `${this.apiUrl}`;
+    return this.http.get<Colaborador[]>(`${this.apiUrl}?page_size=10000`);
+  }
 
     getColaboradorPorId(id: number): Observable<Colaborador> {
       const url = `${this.apiUrl}${id}/`;
@@ -40,5 +40,9 @@ export class ColaboradorService {
     const url = `${this.apiUrl}${id}/status/`;
     return this.http.patch<Colaborador>(url, { status: novoStatus });
   }
-}
 
+  getEquipamentosDoColaborador(colaboradorId: number): Observable<any> {
+    const url = `${this.apiUrl}${colaboradorId}/equipamentos/?page_size=10000`;
+    return this.http.get<any>(url);
+  }
+}

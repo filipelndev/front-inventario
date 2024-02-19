@@ -14,6 +14,8 @@ import { TipoEquipamento } from 'src/app/Models/TipoEquipamento';
 import { Router } from '@angular/router';
 import { DatePipe } from '@angular/common';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Observable } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-cadastrar-equipamento',
@@ -37,11 +39,12 @@ export class CadastrarEquipamentoComponent implements OnInit{
     private router: Router,
     private datePipe: DatePipe,
     private snackBar: MatSnackBar,
+    private http: HttpClient
   ) {}
 
   ngOnInit(): void {
     this.carregarEmpresas();
-    this.carregarColaboradores();
+    this.getColaboradores();
     this.carregarTipoEquipamento();
   }
 
@@ -51,11 +54,12 @@ export class CadastrarEquipamentoComponent implements OnInit{
     });
   }
 
-  carregarColaboradores(): void {
+  getColaboradores(): void {
     this.colaboradorService.getColaboradores().subscribe((colaboradores: any) => {
       this.colaboradores = colaboradores.results;
     });
   }
+
 
   carregarTipoEquipamento(): void {
     this.tipoEquipamentoService.getTipoEquipamento().subscribe((tipoEquipamento: any) => {
@@ -65,12 +69,12 @@ export class CadastrarEquipamentoComponent implements OnInit{
 
   equipment: Equipamento = {
     tag_patrimonio: '',
-    tipo_equipamento: {tipo: 'Escolha um tipo de equipamento abaixo:', status: true},
+    tipo_equipamento_id: {tipo: 'Escolha um tipo de equipamento abaixo:', status: true},
     situacao: '',
     pedido: '',
     data_compra: new Date(),
-    empresa: { nome: 'Escolha uma empresa abaixo:', cnpj: '', status: true },
-    colaborador: {nome: 'Escolha um colaborador abaixo:', cpf: '', status: true},
+    empresa_id: { nome: 'Escolha uma empresa abaixo:', cnpj: '', status: true },
+    colaborador_id: {nome: 'Escolha um colaborador abaixo:', cpf: '', status: true},
     marca: '',
     modelo: '',
     especificacoes: '',
@@ -87,12 +91,12 @@ export class CadastrarEquipamentoComponent implements OnInit{
     // Adicione aqui a lógica para salvar o equipamento no serviço/back-end
     const equipmentToSend: any = {
       tag_patrimonio: this.equipment.tag_patrimonio,
-      tipo_equipamento: this.equipment.tipo_equipamento,
+      tipo_equipamento_id: this.equipment.tipo_equipamento_id,
       situacao: this.equipment.situacao,
       pedido: this.equipment.pedido,
       data_compra: dataFormatada,
-      empresa: this.equipment.empresa.id, // Ajuste aqui para enviar apenas o ID da empresa
-      colaborador: this.equipment.colaborador.id, // Ajuste aqui para enviar apenas o ID do colaborador
+      empresa_id: this.equipment.empresa_id.id, // Ajuste aqui para enviar apenas o ID da empresa
+      colaborador_id: this.equipment.colaborador_id.id, // Ajuste aqui para enviar apenas o ID do colaborador
       marca: this.equipment.marca,
       modelo: this.equipment.modelo,
       especificacoes: this.equipment.especificacoes,
@@ -103,18 +107,18 @@ export class CadastrarEquipamentoComponent implements OnInit{
       status: this.equipment.status
     };
 
-    console.log(equipmentToSend.data_compra);
+    console.log(equipmentToSend);
 
     this.equipamentoService.cadastrarEquipamento(equipmentToSend).subscribe(
       response => {
         console.log('equipamento cadastrado com sucesso!', response);
         this.equipment = { tag_patrimonio: '',
-        tipo_equipamento: {tipo: 'Escolha um tipo de equipamento abaixo:', status: true},
+        tipo_equipamento_id: {tipo: 'Escolha um tipo de equipamento abaixo:', status: true},
         situacao: '',
         pedido: '',
         data_compra: new Date(),
-        empresa: { nome: 'Escolha uma empresa abaixo:', cnpj: '', status: true },
-        colaborador: {nome: 'Escolha um colaborador abaixo:', cpf: '', status: true},
+        empresa_id: { nome: 'Escolha uma empresa abaixo:', cnpj: '', status: true },
+        colaborador_id: {nome: 'Escolha um colaborador abaixo:', cpf: '', status: true},
         marca: '',
         modelo: '',
         especificacoes: '',

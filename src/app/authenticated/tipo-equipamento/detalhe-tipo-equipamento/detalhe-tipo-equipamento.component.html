@@ -1,0 +1,88 @@
+<mat-toolbar>
+  <button mat-icon-button class="backButton" (click)="VoltarParaLista()">
+    <mat-icon>arrow_back</mat-icon>
+  </button>
+</mat-toolbar>
+
+<div class="container">
+  <mat-tab-group>
+    <!-- Primeira aba para os detalhes do tipo de equipamento -->
+    <mat-tab label="Detalhes">
+      <ng-template mat-tab-label>
+        <mat-icon>info</mat-icon>
+        <span>Detalhes do Tipo de Equipamento</span>
+      </ng-template>
+
+      <div class="detalhes-tipo-equipamento">
+        <div class="campo">
+          <mat-form-field class="example-full-width">
+            <mat-label>ID</mat-label>
+            <input matInput [value]="tipoEquipamento?.id" disabled>
+          </mat-form-field>
+        </div>
+        <div class="campo">
+          <mat-form-field class="example-full-width">
+            <mat-label>Nome</mat-label>
+            <input matInput [value]="tipoEquipamento?.tipo" disabled>
+          </mat-form-field>
+        </div>
+        <div class="campo">
+          <mat-form-field class="example-full-width">
+            <mat-label>Status</mat-label>
+            <input matInput [value]="tipoEquipamento?.status ? 'Ativo' : 'Inativo'" disabled>
+          </mat-form-field>
+        </div>
+      </div>
+    </mat-tab>
+
+    <mat-tab label="Equipamentos">
+      <ng-template mat-tab-label>
+        <mat-icon>computer</mat-icon>
+        <span>Equipamentos do Mesmo Tipo</span>
+      </ng-template>
+
+  <div class="lista-equipamentos">
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+      <!-- Colunas da tabela -->
+      <ng-container matColumnDef="tagPatrimonio">
+        <th mat-header-cell *matHeaderCellDef> Tag do Patrimônio </th>
+        <td mat-cell *matCellDef="let equipamento">
+          <a [routerLink]="['/detalhe-equipamento', equipamento.id]">{{ equipamento.tag_patrimonio }} </a></td>
+      </ng-container>
+            <ng-container matColumnDef="marca">
+        <th mat-header-cell *matHeaderCellDef> Marca </th>
+        <td mat-cell *matCellDef="let equipamento"> {{ equipamento.marca }} </td>
+      </ng-container>
+      <ng-container matColumnDef="modelo">
+        <th mat-header-cell *matHeaderCellDef> Modelo </th>
+        <td mat-cell *matCellDef="let equipamento"> {{ equipamento.modelo }} </td>
+      </ng-container>
+      <ng-container matColumnDef="situacao">
+        <th mat-header-cell *matHeaderCellDef> Situação </th>
+        <td mat-cell *matCellDef="let equipamento">
+          <a href="javascript:void(0)" (click)="irParaTransferenciaDeSituacao(equipamento.id)"> {{ getDescricaoSituacao(equipamento.situacao) }} </a> </td>
+      </ng-container>
+      <ng-container matColumnDef="empresa">
+        <th mat-header-cell *matHeaderCellDef> Empresa </th>
+        <td mat-cell *matCellDef="let equipamento">
+            <a href="javascript:void(0)" (click)="navegarDetalhesEmpresa(equipamento.empresa_id)">{{ equipamento.empresa_nome }}</a>
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="colaborador">
+        <th mat-header-cell *matHeaderCellDef> Colaborador</th>
+        <td mat-cell *matCellDef="let equipamento">
+          <a href="javascript:void(0)" (click)="navegarDetalhesColaborador(equipamento.colaborador_id)">{{ equipamento.colaborador_nome }}</a>
+        </td>
+      </ng-container>
+      <!-- Adicione outras colunas conforme necessário -->
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+
+    <!-- Paginador para controlar a quantidade de equipamentos exibidos -->
+    <mat-paginator [pageSizeOptions]="[5, 10]" showFirstLastButtons></mat-paginator>
+  </div>
+</mat-tab>
+</mat-tab-group>
+</div>

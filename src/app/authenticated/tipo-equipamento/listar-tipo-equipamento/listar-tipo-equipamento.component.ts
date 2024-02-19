@@ -1,8 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatTableDataSource } from '@angular/material/table';
 import { TipoEquipamento } from 'src/app/Models/TipoEquipamento';
 import { TipoEquipamentoService } from '../../tipo-equipamento.service';
+import { MatPaginator } from '@angular/material/paginator';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-listar-tipo-equipamento',
@@ -14,14 +16,17 @@ export class ListarTipoEquipamentoComponent implements OnInit {
   dataSource = new MatTableDataSource<TipoEquipamento>([]);
 
 
-  constructor(private dialog: MatDialog, private tipoequipamento: TipoEquipamentoService) {}
+  constructor(private dialog: MatDialog,
+    private tipoequipamento: TipoEquipamentoService,
+    private router: Router,) {}
+
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
 
   ngOnInit() {
     this.tipoequipamento.getTipoEquipamento().subscribe(
       (tipoEquipamento: any) => {
         this.dataSource.data = tipoEquipamento.results;
-        console.log('colaboradores', tipoEquipamento);
-        console.log('data', this.dataSource.data);
+        this.dataSource.paginator = this.paginator; // Configura o paginador
       },
       error => {
         console.error('Erro ao obter colaboradores:', error);
@@ -49,5 +54,9 @@ export class ListarTipoEquipamentoComponent implements OnInit {
       console.error('ID do tipo do equipamento é indefinido. Não é possível alterar o status.');
       // Adicione aqui a lógica para lidar com o caso em que o ID é indefinido
     }
+  }
+
+  navegarDetalhesTipoEquipamento(tipoEquipamentoId: number): void {
+    this.router.navigate(['/detalhe-tipo-equipamento', tipoEquipamentoId]);
   }
 }

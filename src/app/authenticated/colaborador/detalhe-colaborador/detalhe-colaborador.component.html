@@ -4,15 +4,15 @@
   </button>
 </mat-toolbar>
 <div class="container">
-  <div class="info-empresa">
-    <h1>{{ nomeEmpresa }}</h1>
-    <p>CNPJ: {{ cnpjEmpresa }}</p>
+  <div class="info-colaborador">
+    <h1>{{ colaborador?.nome }}</h1>
+    <p>CPF: {{ colaborador?.cpf }}</p>
   </div>
   <mat-tab-group>
     <mat-tab label="Equipamentos">
       <ng-template mat-tab-label>
         <mat-icon class="icon">computer</mat-icon>
-        <span class="tabTitle">Equipamentos da empresa</span>
+        <span class="tabTitle">Equipamentos do colaborador</span>
       </ng-template>
       <div>
         <!-- Tabela para listar os equipamentos -->
@@ -21,7 +21,7 @@
           <ng-container matColumnDef="tagPatrimonio">
             <th mat-header-cell *matHeaderCellDef> Tag do Patrimônio </th>
             <td mat-cell *matCellDef="let equipamento">
-              <a [routerLink]="['/detalhe-equipamento', equipamento.id]">{{ equipamento.tag_patrimonio }}</a> </td>
+              <a [routerLink]="['/detalhe-equipamento', equipamento.id]">{{ equipamento.tag_patrimonio }} </a></td>
           </ng-container>
           <ng-container matColumnDef="tipoEquipamento">
             <th mat-header-cell *matHeaderCellDef> Tipo de Equipamento </th>
@@ -42,11 +42,12 @@
           <ng-container matColumnDef="situacao">
             <th mat-header-cell *matHeaderCellDef> Situação </th>
             <td mat-cell *matCellDef="let equipamento">
-              <a href="javascript:void(0)" (click)="irParaTransferenciaDeSituacao(equipamento.id)"> {{ getDescricaoSituacao(equipamento.situacao) }} </a></td>
+              <a href="javascript:void(0)" (click)="irParaTransferenciaDeSituacao(equipamento.id)"> {{ getDescricaoSituacao(equipamento.situacao) }} </a> </td>
           </ng-container>
-          <ng-container matColumnDef="colaborador">
-            <th mat-header-cell *matHeaderCellDef> Colaborador </th>
-            <td mat-cell *matCellDef="let equipamento"><a href="javascript:void(0)" (click)="navegarDetalhesColaborador(equipamento.colaborador_id)" > {{ equipamento.colaborador_nome }}</a></td>
+          <ng-container matColumnDef="empresa">
+            <th mat-header-cell *matHeaderCellDef> Empresa </th>
+            <td mat-cell *matCellDef="let equipamento">
+            <a href="javascript:void(0)" (click)="navegarDetalhesEmpresa(equipamento.empresa_id)"> {{ equipamento.empresa_nome }} </a></td>
           </ng-container>
           <!-- Adicione outras colunas conforme necessário -->
 

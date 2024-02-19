@@ -54,13 +54,18 @@ mat-paginator {
 }
 
 .custom-width{
-  width: 2%;
-  text-align: center;
+  width: 3%;
+  text-align: left;
+}
+
+.custom-width button {
+  margin-left: 5px; /* Ajuste conforme necessário */
 }
 
 .small-custom-width{
   width: 1%;
-  text-align: center;
+  text-align: left;
 }
+
 
 

@@ -1,0 +1,107 @@
+<mat-toolbar>
+  <button mat-icon-button class="backButton" (click)="voltarParaUsuarios()">
+    <mat-icon>arrow_back</mat-icon>
+  </button>
+</mat-toolbar>
+<div class="container">
+<mat-tab-group>
+  <mat-tab label="Detalhes do equipamento">
+    <ng-template mat-tab-label>
+      <mat-icon class="icon">computer</mat-icon>
+      <span>Detalhes do equipamento</span>
+    </ng-template>
+    <div>
+      <!-- Conteúdo dos detalhes do equipamento -->
+      <mat-card class="details">
+        <mat-card-content>
+          <h2>Detalhes do Equipamento</h2>
+          <div class="detalhes-equipamento">
+            <div class="campo">
+              <mat-form-field class="example-full-width">
+                <mat-label>Tag do Equipamento</mat-label>
+                <input matInput [value]="equipamento?.tag_patrimonio" disabled>
+              </mat-form-field>
+            </div>
+            <div class="campo">
+              <mat-form-field class="example-full-width">
+                <mat-label>Tipo de Equipamento</mat-label>
+                <input matInput [value]="equipamento?.tipo_equipamento_tipo" disabled>
+              </mat-form-field>
+            </div>
+            <div class="campo">
+              <mat-form-field class="example-full-width">
+                <mat-label>Marca</mat-label>
+                <input matInput [value]="equipamento?.marca" disabled>
+              </mat-form-field>
+            </div>
+            <div class="campo">
+              <mat-form-field class="example-full-width">
+                <mat-label>Modelo</mat-label>
+                <input matInput [value]="equipamento?.modelo" disabled>
+              </mat-form-field>
+            </div>
+            <div class="campo" (click)="irParaTransferenciaDeSituacao()">
+              <mat-form-field class="example-full-width" (click)="irParaTransferenciaDeSituacao()">
+                <mat-label>Situação</mat-label>
+                <input matInput [value]="getDescricaoSituacao(equipamento?.situacao)" (click)="irParaTransferenciaDeSituacao()">
+              </mat-form-field>
+            </div>
+            <div class="campo" (click)="irParaTransferenciaDeColaborador()">
+              <mat-form-field class="example-full-width" (click)="irParaTransferenciaDeColaborador()">
+                <mat-label>Colaborador</mat-label>
+                <input matInput [value]="equipamento?.colaborador_nome" (click)="irParaTransferenciaDeColaborador()">
+              </mat-form-field>
+            </div>
+            <div class="campo pointer" (click)="irParaTransferenciaDeEmpresa()">
+              <mat-form-field class="example-full-width pointer" (click)="irParaTransferenciaDeEmpresa()">
+                <mat-label>Empresa</mat-label>
+                <input matInput class="pointer" (click)="irParaTransferenciaDeEmpresa()" [value]="equipamento?.empresa_nome">
+              </mat-form-field>
+            </div>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </mat-tab>
+  <mat-tab label="Histórico do equipamento">
+    <ng-template mat-tab-label>
+      <mat-icon class="icon">history</mat-icon>
+      <span>Histórico do equipamento</span>
+    </ng-template>
+    <div>
+      <!-- Conteúdo do histórico do equipamento -->
+      <div *ngIf="historicoColumns.length > 0; else noHistorico">
+        <div class="feed-noticias">
+          <ng-container *ngFor="let transferencia of paginatedHistorico">
+            <div class="noticia">
+              <div class="noticia-header">
+                <span class="data">{{ transferencia.data_transferencia | date: 'dd/MM/yyyy' }}</span>
+                <span *ngIf="transferencia.tipo_transferencia === 'Transferência entre Empresas'" class="usuario">Transferido por: {{ transferencia.usuario_transferencia_empresa_username }}</span>
+                <span *ngIf="transferencia.tipo_transferencia === 'Transferência entre Colaboradores'" class="usuario">Transferido por: {{ transferencia.usuario_transferencia_colaborador_username }}</span>
+                <span *ngIf="transferencia.tipo_transferencia === 'Alteração de Situação'" class="usuario">Alterado por: {{ transferencia.usuario_situacao_equipamento_username }}</span>
+              </div>
+              <div class="noticia-body">
+
+                <ng-container *ngIf="transferencia.tipo_transferencia === 'Transferência entre Empresas'">
+                  Transferido da empresa {{ transferencia.empresa_origem_nome }} para {{ transferencia.empresa_destino_nome }}.
+                </ng-container>
+                <ng-container *ngIf="transferencia.tipo_transferencia === 'Transferência entre Colaboradores'">
+                  Transferido do colaborador {{ transferencia.colaborador_origem_nome }} para o colaborador {{ transferencia.colaborador_destino_nome }}.
+                </ng-container>
+                <ng-container *ngIf="transferencia.tipo_transferencia === 'Alteração de Situação'">
+                  A situação foi alterada de {{getDescricaoSituacao(transferencia.situacao_anterior)}} para {{ getDescricaoSituacao(transferencia.situacao_nova) }}.
+                </ng-container>
+              </div>
+            </div>
+          </ng-container>
+          <mat-paginator [length]="historico.length" [pageSizeOptions]="pageSizeOptions" (page)="onPageChange($event)" (pageSizeChange)="onPageSizeChange($event)" showFirstLastButtons></mat-paginator>
+
+        </div>
+      </div>
+      <ng-template #noHistorico>
+        <p>Não há histórico de transferência disponível para este equipamento.</p>
+      </ng-template>
+    </div>
+  </mat-tab>
+</mat-tab-group>
+</div>

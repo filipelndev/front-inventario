@@ -13,7 +13,7 @@ export class EmpresaService {
   constructor(private http: HttpClient, private urlService: UrlService) {}
 
   getEmpresas(): Observable<Empresa[]> {
-    const url = `${this.apiUrl}`;
+    const url = `${this.apiUrl}?page_size=10000`;
     return this.http.get<any>(url);
   }
 
@@ -38,7 +38,17 @@ export class EmpresaService {
   }
 
   alterarStatusEmpresa(id: number, novoStatus: boolean): Observable<Empresa> {
-    const url = `${this.apiUrl}${id}status/`;
+    const url = `${this.apiUrl}${id}/status/`;
     return this.http.patch<Empresa>(url, { status: novoStatus });
+  }
+
+  getHistoricoTransferencias(id: number): Observable<any> {
+    const url = `${this.apiUrl}${id}/transferencias/?page_size=100000`;
+    return this.http.get<any>(url);
+  }
+
+  getEquipamentosDaEmpresa(idEmpresa: number): Observable<any> {
+    const url = `${this.apiUrl}${idEmpresa}/equipamentos/`;
+    return this.http.get<any>(url);
   }
 }

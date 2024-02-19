@@ -1,0 +1,44 @@
+<mat-toolbar>
+  <button mat-icon-button class="backButton" (click)="voltarParaDetalhesEquipamento()">
+    <mat-icon>arrow_back</mat-icon>
+  </button>
+</mat-toolbar>
+
+<div class="container">
+  <div class="details">
+    <h2>Transferência do Equipamento entre empresas</h2>
+    <div class="campo">
+      <mat-form-field class="example-full-width">
+        <mat-label>Tag do Equipamento</mat-label>
+        <input matInput [value]="equipamento?.tag_patrimonio" disabled>
+      </mat-form-field>
+    </div>
+    <div class="campo">
+      <mat-form-field class="example-full-width">
+        <mat-label>Tipo de Equipamento</mat-label>
+        <input matInput [value]="equipamento?.tipo_equipamento_nome" disabled>
+      </mat-form-field>
+    </div>
+    <div class="campo">
+      <mat-form-field class="example-full-width">
+        <mat-label>Empresa Atual</mat-label>
+        <input matInput [value]="equipamento?.empresa_nome" disabled>
+      </mat-form-field>
+    </div>
+    <!-- Adicione outros campos do equipamento conforme necessário -->
+
+    <div class="campo">
+      <mat-form-field class="example-full-width">
+        <mat-label>Nova Empresa</mat-label>
+        <mat-select [(ngModel)]="empresaSelecionada" required>
+          <mat-option  disabled selected>Selecione a Empresa</mat-option>
+          <mat-option *ngFor="let empresa of empresas" [value]="empresa.id">
+            {{ empresa.nome }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+  </div>
+
+  <button class="applybutton" (click)="transferirEquipamento()">Transferir Equipamento</button>
+</div>

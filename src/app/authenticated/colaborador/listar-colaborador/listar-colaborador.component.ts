@@ -5,7 +5,6 @@ import { Colaborador } from 'src/app/Models/Colaborador';
 import { MatDialog } from '@angular/material/dialog';
 import { EditarColaboradorComponent } from '../editar-colaborador/editar-colaborador.component';
 import { ColaboradorService } from '../../colaborador.service';
-import { Observable } from 'rxjs/internal/Observable';
 import { Router } from '@angular/router';
 
 @Component({
@@ -27,6 +26,7 @@ export class ListarColaboradorComponent implements OnInit {
     this.colaboradorService.getColaboradores().subscribe(
       (colaboradores: any) => {
         this.dataSource.data = colaboradores.results;
+        console.log(colaboradores);
       },
       error => {
         console.error('Erro ao obter colaboradores:', error);

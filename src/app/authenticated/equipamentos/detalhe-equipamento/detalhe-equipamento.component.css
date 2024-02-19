@@ -1,0 +1,71 @@
+.icon{
+  margin-right: 10px;
+}
+
+.container {
+  max-width: 6000px;
+  margin: 3% 3% auto;
+  padding: 2%;
+  border: 3px solid #005c99;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  background-color: #F2F2F2;
+  color: #333;
+  text-align: normal;
+}
+
+.detalhes-equipamento {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.campo {
+  flex: 1;
+  width: 100%;
+}
+
+.details{
+  width: 100%
+}
+
+.input{
+  width: 100%;
+}
+
+.example-full-width {
+  width: 100%;
+}
+
+.pointer{
+  cursor: pointer;
+}
+
+.feed-noticias {
+  padding: 16px;
+}
+
+.noticia {
+  border-bottom: 1px solid #ccc;
+  padding: 12px 0;
+}
+
+.noticia-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.data {
+  font-size: 14px;
+}
+
+.usuario {
+  font-size: 14px;
+}
+
+.noticia-body {
+  font-size: 16px;
+}
+

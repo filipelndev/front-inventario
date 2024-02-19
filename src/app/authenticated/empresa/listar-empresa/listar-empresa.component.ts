@@ -6,6 +6,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { EditarEmpresaComponent } from '../editar-empresa/editar-empresa.component';
 import { EmpresaService } from '../../empresa.service';
 import { Router } from '@angular/router';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-listar-empresa',
@@ -20,7 +21,8 @@ export class ListarEmpresaComponent implements OnInit {
 
   constructor(private dialog: MatDialog,
     private empresaService: EmpresaService,
-    private router: Router) {}
+    private router: Router,
+    private location: Location) {}
 
   ngOnInit() {
     this.empresaService.getEmpresas().subscribe(
@@ -73,7 +75,7 @@ export class ListarEmpresaComponent implements OnInit {
 
   voltarParaUsuarios(): void {
     // Implemente a navegação de volta para a lista de usuários ou página desejada
-    this.router.navigate(['/dashboard']);
+    this.location.back();
   }
 
 }

@@ -9,7 +9,7 @@
 
     <mat-form-field class="example-full-width">
       <label for="tipoEquipamento">Tipo de Equipamento:</label>
-      <mat-select id="tipoEquipamento" name="tipoEquipamento" [(ngModel)]="data.equipamento.tipo_equipamento" required>
+      <mat-select id="tipoEquipamento" name="tipoEquipamento" [(ngModel)]="data.equipamento.tipo_equipamento_id" required>
         <mat-option [value]="" disabled selected>Selecione o tipo de equipamento</mat-option>
         <mat-option *ngFor="let tipo of tipoEquipamento" [value]="tipo.id">{{ tipo.tipo }}</mat-option>
       </mat-select>
@@ -18,35 +18,20 @@
 
     <mat-form-field class="example-full-width">
       <label for="situacao">Situação:</label>
-      <mat-select id="situacao" name="situacao" [(ngModel)]="data.equipamento.situacao" required>
-        <mat-option [value]="" disabled selected hidden>Selecione a Situação</mat-option>
-        <mat-option value="1">Novo</mat-option>
-        <mat-option value="2">Em Operação</mat-option>
-        <mat-option value="3">Em Manutenção</mat-option>
-        <mat-option value="4">Disponível</mat-option>
-        <mat-option value="5">Indisponível</mat-option>
+      <mat-select id="situacao" name="situacao" [(ngModel)]="data.equipamento.situacao" disabled required>
+        <mat-option disabled selected hidden>{{getDescricaoSituacao(data.equipamento.situacao)}}</mat-option>
+        <mat-option value="0">Novo</mat-option>
+        <mat-option value="1">Em Operação</mat-option>
+        <mat-option value="2">Em Manutenção</mat-option>
+        <mat-option value="3">Disponível</mat-option>
+        <mat-option value="4">Indisponível</mat-option>
         <!-- Adicione mais opções conforme necessário -->
       </mat-select>
     </mat-form-field>
 
-
-    <mat-form-field class="example-full-width">
-      <mat-label for="pedidoNFE">Pedido / NFE:</mat-label>
-      <input matInput type="text" id="pedidoNFE" name="pedidoNFE" [(ngModel)]="data.equipamento.pedido" required>
-    </mat-form-field>
-
-
-    <mat-form-field class="example-full-width">
-      <mat-label for="dataCompra">Data da Compra:</mat-label>
-      <input matInput [matDatepicker]="picker" id="dataCompra" name="dataCompra" [(ngModel)]="data.equipamento.data_compra" required>
-      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-      <mat-datepicker #picker></mat-datepicker>
-    </mat-form-field>
-
-
     <mat-form-field class="example-full-width">
       <mat-label for="empresa">Empresa:</mat-label>
-      <mat-select [(ngModel)]="data.equipamento.empresa" name="empresa" id="empresa">
+      <mat-select [(ngModel)]="data.equipamento.empresa_id" name="empresa" id="empresa" disabled>
         <mat-option value="" disabled selected>Selecione o nome da Empresa</mat-option>
         <mat-option *ngFor="let empresa of empresas" [value]="empresa.id">{{ empresa.nome }}</mat-option>
       </mat-select>
@@ -55,7 +40,7 @@
 
     <mat-form-field class="example-full-width">
       <mat-label for="colaborador">Colaborador:</mat-label>
-      <mat-select [(ngModel)]="data.equipamento.colaborador" name="colaborador" id="colaborador">
+      <mat-select [(ngModel)]="data.equipamento.colaborador_id" name="colaborador" id="colaborador" disabled>
         <mat-option value="" disabled selected>Selecione o nome do colaborador</mat-option>
         <mat-option *ngFor="let colaborador of colaboradores" [value]="colaborador.id">{{ colaborador.nome }}</mat-option>
       </mat-select>
@@ -72,11 +57,6 @@
         <input matInput type="text" id="modelo" name="modelo" [(ngModel)]="data.equipamento.modelo" required>
       </mat-form-field>
 
-      <mat-form-field class="example-full-width">
-        <mat-label for="especificacoes">Especificações:</mat-label>
-        <textarea matInput id="especificacoes" name="especificacoes" [(ngModel)]="data.equipamento.especificacoes" required></textarea>
-      </mat-form-field>
-
     <mat-checkbox id="acessoRemoto" name="acessoRemoto" [(ngModel)]="data.equipamento.acesso_remoto">
         Acesso Remoto
       </mat-checkbox>
@@ -90,12 +70,6 @@
         <label for="senhaAcesso">Senha Acesso:</label>
         <input matInput type="text" id="senhaAcesso" name="senhaAcesso" [(ngModel)]="data.equipamento.acesso_senha">
       </mat-form-field>
-
-      <mat-form-field>
-        <label for="observacoes">Observações:</label>
-        <textarea matInput id="observacoes" name="observacoes" [(ngModel)]="data.equipamento.observacoes" class="fixed-textarea"></textarea>
-      </mat-form-field>
-
 
     <div class="form-group">
       <label>Status</label>
