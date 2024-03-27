@@ -9,6 +9,7 @@ import { ColaboradorService } from '../../colaborador.service';
   styleUrls: ['./transfere-colaborador.component.css']
 })
 export class TransfereColaboradorComponent implements OnInit{
+  isLoading: boolean = false;
   equipamentoId: number | undefined;
   equipamento: any;
   colaboradores: any[] = []
@@ -24,10 +25,10 @@ export class TransfereColaboradorComponent implements OnInit{
     this.route.queryParams.subscribe(params => {
       this.equipamentoId = params['equipamentoId'];
       if (this.equipamentoId) {
+        this.isLoading = true;
         // Obter os detalhes do equipamento com base no ID
         this.obterDetalhesEquipamento(this.equipamentoId);
         this.obterListaColaboradores();
-        console.log(this.equipamentoId);
       }
     });
   }
@@ -39,7 +40,6 @@ export class TransfereColaboradorComponent implements OnInit{
       .subscribe(
         (equipamento: any) => {
           this.equipamento = equipamento;
-          console.log(equipamento);
         },
         error => {
           console.error('Erro ao obter detalhes do equipamento:', error);
@@ -54,8 +54,10 @@ export class TransfereColaboradorComponent implements OnInit{
       .subscribe(
         (Colaboradores: any) => {
           this.colaboradores = Colaboradores.results;
+          this.isLoading = false;
         },
         error => {
+          this.isLoading = false;
           console.error('Erro ao obter lista de empresas:', error);
         }
       );

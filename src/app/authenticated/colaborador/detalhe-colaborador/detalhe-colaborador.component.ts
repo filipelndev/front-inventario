@@ -12,6 +12,7 @@ import { MatTableDataSource } from '@angular/material/table';
   styleUrls: ['./detalhe-colaborador.component.css']
 })
 export class DetalheColaboradorComponent implements OnInit{
+  isLoading: boolean = false;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   colaboradorId: number | undefined;
   colaborador: any;
@@ -26,6 +27,7 @@ export class DetalheColaboradorComponent implements OnInit{
   private router: Router,) { }
 
   ngOnInit(): void {
+    this.isLoading = true;
     this.route.params.subscribe(params => {
       this.colaboradorId = +params['id'];
 
@@ -41,7 +43,6 @@ export class DetalheColaboradorComponent implements OnInit{
       .subscribe(
         (colaborador: any) => {
           this.colaborador = colaborador;
-          console.log(colaborador);
         },
         error => {
           console.error('Erro ao obter detalhes do tipo de equipamento:', error);
@@ -57,9 +58,10 @@ export class DetalheColaboradorComponent implements OnInit{
             this.dataSource.data = equipamentos.results;
             this.equipamentos = equipamentos.results;
             this.dataSource.paginator = this.paginator;
-            console.log(this.equipamentos);
+            this.isLoading = false;
           },
           error => {
+            this.isLoading = false;
             console.error('Erro ao carregar equipamentos do mesmo tipo:', error);
           }
         );

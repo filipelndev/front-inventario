@@ -1,0 +1,46 @@
+<mat-toolbar>
+  <button mat-icon-button class="backButton" (click)="voltarParaUsuarios()">
+    <mat-icon>arrow_back</mat-icon>
+  </button>
+</mat-toolbar>
+
+<div class="container">
+  <h2>Detalhes do Setor</h2>
+
+  <mat-tab-group>
+    <!-- Aba das informações do setor -->
+    <mat-tab label="Informações do Setor">
+      <ng-template mat-tab-label>
+        <mat-icon class="icon">info</mat-icon>
+        <span>Informações do Setor</span>
+      </ng-template>
+
+      <!-- Conteúdo das informações do setor -->
+      <div>
+        <mat-card class="details">
+          <mat-card-content>
+            <!-- Adicione aqui o conteúdo das informações do setor -->
+            <!-- Exemplo: Nome do setor, descrição, status, etc. -->
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </mat-tab>
+
+    <!-- Aba da lista de equipamentos do setor -->
+    <mat-tab label="Equipamentos do Setor">
+      <ng-template mat-tab-label>
+        <mat-icon class="icon">devices</mat-icon>
+        <span>Equipamentos do Setor</span>
+      </ng-template>
+
+      <!-- Conteúdo da lista de equipamentos do setor -->
+      <div>
+        <!-- Adicione aqui a lista de equipamentos do setor -->
+        <!-- Exemplo: Tabela com os equipamentos, informações, etc. -->
+      </div>
+    </mat-tab>
+  </mat-tab-group>
+</div>
+<div class="loading" *ngIf="isLoading">
+  Carregando...
+</div>

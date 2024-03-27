@@ -1,7 +1,7 @@
 .container {
   max-width: 15000px;
-  margin: 3% 3%;
-  padding: 2%;
+  margin: 0.5%;
+  padding: 5%;
   border: 3px solid #005c99;
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -17,7 +17,7 @@ h2 {
 }
 
 .mat-equip-table {
-  width: 100%;
+  width: 90%;
   margin-top: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   background-color: #fff;
@@ -26,7 +26,7 @@ h2 {
 
 th.mat-header-cell,
 td.mat-cell {
-  padding: 10px;
+  padding: 5px;
   text-align: left;
 }
 
@@ -53,8 +53,8 @@ mat-paginator {
   background-color: #d5d4d4
 }
 
-.custom-width{
-  width: 3%;
+.custom-width {
+  width: 1%;
   text-align: left;
 }
 
@@ -67,5 +67,31 @@ mat-paginator {
   text-align: left;
 }
 
+@media only screen and (max-width: 768px) {
+  .container {
+    margin: 2%;
+    padding: 2%;
+    border: none;
+    border-radius: none;
+    background-color:#FFF;
+  }
 
+  h2 {
+    font-size: 20px; /* Reduz o tamanho do título */
+  }
 
+  .mat-elevation-z8,
+  .mat-equip-table {
+    width: 100%;
+    margin-top: 5px; /* Ajuste para o espaço entre tabelas e outros elementos */
+  }
+
+  .custom-width,
+  .custom-width-editar {
+    width: 100%; /* Ajuste para ocupar a largura total */
+  }
+
+  mat-paginator {
+    margin-top: 5px; /* Ajuste para o espaço entre o paginador e outros elementos */
+  }
+}

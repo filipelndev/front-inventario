@@ -1,26 +1,33 @@
+<mat-toolbar>
+  <button mat-icon-button class="backButton" (click)="voltarParaUsuarios()">
+    <mat-icon>arrow_back</mat-icon>
+  </button>
+  </mat-toolbar>
 <div class="container">
   <h2>Editar Colaborador</h2>
 
   <form (ngSubmit)="onSubmit()" #colaboradorForm="ngForm">
       <mat-form-field class="example-full-width">
       <label for="nome">Nome:</label>
-      <input matInput type="text" id="nome" name="nome" [(ngModel)]="data.colaborador.nome" required>
+      <input matInput type="text" id="nome" name="nome" [(ngModel)]="colaborador.nome" required>
     </mat-form-field>
 
     <mat-form-field class="example-full-width">
       <label for="cpf">CPF:</label>
-      <input matInput id="cpf" name="cpf" [(ngModel)]="data.colaborador.cpf" mask="000.000.000-00" required>
+      <input matInput id="cpf" name="cpf" [(ngModel)]="colaborador.cpf" mask="000.000.000-00" required>
     </mat-form-field>
-    <mat-slide-toggle id="status" name="status" [(ngModel)]="data.colaborador.status" color="primary"
-    [ngClass]="{'mat-slide-toggle-color-active': data.colaborador.status, 'mat-slide-toggle-color-inactive': !data.colaborador.status}">
+    <mat-slide-toggle id="status" name="status" [(ngModel)]="colaborador.status" color="primary"
+    [ngClass]="{'mat-slide-toggle-color-active': colaborador?.status, 'mat-slide-toggle-color-inactive': !colaborador?.status}">
   </mat-slide-toggle>
-  <span [ngClass]="{'mat-slide-toggle-color-active': data.colaborador.status, 'mat-slide-toggle-color-inactive': !data.colaborador.status}">
-    {{ data.colaborador.status ? 'Ativo' : 'Inativo' }}
+  <span [ngClass]="{'mat-slide-toggle-color-active': colaborador?.status, 'mat-slide-toggle-color-inactive': !colaborador?.status}">
+    {{ colaborador?.status ? 'Ativo' : 'Inativo' }}
   </span>
 
   </form>
   <div class="buttonContainer">
-  <button type="submit" (click)="onSubmit()"><mat-icon>save</mat-icon>Salvar</button>
-  <button class="cancelbutton" (click)="onCancelarClick()"><mat-icon>cancel</mat-icon>Cancelar</button>
+  <button class="submit-button" type="submit" (click)="onSubmit()"><mat-icon>save</mat-icon>Salvar</button>
 </div>
+</div>
+<div class="loading" *ngIf="isLoading">
+  Carregando...
 </div>

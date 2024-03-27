@@ -19,6 +19,9 @@ export class CriarGrupoPermissaoComponent {
   selecionarTodosEmpresa: boolean = false;
   selecionarTodosEquipamento: boolean = false;
   selecionarTodosTipoEquipamento: boolean = false;
+  selecionarTodosSetor: boolean = false;
+  selecionarTodosCategoria: boolean = false;
+  selecionarTodosItem: boolean = false;
 
   selecionarTodos: boolean = false;
 
@@ -38,6 +41,18 @@ export class CriarGrupoPermissaoComponent {
   editaTipoEquipamento: boolean = false;
   detalheTipoEquipamento: boolean = false;
 
+  visualizaSetor: boolean = false;
+  editaSetor: boolean = false;
+  detalheSetor: boolean = false;
+
+  visualizaCategoria: boolean = false;
+  editaCategoria: boolean = false;
+  detalheCategoria: boolean = false;
+
+  visualizaItem: boolean = false;
+  editaItem: boolean = false;
+  detalheItem: boolean = false;
+
   constructor(private router: Router, private permissaoService: PermissaoService,  private snackBar: MatSnackBar) {}
 
   criarGrupoPermissoes(): void {
@@ -49,15 +64,30 @@ export class CriarGrupoPermissaoComponent {
         visualizar_colaborador: this.visualizaColaborador,
         editar_colaborador: this.editaColaborador,
         visualiza_detalhe_colaborador: this.detalheColaborador,
+
         visualizar_empresa: this.visualizaEmpresa,
         editar_empresa: this.editaEmpresa,
         visualiza_detalhe_empresa: this.detalheEmpresa,
+
         visualizar_equipamento: this.visualizaEquipamento,
         editar_equipamento: this.editaEquipamento,
         visualiza_detalhe_equipamento: this.detalheEquipamento,
+
         visualizar_tipo_equipamento: this.visualizaTipoEquipamento,
         editar_tipo_equipamento: this.editaTipoEquipamento,
-        visualiza_detalhe_tipo_equipamento: this.detalheTipoEquipamento
+        visualiza_detalhe_tipo_equipamento: this.detalheTipoEquipamento,
+
+        visualizar_setor: this.visualizaSetor,
+        editar_setor: this.editaSetor,
+        visualiza_detalhe_setor: this.detalheSetor,
+
+        visualizar_categoria: this.visualizaCategoria,
+        editar_categoria: this.editaCategoria,
+        visualiza_detalhe_categoria: this.detalheCategoria,
+
+        visualizar_item: this.visualizaItem,
+        editar_item: this.editaItem,
+        visualiza_detalhe_item: this.detalheItem
       }
     };
     console.log(novoGrupo);
@@ -94,6 +124,9 @@ export class CriarGrupoPermissaoComponent {
     this.visualizaEmpresa = this.selecionarTodosVisualizar;
     this.visualizaEquipamento = this.selecionarTodosVisualizar;
     this.visualizaTipoEquipamento = this.selecionarTodosVisualizar;
+    this.visualizaSetor = this.selecionarTodosVisualizar;
+    this.visualizaCategoria = this.selecionarTodosVisualizar;
+    this.visualizaItem = this.selecionarTodosVisualizar
   }
 
   toggleSelecionarTodoseditar(): void {
@@ -101,12 +134,18 @@ export class CriarGrupoPermissaoComponent {
     this.editaEmpresa = this.selecionarTodosEditar;
     this.editaEquipamento = this.selecionarTodosEditar;
     this.editaTipoEquipamento = this.selecionarTodosEditar;
+    this.editaSetor = this.selecionarTodosEditar;
+    this.editaCategoria = this.selecionarTodosEditar;
+    this.editaItem = this.selecionarTodosEditar;
   }
   toggleSelecionarTodosDetalhe(): void {
     this.detalheColaborador = this.selecionarTodosDetalhes;
     this.detalheEmpresa = this.selecionarTodosDetalhes;
     this.detalheEquipamento = this.selecionarTodosDetalhes;
     this.detalheTipoEquipamento = this.selecionarTodosDetalhes;
+    this.detalheSetor = this.selecionarTodosDetalhes;
+    this.detalheCategoria = this.selecionarTodosDetalhes;
+    this.detalheItem = this.selecionarTodosDetalhes;
   }
 
   toogleSelecionarTodosColaborador(): void {
@@ -133,6 +172,24 @@ export class CriarGrupoPermissaoComponent {
     this.detalheTipoEquipamento = this.selecionarTodosTipoEquipamento;
   }
 
+  toogleSelecionarTodosSetor(): void {
+    this.visualizaSetor = this.selecionarTodosSetor;
+    this.editaSetor = this.selecionarTodosSetor;
+    this.detalheSetor = this.selecionarTodosSetor;
+  }
+
+  toogleSelecionarTodosCategoria(): void {
+    this.visualizaCategoria = this.selecionarTodosCategoria;
+    this.editaCategoria = this.selecionarTodosCategoria;
+    this.detalheCategoria = this.selecionarTodosCategoria;
+  }
+
+  toogleSelecionarTodosItem(): void {
+    this.visualizaItem = this.selecionarTodosItem;
+    this.editaItem = this.selecionarTodosItem;
+    this.detalheItem = this.selecionarTodosItem;
+  }
+
   toogleSelecionarTodos(): void {
     this.selecionarTodosVisualizar = this.selecionarTodos;
     this.selecionarTodosEditar = this.selecionarTodos;
@@ -141,9 +198,15 @@ export class CriarGrupoPermissaoComponent {
     this.selecionarTodosEmpresa = this.selecionarTodos;
     this.selecionarTodosEquipamento = this.selecionarTodos;
     this.selecionarTodosTipoEquipamento = this.selecionarTodos;
+    this.selecionarTodosSetor = this.selecionarTodos;
+    this.selecionarTodosCategoria = this.selecionarTodos;
+    this.selecionarTodosItem = this.selecionarTodos;
     this.toggleSelecionarTodosVisualizar();
     this.toggleSelecionarTodoseditar();
     this.toggleSelecionarTodosDetalhe();
+    this.toogleSelecionarTodosSetor();
+    this.toogleSelecionarTodosCategoria();
+    this.toogleSelecionarTodosItem();
   }
 
   SelecionarTodosVisualizar(coluna: string): void {
@@ -176,3 +239,4 @@ export class CriarGrupoPermissaoComponent {
     }
   }
 }
+

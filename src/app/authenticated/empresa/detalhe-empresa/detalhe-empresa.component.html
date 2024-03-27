@@ -58,5 +58,36 @@
         <mat-paginator [pageSizeOptions]="[5, 10]" showFirstLastButtons></mat-paginator>
       </div>
     </mat-tab>
+    <mat-tab label="Dashboard">
+      <ng-template mat-tab-label>
+        <mat-icon class="icon">info</mat-icon>
+        <span class="tabTitle">Informações</span>
+      </ng-template>
+
+      <mat-tab-group>
+        <mat-tab label="Equipamentos por Tipo">
+          <ng-template mat-tab-label>
+            <span class="tabTitle">Equipamentos por Tipo</span>
+          </ng-template>
+            <canvas width="1074" height="500" #TipoChart></canvas>
+        </mat-tab>
+
+        <mat-tab label="Equipamentos por Status">
+          <ng-template mat-tab-label>
+            <span class="tabTitle">Equipamentos por Status</span>
+          </ng-template>
+            <canvas width="1074" height="500" #StatusChart></canvas>
+        </mat-tab>
+        <mat-tab label="Equipamentos por Setor">
+          <ng-template mat-tab-label>
+            <span class="tabTitle">Equipamentos por Setor</span>
+          </ng-template>
+            <canvas width="1074" height="500" #SetorChart></canvas>
+        </mat-tab>
+      </mat-tab-group>
+    </mat-tab>
   </mat-tab-group>
+</div>
+<div class="loading" *ngIf="isLoading">
+  Carregando...
 </div>

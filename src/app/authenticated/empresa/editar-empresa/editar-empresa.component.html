@@ -1,23 +1,30 @@
+<mat-toolbar>
+  <button mat-icon-button class="backButton" (click)="voltarParaUsuarios()">
+    <mat-icon>arrow_back</mat-icon>
+  </button>
+</mat-toolbar>
 <div class="container">
   <h2>Editar Empresa</h2>
 
   <form (ngSubmit)="onSubmit()" #colaboradorForm="ngForm">
     <mat-form-field class="example-full-width">
       <label for="nome">Nome:</label>
-      <input matInput type="text" id="nome" name="nome" [(ngModel)]="data.empresa.nome" required>
+      <input matInput type="text" id="nome" name="nome" [(ngModel)]="empresa.nome" required>
     </mat-form-field>
 
     <mat-form-field class="example-full-width">
       <label for="cpf">CNPJ:</label>
-      <input matInput id="cnpj" name="cnpj" [(ngModel)]="data.empresa.cnpj" mask="00.000.000/0000-00" required>
+      <input matInput id="cnpj" name="cnpj" [(ngModel)]="empresa.cnpj" mask="00.000.000/0000-00" required>
     </mat-form-field>
 
-    <mat-slide-toggle id="status" name="status" [(ngModel)]="data.empresa.status" color="primary"></mat-slide-toggle>
-     <span>{{ data.empresa.status ? 'Ativo' : 'Inativo' }}</span>
+    <mat-slide-toggle id="status" name="status" [(ngModel)]="empresa.status" color="primary"></mat-slide-toggle>
+     <span>{{ empresa.status ? 'Ativo' : 'Inativo' }}</span>
 
      <div class="buttonContainer">
-      <button type="submit"><mat-icon>save</mat-icon>Salvar</button>
-      <button class="cancelbutton" (click)="onCancelarClick()"><mat-icon>cancel</mat-icon>Cancelar</button>
+      <button class="submit-button" type="submit"><mat-icon>save</mat-icon>Salvar</button>
     </div>
   </form>
+</div>
+<div class="loading" *ngIf="isLoading">
+  Carregando...
 </div>

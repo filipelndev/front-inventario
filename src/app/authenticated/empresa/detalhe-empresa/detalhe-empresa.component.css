@@ -1,6 +1,6 @@
 .container {
   max-width: 6000px;
-  margin: 3% 3% auto;
+  margin: 3%;
   padding: 2%;
   border: 3px solid #005c99;
   border-radius: 8px;
@@ -84,4 +84,43 @@ span{
 .tabTitle{
   margin-right: 0;
   margin-left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.chart{
+  width: 100%;
+}
+
+/* Estilos para dispositivos móveis */
+@media only screen and (max-width: 600px) {
+  .container {
+    max-width: 100%; /* Define a largura máxima para ocupar a largura total da tela */
+    margin: 0; /* Remove margens */
+    padding: 0; /* Remove preenchimento */
+    border-radius: 0; /* Remove borda arredondada */
+    box-shadow: none; /* Remove sombra */
+  }
+
+  .detalhes-empresa {
+    flex-direction: column; /* Altera para layout de coluna em dispositivos móveis */
+  }
+
+  .acoes {
+    margin-left: 0; /* Remove margem para a esquerda */
+  }
+
+  .cancelbutton {
+    width: 100%; /* Ocupa a largura total */
+  }
+
+  .buttonContainer {
+    display: flex;
+    flex-direction: column; /* Altera para layout de coluna em dispositivos móveis */
+    align-items: center; /* Centraliza os botões */
+  }
+
+  .backButton {
+    width: 100%; /* Ocupa a largura total */
+  }
 }

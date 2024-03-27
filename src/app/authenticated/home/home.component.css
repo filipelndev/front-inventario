@@ -36,3 +36,24 @@
   font-weight: bold;
   margin-bottom: 10px;
 }
+
+/* Adicionando configurações específicas para smartphones */
+@media only screen and (max-width: 768px) {
+  .dashboard-container {
+    margin: 1%;
+  }
+
+  .chart-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .chart-item,
+  .bar-chart-item {
+    width: 90%;
+    height: auto;
+    padding-left: 0;
+    margin: 2% 0;
+  }
+
+}

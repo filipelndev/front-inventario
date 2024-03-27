@@ -5,6 +5,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { Equipamento } from 'src/app/Models/Equipamento';
 import { Location } from '@angular/common';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-detalhe-tipo-equipamento',
@@ -12,6 +13,7 @@ import { Location } from '@angular/common';
   styleUrls: ['./detalhe-tipo-equipamento.component.css']
 })
 export class DetalheTipoEquipamentoComponent implements OnInit {
+  isLoading: boolean = false;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   tipoEquipamentoId: number | undefined;
   equipamentos: Equipamento[] = [];
@@ -24,12 +26,14 @@ export class DetalheTipoEquipamentoComponent implements OnInit {
   constructor(private route: ActivatedRoute,
     private tipoEquipamentoService: TipoEquipamentoService,
     private router: Router,
-    private location: Location) {}
+    private location: Location,
+    private snackBar: MatSnackBar,) {}
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
       this.tipoEquipamentoId = +params['id'];
       if (this.tipoEquipamentoId) {
+        this.isLoading = true;
         this.obterDetalhesTipoEquipamento(this.tipoEquipamentoId);
         this.carregarEquipamentosDoTipo();
       }
@@ -53,12 +57,13 @@ export class DetalheTipoEquipamentoComponent implements OnInit {
       this.tipoEquipamentoService.obterEquipamentosDoTipo(this.tipoEquipamentoId)
         .subscribe(
           (equipamentos: any) => {
+            this.isLoading = false;
             this.dataSource.data = equipamentos.results;
             this.equipamentos = equipamentos.results;
             this.dataSource.paginator = this.paginator;
-            console.log(this.equipamentos);
           },
           error => {
+            this.isLoading = false;
             console.error('Erro ao carregar equipamentos do mesmo tipo:', error);
           }
         );
@@ -70,8 +75,23 @@ export class DetalheTipoEquipamentoComponent implements OnInit {
   }
 
   navegarDetalhesColaborador(colaboradorId: number): void {
-    this.router.navigate(['/detalhe-colaborador', colaboradorId]);
+
+    if(colaboradorId != null)
+    {
+      this.router.navigate(['/detalhe-colaborador', colaboradorId]);
+    }
+    else
+    {
+      console.log('Não há colaborador vinculado a esse equipamento.');
+        const errorMessage = "Não há colaborador vinculado a esse equipamento."
+          this.snackBar.open(errorMessage, '', {
+            duration: 3000,
+            horizontalPosition: 'right',
+            verticalPosition: 'bottom',
+          });
+    }
   }
+
   navegarDetalhesEmpresa(empresaId: number): void {
     this.router.navigate(['/detalhes-empresa', empresaId]);
   }

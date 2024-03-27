@@ -1,5 +1,6 @@
 import { Colaborador } from "./Colaborador";
 import { Empresa } from "./Empresa";
+import { Setor } from "./Setor";
 import { TipoEquipamento } from "./TipoEquipamento";
 
 export interface Equipamento {
@@ -12,7 +13,8 @@ export interface Equipamento {
   data_cadastro?: Date;
   ultima_alteracao?: Date;
   empresa_id: Empresa;
-  colaborador_id: Colaborador;
+  colaborador_id?: Colaborador;
+  setor_id?: Setor;
   marca: string;
   modelo: string;
   especificacoes: string;

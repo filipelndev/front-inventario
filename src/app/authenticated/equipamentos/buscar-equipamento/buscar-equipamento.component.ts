@@ -8,24 +8,28 @@ import { EquipamentoService } from '../../equipamento.service';
 })
 export class BuscarEquipamentoComponent {
 
+  isLoading: boolean = false;
   tagEquipamento: string = '';
   equipamentoEncontrado: any;
 
   constructor(private equipamentoService: EquipamentoService) {}
 
   buscarEquipamentoPorTag(tagEquipamento: string): void {
+    this.isLoading = true;
     if (tagEquipamento != null) {
       this.equipamentoService.buscarEquipamentoPorTag(tagEquipamento).subscribe(
         (equipamentoEncontrado) => {
-          console.log('Resposta do backend:', equipamentoEncontrado);
+          this.isLoading = false;
 
           if (equipamentoEncontrado) {
-            console.log('Equipamento encontrado:', equipamentoEncontrado);
+            this.isLoading = false;
           } else {
+            this.isLoading = false;
             console.log('Equipamento não encontrado.');
           }
         },
         (erro) => {
+          this.isLoading = false;
           console.error('Erro ao buscar equipamento:', erro);
         }
       );

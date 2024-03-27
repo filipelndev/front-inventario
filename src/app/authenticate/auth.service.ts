@@ -68,8 +68,8 @@ export class AuthService {
       return this.http.post<any>(`${this.apiUrl}token/refresh/`, { refresh: refreshToken }).pipe(
         tap((tokens) => {
           console.log("Chamando o refresh token. Token recebido:", tokens);
-          localStorage.setItem('access_token', tokens.token);
-          localStorage.setItem('refresh_token', tokens.refresh)
+          this.setToken(tokens.access);
+          this.setRefresh(tokens.refresh);
         }),
         catchError((error) => {
           console.error('Erro ao realizar refresh token:', error);

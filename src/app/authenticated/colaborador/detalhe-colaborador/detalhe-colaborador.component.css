@@ -12,6 +12,7 @@
 
 .detalhes-empresa {
   display: flex;
+  flex-direction: column; /* Alterado para coluna em telas menores */
 }
 
 .info-empresa {
@@ -19,7 +20,8 @@
 }
 
 .acoes {
-  margin-left: 20px;
+  margin-left: 0; /* Alterado para 0 em telas menores */
+  margin-top: 20px; /* Adicionado para espaçamento entre seções */
 }
 
 .equipamentos-lista {
@@ -84,4 +86,19 @@ span{
 .tabTitle{
   margin-right: 0;
   margin-left: 0;
+}
+
+/* Adicionando configurações específicas para smartphones */
+@media only screen and (max-width: 768px) {
+  .container {
+    margin: 2% 2% auto;
+    padding: 1%;
+    border: 2px solid #005c99;
+  }
+
+  .cancelbutton {
+    width: 100%;
+    margin-left: 0;
+    margin-top: 10px;
+  }
 }

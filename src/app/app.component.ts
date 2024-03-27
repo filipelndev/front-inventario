@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatSidenav } from '@angular/material/sidenav';
-import { Router } from '@angular/router';
+import { NavigationEnd, Router } from '@angular/router';
 import { AuthService } from './authenticate/auth.service';
 import { UserService } from './admin/user.service';
 import { HomeComponent } from './authenticated/home/home.component';
@@ -34,13 +34,19 @@ export class AppComponent implements OnInit  {
 }
 
 ngOnInit(): void {
-
-    // Restaurar a autenticação ao inicializar o aplicativo, verificando a validade do token
-    if (this.authService.isAuthenticated()) {
-      this.authService.setAuthenticated(true);
-      this.router.navigate(['/dashboard']);
+  this.router.events.subscribe(event => {
+    if (event instanceof NavigationEnd && window.innerWidth <= 768) {
+      // Fecha a barra lateral quando uma rota é ativada em dispositivos móveis
+      this.sidenav.toggle();
     }
+  });
+
+  // Restaurar a autenticação ao inicializar o aplicativo, verificando a validade do token
+  if (this.authService.isAuthenticated()) {
+    this.authService.setAuthenticated(true);
+    this.router.navigate(['/dashboard']);
   }
+}
 
   logoff(): void {
     localStorage.removeItem('access_token');

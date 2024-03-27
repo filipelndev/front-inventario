@@ -4,29 +4,53 @@
 
   <div class="checkbox-group">
     <label>Colaborador</label>
-    <mat-checkbox [(ngModel)]="visualizaColaborador">Visualizar</mat-checkbox>
-    <mat-checkbox [(ngModel)]="editaColaborador">Editar</mat-checkbox>
-    <mat-checkbox [(ngModel)]="detalheColaborador">Detalhes</mat-checkbox>
+    <mat-checkbox [(ngModel)]="visualizaColaborador" >Visualizar</mat-checkbox>
+    <mat-checkbox [(ngModel)]="editaColaborador" >Editar</mat-checkbox>
+    <mat-checkbox [(ngModel)]="detalheColaborador" >Detalhes</mat-checkbox>
   </div>
 
   <div class="checkbox-group">
     <label>Empresa</label>
-    <mat-checkbox [(ngModel)]="visualizaEmpresa">Visualizar</mat-checkbox>
-    <mat-checkbox [(ngModel)]="editaEmpresa">Editar</mat-checkbox>
-    <mat-checkbox [(ngModel)]="detalheEmpresa">Detalhes</mat-checkbox>
+    <mat-checkbox [(ngModel)]="visualizaEmpresa" >Visualizar</mat-checkbox>
+    <mat-checkbox [(ngModel)]="editaEmpresa" >Editar</mat-checkbox>
+    <mat-checkbox [(ngModel)]="detalheEmpresa" >Detalhes</mat-checkbox>
   </div>
 
   <div class="checkbox-group">
     <label>Equipamento</label>
-    <mat-checkbox [(ngModel)]="visualizaEquipamento">Visualizar</mat-checkbox>
-    <mat-checkbox [(ngModel)]="editaEquipamento">Editar</mat-checkbox>
-    <mat-checkbox [(ngModel)]="detalheEquipamento">Detalhes</mat-checkbox>
+    <mat-checkbox [(ngModel)]="visualizaEquipamento" >Visualizar</mat-checkbox>
+    <mat-checkbox [(ngModel)]="editaEquipamento" >Editar</mat-checkbox>
+    <mat-checkbox [(ngModel)]="detalheEquipamento" >Detalhes</mat-checkbox>
   </div>
 
   <div class="checkbox-group">
     <label>Tipo de Equipamento</label>
-    <mat-checkbox [(ngModel)]="visualizaTipoEquipamento">Visualizar</mat-checkbox>
-    <mat-checkbox [(ngModel)]="editaTipoEquipamento">Editar</mat-checkbox>
-    <mat-checkbox [(ngModel)]="detalheTipoEquipamento">Detalhes</mat-checkbox>
+    <mat-checkbox [(ngModel)]="visualizaTipoEquipamento" >Visualizar</mat-checkbox>
+    <mat-checkbox [(ngModel)]="editaTipoEquipamento" >Editar</mat-checkbox>
+    <mat-checkbox [(ngModel)]="detalheTipoEquipamento" >Detalhes</mat-checkbox>
   </div>
+
+  <div class="checkbox-group">
+    <label>Setor</label>
+    <mat-checkbox [(ngModel)]="visualizaSetor" >Visualizar</mat-checkbox>
+    <mat-checkbox [(ngModel)]="editaSetor" >Editar</mat-checkbox>
+    <mat-checkbox [(ngModel)]="detalheSetor" >Detalhes</mat-checkbox>
+  </div>
+
+  <div class="checkbox-group">
+    <label>Categoria</label>
+    <mat-checkbox [(ngModel)]="visualizaCategoria" >Visualizar</mat-checkbox>
+    <mat-checkbox [(ngModel)]="editaCategoria" >Editar</mat-checkbox>
+    <mat-checkbox [(ngModel)]="detalheCategoria" >Detalhes</mat-checkbox>
+  </div>
+
+  <div class="checkbox-group">
+    <label>Item</label>
+    <mat-checkbox [(ngModel)]="visualizaItem" >Visualizar</mat-checkbox>
+    <mat-checkbox [(ngModel)]="editaItem" >Editar</mat-checkbox>
+    <mat-checkbox [(ngModel)]="detalheItem" >Detalhes</mat-checkbox>
+  </div>
+
+  <button class="createButton" (click)="atualizarPermissoes()">Atualizar Permissões</button>
+
 </div>

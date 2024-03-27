@@ -34,4 +34,13 @@ export class PermissaoService {
   getGroups(): Observable<any[]> {
     return this.http.get<any>(`${this.apiUrl}`);
   }
+
+  atualizarPermissoesDoGrupo(id: number, nome: string, permissions: any): Observable<any> {
+    const url = `${this.apiUrl}editar/${id}/`;
+    const data = {
+      name: nome,
+      permissions: permissions
+    };
+    return this.http.put<any>(url, data);
+  }
 }

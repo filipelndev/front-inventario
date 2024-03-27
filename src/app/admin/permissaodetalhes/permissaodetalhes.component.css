@@ -1,3 +1,9 @@
+.container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Define duas colunas com largura mínima de 200px */
+  gap: 15px; /* Espaçamento entre as colunas e as linhas */
+}
+
 .group-details {
   padding: 20px;
   border: 1px solid #ddd;
@@ -19,8 +25,6 @@
 }
 
 .checkbox-group {
-  display: flex;
-  flex-direction: column;
   margin-bottom: 15px;
 }
 
@@ -30,4 +34,17 @@
 
 .mat-checkbox {
   margin-top: 5px;
+}
+
+.createButton {
+  padding: 1% 2%;
+  margin: 1% 0;
+  background-color: #01274e;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+
+.createButton:hover {
+  background-color: #005c99;
 }

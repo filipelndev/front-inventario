@@ -7,7 +7,7 @@
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   background-color: #F2F2F2;
   color: #333;
-  text-align: center;
+  text-align: normal;
 }
 
 .example-full-width {
@@ -23,7 +23,7 @@ h2 {
 form {
   display: flex;
   flex-direction: column;
-  align-items:normal;
+  align-items: normal;
 }
 
 label {
@@ -41,7 +41,7 @@ input{
   font-size: xx-large;
 }
 
-button {
+.submit-button {
   width: 30%;
   padding: 1%;
   background-color: #01274e;
@@ -54,25 +54,15 @@ button {
   text-align: center;
 }
 
-button:hover {
+.submit-button:hover {
   background-color: #005c99;
 }
 
-.cancelbutton{
-  width: 30%;
-  background-color: #777777;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 18px;
-  padding: 1%;
-  margin-left: 1%;
-  font-size: xx-large;
-  text-align: center;
+.backButton{
+  background-color: #e1e1e1;
 }
-
-.cancelbutton:hover{
-  background-color: #97999a;
+.backButton:hover{
+  background-color: #d5d4d4
 }
 
 mat-slide-toggle{
@@ -85,11 +75,6 @@ span{
   align-self: flex-start;
 }
 
-.buttonContainer{
-  display: flex;
-  align-items:start;
-  text-align: center;
-}
 .mat-mdc-slide-toggle.mat-primary {
   --mdc-switch-selected-focus-state-layer-color: #01274e;
   --mdc-switch-selected-handle-color: #01274e;
@@ -127,19 +112,33 @@ span{
   --mdc-switch-unselected-icon-color: #fff;
 }
 
-mat-icon {
-  text-align: center;
-  width: 30px;
-  height: 28px;
-  margin-right: 3%;
-  font-size:xx-large;
-}
-
 .mensagem-cadastro{
   text-align: left;
 }
 
+/* Adicionando configurações específicas para smartphones */
+@media only screen and (max-width: 768px) {
+  .container {
+    margin: 1%;
+    padding: 1%;
+    border: 2px solid #005c99;
+    text-align: center;
+  }
 
-.custom-snackbar{
-  background-color: #e80707;
+  h2 {
+    font-size: 20px;
+  }
+
+  form {
+    padding: 8% 8%;
+  }
+
+  input {
+    width: 100%;
+  }
+
+  .submit-button {
+    width: 50%; /* Reduzindo a largura do botão */
+  }
+
 }

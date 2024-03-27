@@ -1,0 +1,25 @@
+<mat-toolbar>
+  <button mat-icon-button class="backButton" (click)="voltarParaUsuarios()">
+    <mat-icon>arrow_back</mat-icon>
+  </button>
+</mat-toolbar>
+<div class="container">
+  <h2>Editar Tipo de Equipamento</h2>
+  <form (ngSubmit)="onSubmit()" #tipoEquipamentoForm="ngForm">
+
+    <mat-form-field class="example-full-width">
+      <label for="tipo">Tipo:</label>
+      <input matInput placeholder="Insira o tipo de equipamento" type="text" id="tipo" name="tipo" [(ngModel)]="tipoEquipamento.tipo" required>
+    </mat-form-field>
+
+    <mat-slide-toggle id="status" name="status" [(ngModel)]="tipoEquipamento.status" color="primary"></mat-slide-toggle>
+    <span>{{ tipoEquipamento.status ? 'Ativo' : 'Inativo' }}</span>
+
+    <div class="buttonContainer">
+      <button class="submit-button" type="submit"><mat-icon>save</mat-icon>Salvar</button>
+    </div>
+  </form>
+</div>
+<div class="loading" *ngIf="isLoading">
+  Carregando...
+</div>

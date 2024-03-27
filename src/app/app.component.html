@@ -5,7 +5,7 @@
       <span class="material-icons">menu</span>
     </button>
     <span class="logoimg">
-      <img src="./assets/img/Logo.png" alt="Logo da Empresa" style="max-width: 250px; height: 40px;">
+      <img src="./assets/img/Logo.png" alt="Logo da Empresa" class="logo">
     </span>
   </div>
   <button mat-icon-button [matMenuTriggerFor]="menu" class="user-button">
@@ -81,6 +81,53 @@
           <div class="sub-menu">
             <a mat-list-item [routerLink]="['/cadastrar-tipo-equipamento']">Cadastrar</a>
             <a mat-list-item [routerLink]="['/listar-tipo-equipamento']">Listar</a>
+          </div>
+        </mat-expansion-panel>
+
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              <div class="menu-header">Setor</div>
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <div class="sub-menu">
+            <a mat-list-item [routerLink]="['/cadastrar-setor']">Cadastrar</a>
+            <a mat-list-item [routerLink]="['/listar-setor']">Listar</a>
+          </div>
+        </mat-expansion-panel>
+
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              <div class="menu-header">Suprimentos</div>
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <div class="sub-menu">
+            <!-- Conteúdo da categoria -->
+            <mat-expansion-panel>
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  <div class="menu-header">Categoria</div>
+                </mat-panel-title>
+              </mat-expansion-panel-header>
+              <div class="sub-menu">
+                <a mat-list-item [routerLink]="['/cadastrar-categoria']">Cadastrar</a>
+                <a mat-list-item [routerLink]="['/listar-categoria']">Listar</a>
+              </div>
+            </mat-expansion-panel>
+
+            <!-- Conteúdo do item -->
+            <mat-expansion-panel>
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  <div class="menu-header">Item</div>
+                </mat-panel-title>
+              </mat-expansion-panel-header>
+              <div class="sub-menu">
+                <a mat-list-item [routerLink]="['/cadastrar-item']">Cadastrar</a>
+                <a mat-list-item [routerLink]="['/listar-item']">Listar</a>
+              </div>
+            </mat-expansion-panel>
           </div>
         </mat-expansion-panel>
 

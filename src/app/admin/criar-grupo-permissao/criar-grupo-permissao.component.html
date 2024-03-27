@@ -68,6 +68,39 @@
     </div>
   </div>
 
+  <div class="section">
+    <div class="checkbox-group">
+      <div class="checkbox-title">
+        <label class="titulo-section">Setor</label></div>
+    <mat-checkbox name="visualizaSetor" [(ngModel)]="this.visualizaSetor">Visualizar</mat-checkbox>
+    <mat-checkbox name="editaSetor" [(ngModel)]="this.editaSetor">Editar</mat-checkbox>
+    <mat-checkbox name="detalheSetor" [(ngModel)]="this.detalheSetor">Detalhes</mat-checkbox>
+    <mat-checkbox name="selecionaSetor" [(ngModel)]="this.selecionarTodosSetor" (change)="toogleSelecionarTodosSetor()">Selecionar todos</mat-checkbox>
+  </div>
+</div>
+
+<div class="section">
+  <div class="checkbox-group">
+    <div class="checkbox-title">
+      <label class="titulo-section">Categoria</label></div>
+  <mat-checkbox name="visualizaCategoria" [(ngModel)]="this.visualizaCategoria">Visualizar</mat-checkbox>
+  <mat-checkbox name="editaCategoria" [(ngModel)]="this.editaCategoria">Editar</mat-checkbox>
+  <mat-checkbox name="detalheCategoria" [(ngModel)]="this.detalheCategoria">Detalhes</mat-checkbox>
+  <mat-checkbox name="selecionaCategoria" [(ngModel)]="this.selecionarTodosCategoria" (change)="toogleSelecionarTodosCategoria()">Selecionar todos</mat-checkbox>
+</div>
+</div>
+
+<div class="section">
+  <div class="checkbox-group">
+    <div class="checkbox-title">
+      <label class="titulo-section">Item</label></div>
+  <mat-checkbox name="visualizaItem" [(ngModel)]="this.visualizaItem">Visualizar</mat-checkbox>
+  <mat-checkbox name="editaItem" [(ngModel)]="this.editaItem">Editar</mat-checkbox>
+  <mat-checkbox name="detalheItem" [(ngModel)]="this.detalheItem">Detalhes</mat-checkbox>
+  <mat-checkbox name="selecionaItem" [(ngModel)]="this.selecionarTodosItem" (change)="toogleSelecionarTodosItem()">Selecionar todos</mat-checkbox>
+</div>
+</div>
+
   <div class="button-container">
   <button class="createButton" type="submit">Criar Grupo</button>
   </div>

@@ -14,6 +14,7 @@ import { Location } from '@angular/common';
   styleUrls: ['./listar-empresa.component.css']
 })
 export class ListarEmpresaComponent implements OnInit {
+  isLoading: boolean = false;
   displayedColumns: string[] = ['nome', 'cnpj', 'status', 'editar'];
   dataSource = new MatTableDataSource<Empresa>([]);
 
@@ -25,11 +26,14 @@ export class ListarEmpresaComponent implements OnInit {
     private location: Location) {}
 
   ngOnInit() {
+    this.isLoading = true;
     this.empresaService.getEmpresas().subscribe(
       (empresas: any) => {
         this.dataSource.data = empresas.results;
+        this.isLoading = false;
       },
       error => {
+        this.isLoading = false;
         console.error('Erro ao obter colaboradores:', error);
       }
     );
@@ -40,15 +44,7 @@ export class ListarEmpresaComponent implements OnInit {
   }
 
   editarEmpresa(empresa: Empresa): void {
-    const dialogRef = this.dialog.open(EditarEmpresaComponent, {
-      width: '1000px', // Ajuste o tamanho conforme necessário
-      data: { empresa },
-    });
-
-    dialogRef.afterClosed().subscribe((result) => {
-      // Lógica a ser executada após o fechamento do diálogo de edição
-      console.log('O diálogo foi fechado');
-    });
+    this.router.navigate(['/editar-empresa', empresa.id]);
   }
 
   alterarStatusEmpresa(empresa: Empresa): void {

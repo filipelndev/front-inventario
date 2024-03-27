@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, throwError } from 'rxjs';
+import { catchError } from 'rxjs/operators';
 import { TipoEquipamento } from '../Models/TipoEquipamento';
 import { UrlService } from '../util/url.service';
 
@@ -35,5 +36,27 @@ export class TipoEquipamentoService {
   obterEquipamentosDoTipo(tipoEquipamentoId: number): Observable<any> {
     const url = `${this.apiUrl}${tipoEquipamentoId}/equipamentos/`;
     return this.http.get<any>(url);
+  }
+
+  atualizarTipoEquipamento(id: number, tipoEquipamento: TipoEquipamento): Observable<any> {
+    const url = `${this.apiUrl}${id}/`;
+    return this.http.put(url, tipoEquipamento)
+      .pipe(
+        catchError(this.handleError)
+      );
+  }
+
+  // Método para lidar com erros de requisição HTTP
+  private handleError(error: any): Observable<never> {
+    let errorMessage = 'Erro desconhecido ao realizar a requisição.';
+    if (error.error instanceof ErrorEvent) {
+      // Erro do lado do cliente
+      errorMessage = `Erro: ${error.error.message}`;
+    } else {
+      // O backend retornou um código de erro
+      errorMessage = `Erro código ${error.status}: ${error.error.message}`;
+    }
+    console.error(errorMessage);
+    return throwError(errorMessage);
   }
 }

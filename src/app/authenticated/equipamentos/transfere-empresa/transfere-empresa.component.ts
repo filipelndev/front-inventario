@@ -10,6 +10,7 @@ import { Empresa } from 'src/app/Models/Empresa';
   styleUrls: ['./transfere-empresa.component.css']
 })
 export class TransfereEmpresaComponent implements OnInit {
+  isLoading: boolean = false;
   equipamentoId: number | undefined;
   equipamento: any;
   empresas: any[] = []
@@ -25,6 +26,7 @@ export class TransfereEmpresaComponent implements OnInit {
     this.route.queryParams.subscribe(params => {
       this.equipamentoId = params['equipamentoId'];
       if (this.equipamentoId) {
+        this.isLoading = true;
         // Obter os detalhes do equipamento com base no ID
         this.obterDetalhesEquipamento(this.equipamentoId);
         this.obterListaEmpresas();
@@ -37,7 +39,6 @@ export class TransfereEmpresaComponent implements OnInit {
       .subscribe(
         (equipamento: any) => {
           this.equipamento = equipamento.equipamento;
-          console.log(this.equipamento);
         },
         error => {
           console.error('Erro ao obter detalhes do equipamento:', error);
@@ -51,9 +52,10 @@ export class TransfereEmpresaComponent implements OnInit {
       .subscribe(
         (empresas: any) => {
           this.empresas = empresas.results;
-          console.log(empresas);
+          this.isLoading = false;
         },
         error => {
+          this.isLoading = false;
           console.error('Erro ao obter lista de empresas:', error);
         }
       );

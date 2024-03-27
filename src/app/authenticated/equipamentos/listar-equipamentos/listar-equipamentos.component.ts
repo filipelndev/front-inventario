@@ -10,6 +10,7 @@ import { Colaborador } from 'src/app/Models/Colaborador';
 import { Empresa } from 'src/app/Models/Empresa';
 import { Observable, of } from 'rxjs';
 import { Router } from '@angular/router';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-listar-equipamentos',
@@ -17,32 +18,46 @@ import { Router } from '@angular/router';
   styleUrls: ['./listar-equipamentos.component.css']
 })
 export class ListarEquipamentosComponent implements OnInit {
-  displayedColumns: string[] = ['tagPatrimonio', 'tipoEquipamento','situacao', 'marca', 'modelo', 'empresa', 'colaborador', 'status', 'editar'];
+  isLoading: boolean = false;
+  displayedColumns: string[] = ['tagPatrimonio', 'tipoEquipamento','situacao', 'marca', 'modelo', 'empresa', 'colaborador', 'setor', 'status', 'editar', 'duplicar'];
   dataSource = new MatTableDataSource<Equipamento>([]);
 
   constructor(private dialog: MatDialog, private equipamentoService: EquipamentoService,
-     private buscaNomesService: BuscaNomesService, private router: Router) {}
+     private buscaNomesService: BuscaNomesService, private router: Router,
+     private snackBar: MatSnackBar,) {}
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
   ngOnInit() {
+    this.isLoading = true;
     this.equipamentoService.getEquipamentos().subscribe(
       (equipamentos: any) => {
+        this.isLoading = false;
         this.dataSource.data = equipamentos.results;
         this.dataSource.paginator = this.paginator; // Configura o paginador
       });
   }
 
-  abrirMenuPopup(equipamento: Equipamento): void {
-    const dialogRef = this.dialog.open(EditarEquipamentosComponent, {
-      width: '1000px', // Ajuste conforme necessário
-      data: { equipamento }
-    });
-
-    dialogRef.afterClosed().subscribe(result => {
-
-    });
+  EditarEquipamento(equipamento: Equipamento): void {
+    const equipamentoId = equipamento.id;
+    if (equipamentoId) {
+      this.router.navigate(['/editar-equipamento', equipamentoId]);
+    } else {
+      console.error('ID do equipamento é inválido.');
+      // Adicione aqui a lógica para lidar com o ID do equipamento inválido, se necessário
+    }
   }
+
+  DuplicarEquipamento(equipamento: Equipamento): void {
+    const equipamentoId = equipamento.id;
+    if (equipamentoId) {
+      this.router.navigate(['/duplicar-equipamento', equipamentoId]);
+    } else {
+      console.error('ID do equipamento é inválido.');
+      // Adicione aqui a lógica para lidar com o ID do equipamento inválido, se necessário
+    }
+  }
+
 
   alterarStatusEquipamento(equipamento: Equipamento): void {
     if (equipamento.id !== undefined) {
@@ -108,12 +123,44 @@ export class ListarEquipamentosComponent implements OnInit {
     this.router.navigate(['/altera-situacao'], { queryParams: { equipamentoId: equipamentoId } });
   }
 
+  navegarDetalhesSetor(setorId: number): void {
+    if(setorId != null)
+    {
+      this.router.navigate(['/detalhe-setor', setorId]);
+    }
+    else
+    {
+      console.log('Não há setor vinculado a esse equipamento.');
+        const errorMessage = "Não há setor vinculado a esse equipamento.."
+          this.snackBar.open(errorMessage, '', {
+            duration: 3000,
+            horizontalPosition: 'right',
+            verticalPosition: 'bottom',
+          });
+    }
+
+  }
+
   navegarDetalhesTipoEquipamento(tipoEquipamentoId: number): void {
     this.router.navigate(['/detalhe-tipo-equipamento', tipoEquipamentoId]);
   }
 
   navegarDetalhesColaborador(colaboradorId: number): void {
-    this.router.navigate(['/detalhe-colaborador', colaboradorId]);
+
+    if(colaboradorId != null)
+    {
+      this.router.navigate(['/detalhe-colaborador', colaboradorId]);
+    }
+    else
+    {
+      console.log('Não há colaborador vinculado a esse equipamento.');
+        const errorMessage = "Não há colaborador vinculado a esse equipamento."
+          this.snackBar.open(errorMessage, '', {
+            duration: 3000,
+            horizontalPosition: 'right',
+            verticalPosition: 'bottom',
+          });
+    }
   }
 
   navegarDetalhesEmpresa(empresaId: number): void {

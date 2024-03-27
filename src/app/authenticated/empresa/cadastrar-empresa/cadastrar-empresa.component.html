@@ -1,3 +1,8 @@
+<mat-toolbar>
+  <button mat-icon-button class="backButton" (click)="voltarParaUsuarios()">
+    <mat-icon>arrow_back</mat-icon>
+  </button>
+  </mat-toolbar>
 <div class="container">
     <h2>Cadastrar Empresa</h2>
 
@@ -17,9 +22,11 @@
         <span>{{ empresa.status ? 'Ativo' : 'Inativo' }}</span>
 
         <div class="buttonContainer">
-          <button type="submit"><mat-icon>save</mat-icon>Salvar</button>
-          <button class="cancelbutton" (click)="onVoltarClick()"><mat-icon>undo</mat-icon>Voltar</button>
+          <button class="submit-button" type="submit"><mat-icon>save</mat-icon>Salvar</button>
         </div>
       <div class="mensagem-cadastro" *ngIf="mensagemCadastro">{{ mensagemCadastro }}</div>
     </form>
+  </div>
+  <div class="loading" *ngIf="isLoading">
+    Carregando...
   </div>

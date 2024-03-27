@@ -1,0 +1,64 @@
+<mat-toolbar>
+  <button mat-icon-button class="backButton" (click)="voltarParaUsuarios()">
+    <mat-icon>arrow_back</mat-icon>
+  </button>
+</mat-toolbar>
+
+<div class="container">
+  <h2>Listar Categorias</h2>
+
+  <table mat-table [dataSource]="dataSource" class="mat-equip-table">
+
+    <!-- ID da Coluna -->
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef class="custom-width"> ID </th>
+      <td mat-cell *matCellDef="let categoria" class="custom-width"> {{ categoria.id }} </td>
+    </ng-container>
+
+    <!-- Nome da Coluna -->
+    <ng-container matColumnDef="nome">
+      <th mat-header-cell *matHeaderCellDef class="custom-width"> Nome </th>
+      <td mat-cell *matCellDef="let categoria" class="custom-width">
+        <a [routerLink]="['/detalhe-categoria', categoria.id]">{{ categoria.nome }}</a>
+      </td>
+    </ng-container>
+
+    <!-- Descrição da Coluna -->
+    <ng-container matColumnDef="descricao">
+      <th mat-header-cell *matHeaderCellDef class="custom-width"> Descrição </th>
+      <td mat-cell *matCellDef="let categoria" class="custom-width"> {{ categoria.descricao }} </td>
+    </ng-container>
+
+     <!-- Status do Equipamento da Coluna -->
+     <ng-container matColumnDef="status">
+      <th mat-header-cell *matHeaderCellDef class="custom-width"> Status </th>
+      <td mat-cell *matCellDef="let categoria" class="custom-width">
+        <button mat-icon-button (click)="alterarStatusCategoria(categoria)">
+          <mat-icon [ngStyle]="{'color': categoria.status ? 'green' : 'red'}">
+            {{ categoria.status ? 'check_circle' : 'cancel' }}
+          </mat-icon>
+        </button>
+      </td>
+    </ng-container>
+
+
+    <!-- Edição da Coluna -->
+    <ng-container matColumnDef="editar">
+      <th mat-header-cell *matHeaderCellDef class="custom-width-editar"> Editar </th>
+      <td mat-cell *matCellDef="let categoria" class="custom-width-editar">
+        <button mat-icon-button (click)="editarCategoria(categoria)">
+          <mat-icon>edit</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+
+  <mat-paginator [pageSizeOptions]="[5, 10]" showFirstLastButtons class="paginator"></mat-paginator>
+</div>
+
+<div class="loading" *ngIf="isLoading">
+  Carregando...
+</div>

@@ -1,0 +1,39 @@
+<mat-toolbar>
+  <button mat-icon-button class="backButton" (click)="voltarParaCategorias()">
+    <mat-icon>arrow_back</mat-icon>
+  </button>
+</mat-toolbar>
+
+<div class="container">
+  <h2>Editar Categoria</h2>
+
+  <form (ngSubmit)="onSubmit()" #categoriaForm="ngForm">
+    <mat-form-field class="example-full-width">
+      <label for="nome">Nome:</label>
+      <input matInput type="text" id="nome" name="nome" [(ngModel)]="categoria.nome" required>
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <label for="descricao">Descrição:</label>
+      <textarea matInput id="descricao" name="descricao" [(ngModel)]="categoria.descricao" required></textarea>
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <label>Tipo de Equipamentos:</label>
+      <mat-select id="tipoEquipamento" name="tipoEquipamento" placeholder="Selecione os tipos de equipamentos" [(ngModel)]="categoria.tipo_equipamento" multiple required>
+        <mat-option *ngFor="let tipoEquipamento of tipoEquipamento" [value]="tipoEquipamento.id">{{ tipoEquipamento.tipo }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-slide-toggle id="status" name="status" [(ngModel)]="categoria.status" color="primary"></mat-slide-toggle>
+    <span>{{ categoria.status ? 'Ativo' : 'Inativo' }}</span>
+
+    <div class="buttonContainer">
+      <button class="submit-button" type="submit"><mat-icon>save</mat-icon>Salvar</button>
+    </div>
+  </form>
+</div>
+
+<div class="loading" *ngIf="isLoading">
+  Carregando...
+</div>

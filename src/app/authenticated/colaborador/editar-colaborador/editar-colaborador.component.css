@@ -19,7 +19,7 @@ h2 {
 form {
   display: flex;
   flex-direction: column;
-  align-items:normal;
+  align-items: normal;
 }
 
 label {
@@ -32,7 +32,7 @@ label {
   width: 100%;
 }
 
-button {
+.submit-button {
   width: 30%;
   padding: 1%;
   background-color: #01274e;
@@ -41,26 +41,10 @@ button {
   border-radius: 5px;
   cursor: pointer;
   font-size: 18px;
-  font-size:xx-large;
+  font-size: xx-large;
 }
 
-.cancelbutton{
-  width: 30%;
-  background-color: #777777;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 18px;
-  padding: 1%;
-  margin-left: 1%;
-  font-size:xx-large;
-}
-
-.cancelbutton:hover{
-  background-color: #97999a;
-}
-
-button:hover {
+.submit-button:hover {
   background-color: #005c99;
 }
 
@@ -70,11 +54,6 @@ mat-slide-toggle {
 
 span{
   margin-bottom: 6%;
-}
-
-.buttonContainer{
-  display: flexbox;
-  align-items: flex-start;
 }
 
 .mat-mdc-slide-toggle.mat-primary {
@@ -114,10 +93,31 @@ span{
   --mdc-switch-unselected-icon-color: #fff;
 }
 
-mat-icon {
-  text-align: center;
-  width: 30px;
-  height: 28px;
-  margin-right: 3%;
-  font-size:xx-large;
+.backButton{
+  background-color: #e1e1e1;
+}
+.backButton:hover{
+  background-color: #d5d4d4
+}
+
+/* Adicionando configurações específicas para smartphones */
+@media only screen and (max-width: 768px) {
+  .container {
+    margin: 1% auto; /* Ajuste para centralizar na tela */
+    padding: 2%; /* Ajuste para manter o espaço interno */
+    border-width: 2px; /* Reduz a largura da borda */
+  }
+
+  h2 {
+    font-size: 20px; /* Reduz o tamanho do título */
+  }
+
+  label {
+    font-size: 20px; /* Reduz o tamanho das etiquetas */
+  }
+
+  .submit-button {
+    width: 100%; /* Ajuste para ocupar a largura total */
+    margin-top: 10px; /* Ajuste para o espaço entre o botão e outros elementos */
+  }
 }

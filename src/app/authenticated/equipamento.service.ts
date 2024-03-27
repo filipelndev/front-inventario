@@ -73,4 +73,9 @@ export class EquipamentoService {
     const body = { situacao_nova: situacaoId };
     return this.http.put(url, body);
   }
+
+  buscarTag(): Observable<any> {
+    const url = `${this.apiUrl}listagem-simplificada/`
+    return this.http.get(url);
+  }
 }

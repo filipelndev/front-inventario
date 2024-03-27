@@ -51,4 +51,22 @@ export class EmpresaService {
     const url = `${this.apiUrl}${idEmpresa}/equipamentos/`;
     return this.http.get<any>(url);
   }
+
+  // Método para obter os equipamentos por tipo
+  getEquipamentosPorTipo(empresaId: number): Observable<any> {
+    const url = `${this.apiUrl}${empresaId}/equipamentos-por-tipo/`;
+    return this.http.get<any>(url);
+  }
+
+  // Método para obter os equipamentos por status
+  getEquipamentosPorStatus(empresaId: number): Observable<any> {
+    const url = `${this.apiUrl}${empresaId}/equipamentos-por-status/`;
+    return this.http.get<any>(url);
+  }
+
+  // Método para obter os equipamentos por setor
+  getEquipamentosPorSetor(empresaId: number): Observable<any> {
+    const url = `${this.apiUrl}${empresaId}/equipamentos-por-setor/`;
+    return this.http.get<any>(url);
+  }
 }

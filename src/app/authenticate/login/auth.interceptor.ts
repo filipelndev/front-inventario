@@ -21,40 +21,23 @@ export class AuthInterceptor implements HttpInterceptor {
   }
 
   private addTokenAndContinue(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+    // Tentativa de obter um novo token antes de prosseguir com a solicitação
     const token = this.authService.getToken();
+        const authRequest = request.clone({
+          setHeaders: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+        return this.handleRequest(authRequest, next);
 
-    // Clone da solicitação com o token adicionado aos cabeçalhos
-    const authRequest = request.clone({
-      setHeaders: {
-        Authorization: `Bearer ${token}`,
-      },
-    });
-
-    return this.handleRequest(authRequest, next);
   }
 
   private handleRequest(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     return next.handle(request).pipe(
       catchError((error) => {
         if (error instanceof HttpErrorResponse && error.status === 401) {
-          // Se o erro for de token expirado, tente renovar o token
-          return this.authService.refreshToken().pipe(
-            switchMap(() => {
-              // Se o refreshToken for bem-sucedido, faça a nova requisição com o novo token
-              const newRequest = request.clone({
-                setHeaders: {
-                  Authorization: `Bearer ${this.authService.getToken()}`,
-                },
-              });
-              return next.handle(newRequest);
-            }),
-            catchError((refreshError) => {
-              // Se houver um erro ao renovar o token, redirecione para a página de login ou faça algo apropriado
-              console.error('Erro ao renovar token:', refreshError);
-              this.router.navigate(['']);
-              return throwError(refreshError);
-            })
-          );
+          // Se o erro for de token expirado, redirecione para o método addTokenAndContinue para tentar renovar o token
+          return this.addTokenAndContinue(request, next);
         } else {
           // Se não for um erro de token expirado, repasse o erro
           return throwError(error);

@@ -13,6 +13,7 @@ export class DetalheEquipamentoComponent implements OnInit {
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
+  isLoading: boolean = false;
   equipamentoId: number | undefined;
   equipamento: any;
   historico: any[] = [];
@@ -29,6 +30,7 @@ export class DetalheEquipamentoComponent implements OnInit {
     private location: Location) {}
 
   ngOnInit(): void {
+    this.isLoading = true;
     this.route.paramMap.subscribe(params => {
       this.equipamentoId = Number(params.get('id'));
       if (this.equipamentoId) {
@@ -43,7 +45,7 @@ export class DetalheEquipamentoComponent implements OnInit {
       .subscribe(
         (equipamento: any) => {
           this.equipamento = equipamento;
-
+          console.log(equipamento);
         },
         error => {
           console.error('Erro ao obter detalhes do equipamento:', error);
@@ -57,9 +59,11 @@ export class DetalheEquipamentoComponent implements OnInit {
     .subscribe(
       (historico: any) => {
         this.historico = historico.historico;
+        this.isLoading = false;
         this.atualizarPaginacao(0); // Inicializa a primeira página do paginador
       },
       error => {
+        this.isLoading = false;
         console.error('Erro ao obter histórico do equipamento', error);
       }
     );
@@ -108,7 +112,6 @@ export class DetalheEquipamentoComponent implements OnInit {
 
   onPageSizeChange(event: any): void {
     this.pageSize = event.pageSize;
-    console.log(event.pageSize);
     this.atualizarPaginacao(0); // Retorna para a primeira página ao alterar o tamanho da página
   }
 

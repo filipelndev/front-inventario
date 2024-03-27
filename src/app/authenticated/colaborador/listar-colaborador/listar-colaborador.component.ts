@@ -13,6 +13,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./listar-colaborador.component.css']
 })
 export class ListarColaboradorComponent implements OnInit {
+  isLoading: boolean = false;
   displayedColumns: string[] = ['nome', 'cpf', 'status', 'editar']; // Adicione mais colunas conforme necessário
   dataSource = new MatTableDataSource<Colaborador>([]);
 
@@ -23,12 +24,14 @@ export class ListarColaboradorComponent implements OnInit {
     private router: Router) {}
 
   ngOnInit() {
+    this.isLoading = true;
     this.colaboradorService.getColaboradores().subscribe(
       (colaboradores: any) => {
         this.dataSource.data = colaboradores.results;
-        console.log(colaboradores);
+        this.isLoading = false;
       },
       error => {
+        this.isLoading = false;
         console.error('Erro ao obter colaboradores:', error);
       }
     );
@@ -39,15 +42,7 @@ export class ListarColaboradorComponent implements OnInit {
   }
 
   editarColaborador(colaborador: Colaborador): void {
-    const dialogRef = this.dialog.open(EditarColaboradorComponent, {
-      width: '1000px', // Ajuste o tamanho conforme necessário
-      data: { colaborador },
-    });
-
-    dialogRef.afterClosed().subscribe((result) => {
-      // Lógica a ser executada após o fechamento do diálogo de edição
-      console.log('O diálogo foi fechado');
-    });
+    this.router.navigate(['/editar-colaborador', colaborador.id]);
   }
 
   alterarStatusColaborador(colaborador: Colaborador): void {

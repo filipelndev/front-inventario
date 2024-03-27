@@ -5,6 +5,7 @@ import { TipoEquipamento } from 'src/app/Models/TipoEquipamento';
 import { TipoEquipamentoService } from '../../tipo-equipamento.service';
 import { MatPaginator } from '@angular/material/paginator';
 import { Router } from '@angular/router';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-listar-tipo-equipamento',
@@ -12,23 +13,29 @@ import { Router } from '@angular/router';
   styleUrls: ['./listar-tipo-equipamento.component.css']
 })
 export class ListarTipoEquipamentoComponent implements OnInit {
-  displayedColumns: string[] = ['tipoEquipamento', 'status'];
+  displayedColumns: string[] = ['tipoEquipamento', 'status', 'editar'];
   dataSource = new MatTableDataSource<TipoEquipamento>([]);
+  isLoading: boolean = false;
 
 
   constructor(private dialog: MatDialog,
     private tipoequipamento: TipoEquipamentoService,
-    private router: Router,) {}
+    private router: Router,
+    private location: Location
+    ) {}
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
   ngOnInit() {
+      this.isLoading = true;
     this.tipoequipamento.getTipoEquipamento().subscribe(
       (tipoEquipamento: any) => {
+        this.isLoading = false;
         this.dataSource.data = tipoEquipamento.results;
         this.dataSource.paginator = this.paginator; // Configura o paginador
       },
       error => {
+        this.isLoading = false;
         console.error('Erro ao obter colaboradores:', error);
       }
     );
@@ -58,5 +65,13 @@ export class ListarTipoEquipamentoComponent implements OnInit {
 
   navegarDetalhesTipoEquipamento(tipoEquipamentoId: number): void {
     this.router.navigate(['/detalhe-tipo-equipamento', tipoEquipamentoId]);
+  }
+
+  editarTipoEquipamento(tipoEquipamento: TipoEquipamento): void {
+    this.router.navigate(['/editar-tipo-equipamento', tipoEquipamento.id]);
+  }
+
+  voltarParaUsuarios(): void {
+    this.location.back();
   }
 }

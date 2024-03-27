@@ -9,6 +9,7 @@ import { Location } from '@angular/common';
   styleUrls: ['./transfere-situacao.component.css']
 })
 export class TransfereSituacaoComponent {
+  isLoading: boolean = false;
   equipamentoId: number | undefined;
   equipamento: any;
   situacaoAtual?: number;
@@ -32,12 +33,15 @@ export class TransfereSituacaoComponent {
   }
 
   obterDetalhesEquipamento(equipamentoId: number): void {
+    this.isLoading = true;
     this.equipamentoService.getEquipamentoForId(equipamentoId)
       .subscribe(
         (equipamento: any) => {
           this.equipamento = equipamento;
+          this.isLoading = false;
         },
         error => {
+          this.isLoading = false;
           console.error('Erro ao obter detalhes do equipamento:', error);
           // Adicione aqui a lógica para lidar com o erro, se necessário
         }

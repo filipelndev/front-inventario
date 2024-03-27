@@ -1,3 +1,8 @@
+<mat-toolbar>
+  <button mat-icon-button class="backButton" (click)="voltarParaUsuarios()">
+    <mat-icon>arrow_back</mat-icon>
+  </button>
+</mat-toolbar>
 <div class="container">
   <h2>Cadastrar Equipamento</h2>
 
@@ -21,11 +26,11 @@
   <mat-label>Situação:</mat-label>
   <mat-select id="situacao" name="situacao" [(ngModel)]="equipment.situacao" required>
     <mat-option disabled selected hidden>Selecione a Situação</mat-option>
-    <mat-option value="1">Novo</mat-option>
-    <mat-option value="2">Em Operação</mat-option>
-    <mat-option value="3">Em Manutenção</mat-option>
-    <mat-option value="4">Disponível</mat-option>
-    <mat-option value="5">Indisponível</mat-option>
+    <mat-option value="0">Novo</mat-option>
+    <mat-option value="1">Em Operação</mat-option>
+    <mat-option value="2">Em Manutenção</mat-option>
+    <mat-option value="3">Disponível</mat-option>
+    <mat-option value="4">Indisponível</mat-option>
     <!-- Adicione mais opções conforme necessário -->
   </mat-select>
 </mat-form-field>
@@ -55,6 +60,14 @@
   <mat-select id="colaborador" name="colaborador" [(ngModel)]="equipment.colaborador_id" required>
     <mat-option  disabled selected>Selecione o colaborador</mat-option>
     <mat-option *ngFor="let colaborador of colaboradores" [value]="colaborador">{{ colaborador.nome }}</mat-option>
+  </mat-select>
+</mat-form-field>
+
+<mat-form-field class="example-full-width">
+  <mat-label>Setor:</mat-label>
+  <mat-select id="setor" name="setor" [(ngModel)]="equipment.setor_id" required>
+    <mat-option  disabled selected>Selecione o setor</mat-option>
+    <mat-option *ngFor="let setor of setores" [value]="setor">{{ setor.nome }}</mat-option>
   </mat-select>
 </mat-form-field>
 
@@ -102,9 +115,11 @@
       <span>{{ equipment.status ? 'Ativo' : 'Inativo' }}</span>
 
       <div class="buttonContainer">
-        <button type="submit"><mat-icon>save</mat-icon>Salvar</button>
-        <button class="cancelbutton" (click)="onVoltarClick()"><mat-icon>undo</mat-icon>Voltar</button>
+        <button class="submit-button" type="submit"><mat-icon>save</mat-icon>Salvar</button>
       </div>
   </form>
   <div class="mensagem-cadastro" *ngIf="mensagemCadastro">{{ mensagemCadastro }}</div>
+</div>
+<div class="loading" *ngIf="isLoading">
+  Carregando...
 </div>

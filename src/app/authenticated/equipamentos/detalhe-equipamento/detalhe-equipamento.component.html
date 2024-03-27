@@ -40,24 +40,48 @@
                 <input matInput [value]="equipamento?.modelo" disabled>
               </mat-form-field>
             </div>
-            <div class="campo" (click)="irParaTransferenciaDeSituacao()">
-              <mat-form-field class="example-full-width" (click)="irParaTransferenciaDeSituacao()">
-                <mat-label>Situação</mat-label>
-                <input matInput [value]="getDescricaoSituacao(equipamento?.situacao)" (click)="irParaTransferenciaDeSituacao()">
+            <div class="campo pointer" (click)="irParaTransferenciaDeSituacao()">
+              <mat-form-field class="example-full-width pointer" (click)="irParaTransferenciaDeSituacao()">
+                <mat-label class="pointer">Situação</mat-label>
+                <input matInput class="pointer" [value]="getDescricaoSituacao(equipamento?.situacao)" (click)="irParaTransferenciaDeSituacao()">
               </mat-form-field>
             </div>
-            <div class="campo" (click)="irParaTransferenciaDeColaborador()">
-              <mat-form-field class="example-full-width" (click)="irParaTransferenciaDeColaborador()">
-                <mat-label>Colaborador</mat-label>
-                <input matInput [value]="equipamento?.colaborador_nome" (click)="irParaTransferenciaDeColaborador()">
+            <div class="campo pointer" (click)="irParaTransferenciaDeColaborador()">
+              <mat-form-field class="example-full-width pointer" (click)="irParaTransferenciaDeColaborador()">
+                <mat-label class="pointer">Colaborador</mat-label>
+                <input matInput class="pointer" [value]="equipamento?.colaborador_nome" (click)="irParaTransferenciaDeColaborador()">
               </mat-form-field>
             </div>
             <div class="campo pointer" (click)="irParaTransferenciaDeEmpresa()">
               <mat-form-field class="example-full-width pointer" (click)="irParaTransferenciaDeEmpresa()">
-                <mat-label>Empresa</mat-label>
+                <mat-label class="pointer">Empresa</mat-label>
                 <input matInput class="pointer" (click)="irParaTransferenciaDeEmpresa()" [value]="equipamento?.empresa_nome">
               </mat-form-field>
             </div>
+            <div class="campo">
+              <mat-form-field class="example-full-width">
+                <mat-label >Acesso remoto</mat-label>
+                <input matInput [value]="equipamento?.acesso_remoto" disabled>
+              </mat-form-field>
+            </div>
+            <div>
+            <mat-form-field class="example-full-width">
+              <mat-label >Id do acesso remoto</mat-label>
+              <input matInput [value]="equipamento?.acesso_id" disabled>
+            </mat-form-field>
+          </div>
+          <div>
+            <mat-form-field class="example-full-width">
+              <mat-label >Id do acesso remoto</mat-label>
+              <input matInput [value]="equipamento?.acesso_senha" disabled>
+            </mat-form-field>
+          </div>
+          <div>
+            <mat-form-field class="example-full-width">
+              <mat-label>Observações</mat-label>
+              <textarea style="resize: none;" matInput id="observacoes" name="observacoes" [value]="equipamento?.observacao" class="fixed-textarea" disabled></textarea>
+            </mat-form-field>
+          </div>
           </div>
         </mat-card-content>
       </mat-card>
@@ -104,4 +128,7 @@
     </div>
   </mat-tab>
 </mat-tab-group>
+</div>
+<div class="loading" *ngIf="isLoading">
+  Carregando...
 </div>

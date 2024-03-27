@@ -25,6 +25,21 @@ import { DetalheTipoEquipamentoComponent } from './authenticated/tipo-equipament
 import { DetalheColaboradorComponent } from './authenticated/colaborador/detalhe-colaborador/detalhe-colaborador.component';
 import { TransfereColaboradorComponent } from './authenticated/equipamentos/transfere-colaborador/transfere-colaborador.component';
 import { TransfereSituacaoComponent } from './authenticated/equipamentos/transfere-situacao/transfere-situacao.component';
+import { CadastrarSetorComponent } from './setor/cadastrar-setor/cadastrar-setor.component';
+import { ListarSetorComponent } from './setor/listar-setor/listar-setor.component';
+import { DetalheSetorComponent } from './setor/detalhe-setor/detalhe-setor.component';
+import { EditarEquipamentosComponent } from './authenticated/equipamentos/editar-equipamentos/editar-equipamentos.component';
+import { EditarColaboradorComponent } from './authenticated/colaborador/editar-colaborador/editar-colaborador.component';
+import { EditarEmpresaComponent } from './authenticated/empresa/editar-empresa/editar-empresa.component';
+import { EditarTipoEquipamentoComponent } from './authenticated/tipo-equipamento/editar-tipo-equipamento/editar-tipo-equipamento.component';
+import { EditarSetorComponent } from './setor/editar-setor/editar-setor.component';
+import { DuplicarEquipamentoComponent } from './authenticated/equipamento/duplicar-equipamento/duplicar-equipamento.component';
+import { CadastrarCategoriaComponent } from './authenticated/categorias/cadastrar-categoria/cadastrar-categoria.component';
+import { EditarCategoriaComponent } from './authenticated/categorias/editar-categoria/editar-categoria.component';
+import { ListarCategoriaComponent } from './authenticated/categorias/listar-categoria/listar-categoria.component';
+import { CadastrarItemComponent } from './authenticated/itens/cadastrar-item/cadastrar-item.component';
+import { EditarItemComponent } from './authenticated/itens/editar-item/editar-item.component';
+import { ListarItemComponent } from './authenticated/itens/listar-item/listar-item.component';
 
 
 const routes: Routes = [
@@ -52,6 +67,21 @@ const routes: Routes = [
   { path: 'detalhe-colaborador/:id', component: DetalheColaboradorComponent, canActivate:[AuthGuard] },
   { path: 'transfere-colaborador', component: TransfereColaboradorComponent, canActivate:[AuthGuard] },
   { path: 'altera-situacao', component: TransfereSituacaoComponent, canActivate:[AuthGuard] },
+  { path: 'cadastrar-setor', component: CadastrarSetorComponent, canActivate:[AuthGuard] },
+  { path: 'listar-setor', component: ListarSetorComponent, canActivate:[AuthGuard] },
+  { path: 'detalhe-setor/:id', component: DetalheSetorComponent, canActivate:[AuthGuard] },
+  { path: 'editar-equipamento/:id', component: EditarEquipamentosComponent, canActivate:[AuthGuard] },
+  { path: 'editar-colaborador/:id', component: EditarColaboradorComponent, canActivate:[AuthGuard] },
+  { path: 'editar-empresa/:id', component: EditarEmpresaComponent, canActivate:[AuthGuard] },
+  { path: 'editar-tipo-equipamento/:id', component: EditarTipoEquipamentoComponent, canActivate:[AuthGuard] },
+  { path: 'editar-setor/:id', component: EditarSetorComponent, canActivate:[AuthGuard] },
+  { path: 'duplicar-equipamento/:id', component: DuplicarEquipamentoComponent, canActivate:[AuthGuard] },
+  { path: 'cadastrar-categoria', component: CadastrarCategoriaComponent, canActivate:[AuthGuard] },
+  { path: 'editar-categoria/:id', component: EditarCategoriaComponent, canActivate:[AuthGuard] },
+  { path: 'listar-categoria', component: ListarCategoriaComponent, canActivate:[AuthGuard] },
+  { path: 'cadastrar-item', component: CadastrarItemComponent, canActivate:[AuthGuard] },
+  { path: 'editar-item/:id', component: EditarItemComponent, canActivate:[AuthGuard] },
+  { path: 'listar-item', component: ListarItemComponent, canActivate:[AuthGuard] },
 ];
 
 @NgModule({

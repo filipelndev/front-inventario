@@ -9,6 +9,7 @@ import { EmpresaService } from '../../empresa.service';
   styleUrls: ['./adicionar-equipamento.component.css']
 })
 export class AdicionarEquipamentoComponent implements OnInit {
+  isLoading: boolean = false;
   empresaId: number | undefined;
   equipamentoForm: FormGroup;
 
