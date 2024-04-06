@@ -7,6 +7,7 @@ import { EditarEmpresaComponent } from '../editar-empresa/editar-empresa.compone
 import { EmpresaService } from '../../empresa.service';
 import { Router } from '@angular/router';
 import { Location } from '@angular/common';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-listar-empresa',
@@ -23,7 +24,8 @@ export class ListarEmpresaComponent implements OnInit {
   constructor(private dialog: MatDialog,
     private empresaService: EmpresaService,
     private router: Router,
-    private location: Location) {}
+    private location: Location,
+    private snackBar: MatSnackBar) {}
 
   ngOnInit() {
     this.isLoading = true;
@@ -33,8 +35,12 @@ export class ListarEmpresaComponent implements OnInit {
         this.isLoading = false;
       },
       error => {
-        this.isLoading = false;
-        console.error('Erro ao obter colaboradores:', error);
+        this.snackBar.open(error.error, '', {
+          duration: 5000,
+          horizontalPosition: 'right',
+          verticalPosition: 'bottom',
+        });
+        console.error('Erro ao obter empresa:', error);
       }
     );
   }

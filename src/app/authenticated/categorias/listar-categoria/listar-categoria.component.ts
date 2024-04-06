@@ -5,6 +5,7 @@ import { CategoriaService } from '../../categoria.service';
 import { Location } from '@angular/common';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-listar-categoria',
@@ -22,7 +23,8 @@ export class ListarCategoriaComponent implements OnInit {
     private categoriaService: CategoriaService,
     private location: Location,
     private router: Router,
-    private http: HttpClient) {}
+    private http: HttpClient,
+    private snackBar: MatSnackBar) {}
 
   ngOnInit() {
     this.isLoading = true;
@@ -33,7 +35,11 @@ export class ListarCategoriaComponent implements OnInit {
         this.isLoading = false;
       },
       error => {
-        this.isLoading = false;
+        this.snackBar.open(error.error, '', {
+          duration: 5000,
+          horizontalPosition: 'right',
+          verticalPosition: 'bottom',
+        });
         console.error('Erro ao obter categorias:', error);
       }
     );

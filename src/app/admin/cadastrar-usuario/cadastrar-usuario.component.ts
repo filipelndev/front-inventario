@@ -6,6 +6,8 @@ import { PermissaoUsuario } from 'src/app/Models/PermissaoUsuario';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Location } from '@angular/common';
+
 
 // Interface para definir a estrutura esperada do objeto 'grupo'
 interface GrupoResponse {
@@ -36,7 +38,7 @@ export class CadastrarUsuarioComponent implements OnInit {
   gruposSelecionados: PermissaoUsuario[] = [];
 
   constructor(private userService: UserService, private permissaoService: PermissaoService,
-    private router: Router, private snackBar: MatSnackBar) {}
+    private router: Router, private snackBar: MatSnackBar, private location: Location) {}
 
   ngOnInit() {
     this.carregarGruposDisponiveis();
@@ -97,7 +99,9 @@ export class CadastrarUsuarioComponent implements OnInit {
                 duration: 3000,
                 horizontalPosition: 'right',
                 verticalPosition: 'bottom',
+
               });
+              this.location.back();
             },
             error => {
               console.error('Erro ao associar permissões:', error);

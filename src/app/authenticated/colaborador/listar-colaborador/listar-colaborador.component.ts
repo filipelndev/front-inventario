@@ -6,6 +6,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { EditarColaboradorComponent } from '../editar-colaborador/editar-colaborador.component';
 import { ColaboradorService } from '../../colaborador.service';
 import { Router } from '@angular/router';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-listar-colaborador',
@@ -21,7 +22,8 @@ export class ListarColaboradorComponent implements OnInit {
 
   constructor(private dialog: MatDialog,
     private colaboradorService: ColaboradorService,
-    private router: Router) {}
+    private router: Router,
+    private snackBar: MatSnackBar,) {}
 
   ngOnInit() {
     this.isLoading = true;
@@ -31,7 +33,11 @@ export class ListarColaboradorComponent implements OnInit {
         this.isLoading = false;
       },
       error => {
-        this.isLoading = false;
+        this.snackBar.open(error.error, '', {
+          duration: 5000,
+          horizontalPosition: 'right',
+          verticalPosition: 'bottom',
+        });
         console.error('Erro ao obter colaboradores:', error);
       }
     );

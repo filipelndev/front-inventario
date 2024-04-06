@@ -26,7 +26,7 @@ export class CadastrarColaboradorComponent {
         response => {
           this.colaborador = { nome: '', cpf: '', status: true };
           this.snackBar.open('Colaborador cadastrado com sucesso!', '', {
-            duration: 3000,
+            duration: 5000,
             horizontalPosition: 'right',
             verticalPosition: 'bottom',
           });

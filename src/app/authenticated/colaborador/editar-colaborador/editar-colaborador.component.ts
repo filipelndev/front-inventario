@@ -37,7 +37,11 @@ export class EditarColaboradorComponent implements OnInit {
           error => {
             this.isLoading = false;
             console.error('Erro ao carregar colaborador:', error);
-            // Lidar com o erro, se necessário
+            this.snackBar.open('erro ao carregar Colaborador, entre em contato com o suporte.', '', {
+              duration: 5000,
+              horizontalPosition: 'right',
+              verticalPosition: 'bottom',
+            });
           }
         );
       }
@@ -61,7 +65,7 @@ export class EditarColaboradorComponent implements OnInit {
         this.colaboradorService.editarColaborador(this.colaborador.id, this.colaborador).subscribe(
           (colaboradorAtualizado) => {
             this.snackBar.open('Colaborador atualizado com sucesso!', '', {
-              duration: 3000,
+              duration: 5000,
               horizontalPosition: 'right',
               verticalPosition: 'bottom',
             });

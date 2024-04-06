@@ -35,7 +35,16 @@ export class ListarEquipamentosComponent implements OnInit {
         this.isLoading = false;
         this.dataSource.data = equipamentos.results;
         this.dataSource.paginator = this.paginator; // Configura o paginador
-      });
+      },
+      error => {
+        this.snackBar.open(error.error, '', {
+          duration: 5000,
+          horizontalPosition: 'right',
+          verticalPosition: 'bottom',
+        });
+        console.error('Erro ao obter equipamentos:', error);
+      }
+    );
   }
 
   EditarEquipamento(equipamento: Equipamento): void {

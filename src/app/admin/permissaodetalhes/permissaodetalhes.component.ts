@@ -51,37 +51,38 @@ export class PermissaodetalhesComponent implements OnInit {
       this.permissaoService.buscarDetalhesDoGrupo(this.grupoId).subscribe(
         (detalhesGrupo) => {
           this.detalheGrupo = detalhesGrupo;
+          console.log(detalhesGrupo);
 
           // Mapeia as chaves de permissions_list para variáveis booleanas
           const permissions = detalhesGrupo.permissions_list || {};
 
-          this.visualizaColaborador = permissions['visualizar_colaborador'] || false;
-          this.editaColaborador = permissions['editar_colaborador'] || false;
-          this.detalheColaborador = permissions['visualiza_detalhe_colaborador'] || false;
+          this.visualizaColaborador = permissions['Visualizar Colaboradores'] || false;
+          this.editaColaborador = permissions['Editar Colaborador'] || false;
+          this.detalheColaborador = permissions['Visualizar Detalhes do Colaborador'] || false;
 
-          this.visualizaEmpresa = permissions['visualizar_empresas'] || false;
-          this.editaEmpresa = permissions['editar_empresa'] || false;
-          this.detalheEmpresa = permissions['visualiza_detalhe_empresa'] || false;
+          this.visualizaEmpresa = permissions['Visualizar empresas'] || false;
+          this.editaEmpresa = permissions['Editar Empresa'] || false;
+          this.detalheEmpresa = permissions['Visualizar Detalhes da Empresa'] || false;
 
-          this.visualizaEquipamento = permissions['visualizar_equipamentos'] || false;
-          this.editaEquipamento = permissions['editar_equipamento'] || false;
-          this.detalheEquipamento = permissions['visualiza_detalhe_equipamento'] || false;
+          this.visualizaEquipamento = permissions['Visualizar Equipamentos'] || false;
+          this.editaEquipamento = permissions['Editar Equipamento'] || false;
+          this.detalheEquipamento = permissions['Visualizar Detalhes do Equipamento'] || false;
 
-          this.visualizaTipoEquipamento = permissions['visualizar_tipos_equipamento'] || false;
-          this.editaTipoEquipamento = permissions['editar_tipo_equipamento'] || false;
-          this.detalheTipoEquipamento = permissions['visualiza_detalhe_tipo_equipamento'] || false;
+          this.visualizaTipoEquipamento = permissions['Visualizar Tipos de Equipamentos'] || false;
+          this.editaTipoEquipamento = permissions['Editar Tipo de Equipamento'] || false;
+          this.detalheTipoEquipamento = permissions['Visualizar Detalhes do Tipo de Equipamento'] || false;
 
-          this.visualizaSetor = permissions['visualizar_setor'] || false;
-          this.editaSetor = permissions['editar_setor'] || false;
-          this.detalheSetor = permissions['visualiza_detalhes_setor'] || false;
+          this.visualizaSetor = permissions['Visualizar setores'] || false;
+          this.editaSetor = permissions['Editar setor'] || false;
+          this.detalheSetor = permissions['Visualizar Detalhes do setor'] || false;
 
-          this.visualizaCategoria = permissions['visualizar_categorias'] || false;
-          this.editaCategoria = permissions['editar_categoria'] || false;
-          this.detalheCategoria = permissions['visualiza_detalhe_Categoria'] || false;
+          this.visualizaCategoria = permissions['Visualizar Categorias'] || false;
+          this.editaCategoria = permissions['Editar Categoria'] || false;
+          this.detalheCategoria = permissions['Visualizar Detalhes Categoria'] || false;
 
-          this.visualizaItem = permissions['visualizar_item'] || false;
-          this.editaItem = permissions['editar_item'] || false;
-          this.detalheItem = permissions['visualiza_detalhe_Item'] || false;
+          this.visualizaItem = permissions['Visualizar itens'] || false;
+          this.editaItem = permissions['Editar item'] || false;
+          this.detalheItem = permissions['Visualizar Detalhes item'] || false;
 
           console.log('Detalhes do grupo:', detalhesGrupo);
         },

@@ -6,6 +6,7 @@ import { TipoEquipamentoService } from '../../tipo-equipamento.service';
 import { MatPaginator } from '@angular/material/paginator';
 import { Router } from '@angular/router';
 import { Location } from '@angular/common';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-listar-tipo-equipamento',
@@ -18,10 +19,10 @@ export class ListarTipoEquipamentoComponent implements OnInit {
   isLoading: boolean = false;
 
 
-  constructor(private dialog: MatDialog,
-    private tipoequipamento: TipoEquipamentoService,
+  constructor(private tipoequipamento: TipoEquipamentoService,
     private router: Router,
-    private location: Location
+    private location: Location,
+    private snackBar: MatSnackBar
     ) {}
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
@@ -35,8 +36,12 @@ export class ListarTipoEquipamentoComponent implements OnInit {
         this.dataSource.paginator = this.paginator; // Configura o paginador
       },
       error => {
-        this.isLoading = false;
-        console.error('Erro ao obter colaboradores:', error);
+        this.snackBar.open(error.error, '', {
+          duration: 5000,
+          horizontalPosition: 'right',
+          verticalPosition: 'bottom',
+        });
+        console.error('Erro ao obter itens:', error);
       }
     );
   }

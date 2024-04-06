@@ -4,6 +4,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { Location } from '@angular/common';
 import { Router } from '@angular/router';
 import { ItemService } from '../../item.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-listar-item',
@@ -20,7 +21,8 @@ export class ListarItemComponent  implements OnInit {
   constructor(
     private itemService: ItemService,
     private location: Location,
-    private router: Router) {}
+    private router: Router,
+    private snackBar: MatSnackBar) {}
 
   ngOnInit() {
     this.isLoading = true;
@@ -31,8 +33,12 @@ export class ListarItemComponent  implements OnInit {
         this.isLoading = false;
       },
       error => {
-        this.isLoading = false;
-        console.error('Erro ao obter categorias:', error);
+        this.snackBar.open(error.error, '', {
+          duration: 5000,
+          horizontalPosition: 'right',
+          verticalPosition: 'bottom',
+        });
+        console.error('Erro ao obter itens:', error);
       }
     );
   }

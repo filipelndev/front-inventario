@@ -1,8 +1,3 @@
-.container {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Define duas colunas com largura mínima de 200px */
-  gap: 15px; /* Espaçamento entre as colunas e as linhas */
-}
 
 .group-details {
   padding: 20px;
@@ -32,8 +27,13 @@
   font-weight: bold;
 }
 
+.checkboxes {
+  display: flex;
+  flex-direction: row; /* Alinhar as checkboxes horizontalmente */
+}
+
 .mat-checkbox {
-  margin-top: 5px;
+  margin-right: 10px; /* Espaçamento entre as checkboxes */
 }
 
 .createButton {

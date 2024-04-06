@@ -32,7 +32,7 @@
 
     <mat-form-field class="example-full-width">
       <label for="situacao">Situação:</label>
-      <mat-select id="situacao" name="situacao" *ngIf="equipamento" [(ngModel)]="this.equipamento.situacao" disabled required>
+      <mat-select id="situacao" name="situacao" *ngIf="equipamento" [(ngModel)]="this.equipamento.situacao" required>
         <mat-option disabled selected hidden>{{getDescricaoSituacao(equipamento.situacao)}}</mat-option>
         <mat-option value="0">Novo</mat-option>
         <mat-option value="1">Em Operação</mat-option>
@@ -45,7 +45,7 @@
 
     <mat-form-field class="example-full-width">
       <mat-label for="empresa">Empresa:</mat-label>
-      <mat-select [(ngModel)]="this.equipamento.empresa_id" *ngIf="equipamento" name="empresa" id="empresa" disabled>
+      <mat-select [(ngModel)]="this.equipamento.empresa_id" *ngIf="equipamento" name="empresa" id="empresa">
         <mat-option value="" disabled selected>Selecione o nome da Empresa</mat-option>
         <mat-option *ngFor="let empresa of empresas" [value]="empresa.id">{{ empresa.nome }}</mat-option>
       </mat-select>
@@ -54,7 +54,7 @@
 
     <mat-form-field class="example-full-width">
       <mat-label for="colaborador">Colaborador:</mat-label>
-      <mat-select [(ngModel)]="this.equipamento.colaborador_id" *ngIf="equipamento" name="colaborador" id="colaborador" disabled>
+      <mat-select [(ngModel)]="this.equipamento.colaborador_id" *ngIf="equipamento" name="colaborador" id="colaborador">
         <mat-option value="" disabled selected>Selecione o nome do colaborador</mat-option>
         <mat-option *ngFor="let colaborador of colaboradores" [value]="colaborador.id">{{ colaborador.nome }}</mat-option>
       </mat-select>

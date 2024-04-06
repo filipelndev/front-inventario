@@ -1,10 +1,11 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
-import { Router } from '@angular/router';
+import { Location } from '@angular/common';
 import { Setor } from 'src/app/Models/Setor';
-import { EmpresaService } from 'src/app/authenticated/empresa.service';
 import { SetorService } from '../setor.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-listar-setor',
@@ -20,6 +21,8 @@ export class ListarSetorComponent implements OnInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
   constructor(private setorService: SetorService,
+    private location: Location,
+    private snackBar: MatSnackBar,
     private router: Router) {}
 
   ngOnInit(): void {
@@ -36,9 +39,12 @@ export class ListarSetorComponent implements OnInit {
           console.log(setores);
         },
         error => {
-          console.error('Erro ao obter setores', error);
-          this.isLoading = false;
-          // Adicione aqui a lógica para lidar com o erro, se necessário
+          this.snackBar.open(error.error, '', {
+            duration: 5000,
+            horizontalPosition: 'right',
+            verticalPosition: 'bottom',
+          });
+          console.error('Erro ao obter setores:', error);
         }
       );
   }
@@ -75,7 +81,7 @@ export class ListarSetorComponent implements OnInit {
 
   voltarParaUsuarios(): void {
     // Retorna para a página do dashboard
-    this.router.navigate(['/dashboard']);
+    this.location.back();
   }
 
 }

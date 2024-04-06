@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class UrlService {
-  apiUrl: string = 'http://localhost:8000/';
+  apiUrl: string = 'https://duplexsoft.com.br/teste/';
   //URL localhost: http://localhost:8000/
   //URL do servidor: https://duplexsoft.com.br/teste/
   constructor() { }
