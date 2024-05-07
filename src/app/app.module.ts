@@ -29,6 +29,8 @@ import { MAT_DATE_LOCALE, MatNativeDateModule } from '@angular/material/core';
 import { MatSnackBarModule, MAT_SNACK_BAR_DEFAULT_OPTIONS } from '@angular/material/snack-bar';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatCardModule } from '@angular/material/card';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatSortModule } from '@angular/material/sort';
 
 import { CadastrarColaboradorComponent } from './authenticated/colaborador/cadastrar-colaborador/cadastrar-colaborador.component';
 import { ListarColaboradorComponent } from './authenticated/colaborador/listar-colaborador/listar-colaborador.component';
@@ -79,6 +81,8 @@ import { ListarCategoriaComponent } from './authenticated/categorias/listar-cate
 import { CadastrarItemComponent } from './authenticated/itens/cadastrar-item/cadastrar-item.component';
 import { ListarItemComponent } from './authenticated/itens/listar-item/listar-item.component';
 import { EditarItemComponent } from './authenticated/itens/editar-item/editar-item.component';
+import { MovimentacaoItemComponent } from './authenticated/itens/movimentacao-item/movimentacao-item.component';
+import { ListarMovimentacaoComponent } from './authenticated/itens/listar-movimentacao/listar-movimentacao.component';
 
 
 @NgModule({
@@ -127,6 +131,8 @@ import { EditarItemComponent } from './authenticated/itens/editar-item/editar-it
     CadastrarItemComponent,
     ListarItemComponent,
     EditarItemComponent,
+    MovimentacaoItemComponent,
+    ListarMovimentacaoComponent,
   ],
   imports: [
     BrowserModule,
@@ -161,7 +167,9 @@ import { EditarItemComponent } from './authenticated/itens/editar-item/editar-it
     NgxMaskModule.forRoot(),
     MatSnackBarModule,
     MatTabsModule,
-    MatCardModule
+    MatCardModule,
+    MatTooltipModule,
+    MatSortModule
   ],
   providers: [
     ColaboradorService,

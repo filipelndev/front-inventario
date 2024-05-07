@@ -101,6 +101,17 @@
 </div>
 </div>
 
+<div class="section">
+  <div class="checkbox-group">
+    <div class="checkbox-title">
+      <label class="titulo-section">Movimentação</label></div>
+  <mat-checkbox name="visualizaMovimentacao" [(ngModel)]="this.visualizaMovimentacao">Visualizar</mat-checkbox>
+  <mat-checkbox name="editaMovimentacao" [(ngModel)]="this.editaMovimentacao">Editar</mat-checkbox>
+  <mat-checkbox disabled>Detalhes</mat-checkbox>
+  <mat-checkbox name="selecionaMovimentacao" [(ngModel)]="this.selecionarTodosMovimentacao" (change)="toogleSelecionarTodosMovimentacao()">Selecionar todos</mat-checkbox>
+</div>
+</div>
+
   <div class="button-container">
   <button class="createButton" type="submit">Criar Grupo</button>
   </div>

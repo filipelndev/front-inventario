@@ -1,0 +1,52 @@
+<mat-toolbar>
+  <button mat-icon-button class="backButton" (click)="voltar()">
+    <mat-icon>arrow_back</mat-icon>
+  </button>
+</mat-toolbar>
+
+<div class="container">
+  <h2 class="titulo">Listagem de Movimentações de Estoque</h2>
+
+  <mat-table #table [dataSource]="dataSource" matSort>
+
+    <ng-container matColumnDef="data">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Data</mat-header-cell>
+      <mat-cell *matCellDef="let movimentacao">{{ movimentacao.data_movimento }}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="quantidade">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Quantidade</mat-header-cell>
+      <mat-cell *matCellDef="let movimentacao">{{ movimentacao.quantidade }}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="numeroDocumento">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Número do Documento</mat-header-cell>
+      <mat-cell *matCellDef="let movimentacao">{{ movimentacao.documento }}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="tipoMovimentacao">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Tipo de Movimentação</mat-header-cell>
+      <mat-cell *matCellDef="let movimentacao">{{ movimentacao.tipo === "0" ? 'Entrada' : 'Saída' }}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="itemId">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Item</mat-header-cell>
+      <mat-cell *matCellDef="let movimentacao">{{ movimentacao.item }}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="actions">
+      <mat-header-cell *matHeaderCellDef>Remover</mat-header-cell>
+      <mat-cell *matCellDef="let movimentacao">
+        <button mat-icon-button (click)="onDelete(movimentacao.id)">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+
+  </mat-table>
+
+  <mat-paginator [pageSizeOptions]="[5, 10]" showFirstLastButtons></mat-paginator>
+</div>

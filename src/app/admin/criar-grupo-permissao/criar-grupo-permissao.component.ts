@@ -22,6 +22,7 @@ export class CriarGrupoPermissaoComponent {
   selecionarTodosSetor: boolean = false;
   selecionarTodosCategoria: boolean = false;
   selecionarTodosItem: boolean = false;
+  selecionarTodosMovimentacao = false;
 
   selecionarTodos: boolean = false;
 
@@ -52,6 +53,9 @@ export class CriarGrupoPermissaoComponent {
   visualizaItem: boolean = false;
   editaItem: boolean = false;
   detalheItem: boolean = false;
+
+  visualizaMovimentacao: boolean = false;
+  editaMovimentacao: boolean = false;
 
   constructor(private router: Router, private permissaoService: PermissaoService,  private snackBar: MatSnackBar) {}
 
@@ -87,7 +91,10 @@ export class CriarGrupoPermissaoComponent {
 
         visualizar_item: this.visualizaItem,
         editar_item: this.editaItem,
-        visualiza_detalhe_item: this.detalheItem
+        visualiza_detalhe_item: this.detalheItem,
+
+        visualizar_movimentacao_estoque: this.visualizaMovimentacao,
+        editar_movimentacao_estoque: this.editaMovimentacao
       }
     };
     console.log(novoGrupo);
@@ -190,6 +197,11 @@ export class CriarGrupoPermissaoComponent {
     this.detalheItem = this.selecionarTodosItem;
   }
 
+  toogleSelecionarTodosMovimentacao(): void {
+    this.visualizaMovimentacao = this.selecionarTodosMovimentacao;
+    this.editaMovimentacao = this.selecionarTodosMovimentacao;
+  }
+
   toogleSelecionarTodos(): void {
     this.selecionarTodosVisualizar = this.selecionarTodos;
     this.selecionarTodosEditar = this.selecionarTodos;
@@ -201,12 +213,14 @@ export class CriarGrupoPermissaoComponent {
     this.selecionarTodosSetor = this.selecionarTodos;
     this.selecionarTodosCategoria = this.selecionarTodos;
     this.selecionarTodosItem = this.selecionarTodos;
+    this.selecionarTodosMovimentacao = this.selecionarTodos;
     this.toggleSelecionarTodosVisualizar();
     this.toggleSelecionarTodoseditar();
     this.toggleSelecionarTodosDetalhe();
     this.toogleSelecionarTodosSetor();
     this.toogleSelecionarTodosCategoria();
     this.toogleSelecionarTodosItem();
+    this.toogleSelecionarTodosMovimentacao();
   }
 
   SelecionarTodosVisualizar(coluna: string): void {
@@ -238,4 +252,5 @@ export class CriarGrupoPermissaoComponent {
       // Adicione outros casos conforme necessário
     }
   }
+
 }

@@ -1,0 +1,48 @@
+<mat-toolbar>
+  <button mat-icon-button class="backButton" matTooltip="Voltar" (click)="voltarParaCategorias()">
+    <mat-icon>arrow_back</mat-icon>
+  </button>
+  <button mat-icon-button class="movimentationButton backButton" matTooltip="Lista de movimentações" (click)="irParaListaDeMovimentacao()">
+    <mat-icon>list</mat-icon>
+  </button>
+</mat-toolbar>
+
+<div class="container">
+  <form (ngSubmit)="onSubmit()" #movimentacaoForm="ngForm">
+
+    <mat-form-field>
+      <mat-label>Escolha uma data</mat-label>
+      <input matInput [matDatepicker]="picker" [(ngModel)]="movimentacao.data">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput name="number" type="number" placeholder="Quantidade" [(ngModel)]="movimentacao.quantidade" min="0">
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput name="documento" type="text" placeholder="Documento" [(ngModel)]="movimentacao.documento">
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Escolha o tipo de movimentação</mat-label>
+      <mat-select name="tipo" [(ngModel)]="this.movimentacao.tipo" required>
+        <mat-option value="" disabled>Escolha o tipo de movimentação</mat-option>
+        <mat-option value="0">Entrada</mat-option>
+        <mat-option value="1">Saída</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Escolha o item</mat-label>
+      <mat-select name="item" [(ngModel)]="movimentacao.item" required>
+        <mat-option value="" disabled>Escolha o item</mat-option>
+        <mat-option *ngFor="let item of itens" [value]="item.id">{{ item.nome }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <button type="submit" class="submit-button">Enviar</button>
+
+  </form>
+</div>

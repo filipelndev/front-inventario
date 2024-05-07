@@ -66,6 +66,15 @@
   </div>
   </div>
 
+  <div class="checkbox-group">
+    <label>Movimentação</label>
+    <div class="checkboxes">
+    <mat-checkbox [(ngModel)]="visualizaMovimentacao" >Visualizar</mat-checkbox>
+    <mat-checkbox [(ngModel)]="editaMovimentacao" >Editar</mat-checkbox>
+    <mat-checkbox disabled >Detalhes</mat-checkbox>
+  </div>
+  </div>
+
   <button class="createButton" (click)="atualizarPermissoes()">Atualizar Permissões</button>
 
 </div>

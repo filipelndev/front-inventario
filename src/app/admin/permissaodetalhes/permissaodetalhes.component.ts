@@ -41,6 +41,9 @@ export class PermissaodetalhesComponent implements OnInit {
   editaItem: boolean = false;
   detalheItem: boolean = false;
 
+  visualizaMovimentacao: boolean = false;
+  editaMovimentacao: boolean = false;
+
   constructor(private permissaoService: PermissaoService, @Inject(MAT_DIALOG_DATA) public data: { grupo: any },  private dialogRef: MatDialogRef<PermissaodetalhesComponent>) {}
 
   ngOnInit(): void {
@@ -84,6 +87,9 @@ export class PermissaodetalhesComponent implements OnInit {
           this.editaItem = permissions['Editar item'] || false;
           this.detalheItem = permissions['Visualizar Detalhes item'] || false;
 
+          this.visualizaMovimentacao = permissions['Visualizar Movimentacao de Estoque'] || false;
+          this.editaMovimentacao = permissions['Criar Movimentacao de Estoque'] || false;
+
           console.log('Detalhes do grupo:', detalhesGrupo);
         },
         (error) => {
@@ -122,7 +128,10 @@ export class PermissaodetalhesComponent implements OnInit {
 
         visualizar_item: this.visualizaItem,
         editar_item: this.editaItem,
-        visualiza_detalhe_item: this.detalheItem
+        visualiza_detalhe_item: this.detalheItem,
+
+        visualiza_movimentacao_estoque: this.visualizaMovimentacao,
+        edita_movimentacao_estoque: this.editaMovimentacao
     };
 
     if(this.grupoId!= null)

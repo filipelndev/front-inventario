@@ -40,6 +40,8 @@ import { ListarCategoriaComponent } from './authenticated/categorias/listar-cate
 import { CadastrarItemComponent } from './authenticated/itens/cadastrar-item/cadastrar-item.component';
 import { EditarItemComponent } from './authenticated/itens/editar-item/editar-item.component';
 import { ListarItemComponent } from './authenticated/itens/listar-item/listar-item.component';
+import { MovimentacaoItemComponent } from './authenticated/itens/movimentacao-item/movimentacao-item.component';
+import { ListarMovimentacaoComponent } from './authenticated/itens/listar-movimentacao/listar-movimentacao.component';
 
 
 const routes: Routes = [
@@ -82,6 +84,8 @@ const routes: Routes = [
   { path: 'cadastrar-item', component: CadastrarItemComponent, canActivate:[AuthGuard] },
   { path: 'editar-item/:id', component: EditarItemComponent, canActivate:[AuthGuard] },
   { path: 'listar-item', component: ListarItemComponent, canActivate:[AuthGuard] },
+  { path: 'movimentacao', component: MovimentacaoItemComponent, canActivate:[AuthGuard] },
+  { path: 'listar-movimentacao', component: ListarMovimentacaoComponent, canActivate:[AuthGuard] },
 ];
 
 @NgModule({
