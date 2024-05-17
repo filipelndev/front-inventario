@@ -126,8 +126,19 @@
               <div class="sub-menu">
                 <a mat-list-item [routerLink]="['/cadastrar-item']">Cadastrar</a>
                 <a mat-list-item [routerLink]="['/listar-item']">Listar</a>
-                <a mat-list-item [routerLink]="['/movimentacao']">Movimentação</a>
-                <a mat-list-item [routerLink]="['/listar-movimentacao']">Listar Movimentação</a>
+              </div>
+            </mat-expansion-panel>
+
+            <!-- Conteúdo do item -->
+            <mat-expansion-panel>
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  <div class="menu-header">Movimentação</div>
+                </mat-panel-title>
+              </mat-expansion-panel-header>
+              <div class="sub-menu">
+                <a mat-list-item [routerLink]="['/movimentacao']">Cadastrar</a>
+                <a mat-list-item [routerLink]="['/listar-movimentacao-item']">Listar</a>
               </div>
             </mat-expansion-panel>
           </div>

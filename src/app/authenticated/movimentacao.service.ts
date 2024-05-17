@@ -12,14 +12,19 @@ export class MovimentacaoService {
   constructor(private http: HttpClient, private urlService: UrlService) { }
 
   // Método para obter todas as movimentações de estoque
-  getMovimentacoesEstoque(): Observable<any> {
-    return this.http.get<any>(this.apiUrl);
-  }
-
-  // Método para obter uma movimentação de estoque pelo ID
-  getMovimentacaoEstoqueById(id: number): Observable<any> {
-    const url = `${this.apiUrl}${id}/`;
-    return this.http.get<any>(url);
+  getMovimentacoesEstoque(itemId: number, dataInicial?: string, dataFinal?: string): Observable<any[]> {
+    let url = `${this.apiUrl}?item_id=${itemId}`;
+    console.log(url);
+    if (dataInicial && dataFinal == null) {
+      url += `&periodo_inicial=${dataInicial}`;
+      console.log(url);
+    }
+    else if (dataInicial && dataFinal)
+      {
+        url += `&periodo_inicial=${dataInicial}&periodo_final=${dataFinal}`;
+        console.log(url);
+    }
+    return this.http.get<any[]>(url);
   }
 
   // Método para criar uma nova movimentação de estoque

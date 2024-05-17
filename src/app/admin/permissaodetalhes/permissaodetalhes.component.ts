@@ -130,9 +130,9 @@ export class PermissaodetalhesComponent implements OnInit {
         editar_item: this.editaItem,
         visualiza_detalhe_item: this.detalheItem,
 
-        visualiza_movimentacao_estoque: this.visualizaMovimentacao,
-        edita_movimentacao_estoque: this.editaMovimentacao
-    };
+        visualizar_movimentacao_estoque: this.visualizaMovimentacao,
+        editar_movimentacao_estoque: this.editaMovimentacao
+    }; 
 
     if(this.grupoId!= null)
     {

@@ -42,6 +42,7 @@ import { EditarItemComponent } from './authenticated/itens/editar-item/editar-it
 import { ListarItemComponent } from './authenticated/itens/listar-item/listar-item.component';
 import { MovimentacaoItemComponent } from './authenticated/itens/movimentacao-item/movimentacao-item.component';
 import { ListarMovimentacaoComponent } from './authenticated/itens/listar-movimentacao/listar-movimentacao.component';
+import { ListarMovimentacaoItemComponent } from './authenticated/itens/listar-movimentacao-item/listar-movimentacao-item.component';
 
 
 const routes: Routes = [
@@ -85,7 +86,8 @@ const routes: Routes = [
   { path: 'editar-item/:id', component: EditarItemComponent, canActivate:[AuthGuard] },
   { path: 'listar-item', component: ListarItemComponent, canActivate:[AuthGuard] },
   { path: 'movimentacao', component: MovimentacaoItemComponent, canActivate:[AuthGuard] },
-  { path: 'listar-movimentacao', component: ListarMovimentacaoComponent, canActivate:[AuthGuard] },
+  { path: 'listar-movimentacao/:id', component: ListarMovimentacaoComponent, canActivate:[AuthGuard] },
+  { path: 'listar-movimentacao-item', component: ListarMovimentacaoItemComponent, canActivate:[AuthGuard] },
 ];
 
 @NgModule({

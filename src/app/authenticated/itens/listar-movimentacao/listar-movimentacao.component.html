@@ -7,31 +7,43 @@
 <div class="container">
   <h2 class="titulo">Listagem de Movimentações de Estoque</h2>
 
-  <mat-table #table [dataSource]="dataSource" matSort>
+  <mat-form-field>
+    <mat-label>Data Inicial</mat-label>
+    <input matInput [matDatepicker]="pickerInicial" [formControl]="dateFilterInicial">
+    <mat-datepicker-toggle matSuffix [for]="pickerInicial"></mat-datepicker-toggle>
+    <mat-datepicker #pickerInicial></mat-datepicker>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Data Final</mat-label>
+    <input matInput [matDatepicker]="pickerFinal" [formControl]="dateFilterFinal">
+    <mat-datepicker-toggle matSuffix [for]="pickerFinal"></mat-datepicker-toggle>
+    <mat-datepicker #pickerFinal></mat-datepicker>
+  </mat-form-field>
+
+  <button mat-raised-button (click)="buscarMovimentacoes()">Aplicar Filtro</button>
+  <button mat-raised-button (click)="resetDateFilter()">Limpar Filtro</button>
+
+  <mat-table #table [dataSource]="dataSource">
 
     <ng-container matColumnDef="data">
-      <mat-header-cell *matHeaderCellDef mat-sort-header>Data</mat-header-cell>
+      <mat-header-cell *matHeaderCellDef>Data</mat-header-cell>
       <mat-cell *matCellDef="let movimentacao">{{ movimentacao.data_movimento }}</mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="quantidade">
-      <mat-header-cell *matHeaderCellDef mat-sort-header>Quantidade</mat-header-cell>
+      <mat-header-cell *matHeaderCellDef>Quantidade</mat-header-cell>
       <mat-cell *matCellDef="let movimentacao">{{ movimentacao.quantidade }}</mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="numeroDocumento">
-      <mat-header-cell *matHeaderCellDef mat-sort-header>Número do Documento</mat-header-cell>
+      <mat-header-cell *matHeaderCellDef>Número do Documento</mat-header-cell>
       <mat-cell *matCellDef="let movimentacao">{{ movimentacao.documento }}</mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="tipoMovimentacao">
-      <mat-header-cell *matHeaderCellDef mat-sort-header>Tipo de Movimentação</mat-header-cell>
+      <mat-header-cell *matHeaderCellDef>Tipo de Movimentação</mat-header-cell>
       <mat-cell *matCellDef="let movimentacao">{{ movimentacao.tipo === "0" ? 'Entrada' : 'Saída' }}</mat-cell>
-    </ng-container>
-
-    <ng-container matColumnDef="itemId">
-      <mat-header-cell *matHeaderCellDef mat-sort-header>Item</mat-header-cell>
-      <mat-cell *matCellDef="let movimentacao">{{ movimentacao.item }}</mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="actions">

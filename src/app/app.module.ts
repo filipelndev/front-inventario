@@ -83,6 +83,7 @@ import { ListarItemComponent } from './authenticated/itens/listar-item/listar-it
 import { EditarItemComponent } from './authenticated/itens/editar-item/editar-item.component';
 import { MovimentacaoItemComponent } from './authenticated/itens/movimentacao-item/movimentacao-item.component';
 import { ListarMovimentacaoComponent } from './authenticated/itens/listar-movimentacao/listar-movimentacao.component';
+import { ListarMovimentacaoItemComponent } from './authenticated/itens/listar-movimentacao-item/listar-movimentacao-item.component';
 
 
 @NgModule({
@@ -133,6 +134,7 @@ import { ListarMovimentacaoComponent } from './authenticated/itens/listar-movime
     EditarItemComponent,
     MovimentacaoItemComponent,
     ListarMovimentacaoComponent,
+    ListarMovimentacaoItemComponent,
   ],
   imports: [
     BrowserModule,
