@@ -3,10 +3,8 @@ import { MovimentacaoService } from '../../movimentacao.service';
 import { Location } from '@angular/common';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
-import { MatSort } from '@angular/material/sort';
-import { FormControl } from '@angular/forms';
+import { FormGroup, FormControl } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 
 @Component({
   selector: 'app-listar-movimentacao',
@@ -18,15 +16,14 @@ export class ListarMovimentacaoComponent implements OnInit {
   displayedColumns: string[] = ['data', 'quantidade', 'numeroDocumento', 'tipoMovimentacao', 'actions'];
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
-  @ViewChild(MatSort) sort!: MatSort;
 
-  dateFilterInicial: FormControl = new FormControl();
-  dateFilterFinal: FormControl = new FormControl();
+  range = new FormGroup({
+    start: new FormControl<Date | null>(null),
+    end: new FormControl<Date | null>(null),
+  });
 
   movimentacao: any;
-
-  itemId: any; 
-  
+  itemId: any;
 
   constructor(
     private movimentacaoService: MovimentacaoService,
@@ -35,7 +32,6 @@ export class ListarMovimentacaoComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.iniciarObservaveis();
     this.obterIdItemERecarregarMovimentacoes();
   }
   
@@ -51,39 +47,24 @@ export class ListarMovimentacaoComponent implements OnInit {
     });
   }
 
-  iniciarObservaveis(): void {
-    // Observa mudanças no filtro de data inicial
-    this.dateFilterInicial.valueChanges.pipe(
-      debounceTime(300), // aguarda 300ms de pausa entre as digitações
-      distinctUntilChanged() // evita chamadas desnecessárias
-    ).subscribe((value) => {
-      console.log("Data Inicial alterada:", value);
-      this.buscarMovimentacoes();
-    });
-
-    // Observa mudanças no filtro de data final
-    this.dateFilterFinal.valueChanges.pipe(
-      debounceTime(300), // aguarda 300ms de pausa entre as digitações
-      distinctUntilChanged() // evita chamadas desnecessárias
-    ).subscribe((value) => {
-      console.log("Data Final alterada:", value);
-      this.buscarMovimentacoes();
-    });
-  }
-
   carregarMovimentacoesEstoque(): void {
-    this.movimentacaoService.getMovimentacoesEstoque(this.itemId).subscribe(
-      movimentacoes => {
-        this.movimentacao = movimentacoes;
-        this.dataSource.data = this.movimentacao;
-        this.dataSource.paginator = this.paginator;
-        this.dataSource.sort = this.sort;
-      },
-      error => {
-        console.error('Erro ao carregar movimentações de estoque:', error);
-        // Lidar com o erro, se necessário
+    this.route.paramMap.subscribe(params => {
+      const itemId = Number(params.get('id'));
+      console.log(itemId);
+      if (itemId) {
+        this.movimentacaoService.getMovimentacoesEstoque(itemId).subscribe(
+          movimentacoes => {
+            this.movimentacao = movimentacoes;
+            this.dataSource.data = this.movimentacao;
+            this.dataSource.paginator = this.paginator;
+          },
+          error => {
+            console.error('Erro ao carregar movimentações de estoque:', error);
+            // Lidar com o erro, se necessário
+          }
+        );
       }
-    );
+    });
   }
 
   onDelete(id: number): void {
@@ -104,15 +85,15 @@ export class ListarMovimentacaoComponent implements OnInit {
   }
 
   buscarMovimentacoes(): void {
-    const dataInicial: string | undefined = this.dateFilterInicial.value ? this.formatarData(this.dateFilterInicial.value) : undefined;
-    const dataFinal: string | undefined = this.dateFilterFinal.value ? this.formatarData(this.dateFilterFinal.value) : undefined;
-
+    const dataInicial: string | undefined = this.range.value.start ? this.formatarData(this.range.value.start) : undefined;
+    const dataFinal: string | undefined = this.range.value.end ? this.formatarData(this.range.value.end) : undefined;
+    
+    this.dataSource.data = []; // Limpa a lista de movimentações antes de buscar novos dados
+  
     this.movimentacaoService.getMovimentacoesEstoque(this.itemId, dataInicial, dataFinal).subscribe(
       movimentacoes => {
-        this.movimentacao = movimentacoes;
-        this.dataSource.data = this.movimentacao;
-        this.dataSource.paginator = this.paginator;
-        this.dataSource.sort = this.sort;
+        this.dataSource.data = movimentacoes; // Atualiza os dados diretamente no dataSource
+        this.atualizarMovimentacoes(); // Atualiza a paginação e ordenação
       },
       error => {
         console.error('Erro ao buscar movimentações de estoque com filtro de data:', error);
@@ -122,12 +103,15 @@ export class ListarMovimentacaoComponent implements OnInit {
   }
 
   resetDateFilter(): void {
-    this.dateFilterInicial.reset();
-    this.dateFilterFinal.reset();
+    this.range.reset();
     this.carregarMovimentacoesEstoque(); // Recarregar movimentações sem filtro de data
   }
 
   formatarData(data: Date): string {
     return data.toISOString().slice(0, 10);
+  }
+
+  atualizarMovimentacoes(): void {
+    this.dataSource.paginator = this.paginator;
   }
 }
