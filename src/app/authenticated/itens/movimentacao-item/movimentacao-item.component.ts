@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MovimentacaoService } from '../../movimentacao.service';
 import { ItemService } from '../../item.service';
 import { DatePipe, Location } from '@angular/common';
-import { Router } from '@angular/router';
 import { Movimentacao } from 'src/app/Models/Movimentacao';
+import { MatSnackBar } from '@angular/material/snack-bar';
+
 @Component({
   selector: 'app-movimentacao-item',
   templateUrl: './movimentacao-item.component.html',
@@ -25,8 +25,8 @@ export class MovimentacaoItemComponent implements OnInit {
     private movimentacaoService: MovimentacaoService,
     private itemService: ItemService,
     private location: Location,
-    private router: Router,
     private datePipe: DatePipe,
+    private snackBar: MatSnackBar
   ) {}
 
   ngOnInit(): void {
@@ -37,7 +37,6 @@ export class MovimentacaoItemComponent implements OnInit {
     this.itemService.ListarItem().subscribe(
       itens => {
         this.itens = itens.results;
-        console.log(this.itens);
       },
       error => {
         console.error('Erro ao listar itens', error);
@@ -54,38 +53,41 @@ export class MovimentacaoItemComponent implements OnInit {
       tipo: this.movimentacao.tipo.toString(),
       documento: this.movimentacao.documento
     }
-
-
+  
     console.log(movimentacaoToSend);
-
+  
     if (movimentacaoToSend != null && this.movimentacao.quantidade > 0) {
-
       this.movimentacaoService.criarMovimentacaoEstoque(movimentacaoToSend).subscribe(
         () => {
           // Limpar o formulário após a criação bem-sucedida
           console.log("alteração feita com sucesso");
+          this.openSnackBar('Movimentação de estoque criada com sucesso!', 'Fechar');
         },
         error => {
           console.error('Erro ao criar movimentação de estoque:', error);
           // Lidar com o erro, se necessário
+          this.openSnackBar('Erro ao criar movimentação de estoque. Por favor, tente novamente.', 'Fechar');
         }
       );
-    }
-    else
-    {
+    } else {
       console.log("Formulário inválido");
     }
   }
-
+  
+  openSnackBar(message: string, action: string) {
+    this.snackBar.open(message, action, {
+      duration: 5000,
+    });
+  }
   voltarParaCategorias(): void {
     this.location.back();
   }
 
-  irParaListaDeMovimentacao(): void {
-    this.router.navigate(['/listar-movimentacao'])
+  formatarData(data: Date): string {
+    return this.datePipe.transform(data, 'yyyy-MM-dd') || '';
   }
 
-  formatarData(data: Date): string {
-    return this.datePipe.transform(data, 'YYYY-MM-dd') || '';
+  atualizarData(event: any): void {
+    this.movimentacao.data = event.value;
   }
 }

@@ -4,10 +4,19 @@
   </button>
 </mat-toolbar>
 
+<div class="item-info">
+  <h2 class="titulo">Dados do Item</h2>
+  <div *ngIf="item">
+    <p><strong>ID:</strong> {{ item.id }}</p>
+    <p><strong>Nome:</strong> {{ item.nome }}</p>
+    <p><strong>Quantidade:</strong> {{ item.quantidade }}</p>
+  </div>
+</div>
+
 <div class="container">
   <h2 class="titulo">Listagem de Movimentações de Estoque</h2>
 
-  <mat-form-field appearance="outline">
+  <mat-form-field appearance="outline" class="date-filter">
     <mat-label>Filtro</mat-label>
     <mat-date-range-input [formGroup]="range" [rangePicker]="picker">
       <input matStartDate formControlName="start" placeholder="Data inicial">
@@ -17,7 +26,6 @@
     <mat-date-range-picker #picker></mat-date-range-picker>
   </mat-form-field>
 
-  <button mat-raised-button (click)="buscarMovimentacoes()">Aplicar Filtro</button>
   <button mat-raised-button (click)="resetDateFilter()">Limpar Filtro</button>
 
   <mat-table #table [dataSource]="dataSource">

@@ -2,9 +2,6 @@
   <button mat-icon-button class="backButton" matTooltip="Voltar" (click)="voltarParaCategorias()">
     <mat-icon>arrow_back</mat-icon>
   </button>
-  <button mat-icon-button class="movimentationButton backButton" matTooltip="Lista de movimentações" (click)="irParaListaDeMovimentacao()">
-    <mat-icon>list</mat-icon>
-  </button>
 </mat-toolbar>
 
 <div class="container">
@@ -12,10 +9,11 @@
 
     <mat-form-field>
       <mat-label>Escolha uma data</mat-label>
-      <input matInput [matDatepicker]="picker" [(ngModel)]="movimentacao.data">
+      <input matInput [matDatepicker]="picker" [(ngModel)]="movimentacao.data" name="data">
       <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-      <mat-datepicker #picker></mat-datepicker>
+      <mat-datepicker #picker (dateChange)="atualizarData($event)"></mat-datepicker>
     </mat-form-field>
+    
 
     <mat-form-field>
       <input matInput name="number" type="number" placeholder="Quantidade" [(ngModel)]="movimentacao.quantidade" min="0">

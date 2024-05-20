@@ -16,7 +16,7 @@ export class MovimentacaoService {
     let url = `${this.apiUrl}?item_id=${itemId}`;
     console.log(url);
     if (dataInicial && dataFinal == null) {
-      url += `&periodo_inicial=${dataInicial}`;
+      url += `&periodo_inicial=${dataInicial}&periodo_final=${dataInicial}`;
       console.log(url);
     }
     else if (dataInicial && dataFinal)
