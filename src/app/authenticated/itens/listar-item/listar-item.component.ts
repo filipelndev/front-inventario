@@ -13,7 +13,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 })
 export class ListarItemComponent  implements OnInit {
   isLoading: boolean = false;
-  displayedColumns: string[] = ['nome', 'categoria', 'status' ,'editar'];
+  displayedColumns: string[] = ['nome', 'categoria', 'status' ,'editar', 'duplicar'];
   dataSource = new MatTableDataSource<any>([]);
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
@@ -49,6 +49,10 @@ export class ListarItemComponent  implements OnInit {
 
   editarItem(item: any): void {
     this.router.navigate(['/editar-item', item.id]);
+  }
+
+  duplicarItem(item: any): void {
+    this.router.navigate(['/duplicar-item', item.id]);
   }
 
   alterarStatusItem(item: any): void {

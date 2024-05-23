@@ -3,12 +3,8 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { Equipamento } from 'src/app/Models/Equipamento';
 import { MatDialog } from '@angular/material/dialog';
-import { EditarEquipamentosComponent } from '../editar-equipamentos/editar-equipamentos.component';
 import { EquipamentoService } from '../../equipamento.service';
 import { BuscaNomesService } from 'src/app/util/busca-nomes.service';
-import { Colaborador } from 'src/app/Models/Colaborador';
-import { Empresa } from 'src/app/Models/Empresa';
-import { Observable, of } from 'rxjs';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 

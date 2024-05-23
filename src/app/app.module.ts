@@ -57,7 +57,6 @@ import { UsuarioPermissoesComponent } from './admin/usuario-permissoes/usuario-p
 import { PermissaodetalhesComponent } from './admin/permissaodetalhes/permissaodetalhes.component';
 import { CriarGrupoPermissaoComponent } from './admin/criar-grupo-permissao/criar-grupo-permissao.component';
 import { ConfirmaEmailComponent } from './admin/confirma-email/confirma-email.component';
-import { AdicionarEquipamentoComponent } from './authenticated/empresa/adicionar-equipamento/adicionar-equipamento.component';
 import { UrlService } from './util/url.service';
 import { NgxMaskModule } from 'ngx-mask-2';
 import { BuscarEquipamentoComponent } from './authenticated/equipamentos/buscar-equipamento/buscar-equipamento.component';
@@ -84,7 +83,7 @@ import { EditarItemComponent } from './authenticated/itens/editar-item/editar-it
 import { MovimentacaoItemComponent } from './authenticated/itens/movimentacao-item/movimentacao-item.component';
 import { ListarMovimentacaoComponent } from './authenticated/itens/listar-movimentacao/listar-movimentacao.component';
 import { ListarMovimentacaoItemComponent } from './authenticated/itens/listar-movimentacao-item/listar-movimentacao-item.component';
-
+import { DuplicarItemComponent } from './authenticated/itens/duplicar-item/duplicar-item.component';
 
 @NgModule({
   declarations: [
@@ -111,7 +110,6 @@ import { ListarMovimentacaoItemComponent } from './authenticated/itens/listar-mo
     PermissaodetalhesComponent,
     CriarGrupoPermissaoComponent,
     ConfirmaEmailComponent,
-    AdicionarEquipamentoComponent,
     BuscarEquipamentoComponent,
     DetalheEquipamentoComponent,
     TransfereEmpresaComponent,
@@ -135,6 +133,7 @@ import { ListarMovimentacaoItemComponent } from './authenticated/itens/listar-mo
     MovimentacaoItemComponent,
     ListarMovimentacaoComponent,
     ListarMovimentacaoItemComponent,
+    DuplicarItemComponent,
   ],
   imports: [
     BrowserModule,

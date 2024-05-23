@@ -26,10 +26,8 @@ export class DuplicarEquipamentoComponent  implements OnInit{
     private equipamentoService: EquipamentoService,
     private tipoEquipamentoService: TipoEquipamentoService,
     private snackBar: MatSnackBar,
-    private http: HttpClient,
     private setorService: SetorService,
     private route: ActivatedRoute,
-    private router: Router,
     private location: Location,
     private datePipe: DatePipe,
   ) {}

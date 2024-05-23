@@ -1,0 +1,37 @@
+<mat-toolbar>
+    <button mat-icon-button class="backButton" matTooltip="Voltar" (click)="voltar()">
+      <mat-icon>arrow_back</mat-icon>
+    </button>
+  </mat-toolbar>
+  
+  <div class="loading" *ngIf="isLoading">
+    Carregando...
+  </div>
+  
+  <div class="container" *ngIf="!isLoading">
+    <h2>Duplicar Item</h2>
+  
+    <form (ngSubmit)="onSubmit()" #categoriaForm="ngForm">
+      <mat-form-field class="example-full-width">
+        <label for="nome">Nome:</label>
+        <input matInput type="text" [(ngModel)]="nome" id="nome" name="nome" required>
+      </mat-form-field>
+  
+      <mat-form-field class="example-full-width">
+        <label>Categoria:</label>
+        <mat-select id="categoria" name="categoria" placeholder="Selecione os tipos de equipamentos" [(ngModel)]="item.categoria_id" required>
+          <mat-option *ngFor="let categoria of categorias" [value]="categoria.id">{{ categoria.nome }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+  
+      <mat-slide-toggle id="status" name="status" [(ngModel)]="item.status" color="primary"></mat-slide-toggle>
+      <span>{{ item.status ? 'Ativo' : 'Inativo' }}</span>
+  
+      <div class="buttonContainer">
+        <button class="submit-button" matTooltip="Cadastrar" type="submit">
+          <mat-icon>save</mat-icon>Salvar
+        </button>
+      </div>
+    </form>
+  </div>
+  

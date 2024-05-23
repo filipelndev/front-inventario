@@ -1,5 +1,5 @@
 <mat-toolbar>
-  <button mat-icon-button class="backButton" (click)="voltarParaUsuarios()">
+  <button mat-icon-button class="backButton" matTooltip="Voltar" (click)="voltarParaUsuarios()">
     <mat-icon>arrow_back</mat-icon>
   </button>
 </mat-toolbar>
@@ -11,13 +11,13 @@
     <!-- Coluna Tag Patrimonio -->
     <ng-container matColumnDef="tagPatrimonio">
       <th mat-header-cell *matHeaderCellDef class="custom-width"> Tag Patrimonio </th>
-      <td mat-cell *matCellDef="let equipamento" class="custom-width" ><a [routerLink]="['/detalhe-equipamento', equipamento.id]">{{ equipamento.tag_patrimonio }}</a></td>
+      <td mat-cell *matCellDef="let equipamento" class="custom-width" ><a matTooltip="Detalhes" [routerLink]="['/detalhe-equipamento', equipamento.id]">{{ equipamento.tag_patrimonio }}</a></td>
     </ng-container>
 
     <!-- Coluna Tipo Equipamento -->
     <ng-container matColumnDef="tipoEquipamento">
       <th mat-header-cell *matHeaderCellDef class="custom-width"> Tipo Equipamento </th>
-      <td mat-cell *matCellDef="let equipamento" class="custom-width"> <a href="javascript:void(0)" (click)="navegarDetalhesTipoEquipamento(equipamento.id)">{{ equipamento.tipo_equipamento_tipo }} </a></td>
+      <td mat-cell *matCellDef="let equipamento" class="custom-width"> <a  matTooltip="Detalhes" href="javascript:void(0)" (click)="navegarDetalhesTipoEquipamento(equipamento.id)">{{ equipamento.tipo_equipamento_tipo }} </a></td>
     </ng-container>
 
     <!-- Coluna Marca -->
@@ -36,7 +36,7 @@
     <ng-container matColumnDef="situacao">
       <th mat-header-cell *matHeaderCellDef class="custom-width"> Situação </th>
       <td mat-cell *matCellDef="let equipamento" class="custom-width">
-        <a href="javascript:void(0)" (click)="irParaTransferenciaDeSituacao(equipamento.id)"> {{ getDescricaoSituacao(equipamento.situacao) }} </a>
+        <a href="javascript:void(0)"  matTooltip="Transferir" (click)="irParaTransferenciaDeSituacao(equipamento.id)"> {{ getDescricaoSituacao(equipamento.situacao) }} </a>
       </td>
     </ng-container>
 
@@ -56,14 +56,14 @@
     <ng-container matColumnDef="empresa">
       <th mat-header-cell *matHeaderCellDef class="custom-width"> Empresa </th>
       <td mat-cell *matCellDef="let equipamento" class="custom-width">
-        <a href="javascript:void(0)" (click)="navegarDetalhesEmpresa(equipamento.empresa_id)">{{ equipamento.empresa_nome }}</a> </td>
+        <a href="javascript:void(0)"  matTooltip="Detalhes" (click)="navegarDetalhesEmpresa(equipamento.empresa_id)">{{ equipamento.empresa_nome }}</a> </td>
     </ng-container>
 
     <!-- Coluna colaborador -->
     <ng-container matColumnDef="colaborador">
       <th mat-header-cell *matHeaderCellDef class="custom-width"> Colaborador </th>
       <td mat-cell *matCellDef="let equipamento" class="custom-width">
-        <a href="javascript:void(0)" (click)="navegarDetalhesColaborador(equipamento.colaborador_id)"> {{ equipamento.colaborador_nome ? equipamento.colaborador_nome : 'N/A' }} </a></td>
+        <a href="javascript:void(0)"  matTooltip="Detalhes" (click)="navegarDetalhesColaborador(equipamento.colaborador_id)"> {{ equipamento.colaborador_nome ? equipamento.colaborador_nome : 'N/A' }} </a></td>
     </ng-container>
 
     <!-- Coluna colaborador -->
@@ -76,7 +76,9 @@
     <ng-container matColumnDef="status">
       <th mat-header-cell *matHeaderCellDef class="small-custom-width">Status</th>
       <td mat-cell *matCellDef="let equipamento" class="small-custom-width">
-        <button mat-icon-button (click)="alterarStatusEquipamento(equipamento)">
+        <button mat-icon-button (click)="alterarStatusEquipamento(equipamento)"
+        [matTooltip]="equipamento.status ? 'Ativo' : 'Inativo'" 
+        matTooltipPosition="right">
         <mat-icon [ngStyle]="{'color': equipamento.status ? 'green' : 'red'}">
           {{ equipamento.status ? 'check_circle' : 'cancel' }}
         </mat-icon>
@@ -88,7 +90,7 @@
     <ng-container matColumnDef="editar">
       <th mat-header-cell *matHeaderCellDef class="small-custom-width">Editar</th>
       <td mat-cell *matCellDef="let equipamento" class="small-custom-width">
-        <button mat-icon-button (click)="EditarEquipamento(equipamento)">
+        <button mat-icon-button  matTooltip="Editar" (click)="EditarEquipamento(equipamento)">
           <mat-icon>edit</mat-icon>
         </button>
       </td>
@@ -97,7 +99,7 @@
     <ng-container matColumnDef="duplicar">
       <th mat-header-cell *matHeaderCellDef class="small-custom-width">Duplicar</th>
       <td mat-cell *matCellDef="let equipamento" class="small-custom-width">
-        <button mat-icon-button (click)="DuplicarEquipamento(equipamento)">
+        <button mat-icon-button  matTooltip="Duplicar" (click)="DuplicarEquipamento(equipamento)">
           <mat-icon>content_copy</mat-icon>
         </button>
       </td>

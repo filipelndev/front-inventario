@@ -1,5 +1,5 @@
 <mat-toolbar>
-  <button mat-icon-button class="backButton" (click)="voltarParaDetalhesEquipamento()">
+  <button mat-icon-button class="backButton" matTooltip="Voltar" (click)="voltarParaDetalhesEquipamento()">
     <mat-icon>arrow_back</mat-icon>
   </button>
 </mat-toolbar>
@@ -40,7 +40,7 @@
     </div>
   </div>
 
-  <button class="applybutton" (click)="transferirEquipamento()">Alterar Situação</button>
+  <button class="applybutton"  matTooltip="Transferir" (click)="transferirEquipamento()">Alterar Situação</button>
 </div>
 <div class="loading" *ngIf="isLoading">
   Carregando...

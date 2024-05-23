@@ -1,5 +1,5 @@
 <mat-toolbar>
-  <button mat-icon-button class="backButton" (click)="voltarParaItem()">
+  <button mat-icon-button class="backButton" matTooltip="Voltar" (click)="voltarParaItem()">
     <mat-icon>arrow_back</mat-icon>
   </button>
 </mat-toolbar>
@@ -24,7 +24,7 @@
     <span>{{ item.status ? 'Ativo' : 'Inativo' }}</span>
 
     <div class="buttonContainer">
-      <button class="submit-button" type="submit"><mat-icon>save</mat-icon>Salvar</button>
+      <button class="submit-button" matTooltip="Cadastar" type="submit"><mat-icon>save</mat-icon>Salvar</button>
     </div>
   </form>
 </div>

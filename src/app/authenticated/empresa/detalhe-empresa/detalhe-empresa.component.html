@@ -1,5 +1,5 @@
 <mat-toolbar>
-  <button mat-icon-button class="backButton" (click)="VoltarParaLista()">
+  <button mat-icon-button class="backButton" matTooltip="Voltar" (click)="VoltarParaLista()">
     <mat-icon>arrow_back</mat-icon>
   </button>
 </mat-toolbar>
@@ -21,12 +21,12 @@
           <ng-container matColumnDef="tagPatrimonio">
             <th mat-header-cell *matHeaderCellDef> Tag do Patrimônio </th>
             <td mat-cell *matCellDef="let equipamento">
-              <a [routerLink]="['/detalhe-equipamento', equipamento.id]">{{ equipamento.tag_patrimonio }}</a> </td>
+              <a matTooltip="Detalhes" [routerLink]="['/detalhe-equipamento', equipamento.id]">{{ equipamento.tag_patrimonio }}</a> </td>
           </ng-container>
           <ng-container matColumnDef="tipoEquipamento">
             <th mat-header-cell *matHeaderCellDef> Tipo de Equipamento </th>
             <td mat-cell *matCellDef="let equipamento">
-              <a href="javascript:void(0);" (click)="navegarDetalhesTipoEquipamento(equipamento.id)">
+              <a href="javascript:void(0);" matTooltip="Detalhes" (click)="navegarDetalhesTipoEquipamento(equipamento.id)">
                 {{ equipamento.tipo_equipamento_tipo }}
               </a>
             </td>
@@ -42,11 +42,11 @@
           <ng-container matColumnDef="situacao">
             <th mat-header-cell *matHeaderCellDef> Situação </th>
             <td mat-cell *matCellDef="let equipamento">
-              <a href="javascript:void(0)" (click)="irParaTransferenciaDeSituacao(equipamento.id)"> {{ getDescricaoSituacao(equipamento.situacao) }} </a></td>
+              <a href="javascript:void(0)" matTooltip="Transferir" (click)="irParaTransferenciaDeSituacao(equipamento.id)"> {{ getDescricaoSituacao(equipamento.situacao) }} </a></td>
           </ng-container>
           <ng-container matColumnDef="colaborador">
             <th mat-header-cell *matHeaderCellDef> Colaborador </th>
-            <td mat-cell *matCellDef="let equipamento"><a href="javascript:void(0)" (click)="navegarDetalhesColaborador(equipamento.colaborador_id)" > {{ equipamento.colaborador_nome }}</a></td>
+            <td mat-cell *matCellDef="let equipamento"><a href="javascript:void(0)" matTooltip="Detalhes" (click)="navegarDetalhesColaborador(equipamento.colaborador_id)" > {{ equipamento.colaborador_nome }}</a></td>
           </ng-container>
           <!-- Adicione outras colunas conforme necessário -->
 

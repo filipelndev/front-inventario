@@ -1,5 +1,5 @@
 <mat-toolbar>
-  <button mat-icon-button class="backButton" (click)="voltarParaUsuarios()">
+  <button mat-icon-button class="backButton" matTooltip="Voltar" (click)="voltarParaUsuarios()">
     <mat-icon>arrow_back</mat-icon>
   </button>
 </mat-toolbar>
@@ -40,22 +40,22 @@
                 <input matInput [value]="equipamento?.modelo" disabled>
               </mat-form-field>
             </div>
-            <div class="campo pointer" (click)="irParaTransferenciaDeSituacao()">
-              <mat-form-field class="example-full-width pointer" (click)="irParaTransferenciaDeSituacao()">
+            <div class="campo pointer" matTooltip="Transferir" (click)="irParaTransferenciaDeSituacao()">
+              <mat-form-field matTooltip="Transferir" class="example-full-width pointer" (click)="irParaTransferenciaDeSituacao()">
                 <mat-label class="pointer">Situação</mat-label>
-                <input matInput class="pointer" [value]="getDescricaoSituacao(equipamento?.situacao)" (click)="irParaTransferenciaDeSituacao()">
+                <input matInput class="pointer" matTooltip="Transferir" [value]="getDescricaoSituacao(equipamento?.situacao)" (click)="irParaTransferenciaDeSituacao()">
               </mat-form-field>
             </div>
-            <div class="campo pointer" (click)="irParaTransferenciaDeColaborador()">
-              <mat-form-field class="example-full-width pointer" (click)="irParaTransferenciaDeColaborador()">
+            <div class="campo pointer"  matTooltip="Transferir" (click)="irParaTransferenciaDeColaborador()">
+              <mat-form-field class="example-full-width pointer"  matTooltip="Transferir" (click)="irParaTransferenciaDeColaborador()">
                 <mat-label class="pointer">Colaborador</mat-label>
-                <input matInput class="pointer" [value]="equipamento?.colaborador_nome" (click)="irParaTransferenciaDeColaborador()">
+                <input matInput class="pointer"  matTooltip="Transferir" [value]="equipamento?.colaborador_nome" (click)="irParaTransferenciaDeColaborador()">
               </mat-form-field>
             </div>
-            <div class="campo pointer" (click)="irParaTransferenciaDeEmpresa()">
-              <mat-form-field class="example-full-width pointer" (click)="irParaTransferenciaDeEmpresa()">
+            <div class="campo pointer"  matTooltip="Transferir" (click)="irParaTransferenciaDeEmpresa()">
+              <mat-form-field class="example-full-width pointer"  matTooltip="Transferir" (click)="irParaTransferenciaDeEmpresa()">
                 <mat-label class="pointer">Empresa</mat-label>
-                <input matInput class="pointer" (click)="irParaTransferenciaDeEmpresa()" [value]="equipamento?.empresa_nome">
+                <input matInput class="pointer"  matTooltip="Transferir" (click)="irParaTransferenciaDeEmpresa()" [value]="equipamento?.empresa_nome">
               </mat-form-field>
             </div>
             <div class="campo">

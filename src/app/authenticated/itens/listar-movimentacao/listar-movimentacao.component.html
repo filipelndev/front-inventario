@@ -1,5 +1,5 @@
 <mat-toolbar>
-  <button mat-icon-button class="backButton" (click)="voltar()">
+  <button mat-icon-button class="backButton" matTooltip="Voltar" (click)="voltar()">
     <mat-icon>arrow_back</mat-icon>
   </button>
 </mat-toolbar>
@@ -52,7 +52,7 @@
     <ng-container matColumnDef="actions">
       <mat-header-cell *matHeaderCellDef>Remover</mat-header-cell>
       <mat-cell *matCellDef="let movimentacao">
-        <button mat-icon-button (click)="onDelete(movimentacao.id)">
+        <button mat-icon-button matTooltip="Excluir" (click)="onDelete(movimentacao.id)">
           <mat-icon>delete</mat-icon>
         </button>
       </mat-cell>

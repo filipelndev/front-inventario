@@ -4,7 +4,6 @@ import { MatTableDataSource } from '@angular/material/table';
 import { CategoriaService } from '../../categoria.service';
 import { Location } from '@angular/common';
 import { Router } from '@angular/router';
-import { HttpClient } from '@angular/common/http';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
@@ -23,7 +22,6 @@ export class ListarCategoriaComponent implements OnInit {
     private categoriaService: CategoriaService,
     private location: Location,
     private router: Router,
-    private http: HttpClient,
     private snackBar: MatSnackBar) {}
 
   ngOnInit() {

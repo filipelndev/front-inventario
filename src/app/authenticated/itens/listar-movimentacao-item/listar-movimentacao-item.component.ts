@@ -3,8 +3,8 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { ItemService } from '../../item.service';
-import { ActivatedRoute, Router } from '@angular/router';
-import { Movimentacao } from 'src/app/Models/Movimentacao';
+import { Router } from '@angular/router';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-listar-movimentacao-item',
@@ -21,6 +21,7 @@ export class ListarMovimentacaoItemComponent  implements OnInit {
   constructor(
     private itemService: ItemService,
     private router: Router,
+    private location: Location,
   ) {}
 
   ngOnInit(): void {
@@ -39,6 +40,10 @@ export class ListarMovimentacaoItemComponent  implements OnInit {
         // Lidar com o erro, se necessário
       }
     );
+  }
+
+  voltar(): void {
+    this.location.back();
   }
 
   irParaListaDeMovimentacao(movimentacaoid: number): void {

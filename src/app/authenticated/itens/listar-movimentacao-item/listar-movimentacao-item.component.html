@@ -1,3 +1,9 @@
+<mat-toolbar>
+  <button mat-icon-button class="backButton" matTooltip="Voltar" (click)="voltar()">
+    <mat-icon>arrow_back</mat-icon>
+  </button>
+</mat-toolbar>
+
 <div class="container">
     <h2 class="titulo">Lista de Itens</h2>
   
@@ -21,7 +27,9 @@
       <ng-container matColumnDef="status">
         <th mat-header-cell *matHeaderCellDef class="custom-width"> Status </th>
         <td mat-cell *matCellDef="let item" class="custom-width">
-            <mat-icon [ngStyle]="{'color': item.status ? 'green' : 'red'}">
+            <mat-icon [ngStyle]="{'color': item.status ? 'green' : 'red'}"
+            [matTooltip]="item.status ? 'Ativo' : 'Inativo'" 
+        matTooltipPosition="right">
               {{ item.status ? 'check_circle' : 'cancel' }}
             </mat-icon>
         </td>
@@ -30,7 +38,7 @@
       <ng-container matColumnDef="actions">
         <th mat-header-cell *matHeaderCellDef>Listar</th>
         <td mat-cell *matCellDef="let item">
-          <button (click)="irParaListaDeMovimentacao(item.id)">
+          <button matTooltip="Listar" (click)="irParaListaDeMovimentacao(item.id)">
             <mat-icon>list</mat-icon>
           </button> 
         </td>

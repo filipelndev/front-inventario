@@ -1,5 +1,5 @@
 <mat-toolbar>
-  <button mat-icon-button class="backButton" (click)="voltarParaCategorias()">
+  <button mat-icon-button class="backButton" matTooltip="Voltar" (click)="voltarParaCategorias()">
     <mat-icon>arrow_back</mat-icon>
   </button>
 </mat-toolbar>
@@ -21,7 +21,7 @@
     <mat-form-field class="example-full-width">
       <label>Tipo de Equipamentos:</label>
       <mat-select id="tipoEquipamento" name="tipoEquipamento" placeholder="Selecione os tipos de equipamentos" [(ngModel)]="categoria.tipo_equipamento" multiple required>
-        <mat-option *ngFor="let tipoEquipamento of tipoEquipamento" [value]="tipoEquipamento.id">{{ tipoEquipamento.tipo }}</mat-option>
+        <mat-option *ngFor="let tipo of tipoEquipamento" [value]="tipo.id">{{ tipo.tipo }}</mat-option>
       </mat-select>
     </mat-form-field>
 
@@ -29,7 +29,9 @@
     <span>{{ categoria.status ? 'Ativo' : 'Inativo' }}</span>
 
     <div class="buttonContainer">
-      <button class="submit-button" type="submit"><mat-icon>save</mat-icon>Salvar</button>
+      <button class="submit-button" matTooltip="Salvar" type="submit" [disabled]="isLoading">
+        <mat-icon>save</mat-icon>Salvar
+      </button>
     </div>
   </form>
 </div>

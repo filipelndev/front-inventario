@@ -32,31 +32,36 @@ export class EditarCategoriaComponent implements OnInit {
       if (categoriaId) {
         this.categoriaService.BuscarCategoria(categoriaId).subscribe(
           (categoria: any) => {
+            console.log('Categoria carregada:', categoria);
             this.categoria = categoria;
+            this.categoria.tipo_equipamento = categoria.tipo_equipamento.map((tipo: any) => tipo.id);
+            console.log('Tipo Equipamento IDs:', this.categoria.tipo_equipamento);
             this.carregarTipo();
-            this.isLoading = false;
           },
           error => {
             this.isLoading = false;
             console.error('Erro ao carregar categoria:', error);
-            // Lidar com o erro, se necessário
           }
         );
+      } else {
+        this.isLoading = false;
       }
     });
-    this.carregarTipo();
   }
 
   carregarTipo(): void {
     this.tipoEquipamentoService.getTipoEquipamento().subscribe((tipoEquipamento: any) => {
       this.tipoEquipamento = tipoEquipamento.results;
+      console.log('Tipos de Equipamento carregados:', this.tipoEquipamento);
       this.isLoading = false;
     });
   }
 
   onSubmit(): void {
+    this.isLoading = true;
     this.categoriaService.atualizarCategoria(this.categoria.id, this.categoria).subscribe(
       () => {
+        this.isLoading = false;
         this.snackBar.open('Categoria atualizada com sucesso!', '', {
           duration: 3000,
           horizontalPosition: 'right',
@@ -65,6 +70,7 @@ export class EditarCategoriaComponent implements OnInit {
         this.location.back();
       },
       error => {
+        this.isLoading = false;
         console.error('Erro ao atualizar categoria:', error);
         let errorMessage = 'Erro ao atualizar categoria:';
         if (error.error && typeof error.error === 'string') {
@@ -77,11 +83,6 @@ export class EditarCategoriaComponent implements OnInit {
         });
       }
     );
-  }
-
-  adicionarTipoEquipamento(): void {
-    // Adicione lógica para adicionar um novo tipo de equipamento
-    // Se necessário
   }
 
   voltarParaCategorias(): void {
