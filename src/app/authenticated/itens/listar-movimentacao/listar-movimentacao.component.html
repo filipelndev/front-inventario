@@ -9,7 +9,7 @@
   <div *ngIf="item">
     <p><strong>ID:</strong> {{ item.id }}</p>
     <p><strong>Nome:</strong> {{ item.nome }}</p>
-    <p><strong>Quantidade:</strong> {{ item.quantidade }}</p>
+    <p><strong>Quantidade:</strong> {{ item.quantidade ?? 0}}</p>
   </div>
 </div>
 

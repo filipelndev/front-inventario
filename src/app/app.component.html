@@ -1,14 +1,14 @@
 <div *ngIf="authService.isAuthenticated()">
 <div class="header-content">
   <div class="header-left">
-    <button class="menu-button" (click)="toggleSidenav()">
+    <button class="menu-button" matTooltip="Abrir / Fechar" (click)="toggleSidenav()">
       <span class="material-icons">menu</span>
     </button>
     <span class="logoimg">
       <img src="./assets/img/Logo.png" alt="Logo da Empresa" class="logo">
     </span>
   </div>
-  <button mat-icon-button [matMenuTriggerFor]="menu" class="user-button">
+  <button mat-icon-button [matMenuTriggerFor]="menu" matTooltip="Usuário" class="user-button">
     <mat-icon class="whiteicon">person</mat-icon>
   </button>
 

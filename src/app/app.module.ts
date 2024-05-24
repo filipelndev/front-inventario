@@ -72,7 +72,7 @@ import { ListarSetorComponent } from './setor/listar-setor/listar-setor.componen
 import { DetalheSetorComponent } from './setor/detalhe-setor/detalhe-setor.component';
 import { EditarTipoEquipamentoComponent } from './authenticated/tipo-equipamento/editar-tipo-equipamento/editar-tipo-equipamento.component';
 import { EditarSetorComponent } from './setor/editar-setor/editar-setor.component';
-import { DuplicarEquipamentoComponent } from './authenticated/equipamento/duplicar-equipamento/duplicar-equipamento.component';
+import { DuplicarEquipamentoComponent } from './authenticated/equipamentos/duplicar-equipamento/duplicar-equipamento.component';
 import { EquipamentosPorTipoComponent } from './util/equipamentos-por-tipo/equipamentos-por-tipo.component';
 import { CadastrarCategoriaComponent } from './authenticated/categorias/cadastrar-categoria/cadastrar-categoria.component';
 import { EditarCategoriaComponent } from './authenticated/categorias/editar-categoria/editar-categoria.component';

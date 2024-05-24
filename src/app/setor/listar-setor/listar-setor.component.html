@@ -18,7 +18,8 @@
     <ng-container matColumnDef="status">
       <th mat-header-cell *matHeaderCellDef class="custom-width"> Status </th>
       <td mat-cell *matCellDef="let setor" class="custom-width">
-        <button mat-icon-button (click)="alterarStatusSetor(setor)">
+        <button mat-icon-button (click)="alterarStatusSetor(setor)"
+        [matTooltip]="setor.status ? 'Ativo' : 'Inativo'">
           <mat-icon [ngStyle]="{'color': setor.status ? 'green' : 'red'}">
             {{ setor.status ? 'check_circle' : 'cancel' }}
           </mat-icon>
@@ -30,7 +31,8 @@
     <ng-container matColumnDef="editar">
       <th mat-header-cell *matHeaderCellDef class="custom-width-editar">Editar</th>
       <td mat-cell *matCellDef="let setor" class="custom-width-editar">
-        <button mat-icon-button (click)="editarSetor(setor)">
+        <button mat-icon-button (click)="editarSetor(setor)"
+        matTooltip="Editar">
           <mat-icon>edit</mat-icon>
         </button>
       </td>

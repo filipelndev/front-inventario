@@ -12,17 +12,17 @@
     <ng-container matColumnDef="tipoEquipamento">
       <th mat-header-cell *matHeaderCellDef> Tipo de Equipamento </th>
       <td mat-cell *matCellDef="let tipoEquipamento">
-        <a href="javascript:void(0)" matTooltip="Detalhes" matTooltipPosition="above" (click)="navegarDetalhesTipoEquipamento(tipoEquipamento.id)"> {{ tipoEquipamento.tipo }} </a></td>
+        <a href="javascript:void(0)" matTooltip="Detalhes" (click)="navegarDetalhesTipoEquipamento(tipoEquipamento.id)"> {{ tipoEquipamento.tipo }} </a></td>
     </ng-container>
 
     <!-- Status Column -->
     <ng-container matColumnDef="status">
       <th mat-header-cell *matHeaderCellDef> Status </th>
       <td mat-cell *matCellDef="let tipoEquipamento">
-        <button mat-icon-button (click)="alterarStatusTipoEquipamento(tipoEquipamento)">
-          <mat-icon [ngStyle]="{'color': tipoEquipamento.status ? 'green' : 'red'}"
-          [matTooltip]="tipoEquipamento.status ? 'Ativo' : 'Inativo'" 
-        matTooltipPosition="right">
+        <button mat-icon-button
+        (click)="alterarStatusTipoEquipamento(tipoEquipamento)"
+        [matTooltip]="tipoEquipamento.status ? 'Ativo' : 'Inativo'">
+          <mat-icon [ngStyle]="{'color': tipoEquipamento.status ? 'green' : 'red'}">
             {{ tipoEquipamento.status ? 'check_circle' : 'cancel' }}
           </mat-icon>
 
@@ -34,7 +34,7 @@
     <ng-container matColumnDef="editar">
       <th mat-header-cell *matHeaderCellDef class="custom-width-editar">Editar</th>
       <td mat-cell *matCellDef="let element" class="custom-width-editar">
-        <button mat-icon-button (click)="editarTipoEquipamento(element)">
+        <button mat-icon-button matTooltip="Editar" (click)="editarTipoEquipamento(element)">
           <mat-icon>edit</mat-icon>
         </button>
       </td>

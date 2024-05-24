@@ -1,5 +1,5 @@
 <mat-toolbar>
-  <button mat-icon-button class="backButton"(click)="voltarParaUsuarios()">
+  <button mat-icon-button class="backButton" matTooltip="Voltar" (click)="voltarParaUsuarios()">
     <mat-icon>arrow_back</mat-icon>
   </button>
 </mat-toolbar>
@@ -13,7 +13,7 @@
       </mat-form-field>
 
     <div class="form-group">
-      <button class="createButton" type="submit">Confirmar E-mail</button>
+      <button class="createButton" matTooltip="Enviar" type="submit">Confirmar E-mail</button>
     </div>
   </form>
 

@@ -1,9 +1,9 @@
 <mat-toolbar>
-  <button mat-icon-button class="backButton" (click)="voltarParaUsuarios()">
+  <button mat-icon-button class="backButton" matTooltip="Voltar" (click)="voltarParaUsuarios()">
     <mat-icon>arrow_back</mat-icon>
   </button>
-  <button mat-button class="backButton" *ngIf="isAdmin" (click)="criarUsuario()">Criar Usuário</button>
-  <button mat-button class="backButton" *ngIf="isAdmin" (click)="criarGrupoPermissoes()">Criar Grupo de Permissões</button>
+  <button mat-button class="backButton" *ngIf="isAdmin" matTooltip="Criar Usuário" (click)="criarUsuario()">Criar Usuário</button>
+  <button mat-button class="backButton" *ngIf="isAdmin" matTooltip="Criar Grupo de Permissões" (click)="criarGrupoPermissoes()">Criar Grupo de Permissões</button>
 </mat-toolbar>
 
 <div class="container">

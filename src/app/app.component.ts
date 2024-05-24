@@ -37,7 +37,7 @@ ngOnInit(): void {
   this.router.events.subscribe(event => {
     if (event instanceof NavigationEnd && window.innerWidth <= 768) {
       // Fecha a barra lateral quando uma rota é ativada em dispositivos móveis
-      this.sidenav.toggle();
+      this.sidenav.toggle(false);
     }
   });
 

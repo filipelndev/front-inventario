@@ -33,7 +33,7 @@ import { EditarColaboradorComponent } from './authenticated/colaborador/editar-c
 import { EditarEmpresaComponent } from './authenticated/empresa/editar-empresa/editar-empresa.component';
 import { EditarTipoEquipamentoComponent } from './authenticated/tipo-equipamento/editar-tipo-equipamento/editar-tipo-equipamento.component';
 import { EditarSetorComponent } from './setor/editar-setor/editar-setor.component';
-import { DuplicarEquipamentoComponent } from './authenticated/equipamento/duplicar-equipamento/duplicar-equipamento.component';
+import { DuplicarEquipamentoComponent } from './authenticated/equipamentos/duplicar-equipamento/duplicar-equipamento.component';
 import { CadastrarCategoriaComponent } from './authenticated/categorias/cadastrar-categoria/cadastrar-categoria.component';
 import { EditarCategoriaComponent } from './authenticated/categorias/editar-categoria/editar-categoria.component';
 import { ListarCategoriaComponent } from './authenticated/categorias/listar-categoria/listar-categoria.component';

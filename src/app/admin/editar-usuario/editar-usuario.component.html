@@ -1,5 +1,5 @@
 <mat-toolbar>
-  <button mat-icon-button class="backButton" (click)="voltarParaUsuarios()">
+  <button mat-icon-button class="backButton" matTooltip="Voltar" (click)="voltarParaUsuarios()">
     <mat-icon>arrow_back</mat-icon>
   </button>
 </mat-toolbar>
@@ -63,6 +63,6 @@
   </mat-table>
 
   <div class="space">
-  <button class="createButton" (click)="salvarEdicao()">Salvar</button>
+  <button class="createButton" matTooltip="Alterar" (click)="salvarEdicao()">Salvar</button>
   </div>
 </div>
