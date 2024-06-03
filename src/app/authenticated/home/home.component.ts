@@ -49,7 +49,7 @@ export class HomeComponent implements OnInit {
     this.getDadosEmpresas();
     this.getDadosColaboradores();
     this.getDadosEquipamentos();
-    this.authService.DefinePermissão();
+    this.authService.DefinePermissao();
   }
 
   ngAfterViewInit(): void {

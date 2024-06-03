@@ -47,7 +47,7 @@ export class AuthService {
         if (response.access) {
           this.setToken(response.access);
           this.isAuthenticatedSubject.next(true);
-          this.DefinePermissão();
+          this.DefinePermissao();
         }
         if(response.refresh)
         {
@@ -113,7 +113,7 @@ export class AuthService {
     localStorage.removeItem('refresh_token');
   }
 
-  DefinePermissão() {
+  DefinePermissao() {
     const token = localStorage.getItem('access_token');
     if (token != null) {
       const userId = this.userService.getUserIdFromToken();
