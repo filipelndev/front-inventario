@@ -34,6 +34,9 @@ export class AppComponent implements OnInit  {
 }
 
 ngOnInit(): void {
+  (document as any).tomticketChatLoaderScriptVersion = 2;
+
+    this.loadTomTicketChat();
   this.router.events.subscribe(event => {
     if (event instanceof NavigationEnd && window.innerWidth <= 768) {
       // Fecha a barra lateral quando uma rota é ativada em dispositivos móveis
@@ -52,5 +55,20 @@ ngOnInit(): void {
     localStorage.removeItem('access_token');
     localStorage.removeItem('refresh_token');
     this.router.navigate(['']);
+  }
+
+  loadTomTicketChat(): void {
+    // Criação do elemento script e atribuição dos atributos necessários
+    const ttChatLoaderS = document.createElement('script');
+    ttChatLoaderS.src = 'https://duplexsoft.tomticket.com/scripts-chat/chat.min.js'
+      + '?id=EP61852'
+      + '&autoOpen=0'
+      + '&hideWhenOffline=0'
+      + '&d=duplexsoft'
+      + '&ts=' + new Date().getTime()
+      + '&ref=' + encodeURIComponent(document.URL);
+
+    // Adiciona o script ao final do body
+    document.body.appendChild(ttChatLoaderS);
   }
 }
